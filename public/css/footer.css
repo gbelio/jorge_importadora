@@ -1,0 +1,189 @@
+/* ------------------------------------------------------------------------ */
+
+                                /* FOOTER */
+footer{
+  width: 100vw;
+  background: #000;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color:white;
+  font-family: 'Milestone', Arial, Helvetica, sans-serif;
+}
+
+                                /* CAJA 1 */
+.caja1{
+  width: 20%;
+  padding-left: 10px;
+}
+
+.social{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 5px;
+}
+
+.imgrs{
+  margin: 0;
+}
+
+.caja1 img{
+  width: 80%;
+}
+
+.social .redSocial1:hover{
+  border-radius: 50%;
+  background: rgb(204, 4, 4);
+  transition: 450ms;
+   }
+   .social .redSocial2:hover{
+  border-radius: 50%;
+  background: rgb(5, 25, 130);
+  transition: 450ms;
+   }
+   .social .redSocial3:hover{
+  border-radius: 50%;
+  background: rgb(17, 144, 185);
+  transition: 450ms;
+}
+
+                                /* CAJA 2 */
+
+.caja2{
+  width: 50%;
+}
+
+.imgFooter{
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.imgFooter img{
+  width: 100%;
+}
+
+.fraseFooter{
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.phrase{
+    font-size: 1em;
+    line-height: 1em;
+    text-align: center;
+
+ }
+ .copy{
+     font-family: Arial, Helvetica, sans-serif;
+     font-weight: 100;
+     font-size: 0.5em;
+     text-align: center;
+ }
+
+                                /* CAJA 3 */
+
+.caja3{
+  width: 20%;
+  padding-right: 10px;
+}
+
+.links{
+
+}
+
+.links a{
+   font-family: Frutiger;
+   text-decoration: none;
+   color:white;
+   font-size: 0.8em;
+   font-weight: lighter;
+   text-align: right;
+   margin: 0;
+   flex-direction: column;
+   display: flex;
+   padding: 0.3em;
+}
+
+.links a:hover{
+   color:red;
+   transition:300ms;
+}
+
+/* ---------------------------------------------------------------- */
+
+                /*AGREGAR MEDIA QUERIES DEL FOOTER*/
+
+@media screen and (min-width: 767px){
+
+.caja3{
+  width: 23%;
+  padding-right: 10px;
+}
+
+.imgFooter img{
+  width: 70%;
+}
+
+.links{
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+  padding:0 0 0 5%;
+  font-family: "Frutiger";
+}
+
+.links a{
+  text-align: right;
+  padding: 1em;
+  line-height: 0.8em;
+  font-size: .9em;
+}
+
+@media screen and (min-width: 990px){
+
+  /* CAJA 1 */
+
+.caja1 img{
+    width: 100%;
+}
+
+  /* CAJA 2 */
+
+.imgFooter img{
+  width: 60%;
+}
+
+.phrase{
+  font-size: 1.6em;
+}
+
+.copy{
+  font-size: 0.6em;
+}
+
+/* CAJA 3 */
+
+.caja3{
+  width: 23%;
+  padding-right: 10px;
+}
+
+.links a{
+  font-size: 1.3em;
+  padding: .8em;
+}
+
+
+
+                    /*FIN MEDIA QUERIES FOOTER*/
+ /* ---------------------------------------------------------------- */

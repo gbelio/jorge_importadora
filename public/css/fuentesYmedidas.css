@@ -1,0 +1,34 @@
+@font-face {
+    font-family: Wrestlemania;
+    src: url(../Fonts/wrestlemania/WRESTLEMANIA.ttf);
+}
+
+@font-face {
+    font-family: Frutiger;
+    src: url(../Fonts/frutiger/FrutigerLTStd-Cn.otf);
+}
+
+@font-face {
+    font-family: Milestone;
+    src: url(../Fonts/milestone/MilestoneFreeVersion-Script.otf);
+}
+
+html{
+  overflow-x: hidden;
+
+}
+
+html::-webkit-scrollbar{
+  width: 10px;
+}
+
+html::-webkit-scrollbar-thumb{
+  background-color: grey;
+  border-radius: 5px;
+}
+
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 auto;
+}

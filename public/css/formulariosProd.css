@@ -1,0 +1,205 @@
+@font-face {
+    font-family: Wrestlemania;
+    src: url(../Fonts/wrestlemania/WRESTLEMANIA.ttf);
+}
+
+@font-face {
+    font-family: Frutiger;
+    src: url(../Fonts/frutiger/FrutigerLTStd-Cn.otf);
+}
+
+@font-face {
+    font-family: Milestone;
+    src: url(../Fonts/milestone/MilestoneFreeVersion-Script.otf);
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0;
+}
+
+@keyframes modal {
+    0% {
+        left: -1000px;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+
+.__formularioProd {
+    width: 80%;
+    margin-top: 25% !important;
+}
+
+.__createProd {
+    font-family: Wrestlemania;
+    font-size: 4em;
+}
+
+.__agregarProd {
+    width: 100% !important;
+    margin: 8% 0 !important;
+}
+
+.add_img {
+    font-family: Wrestlemania;
+    font-size: 1.8em;
+    text-align: center;
+    width: 90%;
+    color: white;
+    letter-spacing: 0.06em;
+    background-color: grey;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin: 5%;
+}
+
+.__fuenteForm {
+    font-family: Frutiger !important;
+}
+
+.form-multimedia {
+    margin: 18% 0 15% 0;
+}
+
+.form-categorias {
+    margin-top: 18%;
+    margin-bottom: 20%;
+}
+
+.form-subcategorias {
+    margin-top: 18%;
+    margin-bottom: 20%;
+}
+
+/* -----------------------MEDIAQUERIES---------------------- */
+@media (min-width: 451px) and (max-width: 599px) {
+
+    .__formularioProd {
+        margin-top: 20% !important;
+    }
+
+    .form-multimedia {
+        margin: 25% 0 15% 0;
+    }
+
+    .form-categorias {
+        margin-top: 18%;
+        margin-bottom: 20%;
+    }
+
+    .form-subcategorias {
+        margin-top: 18%;
+        margin-bottom: 20%;
+    }
+
+}
+
+@media (min-width: 600px) and (max-width: 767px) {
+
+    .__formularioProd {
+        margin-top: 15% !important;
+    }
+
+    .add_img {
+        width: 60%;
+        margin: 5% 20% 0;
+    }
+
+    .__agregarProd {
+        width: 50% !important;
+        margin: 10% 25% !important;
+
+    }
+
+    .form-multimedia {
+        margin: 18% 0 15% 0;
+    }
+
+    .form-categorias {
+        margin-top: 20%;
+        margin-bottom: 20%;
+    }
+
+    .form-subcategorias {
+        margin-top: 20%;
+        margin-bottom: 20%;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+    .__formularioProd {
+        margin-top: 10% !important;
+    }
+
+    .add_img {
+        width: 40%;
+        margin: 5% 30% 0;
+    }
+
+    .__agregarProd {
+        width: 40% !important;
+        margin: 8% 30% 5% !important;
+
+    }
+
+    .form-multimedia {
+        margin: 18% 0 15% 0;
+    }
+
+    .form-categorias {
+        margin-top: 20%;
+        margin-bottom: 20%;
+    }
+
+    .form-subcategorias {
+        margin-top: 20%;
+        margin-bottom: 20%;
+    }
+}
+
+@media screen and (min-width: 980px) {
+    .__formularioProd {
+        width: 50% !important;
+        margin-top: 10% !important;
+    }
+
+    .add_img {
+        width: 40%;
+        margin: 5% 30% 0;
+        font-size: 2em;
+    }
+
+    .__agregarProd {
+        width: 40% !important;
+        margin: 8% 30% 5% !important;
+        font-size: 1.5em;
+
+    }
+
+    .form-multimedia {
+        margin: 18% 0 15% 0;
+    }
+
+    .form-categorias {
+        margin-top: 20%;
+        margin-bottom: 20%;
+    }
+
+    .form-subcategorias {
+        margin-top: 20%;
+        margin-bottom: 20%;
+    }
+}

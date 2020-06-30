@@ -1,0 +1,426 @@
+/*---------------------------
+                      REGISTER MOBILE FIRST
+                    ---------------------------*/
+@font-face {
+    font-family: Wrestlemania;
+    src: url(../Fonts/wrestlemania/WRESTLEMANIA.ttf);
+}
+
+@font-face {
+    font-family: Frutiger;
+    src: url(../Fonts/frutiger/FrutigerLTStd-Cn.otf);
+}
+
+@font-face {
+    font-family: Milestone;
+    src: url(../Fonts/milestone/MilestoneFreeVersion-Script.otf);
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.register {
+    overflow-x: hidden;
+}
+
+html::-webkit-scrollbar {
+    width: 10px;
+}
+
+html::-webkit-scrollbar-thumb {
+    background-color: grey;
+    border-radius: 5px;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0 auto;
+}
+
+/* ESTILOS REGISTER */
+.register {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    /* padding: 5% 13%; */
+    text-align: center;
+
+    /* Animacion modal*/
+    position: relative;
+    animation-name: modal;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+.colorRojo {
+    color: red;
+    font-size: 0.5em;
+}
+.cajita2 {
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    border: 16px solid black;
+    /* padding-bottom: 2%; */
+    border-radius: 5px;
+}
+
+.formularioRegister {
+    width: 90%;
+}
+
+@keyframes modal {
+    0% {
+        left: -1000px;
+    }
+    100% {
+        left: 0;
+    }
+}
+
+/* Fin de animacion modal*/
+.register {
+    display: flex;
+    display: column;
+}
+
+.cajita-texto {
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25%;
+    padding: 5%;
+}
+
+.cajita-texto h1 {
+    font-family: "Milestone", Arial, Helvetica, sans-serif;
+    font-size: 3em;
+    line-height: 1em;
+    margin-bottom: 5%;
+}
+
+.cajita2 h1 {
+    font-family: "Wrestlemania", Arial, Helvetica, sans-serif;
+    margin-bottom: 0.2em;
+    font-size: 4rem;
+    letter-spacing: 0.1rem;
+    font-weight: lighter;
+}
+
+.texto-bienvenida {
+    margin-top: 7%;
+    font-family: "Frutiger", Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    text-align: justify;
+}
+
+.inputForm {
+    padding: 0.6em;
+    border-radius: 0.5em;
+    border: 1px solid black;
+    outline: none;
+    margin: 0.1em;
+    width: 100%;
+}
+
+form input::placeholder {
+    font-size: 1.3em;
+}
+
+input:focus::-webkit-input-placeholder {
+    opacity: 0;
+    transition: 400ms;
+}
+
+.button {
+    position: relative;
+    margin: 0;
+    width: 100%;
+    cursor: pointer;
+}
+
+.button p {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 15px 15px;
+    font-family: "Wrestlemania", Arial, Helvetica, sans-serif;
+    font-size: 1.8em;
+    line-height: 0.5em;
+    color: #353434;
+    margin: 1% 0;
+    border: 1px solid gray;
+    border-radius: 0.2em;
+    cursor: pointer;
+}
+
+.button .avatar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.ldob {
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #757575;
+    margin: 0;
+    padding-top: 20px;
+}
+
+.dob {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    margin-bottom: 0.5em;
+}
+
+.dob select {
+    padding: 0.4em;
+    border-radius: 0.5em;
+    border: 1px solid black;
+    outline: none;
+    width: 32%;
+}
+
+button {
+    text-align: center;
+    font-family: "Wrestlemania", Arial, Helvetica, sans-serif;
+    color: white;
+    align-self: center;
+    padding: 0.1em 1em;
+    border: none;
+    background: black;
+    border-radius: 10px;
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+    font-weight: lighter;
+    outline: none;
+    cursor: pointer;
+    margin-bottom: 0.5em;
+    /* Animacion boton */
+    opacity: 0;
+    animation-name: button;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    transition-property: transform;
+    transition-duration: 1s;
+}
+
+@keyframes button {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+button:hover {
+    color: red;
+    transition: 450ms;
+}
+
+.errors {
+    color: red;
+    text-align: left;
+    margin: 0 10px;
+    padding: 5px 0;
+    font-size: 0.8em;
+}
+
+/* Fin de animacion boton*/
+
+/* -----------------------MEDIAQUERIES---------------------- */
+
+@media (min-width: 451px) and (max-width: 767px) {
+    .register {
+        padding: 0;
+    }
+
+    .cajita-texto {
+        margin-top: 17%;
+    }
+    .cajita2 {
+        width: 100vw;
+        border: 1em solid black;
+        border-radius: 1%;
+        margin: 2% 0;
+    }
+
+    form input {
+        margin-bottom: 0.5em;
+        width: 100%;
+    }
+
+    .ldob {
+        padding-bottom: 0.6em;
+    }
+
+    .dob select:nth-child(2) {
+        margin-right: 0.7em;
+        margin-left: 0.7em;
+    }
+
+    .dob {
+        margin-bottom: 0.8em;
+    }
+
+    .dob select {
+        background-color: white;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+    html {
+        overflow-x: hidden;
+    }
+
+    .register {
+        padding: 0;
+        width: 100vw;
+        flex-direction: row;
+    }
+
+    .cajita-texto {
+        width: 50vw;
+        justify-content: center;
+        align-items: center;
+        margin-top: 14%;
+        padding: 5%;
+    }
+
+    .cajita-texto h1 {
+        font-size: 3.5em;
+        font-family: "Milestone", Arial, Helvetica, sans-serif;
+    }
+
+    .cajita-texto p {
+        font-size: 1.1em;
+        line-height: 1.1em;
+        text-align: left;
+    }
+
+    .cajita2 h1 {
+        font-size: 6em;
+        margin-top: 0;
+    }
+    .cajita2 {
+        width: 50vw;
+        border-radius: 1%;
+        border: 1em solid black;
+        margin: 14% 5% 8% 0%;
+    }
+    form input {
+        margin-bottom: 0.7em;
+    }
+    .ldob {
+        padding-bottom: 0.6em;
+    }
+    .dob select:nth-child(2) {
+        margin-right: 0.7em;
+        margin-left: 0.7em;
+    }
+    .dob {
+        margin-bottom: 0.8em;
+    }
+    .phrase {
+        font-size: 1.3em;
+    }
+    .logo img {
+        width: 20%;
+    }
+    .dob select {
+        background-color: white;
+    }
+
+    .inputForm {
+        margin: 2% 0;
+    }
+
+    .submitRegister {
+        margin-top: 10%;
+    }
+}
+
+@media screen and (min-width: 980px) {
+    html {
+        overflow-x: hidden;
+    }
+
+    .register {
+        padding: 0;
+        width: 100vw;
+        flex-direction: row;
+    }
+
+    .cajita-texto {
+        width: 50vw;
+        justify-content: center;
+        align-items: center;
+        margin-top: 8%;
+        padding: 5%;
+    }
+
+    .cajita-texto h1 {
+        font-size: 3em;
+        font-family: "Milestone", Arial, Helvetica, sans-serif;
+    }
+
+    .cajita-texto p {
+        margin-top: 5%;
+        font-size: 1.1em;
+        line-height: 1.3em;
+        text-align: left;
+    }
+
+    .links a {
+        font-size: 1.2em;
+    }
+
+    .register h1 {
+        margin: 0;
+    }
+    .cajita2 {
+        width: 50vw;
+        border: 1em solid black;
+        margin: 12% 5% 4% 0%;
+    }
+    form input {
+        margin-top: 0.4em;
+    }
+    .ldob {
+        padding-bottom: 0.6em;
+    }
+    .dob select:nth-child(2) {
+        margin-right: 0.7em;
+        margin-left: 0.7em;
+    }
+
+    .dob {
+        margin-bottom: 0.8em;
+    }
+    .dob select {
+        background-color: white;
+    }
+
+    .button p {
+        width: 100%;
+    }
+
+    /*PUNTITOS UL DEL REGISTER EN EL CASO DE ERROR*/
+    .alert {
+        list-style-type: none;
+    }
+}
+/*FIN ESTILOS REGISTER*/

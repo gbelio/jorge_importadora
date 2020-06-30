@@ -1,0 +1,403 @@
+-----------------------
+/*HOME MOBILE FIRST*/
+-----------------------
+@font-face {
+font-family: Wrestlemania;
+src: url(../Fonts/wrestlemania/WRESTLEMANIA.ttf);
+}
+
+@font-face {
+font-family: Frutiger;
+src: url(../Fonts/frutiger/FrutigerLTStd-Cn.otf);
+}
+
+@font-face {
+font-family: Milestone;
+src: url(../Fonts/milestone/MilestoneFreeVersion-Script.otf);
+}
+
+html{
+overflow-x: hidden;
+
+}
+
+html::-webkit-scrollbar{
+width: 10px;
+}
+
+html::-webkit-scrollbar-thumb{
+background-color: grey;
+border-radius: 5px;
+}
+
+*{
+box-sizing: border-box;
+padding: 0;
+margin: 0 auto;
+}
+
+
+/* Contenedor general */
+.caja{
+width: 100vw;
+/* height: 80vh; */
+background-color: white;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+border: none;
+padding: 0;
+}
+
+/* Contenedor "Pick your Treasure" */
+.container{
+width: 100%;
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0;
+margin: 17vh 0 0 0;
+}
+
+.container a{
+width: 100%;
+}
+
+.container img{
+width: 100%;
+}
+
+/* Contenedor de Articulos */
+.container1{
+width: 100%;
+/* height: 85vh; */
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+background-color:white;
+}
+
+.comon{
+width: 90%;
+margin:auto;
+}
+
+.art1 {
+width: 100%;
+height: 18vh;
+background-image: url("../img/musica_mobile.svg");
+background-size: contain;
+background-position: center;
+background-repeat: no-repeat;
+cursor: pointer;
+}
+
+.art2 {
+width: 100%;
+height: 18vh;
+background-image: url("../img/lectura_mobile.svg");
+background-size: contain;
+background-position: center;
+background-repeat: no-repeat;
+cursor: pointer;
+}
+
+.hotstuff{
+margin:auto;
+width:90%;
+}
+
+.art3 {
+width: 100%;
+height: 18vh;
+background-image: url("../img/hotstuff_mobile.svg");
+background-size: contain;
+background-position: center;
+background-repeat: no-repeat;
+cursor: pointer;
+}
+
+.art4 {
+width: 100%;
+height: 18vh;
+background-image: url("../img/juegos_mobile.svg");
+background-size: contain;
+background-position: center;
+background-repeat: no-repeat;
+cursor: pointer;
+}
+
+.art5 {
+width: 100%;
+height: 18vh;
+background-image: url("../img/otros_mobile.svg");
+background-size: contain;
+background-position: center;
+background-repeat: no-repeat;
+cursor: pointer;
+}
+
+.banner_publicidad{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+width: 100%;
+/* height: 10vh; */
+background-color: #004DBE;
+margin-top: 5%;
+margin-bottom: 5%;
+}
+
+.banner{
+display: flex;
+font-family:WRESTLEMANIA;
+src:url(../tipografias/WRESTLEMANIA.ttf);
+font-size: 3em;
+letter-spacing: .05em;
+font-weight: lighter;
+color: white;
+}
+
+/* MEDIA QUERIES SECCION ARTICULOS Y BANNER */
+
+@media screen and (min-width:480px){
+
+ .container1{
+   width: 75%;
+   /* height: 85vh; */
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   background-color:white;
+ }
+
+ .comon{
+   margin:0;
+   width:50%;
+ }
+
+ .art1 {
+   width: 100%;
+   height: 30vh;
+   background-image: url("../img/art1_musica_.svg");
+   background-size: contain;
+   background-position: center;
+   background-repeat: no-repeat;
+   cursor: pointer;
+ }
+
+ .art2 {
+   width: 100%;
+   height: 30vh;
+   background-image: url("../img/art2_lectura_.svg");
+   background-size: contain;
+   background-position: center;
+   background-repeat: no-repeat;
+   cursor: pointer;
+ }
+
+ .hotstuff{
+   margin:0;
+   width:100%;
+ }
+
+ .art3 {
+   width: 100%;
+   height: 30vh;
+   background-image: url("../img/art3_hotstuff_.svg");
+   background-size: contain;
+   background-position: center;
+   background-repeat: no-repeat;
+   cursor: pointer;
+ }
+
+ .art4 {
+   width: 100%;
+   height: 30vh;
+   background-image: url("../img/art4_juegos_.svg");
+   background-size: contain;
+   background-position: center;
+   background-repeat: no-repeat;
+   cursor: pointer;
+ }
+
+ .art5 {
+   width: 100%;
+   height: 30vh;
+   background-image: url("../img/art5_otros_.svg");
+   background-size: contain;
+   background-position: center;
+   background-repeat: no-repeat;
+   cursor: pointer;
+ }
+
+   .banner_publicidad{
+     margin-top: -1%;
+     margin-bottom: 1%;
+   }
+}
+
+@media screen and (min-width:767px){
+
+ .container1{
+   width: 75%;
+   /* height: 85vh; */
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   background-color:white;
+ }
+
+ .comon{
+   margin:0;
+   width:50%;
+ }
+
+ .art1 {
+   width: 100%;
+   height: 40vh;
+   background-image: url("../img/art1_musica_.svg");
+   background-size: contain;
+   background-position: center;
+   background-repeat: no-repeat;
+   cursor: pointer;
+ }
+
+ .art2 {
+   width: 100%;
+   height: 40vh;
+   background-image: url("../img/art2_lectura_.svg");
+   background-size: contain;
+   background-position: center;
+   background-repeat: no-repeat;
+   cursor: pointer;
+ }
+
+ .hotstuff{
+   width:100%;
+   margin:0;
+ }
+
+ .art3 {
+   width: 100%;
+   height: 40vh;
+   background-image: url("../img/art3_hotstuff_.svg");
+   background-size: contain;
+   background-position: center;
+   background-repeat: no-repeat;
+   cursor: pointer;
+ }
+
+ .art4 {
+   width: 100%;
+   height: 35vh;
+   background-image: url("../img/art4_juegos_.svg");
+   background-size: contain;
+   background-position: center;
+   background-repeat: no-repeat;
+   cursor: pointer;
+ }
+
+ .art5 {
+   width: 100%;
+   height: 35vh;
+   background-image: url("../img/art5_otros_.svg");
+   background-size: contain;
+   background-position: center;
+   background-repeat: no-repeat;
+   cursor: pointer;
+ }
+
+   .banner_publicidad{
+     margin-bottom: 0%;
+   }
+}
+
+@media screen and (min-width:990px){
+
+ .caja{
+   width: 60vw;
+ }
+
+ .container{
+   width: 100%;
+   margin-top: 20vh;
+ }
+
+ .container1{
+   width: 100%;
+   /* height: 85vh; */
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   background-color:white;
+ }
+
+ .comon{
+   margin:0;
+   width: 50%;
+ }
+
+ .art1 {
+   width: 100%;
+   height: 40vh;
+   background-image: url("../img/art1_musica_.svg");
+   background-size: contain;
+   background-position: center;
+   background-repeat: no-repeat;
+   cursor: pointer;
+ }
+
+ .art2 {
+   width: 100%;
+   height: 40vh;
+   background-image: url("../img/art2_lectura_.svg");
+   background-size: contain;
+   background-position: center;
+   background-repeat: no-repeat;
+   cursor: pointer;
+ }
+
+ .hotstuff{
+   margin:0;
+   width: 100%;
+ }
+
+ .art3 {
+   width: 100%;
+   height: 40vh;
+   background-image: url("../img/art3_hotstuff_.svg");
+   background-size: contain;
+   background-position: center;
+   background-repeat: no-repeat;
+   cursor: pointer;
+ }
+
+ .art4 {
+   width: 100%;
+   height: 35vh;
+   background-image: url("../img/art4_juegos_.svg");
+   background-size: contain;
+   background-position:top;
+   background-repeat: no-repeat;
+   cursor: pointer;
+ }
+
+ .art5 {
+   width: 100%;
+   height: 35vh;
+   background-image: url("../img/art5_otros_.svg");
+   background-size: contain;
+   background-position: top;
+   background-repeat: no-repeat;
+   cursor: pointer;
+ }
+
+ .banner_publicidad{
+   margin-bottom: 5%;
+   margin-top: 3%;
+ }
+}

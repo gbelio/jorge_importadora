@@ -1,0 +1,8 @@
+Un demandante realiza una búsqueda sobre un objeto deseado, puede ser desde las categorías o desde el
+buscador propio de la página.
+Cuando visualiza el producto de su agrado, lo suma a su lista de demanda.
+De esta manera, el oferente de ese producto pasa a ser demandante, y viceversa, entrando al perfil
+del, ahora, oferente a buscar algo por lo que quiera intercambiar su producto.
+En el caso de no encontrar nada que le sirva o quiera, puede poner en a subastar su producto para
+que el, ahora nuevamente, demandante le haga una oferta económica por el.
+El demandante puede realizar la oferta o bien desistir del intercambio.

@@ -1,0 +1,2 @@
+En cada perfil hay un signo de admiración en gris, usted puede pulsar el mismo y automáticamente se le abrirá un formulario para su descargo, en donde podrá ingresar una calificación negativa de 1 a 5 y un comentario.
+Pasada la revisión y si, efectivamente, el usuario incumplió con los términos y condiciones registrados, esa puntuación y comentario se verán reflejados en el sector de “Reseñas” del usuario.

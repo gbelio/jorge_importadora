@@ -1,0 +1,116 @@
+/* NAV BAR */
+.navbar {
+    background-color: black !important;
+    position: fixed !important;
+    width: 100vw;
+    z-index: 100;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.navbar-brand {
+    margin: 0;
+    width: 20%;
+    height: 15vh;
+    background-image: url("../img/jorge_importalogo.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.navbar-toggler {
+    background: white;
+    border: none;
+    outline: none !important;
+    margin: 0;
+}
+
+.nav-item {
+    border-bottom: 1px solid white;
+    margin: 0;
+}
+
+.nav-link {
+    color: white !important;
+    font-family: "Frutiger" !important;
+    text-align: center;
+}
+
+.nav-link:hover {
+    color: red !important;
+    transition: 300ms !important;
+}
+
+.collapse .usuario {
+    color: yellow !important;
+}
+
+.cascadaDos {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    width: 100%;
+}
+
+.cascadaDos li {
+    list-style-type: none;
+    text-align: center;
+    height: 35px;
+    width: 100%;
+}
+
+.cascadaDos a {
+    color: yellow;
+    font-family: "Frutiger" !important;
+    text-decoration: none;
+}
+
+/* MEDIA QUERIES NAVBAR (UNICA MEDIDA 990PX, PARA MAS PEQUEÑO YA ESTA HECHO.) */
+
+@media screen and (min-width: 990px) {
+    .navbar-brand {
+        width: 30%;
+        background-position: left;
+        background-image: url("../img/jorge_importalogo.jpg");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .navbar-nav {
+        margin-right: 2%;
+        font-size: 1.5em;
+    }
+
+    .nav-item {
+        border: none;
+    }
+    .usuario {
+        color: yellow !important;
+    }
+
+    .cascadaDos {
+        background-color: rgba(0, 0, 0, 0.8) !important;
+    }
+
+    .cascadaDos li {
+        list-style-type: none;
+        text-align: center;
+        height: 50px;
+        padding-top: 3%;
+        padding-bottom: 3%;
+        width: 100%;
+    }
+
+    .cascadaDos .borderli {
+        border-top: 1px solid white !important;
+        border-bottom: 1px solid white !important;
+    }
+
+    .cascadaDos a {
+        color: white;
+        font-family: "Frutiger" !important;
+        text-decoration: none;
+    }
+
+    .cascadaDos a:hover {
+        color: yellow;
+    }
+}
