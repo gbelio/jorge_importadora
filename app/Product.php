@@ -11,7 +11,7 @@ class Product extends Model
     //comparto
     public function multimedia()
     {
-        return $this->hasMany('App\Image');
+        return $this->hasMany('App\Multimedia');
     }
 
     public function category()

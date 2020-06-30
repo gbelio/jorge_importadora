@@ -20,7 +20,7 @@ class ProductsTableSeeder extends Seeder
             'name'=>$faker->sentence(3),
             'code'=>$faker->randomDigit(10),
             'resume'=>$faker->sentence(1),
-            'detail'=>$faker->sentence(20),
+            'description'=>$faker->sentence(20),
             'cover'=>$faker->image('public/storage/covers',400,300, null, false),
             'category_id'=>$faker->randomDigit(10),
             'subcategory_id'=>$faker->randomDigit(10),
@@ -29,4 +29,3 @@ class ProductsTableSeeder extends Seeder
         ]);
     }
 }
-
