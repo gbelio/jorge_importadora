@@ -55,7 +55,7 @@ class CategoryController extends Controller
 
         $categoria->save();
 
-        return redirect('/categorias');
+        return redirect('/categorias/cargar');
     }
 
     /**

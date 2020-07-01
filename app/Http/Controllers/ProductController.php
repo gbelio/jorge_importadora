@@ -61,7 +61,7 @@ class ProductController extends Controller
         $producto = new Product($request->all());
         $producto->cover = $cover;
         $producto->save();
-        return redirect('/profile');
+        return redirect('/');
     }    
 
     /**
