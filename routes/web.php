@@ -22,6 +22,7 @@ Route::group(['prefix'=>'categorias'], function(){
     Route::get('/cargar','CategoryController@create'); //va a llevar al formulario de carga de categoria (solo administrador)
     Route::post('/cargar','CategoryController@store'); //va a guardar el categoria en la base de datos (solo administrador)
     Route::get('/{id}','CategoryController@show');
+    Route::patch('/{id}/editar', 'ProductController@update'); //va a editar en la base de datos
 });
 
 //SubCategorias
@@ -56,3 +57,5 @@ Route::patch('/{id}/editar', 'MultimediaController@update');
 Route::delete('/productos/usuario/cargar_imagen/{id}','MultimediaController@destroy');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+Route::resource('category', 'CategoryController');

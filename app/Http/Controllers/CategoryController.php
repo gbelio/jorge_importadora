@@ -8,14 +8,11 @@ use App\Product;
 use App\User;
 use App\Multimedia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $categorias = Category::all();
@@ -23,22 +20,13 @@ class CategoryController extends Controller
                     ->with('categorias',$categorias);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        return view('categorias.create');
+        $categorias = DB::table('categories')->orderBy('id', 'desc')->paginate(15);
+        return view('categorias.create')
+                    ->with('categorias',$categorias);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request 
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $reglas = [
@@ -58,20 +46,42 @@ class CategoryController extends Controller
         return redirect('/categorias/cargar');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Category 
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $categoria=Category::find($id);
-        $productos = Product::where('category_id', $id)->paginate(9);
+        $productos = Product::where('category_id', $id)->paginate(15);
         $multimedias=Multimedia::all();
         return view('categorias.show')
                 ->with('categoria',$categoria)
                 ->with('productos',$productos)
                 ->with('multimedias',$multimedias);
     }
+
+    public function edit($id)
+    {
+        $categoria = Category::find($id);
+        return view('categorias.edit')
+            ->with('categoria', $categoria);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $reglas = [
+            'name'=>'required',
+        ];
+        $mensaje = ['required' => 'el campo :attribute es obligatorio'];
+        $this->validate($request, $reglas, $mensaje);
+        $categoria = Category::find($id);
+        $categoria->name = $request->input('name') !== $categoria->name ? $request->input('name') : $categoria->name;
+      
+        $categoria->save();
+        return redirect("/categorias/cargar");
+    }
+
+    public function destroy($id)
+    {
+        Category::find($id)->delete();
+        return redirect("/categorias/cargar");
+    }
+
 }
