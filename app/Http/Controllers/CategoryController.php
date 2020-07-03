@@ -9,6 +9,7 @@ use App\User;
 use App\Multimedia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -22,6 +23,9 @@ class CategoryController extends Controller
 
     public function create()
     {
+        if(Auth::user() == null){
+            return redirect('login');
+        }
         $categorias = DB::table('categories')->orderBy('id', 'desc')->paginate(15);
         return view('categorias.create')
                     ->with('categorias',$categorias);
