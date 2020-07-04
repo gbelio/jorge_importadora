@@ -2,7 +2,16 @@
 @section('content')
 
 <div>
-    <section class="">
+
+    <section class="prod_1">
+
+        <div class="prod_1_cat">
+            <a href="#" target="blank">{{$producto->category->name}} > </a>
+            <a href="#" target="blank">{{$producto->subcategory->name}}</a>
+        </div>
+
+    </section>
+   {{--  <section class="">
         <article class="producto-perfil">
             <div class="producto">
                 <img class="imagen-producto" src="/storage/{{$producto->cover}}" style="border-radius:3px;" alt="imagen de producto">
@@ -44,7 +53,7 @@
                 </div>
             </div>
         </article>
-    </section>
+    </section> --}}
 </div>
 
 @endsection
