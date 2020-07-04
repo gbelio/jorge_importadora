@@ -1,8 +1,45 @@
+/*caja categorias*/
+.caja-products-categories{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0%;
+    margin: 10% auto;
+}
+
+.products-all{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 0;
+}
+
+.category_prod{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5%;
+}
+
+.prods_{
+    width: 100%;
+    display: flex;
+    overflow:hidden;
+}
+
+
+
+
+
 /* CARD PRODUCTO - SHOW A FEW */
 
 .product_1{
     margin: 0;
-    width: 300px;
+    max-width: 300px;
+    min-width: 300px;
     max-height: 400px;
     min-height: 400px;
     border: 1px solid gainsboro;
@@ -11,6 +48,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     font-family: 'Raleway', sans-serif;
+    margin-right: 20px;
 }
 
 .product_1:hover{
@@ -75,7 +113,8 @@
 
 .prod_name{
     width: 100%;
-    max-height: 40px;
+    max-height: 30px;
+    min-height: 30px;
     margin: 0;
     padding: 5px 5px;
     background-color:#001B7E;
@@ -87,9 +126,11 @@
 
 .category_subcat{
     width: 100%;
+    max-height: 40px;
+    min-height: 40px;
     display: flex;
     padding: 5px;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .category_subcat a{
@@ -97,7 +138,7 @@
     margin: 0;
     color: #5FA8E5;
     font-weight: 'Raleway', sans-serif;
-    font-size: 1rem;
+    font-size: 0.8rem;
     text-transform: capitalize;
 }
 
@@ -111,7 +152,7 @@
     padding: 0 5px;
     font-family: 'Roboto', sans-serif;
     text-transform: capitalize;
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 

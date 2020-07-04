@@ -90,9 +90,13 @@ class ProductController extends Controller
     {   
         $multimedias = Multimedia::all();
         $products = Product::all();
+        $categories = Category::all();
+        $subcategories = Subcategory::all();
         return view('productos.showAll')
         ->with('products', $products)
-        ->with('multimedias',$multimedias);
+        ->with('multimedias',$multimedias)
+        ->with('categories',$categories)
+        ->with('subcategories',$subcategories);
     }
 
     /**
