@@ -142,7 +142,7 @@ class ProductController extends Controller
         $producto->cover = $cover;
         }        
         $producto->save();
-        return redirect("/profile");
+        return redirect("/products");
     }
 
     /**
@@ -162,9 +162,15 @@ class ProductController extends Controller
    {
        $clave = $request->clave;
        $products = Product::where('name', 'LIKE', "%$clave%")->get();
+       $allProducts = Product::all();
+       $categories = Category::where('name', 'LIKE', "%$clave%")->get();
+       $subcategories = Subcategory::where('name', 'LIKE', "%$clave%")->get();
        $mensaje = 'Encontramos'." ".count($products)." ".'resultados para tu busqueda';
        return view('productos.results')->with('products', $products)
-                                       ->with('clave', $clave)
-                                       ->with('mensaje', $mensaje);
+                                        ->with('categories', $categories)
+                                        ->with('subcategories', $subcategories)
+                                        ->with('allProducts', $allProducts)
+                                        ->with('clave', $clave)
+                                        ->with('mensaje', $mensaje);
    }
 }

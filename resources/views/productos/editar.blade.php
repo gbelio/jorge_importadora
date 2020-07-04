@@ -57,7 +57,7 @@
             </div>
             <br>
             <div class="d-flex md-form mt-0" style="justify-content:center">
-                <a href="/productos/usuario" class="btn btn-info btn-sm boton-eliminar" role="button" style="margin:2%; background-color:#007BFF;border-color:#007BFF;">Volver</a>
+                <a href="/productos" class="btn btn-info btn-sm boton-eliminar" role="button" style="margin:2%; background-color:#007BFF;border-color:#007BFF;">Volver</a>
                 <input type="submit" class="btn btn-info btn-sm boton-eliminar" style="margin:2%; background-color:#007BFF;border-color:#007BFF;" value="Confirmar Cambios">
             </div>
         </form>
