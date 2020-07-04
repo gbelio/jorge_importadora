@@ -8,7 +8,7 @@
                 <div class="product_1_img">
                     <span>{{$product->code}}</span>
                     <img class="product_1_img_imagen" src="/storage/{{$product->cover}}" alt="imagen de producto">
-                    <a href="#" target="blank">
+                    <a href="../productos/{{$product->id}}" target="blank">
                             VER MÁS
                     </a>                        
                 </div>
