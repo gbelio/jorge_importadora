@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.master')
 @section('content')
 
 <div class="producto-editar" style="display:flex; justify-content:center;">
     <div align="left" class="producto-individual __editar-prod" style="padding-bottom:2%">
         <br>
-        <h1 align="center" class="__nuevasImagenes">Editar Catgoria</h1>
+        <h1 align="center" class="__nuevasImagenes">Editar Categoria</h1>
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
                     <ul>
