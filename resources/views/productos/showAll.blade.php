@@ -12,7 +12,7 @@
                             <article class="product_1">
                                 <div class="product_1_img">
                                     <span>{{$product->code}}</span>
-                                    <img class="product_1_img_imagen" src="/storage/covers/{{$product->cover}}" alt="imagen de producto">
+                                    <img class="product_1_img_imagen" src="/storage/{{$product->cover}}" alt="imagen de producto">
                                     <a href="../productos/{{$product->id}}" target="blank">
                                             VER MÁS
                                     </a>                        
