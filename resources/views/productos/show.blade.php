@@ -31,6 +31,7 @@
             </div>
 
             <div class="prod_box_details">
+                texto
             <div>  
 
         </div>    
