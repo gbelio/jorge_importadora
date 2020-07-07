@@ -18,6 +18,9 @@
                     <li class="nav-item" style="margin: 10px 10px 0 0">
                         <a class="nav-link" href="/productos/cargar">Agregar Producto</a>
                     </li>
+                    <li class="nav-item" style="margin: 10px 10px 0 0">
+                        <a class="nav-link" href="/slider/cargar">Agregar Imagen Slider</a>
+                    </li>
                     <li class="borderli">
                         <a href="/profile">Perfil</a>
                     </li>
