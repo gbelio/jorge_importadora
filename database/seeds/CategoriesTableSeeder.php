@@ -13,9 +13,9 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        foreach(range(1,4) as $index)
+        foreach(range(1,3) as $index)
         DB::table('categories')->insert([
-            'name'=>$faker->sentence(3),
+            'name'=>$faker->sentence(1),
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now(),
         ]);
