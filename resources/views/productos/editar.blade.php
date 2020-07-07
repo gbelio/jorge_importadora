@@ -15,7 +15,7 @@
                 </div>
             @endif
         <div class="producto __editar-img">
-            <img class="imagen-producto" src="/storage/{{$producto->cover}}" alt="imagen de producto">
+            <img class="imagen-producto" src="/public/storage/{{$producto->cover}}" alt="imagen de producto">
         </div>
         <form method="POST" action="" style="padding:1em" enctype="multipart/form-data">
             {{ method_field('PATCH') }}

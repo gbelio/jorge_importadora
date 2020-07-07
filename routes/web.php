@@ -34,6 +34,15 @@ Route::group(['prefix'=>'subcategorias'], function(){
     Route::patch('/{id}/editar', 'SubcategoryController@update'); //va a editar en la base de datos
 });
 
+//Slider
+
+Route::group(['prefix'=>'slider'], function(){
+
+    Route::get('/cargar','SliderController@create'); //al formulario de carga de subcategoria (solo administrador)
+    Route::post('/cargar','SliderController@store'); //va a guardar el subcategoria en la base de datos (solo administrador)
+    Route::patch('/{id}/editar', 'SliderController@update'); //va a editar en la base de datos
+});
+
 //Productos
 
 Route::group(['prefix'=>'productos'], function(){
@@ -62,3 +71,5 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::resource('category', 'CategoryController');
 
 Route::resource('subcategory', 'SubcategoryController');
+
+Route::resource('sliders', 'SliderController');
