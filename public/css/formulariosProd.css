@@ -27,179 +27,135 @@ body {
     padding: 0;
 }
 
-@keyframes modal {
-    0% {
-        left: -1000px;
-    }
-
-    100% {
-        left: 0;
-    }
+.form-categorias{
+    margin-top:100px;
+    padding: 25px 0px;
 }
 
-.__formularioProd {
-    width: 80%;
-    margin-top: 25% !important;
+.form-categorias1{
+  /*   margin-top:100px; */
+    padding: 25px 0px;
 }
 
-.__createProd {
-    font-family: Wrestlemania;
-    font-size: 4em;
+.form-productos{
+    margin-top:100px;
+    padding: 25px 0px;
 }
 
-.__agregarProd {
-    width: 100% !important;
-    margin: 8% 0 !important;
+.agregarProducto{
+    border: 1px solid lightgrey;
+    padding: 10px;
+    border-radius:5px;
 }
 
-.add_img {
-    font-family: Wrestlemania;
-    font-size: 1.8em;
-    text-align: center;
-    width: 90%;
-    color: white;
-    letter-spacing: 0.06em;
-    background-color: grey;
-    border: 1px solid black;
-    border-radius: 3px;
-    margin: 5%;
+#listaCategorias{
+    border: 1px solid lightgrey;
+    padding: 10px;
+    border-radius:5px;
 }
 
-.__fuenteForm {
-    font-family: Frutiger !important;
+#listaProductos{
+    border: 1px solid lightgrey;
+    padding: 10px;
+    border-radius:5px;
 }
 
-.form-multimedia {
-    margin: 18% 0 15% 0;
+#mytable td, #mytable th{
+    vertical-align: initial;
+    padding: 3px;
 }
 
-.form-categorias {
-    margin-top: 18%;
-    margin-bottom: 20%;
+.__mt-30{
+    margin-top:115px;
 }
 
-.form-subcategorias {
-    margin-top: 18%;
-    margin-bottom: 20%;
+/* Productos */
+
+.am-next, .am-next1, .am-next2, .am-next3, .am-next4, .am-next5, .am-next6, .am-next7, .am-next8, .am-next9, .am-next10, .am-next11, .am-next12, .am-next13, .am-next14, .am-next15, .am-next16, .am-next17, .am-next18, .am-next19, .am-next20, .am-next21, .am-next22, .am-next23, .am-next24, .am-next25, .am-next26, .am-next27, .am-next28, .am-next29, .am-next30{
+    position: absolute; 
+    top: 31%; 
+    left: -5%; 
+    width:70px; 
+    height:70px; 
+    border-radius:35px;
+    padding:10px; 
+    background-color: #ffffff; 
+    display:flex; 
+    flex-direction:column; 
+    justify-content:center; 
+    align-items:center; 
+    opacity: .5;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  }
+
+
+.am-prev, .am-prev1, .am-prev2, .am-prev3, .am-prev4, .am-prev5, .am-prev6, .am-prev7, .am-prev8, .am-prev9, .am-prev10, .am-prev11, .am-prev12, .am-prev13, .am-prev14, .am-prev15, .am-prev16, .am-prev17, .am-prev18, .am-prev19, .am-prev20, .am-prev21, .am-prev22, .am-prev23, .am-prev24, .am-prev25, .am-prev26, .am-prev27, .am-prev28, .am-prev29, .am-prev30{
+    position: absolute; 
+    top: 31%; 
+    right: -5%; 
+    width:70px; 
+    height:70px; 
+    border-radius:35px; 
+    padding:10px; 
+    background-color: #ffffff;
+    display:flex; 
+    flex-direction:column;
+    justify-content:center; 
+    align-items:center; 
+    opacity: .5;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
-/* -----------------------MEDIAQUERIES---------------------- */
-@media (min-width: 451px) and (max-width: 599px) {
-
-    .__formularioProd {
-        margin-top: 20% !important;
-    }
-
-    .form-multimedia {
-        margin: 25% 0 15% 0;
-    }
-
-    .form-categorias {
-        margin-top: 18%;
-        margin-bottom: 20%;
-    }
-
-    .form-subcategorias {
-        margin-top: 18%;
-        margin-bottom: 20%;
-    }
-
+.mt-100{
+    margin-top:100px;
 }
 
-@media (min-width: 600px) and (max-width: 767px) {
-
-    .__formularioProd {
-        margin-top: 15% !important;
-    }
-
-    .add_img {
-        width: 60%;
-        margin: 5% 20% 0;
-    }
-
-    .__agregarProd {
-        width: 50% !important;
-        margin: 10% 25% !important;
-
-    }
-
-    .form-multimedia {
-        margin: 18% 0 15% 0;
-    }
-
-    .form-categorias {
-        margin-top: 20%;
-        margin-bottom: 20%;
-    }
-
-    .form-subcategorias {
-        margin-top: 20%;
-        margin-bottom: 20%;
-    }
-
+.siguienteCarrousel{
+    position: absolute; 
+    left: 8px;
+    top: 40%;
+    width:70px; 
+    height:70px; 
+    border-radius:35px;
+    padding:10px; 
+    background-color: #ffffff; 
+    display:flex; 
+    flex-direction:column; 
+    justify-content:center; 
+    align-items:center; 
+    opacity: .5;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
-@media (min-width: 768px) and (max-width: 979px) {
-    .__formularioProd {
-        margin-top: 10% !important;
-    }
-
-    .add_img {
-        width: 40%;
-        margin: 5% 30% 0;
-    }
-
-    .__agregarProd {
-        width: 40% !important;
-        margin: 8% 30% 5% !important;
-
-    }
-
-    .form-multimedia {
-        margin: 18% 0 15% 0;
-    }
-
-    .form-categorias {
-        margin-top: 20%;
-        margin-bottom: 20%;
-    }
-
-    .form-subcategorias {
-        margin-top: 20%;
-        margin-bottom: 20%;
-    }
+.anteriorCarrousel{
+    position: absolute; 
+    right: 8px;
+    top: 40%;
+    width:70px; 
+    height:70px; 
+    border-radius:35px; 
+    padding:10px; 
+    background-color: #ffffff;
+    display:flex; 
+    flex-direction:column;
+    justify-content:center; 
+    align-items:center; 
+    opacity: .5;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
-@media screen and (min-width: 980px) {
-    .__formularioProd {
-        width: 50% !important;
-        margin-top: 10% !important;
-    }
-
-    .add_img {
-        width: 40%;
-        margin: 5% 30% 0;
-        font-size: 2em;
-    }
-
-    .__agregarProd {
-        width: 40% !important;
-        margin: 8% 30% 5% !important;
-        font-size: 1.5em;
-
-    }
-
-    .form-multimedia {
-        margin: 18% 0 15% 0;
-    }
-
-    .form-categorias {
-        margin-top: 20%;
-        margin-bottom: 20%;
-    }
-
-    .form-subcategorias {
-        margin-top: 20%;
-        margin-bottom: 20%;
-    }
+.owl-dots{
+    position: inherit !important;
+    top: -60px !important;
 }
+
+
+

@@ -15,15 +15,15 @@ class ProductsTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        foreach(range(1,10) as $index)
+        foreach(range(1,50) as $index)
         DB::table('products')->insert([
             'name'=>$faker->sentence(3),
-            'code'=>$faker->randomDigit(10),
+            'code'=>$faker->randomDigit(),
             'resume'=>$faker->sentence(1),
             'description'=>$faker->sentence(20),
-            'cover'=>$faker->image('public/storage/covers',400,300, null, false),
-            'category_id'=>$faker->randomDigit(10),
-            'subcategory_id'=>$faker->randomDigit(10),
+            'cover'=>'covers/' . $faker->image('public/storage/covers',400,300, null, false),
+            'category_id'=>rand(1, 3),
+            'subcategory_id'=>rand(1, 3),
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now(),
         ]);

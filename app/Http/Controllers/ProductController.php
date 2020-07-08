@@ -7,7 +7,9 @@ use App\User;
 Use App\Category; //recordemos son solo 4, hot stuff es por hits.
 Use App\Subcategory;
 Use App\Multimedia;
+Use App\Slider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -33,11 +35,13 @@ class ProductController extends Controller
         if(Auth::user() == null){
         return redirect('login');
     }
+        $productos = DB::table('products')->orderBy('id', 'desc')->paginate(15);
         $categorias=Category::all();
         $subcategorias=Subcategory::all();
         return view('productos.create')
                 ->with('categorias',$categorias)
-                ->with('subcategorias',$subcategorias);
+                ->with('subcategorias',$subcategorias)
+                ->with('productos',$productos);
     }
 
     /**
@@ -50,18 +54,25 @@ class ProductController extends Controller
     {    
         $reglas = [
             'name'=>'required',
-            'description'=>'required',            
-            'user_id'=>'required',
-            'category_id'=>'required'
+            'code'=>'required',
+            'resume'=>'required',
+            'description'=>'required',
+            'cover'=>'required',
+            'category_id'=>'required',
+            'subcategory_id'=>'required',
+
         ];
 
-        $mensaje=['el :attribute es obligatorio'];
+        $mensaje=[
+            'El :attribute es obligatorio'
+        ];
+        
         $this->validate($request, $reglas, $mensaje);
         $cover = $request->file('cover')->store('covers','public');
         $producto = new Product($request->all());
         $producto->cover = $cover;
         $producto->save();
-        return redirect('/');
+        return redirect('/productos/cargar');
     }    
 
     /**
@@ -90,9 +101,15 @@ class ProductController extends Controller
     {   
         $multimedias = Multimedia::all();
         $products = Product::all();
+        $categories = Category::all();
+        $subcategories = Subcategory::all();
+        $sliders = Slider::all();
         return view('productos.showAll')
         ->with('products', $products)
-        ->with('multimedias',$multimedias);
+        ->with('multimedias',$multimedias)
+        ->with('categories',$categories)
+        ->with('subcategories',$subcategories)
+        ->with('sliders',$sliders);
     }
 
     /**
@@ -142,7 +159,7 @@ class ProductController extends Controller
         $producto->cover = $cover;
         }        
         $producto->save();
-        return redirect("/profile");
+        return redirect("/products");
     }
 
     /**
@@ -155,16 +172,22 @@ class ProductController extends Controller
    {
        $producto=Product::find($id);
        $producto->delete();
-       return redirect("/profile");
+       return redirect("/productos/cargar");
    }
 
    public function search(Request $request)
    {
        $clave = $request->clave;
        $products = Product::where('name', 'LIKE', "%$clave%")->get();
+       $allProducts = Product::all();
+       $categories = Category::where('name', 'LIKE', "%$clave%")->get();
+       $subcategories = Subcategory::where('name', 'LIKE', "%$clave%")->get();
        $mensaje = 'Encontramos'." ".count($products)." ".'resultados para tu busqueda';
        return view('productos.results')->with('products', $products)
-                                       ->with('clave', $clave)
-                                       ->with('mensaje', $mensaje);
+                                        ->with('categories', $categories)
+                                        ->with('subcategories', $subcategories)
+                                        ->with('allProducts', $allProducts)
+                                        ->with('clave', $clave)
+                                        ->with('mensaje', $mensaje);
    }
 }

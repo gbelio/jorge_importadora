@@ -3,38 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Subcategory;
-use Illuminate\Http\Request;
 use App\Category;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class SubcategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
+        if(Auth::user() == null){
+            return redirect('login');
+        }
+    
+        $subcategorias = DB::table('subcategories')->orderBy('id', 'desc')->paginate(15);
         $categorias = Category::all();
-        return view('subcategorias.create')->with('categorias',$categorias);
+        return view('subcategorias.create')->with('categorias',$categorias)
+                                            ->with('subcategorias',$subcategorias);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $reglas = [
@@ -55,48 +48,43 @@ class SubcategoryController extends Controller
         return redirect('/subcategorias/cargar');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Subcategory  $subcategory
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Subcategory $subcategory)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Subcategory  $subcategory
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Subcategory $subcategory)
+
+    public function edit($id)
     {
-        //
+        $categorias = Category::all();
+        $subcategoria = Subcategory::find($id);
+        return view('subcategorias.edit')
+            ->with('subcategoria', $subcategoria)
+            ->with('categorias', $categorias);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Subcategory  $subcategory
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Subcategory $subcategory)
+
+    public function update(Request $request, $id)
     {
-        //
+        $reglas = [
+            'name'=>'required',
+            'category_id' => 'required'
+        ];
+        $mensaje = ['required' => 'el campo :attribute es obligatorio'];
+        $this->validate($request, $reglas, $mensaje);
+        $subcategoria = Subcategory::find($id);
+        $subcategoria->name = $request->input('name') !== $subcategoria->name ? $request->input('name') : $subcategoria->name;
+        $subcategoria->category_id = $request->input('category_id') !== $subcategoria->category_id ? $request->input('category_id') : $subcategoria->category_id;
+      
+        $subcategoria->save();
+        return redirect("/subcategorias/cargar");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Subcategory  $subcategory
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Subcategory $subcategory)
+
+    public function destroy($id)
     {
-        //
+        Subcategory::find($id)->delete();
+        return redirect("/subcategorias/cargar");
     }
 }
