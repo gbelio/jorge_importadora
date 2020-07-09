@@ -4,6 +4,20 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+    @isset($categories)
+        <div class="dropdown">
+            <button class="nav-link usuario dropdown-toggle" type="button" data-toggle="dropdown">Categorías <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                @foreach ($categories as $category)
+                    <li>
+                        <form action="/categorias/busqueda" class="form" method="GET" style="display:flex; flex-direction:row">
+                            <input type="submit" value="<?=$category->name?>" class="btn btn-info" name="clave" id="">
+                        </form>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    @endisset
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav cascadaUno" style="justify-content:flex-end; align-items:center">      
             <li class="nav-item dropdown d-flex" >
@@ -45,18 +59,20 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="dropdown">
-        <button class="nav-link usuario dropdown-toggle" type="button" data-toggle="dropdown">Categorías <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-            @foreach ($categories as $category)
-                <li>
-                    <form action="/productos/busqueda" class="form" method="GET" style="display:flex; flex-direction:row">
-                        <input type="submit" value="<?=$category->name?>" class="btn btn-info" name="clave" id="">
-                    </form>
-                </li>
-            @endforeach
-        </ul>
-    </div>
+    @isset($categories)
+        <div class="dropdown">
+            <button class="nav-link usuario dropdown-toggle" type="button" data-toggle="dropdown">Categorías <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                @foreach ($categories as $category)
+                    <li>
+                        <form action="/categorias/busqueda" class="form" method="GET" style="display:flex; flex-direction:row">
+                            <input type="submit" value="<?=$category->name?>" class="btn btn-info" name="clave" id="">
+                        </form>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    @endisset
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <form action="/productos/busqueda" class="form" method="GET" style="display:flex; flex-direction:row">
