@@ -6,7 +6,7 @@
         <div class="owl-carousel owl-theme">
 
             @foreach ($sliders as $fila)   
-                <div class="slider" style="max-height:500px !important">
+<div class="slider" {{-- style="max-height:360px !important" --}}>
                     @if (empty($fila->s_link))
                         <img src="/storage/{{$fila->s_img}}" class="img-responsive">
                         @else

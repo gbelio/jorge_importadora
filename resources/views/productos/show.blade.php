@@ -31,7 +31,15 @@
             </div>
 
             <div class="prod_box_details">
-            <div>  
+                <div> 
+                    <h4>Código de Producto: {{$producto->code}}</h4>
+                    <h2>{{$producto->name}}</h2>
+                    <p> {{$producto->resume}} </p>
+                </div>
+                <p>{{$producto->description}}
+                   
+                </p>
+           
 
         </div>    
 
