@@ -10,7 +10,7 @@
         </ul>
     </div>
 @endif
-<main class="form-multimedia">
+<main class="form-multimedia" style="margin: 110px auto 20px;">
 <div class="container-multimedia">
     <div align="left" class="editor-multimedia">
         <h1 class="text-center __nuevasImagenes">Cargar nuevas imagenes</h1>

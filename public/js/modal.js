@@ -86,11 +86,15 @@ for (i=0; i<photos.length; i++){
 for(i=0;i<selection.length;i++){
     console.log(selection[i]);
     selection[i].addEventListener('click',function(e){
+        /* console.log(e);
         console.log(e.path[0].src);
         console.log("click");
         console.log(box.src);
         if(e.path[0].src !== box.src){
             box.src=e.path[0].src;
+        } */
+        if(e.target.currentSrc !== box.src){
+            box.src=e.target.currentSrc;
         }
     });
 }

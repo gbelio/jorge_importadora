@@ -47,7 +47,7 @@
 
             <div class="form-group">
                 <label for="resume">Resumen del producto</label>
-                <input type="text" name="resume" value="{{ old("resume") }}" class="form-control" maxlength="190">
+                <input type="text" name="resume" value="{{ old("resume") }}" class="form-control" maxlength="60">
             </div>
             @error('resume')
             <span class="errors">{{ $message }}</span>
