@@ -57,7 +57,7 @@
                 <label for="genero">Categoría</label>
                 <select class="form-control" name="category_id">
                     <option value="" disabled selected>Seleccione la categoría correspondiente</option>
-                @foreach($categorias as $categoria)
+                @foreach($allCategories as $categoria)
                     @if ($categoria->id == old("category_id"))
                         <option value="{{ $categoria->id }}" selected>{{ $categoria->name }}</option>
                     @else

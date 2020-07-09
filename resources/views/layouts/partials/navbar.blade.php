@@ -4,11 +4,11 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    @isset($categories)
+    @isset($allCategories)
         <div class="dropdown">
             <button class="nav-link usuario dropdown-toggle" type="button" data-toggle="dropdown">Categorías <span class="caret"></span></button>
             <ul class="dropdown-menu">
-                @foreach ($categories as $category)
+                @foreach ($allCategories as $category)
                     <li>
                         <form action="/categorias/busqueda" class="form" method="GET" style="display:flex; flex-direction:row">
                             <input type="submit" value="<?=$category->name?>" class="btn btn-info" name="clave" id="">
@@ -52,18 +52,18 @@
         </ul>
     </div>
 </nav>
-
 @else
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    @isset($categories)
+    
+    @isset($allCategories)
         <div class="dropdown">
             <button class="nav-link usuario dropdown-toggle" type="button" data-toggle="dropdown">Categorías <span class="caret"></span></button>
             <ul class="dropdown-menu">
-                @foreach ($categories as $category)
+                @foreach ($allCategories as $category)
                     <li>
                         <form action="/categorias/busqueda" class="form" method="GET" style="display:flex; flex-direction:row">
                             <input type="submit" value="<?=$category->name?>" class="btn btn-info" name="clave" id="">

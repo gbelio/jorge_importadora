@@ -26,8 +26,10 @@ class CategoryController extends Controller
         if(Auth::user() == null){
             return redirect('login');
         }
+        $allCategories = Category::all();
         $categorias = DB::table('categories')->orderBy('id', 'desc')->paginate(15);
-        return view('categorias.create')->with('categorias',$categorias);
+        return view('categorias.create')->with('categorias',$categorias)
+                                        ->with('allCategories',$allCategories);
     }
 
     public function store(Request $request)
@@ -52,6 +54,7 @@ class CategoryController extends Controller
     public function search(Request $request)
     {
         $clave = $request->clave;
+        $allCategories = Category::all();
         $category = Category::where('name', 'LIKE', "%$clave%")->get();
         $category_id = $category[0]->id;
         $productsById = Product::where('category_id', 'LIKE', "%$category_id")->get();
@@ -60,7 +63,8 @@ class CategoryController extends Controller
         return view('categorias.results')->with('category', $category)
                                         ->with('productsById', $productsById)
                                         ->with('subcategoriesById', $subcategoriesById)
-                                        ->with('categories', $categories);
+                                        ->with('categories', $categories)
+                                        ->with('allCategories', $allCategories);
     }
 
     public function show($id)
@@ -68,8 +72,10 @@ class CategoryController extends Controller
         $categoria=Category::find($id);
         $productos = Product::where('category_id', $id)->paginate(15);
         $multimedias=Multimedia::all();
+        $allCategories=Category::all();
         return view('categorias.show')->with('categoria',$categoria)
                                     ->with('productos',$productos)
+                                    ->with('allCategories', $allCategories)
                                     ->with('multimedias',$multimedias);
     }
 

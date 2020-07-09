@@ -25,7 +25,7 @@
     </div>
 @endif
 <div class="caja-products-categories" style="flex-direction:column !important">
-    @foreach ($categories as $category)
+    @foreach ($allCategories as $category)
         <section class="{{-- products-all --}}" style="margin:0">
                 @if (count($category->product) > 0)
                     <div id="cat{{$category->id}}">

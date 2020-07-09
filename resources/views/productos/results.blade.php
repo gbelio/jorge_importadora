@@ -31,7 +31,9 @@
         @endforeach
     </section>
     @if (count($products) == 0)
-    <h3><em>Pero te puede llegar a interesar ...</em></h3>
+        @if(count($categories) !== 0 || count($subcategories) !== 0)
+            <h3><em>Pero te puede llegar a interesar ...</em></h3>    
+        @endif
         <section>
             @if ($categories !== null)
                 <section class="productos-perfil">
