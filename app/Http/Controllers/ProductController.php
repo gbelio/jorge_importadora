@@ -104,12 +104,11 @@ class ProductController extends Controller
         $categories = Category::all();
         $subcategories = Subcategory::all();
         $sliders = Slider::all();
-        return view('productos.showAll')
-        ->with('products', $products)
-        ->with('multimedias',$multimedias)
-        ->with('categories',$categories)
-        ->with('subcategories',$subcategories)
-        ->with('sliders',$sliders);
+        return view('productos.showAll')->with('products', $products)
+                                        ->with('multimedias',$multimedias)
+                                        ->with('categories',$categories)
+                                        ->with('subcategories',$subcategories)
+                                        ->with('sliders',$sliders);
     }
 
     /**
@@ -124,11 +123,10 @@ class ProductController extends Controller
             $categorias = Category::all();
             $subcategorias = Subcategory::all();
             $photos = Multimedia::all();
-            return view('productos.editar')
-                ->with('producto', $producto)
-                ->with('categorias', $categorias)
-                ->with('subcategorias', $subcategorias)
-                ->with('photos', $photos);
+            return view('productos.editar')->with('producto', $producto)
+                                            ->with('categorias', $categorias)
+                                            ->with('subcategorias', $subcategorias)
+                                            ->with('photos', $photos);
     }
 
 
