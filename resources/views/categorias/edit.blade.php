@@ -1,10 +1,13 @@
 @extends('layouts.master')
 @section('content')
 
-<div class="producto-editar" style="display:flex; justify-content:center;">
-    <div align="left" class="producto-individual __editar-prod" style="padding-bottom:2%">
-        <br>
-        <h1 align="center" class="__nuevasImagenes">Editar Categoria</h1>
+<div class="" style="min-height:450px; margin-top:125px;">
+
+    <div id="listaCategorias" class="offset-2 col-8 form-categorias">
+        <div style="display:flex; flex-direction:row; justify-content:space-between">
+            <h3 style="display:inline-block">Editar Categoría</h3>
+        </div>
+    
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
                     <ul>
@@ -14,23 +17,27 @@
                     </ul>
                 </div>
             @endif
+        <br>
 
         <form action="{{action('CategoryController@update', $categoria->id)}}" method="post">
             @csrf
             {{ method_field('PATCH') }}
             <div class="form-group">
-                <label for="name" class="nombre-producto"> Nombre </label>
+                <label for="name" class=""><strong> Nombre </strong></label>
                 <input name="name" value="{{$categoria->name}}" type="text" class="form-control" placeholder="">
             </div>
             
             <br>
-            <div class="d-flex md-form mt-0" style="justify-content:center">
-                <a href="/categorias/cargar" class="btn btn-info btn-sm boton-eliminar" role="button" style="margin:2%; background-color:#007BFF;border-color:#007BFF;">Volver</a>
-                <input type="submit" class="btn btn-info btn-sm boton-eliminar" style="margin:2%; background-color:#007BFF;border-color:#007BFF;" value="Confirmar Cambios">
+            <div>
+                <input type="submit" class="btn btn-info btn-sm" style="margin:2% 0%; background-color:#007BFF;border-color:#007BFF;" value="Confirmar Cambios">
+                <a href="/categorias/cargar" class="btn btn-info btn-sm" role="button" style="margin:2% 0%; background-color:#007BFF;border-color:#007BFF;">Volver</a>
             </div>
         </form>
-
-     </div>
+    </div>
+    
 </div>
+
+
+
 
 @endsection

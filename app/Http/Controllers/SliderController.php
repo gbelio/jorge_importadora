@@ -66,7 +66,6 @@ class SliderController extends Controller
     public function update(Request $request, $id)
     {
         $reglas = [
-            's_link'=>'required',
             's_estado' => 'required'
         ];
         $mensaje = ['required' => 'el campo :attribute es obligatorio'];

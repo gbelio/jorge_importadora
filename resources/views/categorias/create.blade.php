@@ -1,24 +1,33 @@
 @extends('layouts.master')
 @section('content')
 
-<div class="offset-2 col-8 form-categorias">
+<div class="offset-2 col-8 form-categorias" style="min-height:450px;">
 
     <div id="listaCategorias">
-        <h3>Agregar Categoria</h3>
-        <br>
-        <form class="form-group" action="" method="post" enctype="multipart/form-data">
-            @csrf
-            <div class="form-group">
-                <label for="categoria">Nombre de la categoría</label>
-                <input type="text" name="name" value=" " class="form-control">
-            </div>
+        <div style="display:flex; flex-direction:row; justify-content:space-between">
+            <h3 style="display:inline-block"> Agregar Categoría</h3>
+            <button id="botonFormProd" style="font-size: 0px; background-color: white; color: black;" class="pull-right"><i class="fa fa-plus-square-o pull-right" style="font-size:30px; margin:0 !important"></i></button>
+            <button id="botonFormProd1" style="font-size: 0px; background-color: white; color: black; display:none" class="pull-right"><i class="fa fa-minus-square-o" style="font-size:30px"></i></button>
+        </div>
+
+        <div id="target" style="display:none">
             <br>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary btn-sm" value="Agregar Categoria" id="addCategory">
-            </div>
-        </form>
+            <form class="form-group" action="" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                    <label for="categoria"><strong>Nombre de la categoría</strong></label>
+                    <input required type="text" name="name" value="" class="form-control">
+                </div>
+                <br>
+                <div class="form-group">
+                    <input required type="submit" class="btn btn-primary btn-sm" value="Agregar Categoria" id="addCategory">
+                </div>
+            </form>
+        </div>
     </div>
+
 <br>
+
     <div id="listaCategorias" class="panel panel-default">
         <div class="panel-body">
         <div class="pull-left"><h3>Lista Categorias</h3></div>
