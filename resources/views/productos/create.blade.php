@@ -74,11 +74,11 @@
                 <label for="genero">Sub Categoría</label>
                 <select class="form-control" name="subcategory_id">
                     <option value="" disabled selected>Seleccione la sub categoría correspondiente</option>
-                @foreach($subcategorias as $subcategoria)
-                    @if ($subcategoria->id == old("subcategory_id"))
-                        <option value="{{ $subcategoria->id }}" selected>{{ $subcategoria->name }}</option>
+                @foreach($subcategories as $subcategory)
+                    @if ($subcategory->id == old("subcategory_id"))
+                        <option value="{{ $subcategory->id }}" selected>{{ $subcategory->name }}</option>
                     @else
-                        <option value="{{ $subcategoria->id }}">{{ $subcategoria->name }}</option>
+                        <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
                     @endif
                 @endforeach
                 </select>

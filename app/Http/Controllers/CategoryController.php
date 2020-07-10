@@ -27,8 +27,10 @@ class CategoryController extends Controller
             return redirect('login');
         }
         $allCategories = Category::all();
+        $subcategories = Subcategory::all();
         $categorias = DB::table('categories')->orderBy('id', 'desc')->paginate(15);
         return view('categorias.create')->with('categorias',$categorias)
+                                        ->with('subcategories',$subcategories)
                                         ->with('allCategories',$allCategories);
     }
 
@@ -60,11 +62,13 @@ class CategoryController extends Controller
         $productsById = Product::where('category_id', 'LIKE', "%$category_id")->get();
         $subcategoriesById = Subcategory::where('category_id', 'LIKE', "%$category_id%")->get();
         $categories = Category::all();
+        $subcategories = Subcategory::all();
         return view('categorias.results')->with('category', $category)
                                         ->with('productsById', $productsById)
                                         ->with('subcategoriesById', $subcategoriesById)
                                         ->with('categories', $categories)
-                                        ->with('allCategories', $allCategories);
+                                        ->with('allCategories', $allCategories)
+                                        ->with('subcategories',$subcategories);
     }
 
     public function show($id)

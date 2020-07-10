@@ -37,10 +37,10 @@ class ProductController extends Controller
     }
         $productos = DB::table('products')->orderBy('id', 'desc')->paginate(15);
         $allCategories=Category::all();
-        $subcategorias=Subcategory::all();
+        $subcategories=Subcategory::all();
         return view('productos.create')
                 ->with('allCategories',$allCategories)
-                ->with('subcategorias',$subcategorias)
+                ->with('subcategories',$subcategories)
                 ->with('productos',$productos);
     }
 
@@ -86,8 +86,10 @@ class ProductController extends Controller
         $allCategories = Category::all();
         $multimedias = Multimedia::all();
         $product = Product::find($id);
+        $subcategories = Subcategory::all();
         return view('productos.show')->with('producto', $product)
                                     ->with('allCategories',$allCategories)
+                                    ->with('subcategories',$subcategories)
                                     ->with('multimedias',$multimedias);
     }
 
@@ -180,11 +182,13 @@ class ProductController extends Controller
        $allProducts = Product::all();
        $allCategories = Category::all();
        $categories = Category::where('name', 'LIKE', "%$clave%")->get();
-       $subcategories = Subcategory::where('name', 'LIKE', "%$clave%")->get();
+       $subcategory = Subcategory::where('name', 'LIKE', "%$clave%")->get();
+       $subcategories = Subcategory::all();
        $mensaje = 'Encontramos'." ".count($products)." ".'resultados para tu busqueda';
        return view('productos.results')->with('products', $products)
                                         ->with('categories', $categories)
                                         ->with('subcategories', $subcategories)
+                                        ->with('subcategory', $subcategory)
                                         ->with('allProducts', $allProducts)
                                         ->with('clave', $clave)
                                         ->with('allCategories', $allCategories)
