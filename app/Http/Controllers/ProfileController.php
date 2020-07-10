@@ -22,8 +22,10 @@ class ProfileController extends Controller
             return redirect('login');
         }
         $allCategories = Category::all();
+        $subcategories = Subcategory::all();
         return view('perfil.index')->with('user', Auth::user())
-                                ->with('allCategories',$allCategories);
+                                ->with('allCategories',$allCategories)
+                                ->with('subcategories',$subcategories);
     }
     /**
      * Display the specified resource.
@@ -34,8 +36,10 @@ class ProfileController extends Controller
     public function show($id)
     {
         $allCategories = Category::all();
+        $subcategories = Subcategory::all();
         return view('perfil.show')->with("user", User::find($id))
-                                ->with('allCategories',$allCategories);
+                                ->with('allCategories',$allCategories)
+                                ->with('subcategories',$subcategories);
     }
 
     /**

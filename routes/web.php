@@ -19,7 +19,7 @@ Route::group(['prefix'=>'profile'], function(){
 
 Route::group(['prefix'=>'categorias'], function(){
 
-    Route::get('/busqueda','CategoryController@search');
+    Route::get('/busqueda','CategoryController@search'); //Busca la categoría seleccionada del dropdown y te muestra los productos relacionados
     Route::get('/cargar','CategoryController@create'); //va a llevar al formulario de carga de categoria (solo administrador)
     Route::post('/cargar','CategoryController@store'); //va a guardar el categoria en la base de datos (solo administrador)
     Route::get('/{id}','CategoryController@show');
@@ -33,6 +33,7 @@ Route::group(['prefix'=>'subcategorias'], function(){
     Route::get('/cargar','SubcategoryController@create'); //al formulario de carga de subcategoria (solo administrador)
     Route::post('/cargar','SubcategoryController@store'); //va a guardar el subcategoria en la base de datos (solo administrador)
     Route::patch('/{id}/editar','SubcategoryController@update'); //va a editar en la base de datos
+    Route::get('/busqueda','SubcategoryController@search'); //Busca la subcategoría seleccionada del dropdown y te muestra los productos relacionados
 });
 
 //Slider
