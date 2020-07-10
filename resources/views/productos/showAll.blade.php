@@ -55,9 +55,6 @@
                                                         <h5 class="ver-fotos">Editar</h5>
                                                     </a>
                                                 @endif
-                                                <a href="../productos/{{$product->id}}">
-                                                    <h5 class="ver-fotos">VER</h5>
-                                                </a>
                                             </div>
                                         </div>
                                     </article>
