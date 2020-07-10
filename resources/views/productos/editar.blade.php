@@ -1,40 +1,36 @@
 @extends('layouts.master')
 @section('content')
 
-<div class="producto-editar" style="display:flex; justify-content:center;">
-    <div align="left" class="producto-individual __editar-prod" style="padding-bottom:2%">
-        <br>
-        <h1 align="center" class="__nuevasImagenes">Editar Producto</h1>
-            @if (count($errors) > 0)
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-        <div class="producto __editar-img">
-            <img class="imagen-producto" src="/public/storage/{{$producto->cover}}" alt="imagen de producto">
+<div class="" style="min-height:450px; margin-top:125px;">
+
+
+    <div id="listaCategorias" class="offset-2 col-8 form-categorias">
+        <div style="display:flex; flex-direction:row; justify-content:space-between">
+            <h3 style="display:inline-block">Editar Producto</h3>
         </div>
-        <form method="POST" action="" style="padding:1em" enctype="multipart/form-data">
+        <br>
+        <div style="display:flex; flex-direction:row; justify-content:center; align-items:center">
+            <img style="width: 50%; height: 50%; " src="/storage/{{$producto->cover}}" alt="imagen de producto">
+        </div>
+
+        <form method="POST" action="" enctype="multipart/form-data">
             {{ method_field('PATCH') }}
             @csrf
             <div class="form-group">
-                <label for="name" class="nombre-producto"> Nombre </label>
+                <label for="name" ><strong> Nombre </strong></label>
                 <input name="name" value="{{$producto->name}}" type="text" class="form-control" placeholder="">
             </div>
             <div class="button" style="margin-bottom:6%;">
-                <label for="name" class="nombre-categoria"> Cover </label>
+                <label for="name"><strong> Cover </strong></label>
                 <input class="add_img" type="file" name="cover" value="{{$producto->cover}}">
             </div>
             <div class="form-group">
-                <label for="description" class="nombre-categoria"><b> Descripción </b></label>
+                <label for="description"><b> Descripción </b></label>
                 <input name="description" value="{{$producto->description}}" type="text" class="form-control"
                     placeholder="">
             </div>
             <div class="form-group">
-                <label for="category_id" class="nombre-categoria"><b> Categoría </b></label>
+                <label for="category_id"><b> Categoría </b></label>
                 <select class="form-control" name="category_id">
                     <option value="{{ $producto->category->id }}" selected>{{ $producto->category->name }}</option>
                     @isset($categorias)
@@ -45,7 +41,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="category_id" class="nombre-categoria"><b> Categoría </b></label>
+                <label for="category_id"><b> Categoría </b></label>
                 <select class="form-control" name="subcategory_id">
                     @if($producto->subcategory_id !== null)
                         <option value="{{ $producto->subcategory->id }}" selected>{{ $producto->subcategory->name }}</option>
@@ -61,14 +57,8 @@
                 <input type="submit" class="btn btn-info btn-sm boton-eliminar" style="margin:2%; background-color:#007BFF;border-color:#007BFF;" value="Confirmar Cambios">
             </div>
         </form>
-        <form method="POST" action="{{$producto->id}}">
-            {{method_field('DELETE')}}
-            @csrf
-            <button class="btn btn-danger btn-sm boton-eliminar" type="submit" value="" style="display:inherit; margin:0 auto">
-                Eliminar Producto
-            </button>
-        </form>
-     </div>
+    </div>
+
 </div>
 
 @endsection

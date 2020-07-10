@@ -1,10 +1,12 @@
 @extends('layouts.master')
 @section('content')
+
+{{-- SLIDER --}}
 @if (count($sliders) > 0)
     <div id="sliderHome" class="mt-100">
         <div class="owl-carousel owl-theme">
             @foreach ($sliders as $fila)   
-<div class="slider" {{-- style="max-height:360px !important" --}}>
+                <div class="slider" {{-- style="max-height:360px !important" --}}>
                     @if (empty($fila->s_link))
                         <img src="/storage/{{$fila->s_img}}" class="img-responsive">
                         @else
@@ -24,12 +26,16 @@
         </div>
     </div>
 @endif
+{{-- SLIDER --}}
+
+
+
 <div class="caja-products-categories" style="flex-direction:column !important">
     @foreach ($allCategories as $category)
         <section class="{{-- products-all --}}" style="margin:0">
                 @if (count($category->product) > 0)
                     <div id="cat{{$category->id}}">
-                        <h2>{{$category->name}}</h2>
+                    <a href="/categorias/busqueda?clave={{$category->name}}" style="font-size:18px; text-decoration:none; color: black; ">{{$category->name}}</a>
 
                         <div class="{{-- prods_ --}}owl-carousel owl-theme">
                             @foreach ($products as $product)

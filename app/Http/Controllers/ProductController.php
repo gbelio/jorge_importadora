@@ -35,7 +35,9 @@ class ProductController extends Controller
         if(Auth::user() == null){
         return redirect('login');
     }
-        $productos = DB::table('products')->orderBy('id', 'desc')->paginate(15);
+
+        $productos = Product::all()->sortByDesc('id'); 
+        /* $productos = DB::table('products')->orderBy('id', 'desc')->paginate(15); */
         $allCategories=Category::all();
         $subcategories=Subcategory::all();
         return view('productos.create')
@@ -102,7 +104,7 @@ class ProductController extends Controller
     public function showAll()
     {   
         $multimedias = Multimedia::all();
-        $products = Product::all();
+        $products = Product::all()->sortByDesc('id');
         $allCategories = Category::all();
         $subcategories = Subcategory::all();
         $sliders = Slider::all();
