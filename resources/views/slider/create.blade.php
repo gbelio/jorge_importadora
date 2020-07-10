@@ -29,7 +29,7 @@
 
             <div class="form-group">
                 <label for="s_estado">Redirección</label>
-                <input type="text" name="s_link" value="https://" class="form-control" maxlength="190">
+                <input type="text" name="s_link" value="" class="form-control" maxlength="190">
             </div>
             
             <br>
@@ -53,7 +53,7 @@
                     <th>Id</th>
                     <th>Imagen</th>
                     <th>Estado</th>
-                    <th>Redirección (Con "https://" )</th>
+                    <th>Redirección (Con "https://")</th>
                     <th></th>
                     <th></th>
                 </thead>
