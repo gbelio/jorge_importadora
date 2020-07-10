@@ -23,8 +23,8 @@ class SubcategoryController extends Controller
         }
     
         $subcategorias = DB::table('subcategories')->orderBy('id', 'desc')->paginate(15);
-        $categorias = Category::all();
-        return view('subcategorias.create')->with('categorias',$categorias)
+        $allCategories = Category::all();
+        return view('subcategorias.create')->with('allCategories',$allCategories)
                                             ->with('subcategorias',$subcategorias);
     }
 
