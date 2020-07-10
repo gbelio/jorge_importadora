@@ -16,7 +16,7 @@
             </div>
 
             <div class="form-group"> 
-                <label for="genero">Categoría</label>
+                <label for="genero">¿A qué categoría pertenece?</label>
                 <select class="form-control" name="category_id">
                     @foreach($allCategories as $categoria)
                         <option value="{{ $categoria->id }}">{{ $categoria->name }}</option>
@@ -52,7 +52,7 @@
                     <tr style="font-size:13px">
                         <td>{{$subcategoria->id}}</td>
                         <td>{{$subcategoria->name}}</td>
-                        <td>{{$subcategoria->category_id}}</td>
+                        <td>{{$subcategoria->category->name}}</td>
                         <td style="text-align:center"><a class="btn btn-primary btn-sm" href="{{action('SubcategoryController@edit', $subcategoria->id)}}">
                             <i class="fa fa-pencil" style="font-size:16px"></i>
                         </a></td>
