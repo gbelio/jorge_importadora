@@ -52,7 +52,7 @@
                     <tr style="font-size:13px">
                         <td>{{$subcategoria->id}}</td>
                         <td>{{$subcategoria->name}}</td>
-                        <td>{{$subcategoria->category->name}}</td>
+                        <td>{{$subcategoria->category_id}}</td>
                         <td style="text-align:center"><a class="btn btn-primary btn-sm" href="{{action('SubcategoryController@edit', $subcategoria->id)}}">
                             <i class="fa fa-pencil" style="font-size:16px"></i>
                         </a></td>
