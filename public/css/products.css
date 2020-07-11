@@ -240,7 +240,8 @@
 }
 
 .img_gallery{
-    width: 135px;
+    min-width: 135px;
+    max-width: 135px;
     height: 90px;
     object-fit: cover;
     border-radius: 2px;
