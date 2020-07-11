@@ -31,7 +31,9 @@
         @endforeach
     </section>
     @if (count($products) == 0)
-    <h3><em>Pero te puede llegar a interesar ...</em></h3>
+        @if(count($categories) !== 0 || count($subcategory) !== 0)
+            <h3><em>Pero te puede llegar a interesar ...</em></h3>    
+        @endif
         <section>
             @if ($categories !== null)
                 <section class="productos-perfil">
@@ -62,11 +64,11 @@
                     @endforeach
                 </section>    
             @endif
-            @if ($subcategories !== null)
+            @if ($subcategory !== null)
                 <section class="productos-perfil">
                     @foreach ($allProducts as $product)
-                        @foreach ($subcategories as $subcategory)
-                            @if ($product->subcategory_id == $subcategory->id)
+                        @foreach ($subcategory as $subcat)
+                            @if ($product->subcategory_id == $subcat->id)
                                 <article class="producto-individual">
                                     <div class="producto">
                                         <img class="imagen-producto" src="/storage/{{$product->cover}}" alt="imagen de producto">

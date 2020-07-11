@@ -35,12 +35,14 @@ class ProductController extends Controller
         if(Auth::user() == null){
         return redirect('login');
     }
-        $productos = DB::table('products')->orderBy('id', 'desc')->paginate(15);
-        $categorias=Category::all();
-        $subcategorias=Subcategory::all();
+
+        $productos = Product::all()->sortByDesc('id'); 
+        /* $productos = DB::table('products')->orderBy('id', 'desc')->paginate(15); */
+        $allCategories=Category::all();
+        $subcategories=Subcategory::all();
         return view('productos.create')
-                ->with('categorias',$categorias)
-                ->with('subcategorias',$subcategorias)
+                ->with('allCategories',$allCategories)
+                ->with('subcategories',$subcategories)
                 ->with('productos',$productos);
     }
 
@@ -83,14 +85,16 @@ class ProductController extends Controller
      */
     public function show($id)
     {   
+        $allCategories = Category::all();
         $multimedias = Multimedia::all();
         $product = Product::find($id);
-        return view('productos.show')
-        ->with('producto', $product)
-        ->with('multimedias',$multimedias);
+        $subcategories = Subcategory::all();
+        return view('productos.show')->with('producto', $product)
+                                    ->with('allCategories',$allCategories)
+                                    ->with('subcategories',$subcategories)
+                                    ->with('multimedias',$multimedias);
     }
 
-    
     /**
      * Display the specified resource.
      *
@@ -100,16 +104,15 @@ class ProductController extends Controller
     public function showAll()
     {   
         $multimedias = Multimedia::all();
-        $products = Product::all();
-        $categories = Category::all();
+        $products = Product::all()->sortByDesc('id');
+        $allCategories = Category::all();
         $subcategories = Subcategory::all();
         $sliders = Slider::all();
-        return view('productos.showAll')
-        ->with('products', $products)
-        ->with('multimedias',$multimedias)
-        ->with('categories',$categories)
-        ->with('subcategories',$subcategories)
-        ->with('sliders',$sliders);
+        return view('productos.showAll')->with('products', $products)
+                                        ->with('multimedias',$multimedias)
+                                        ->with('allCategories',$allCategories)
+                                        ->with('subcategories',$subcategories)
+                                        ->with('sliders',$sliders);
     }
 
     /**
@@ -121,14 +124,13 @@ class ProductController extends Controller
     public function edit($id)
     {
             $producto = Product::find($id);
-            $categorias = Category::all();
+            $allCategories = Category::all();
             $subcategorias = Subcategory::all();
             $photos = Multimedia::all();
-            return view('productos.editar')
-                ->with('producto', $producto)
-                ->with('categorias', $categorias)
-                ->with('subcategorias', $subcategorias)
-                ->with('photos', $photos);
+            return view('productos.editar')->with('producto', $producto)
+                                            ->with('allCategories', $allCategories)
+                                            ->with('subcategorias', $subcategorias)
+                                            ->with('photos', $photos);
     }
 
 
@@ -180,14 +182,18 @@ class ProductController extends Controller
        $clave = $request->clave;
        $products = Product::where('name', 'LIKE', "%$clave%")->get();
        $allProducts = Product::all();
+       $allCategories = Category::all();
        $categories = Category::where('name', 'LIKE', "%$clave%")->get();
-       $subcategories = Subcategory::where('name', 'LIKE', "%$clave%")->get();
+       $subcategory = Subcategory::where('name', 'LIKE', "%$clave%")->get();
+       $subcategories = Subcategory::all();
        $mensaje = 'Encontramos'." ".count($products)." ".'resultados para tu busqueda';
        return view('productos.results')->with('products', $products)
                                         ->with('categories', $categories)
                                         ->with('subcategories', $subcategories)
+                                        ->with('subcategory', $subcategory)
                                         ->with('allProducts', $allProducts)
                                         ->with('clave', $clave)
+                                        ->with('allCategories', $allCategories)
                                         ->with('mensaje', $mensaje);
    }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 Use App\Slider;
+Use App\Category;
+Use App\Subcategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -14,10 +16,13 @@ class SliderController extends Controller
         if(Auth::user() == null){
             return redirect('login');
         }
-    
+        $allCategories = Category::all();
+        $subcategories = Subcategory::all();
         $sliders = DB::table('sliders')->orderBy('id', 'desc')->paginate(10);
         
-        return view('slider.create')->with('sliders',$sliders);
+        return view('slider.create')->with('sliders',$sliders)
+                                    ->with('allCategories',$allCategories)
+                                    ->with('subcategories',$subcategories);
     }
 
     public function show($id)
@@ -61,7 +66,6 @@ class SliderController extends Controller
     public function update(Request $request, $id)
     {
         $reglas = [
-            's_link'=>'required',
             's_estado' => 'required'
         ];
         $mensaje = ['required' => 'el campo :attribute es obligatorio'];

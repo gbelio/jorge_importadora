@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Subcategory;
 use App\Category;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -23,9 +24,15 @@ class SubcategoryController extends Controller
         }
     
         $subcategorias = DB::table('subcategories')->orderBy('id', 'desc')->paginate(15);
-        $categorias = Category::all();
-        return view('subcategorias.create')->with('categorias',$categorias)
-                                            ->with('subcategorias',$subcategorias);
+
+        $allCategories = Category::all();
+        $subcategories = Subcategory::all();
+
+        $subcategorias = Subcategory::all()->sortByDesc('id'); 
+
+        return view('subcategorias.create')->with('allCategories',$allCategories)
+                                        ->with('subcategorias',$subcategorias)
+                                        ->with('subcategories',$subcategories);
     }
 
     public function store(Request $request)
@@ -59,11 +66,9 @@ class SubcategoryController extends Controller
     {
         $categorias = Category::all();
         $subcategoria = Subcategory::find($id);
-        return view('subcategorias.edit')
-            ->with('subcategoria', $subcategoria)
-            ->with('categorias', $categorias);
+        return view('subcategorias.edit')->with('subcategoria', $subcategoria)
+                                            ->with('categorias', $categorias);
     }
-
 
     public function update(Request $request, $id)
     {
@@ -86,5 +91,21 @@ class SubcategoryController extends Controller
     {
         Subcategory::find($id)->delete();
         return redirect("/subcategorias/cargar");
+    }
+
+    public function search(Request $request)
+    {
+        $clave = $request->clave;
+        $allCategories = Category::all();
+        $subcategory = Subcategory::where('name', 'LIKE', "%$clave%")->get();
+        $subcategory_id = $subcategory[0]->id;
+        $productsById = Product::where('subcategory_id', 'LIKE', "%$subcategory_id")->get();
+        $categories = Category::all();
+        $subcategories = Subcategory::all();
+        return view('subcategorias.results')->with('productsById', $productsById)
+                                            ->with('subcategory', $subcategory)
+                                            ->with('subcategories', $subcategories)
+                                            ->with('categories', $categories)
+                                            ->with('allCategories', $allCategories);
     }
 }

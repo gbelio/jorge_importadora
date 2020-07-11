@@ -26,9 +26,12 @@ class CategoryController extends Controller
         if(Auth::user() == null){
             return redirect('login');
         }
+        $allCategories = Category::all();
+        $subcategories = Subcategory::all();
         $categorias = DB::table('categories')->orderBy('id', 'desc')->paginate(15);
-        return view('categorias.create')
-                    ->with('categorias',$categorias);
+        return view('categorias.create')->with('categorias',$categorias)
+                                        ->with('subcategories',$subcategories)
+                                        ->with('allCategories',$allCategories);
     }
 
     public function store(Request $request)
@@ -50,22 +53,40 @@ class CategoryController extends Controller
         return redirect('/categorias/cargar');
     }
 
+    public function search(Request $request)
+    {
+        $clave = $request->clave;
+        $allCategories = Category::all();
+        $category = Category::where('name', 'LIKE', "%$clave%")->get();
+        $category_id = $category[0]->id;
+        $productsById = Product::where('category_id', 'LIKE', "%$category_id")->get();
+        $subcategoriesById = Subcategory::where('category_id', 'LIKE', "%$category_id%")->get();
+        $categories = Category::all();
+        $subcategories = Subcategory::all();
+        return view('categorias.results')->with('category', $category)
+                                        ->with('productsById', $productsById)
+                                        ->with('subcategoriesById', $subcategoriesById)
+                                        ->with('categories', $categories)
+                                        ->with('allCategories', $allCategories)
+                                        ->with('subcategories',$subcategories);
+    }
+
     public function show($id)
     {
         $categoria=Category::find($id);
         $productos = Product::where('category_id', $id)->paginate(15);
         $multimedias=Multimedia::all();
-        return view('categorias.show')
-                ->with('categoria',$categoria)
-                ->with('productos',$productos)
-                ->with('multimedias',$multimedias);
+        $allCategories=Category::all();
+        return view('categorias.show')->with('categoria',$categoria)
+                                    ->with('productos',$productos)
+                                    ->with('allCategories', $allCategories)
+                                    ->with('multimedias',$multimedias);
     }
 
     public function edit($id)
     {
         $categoria = Category::find($id);
-        return view('categorias.edit')
-            ->with('categoria', $categoria);
+        return view('categorias.edit')->with('categoria', $categoria);
     }
 
     public function update(Request $request, $id)
@@ -87,5 +108,4 @@ class CategoryController extends Controller
         Category::find($id)->delete();
         return redirect("/categorias/cargar");
     }
-
 }
