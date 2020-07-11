@@ -7,6 +7,8 @@
     height: 360px;
 }
 
+
+
 /*caja categorias*/
 .caja-products-categories{
     width: 90%;
@@ -34,21 +36,18 @@
 }
 
 .prods_{
-    width: 100%;
+    display: none;
+    /* width: 100%;
     display: flex;
-    overflow:hidden;
+    overflow:hidden; */
 }
-
-
-
-
 
 /* CARD PRODUCTO - SHOW A FEW */
 
 .product_1{
     margin: 0;
-    max-width: 360px;
-    min-width: 300px;
+    max-width: 360px !important;
+    min-width: 300px !important;
     max-height: 400px;
     min-height: 400px;
     border: 1px solid gainsboro;
@@ -164,6 +163,48 @@
     font-size: 1rem;
 }
 
+/* User´s buttons */
+
+
+.edit_prod a{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 10px;
+    top: 13px;
+    z-index: 10;
+    border-radius: 100%;
+    background-color: #626262;
+}
+
+.edit_prod a:hover{
+    background-color: #5FA8E5;
+}
+
+.edit_button{
+    width: 70%;
+    filter: invert(1);
+}
+
+.delete_prod a{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 10px;
+    top: 50px;
+    z-index: 10;
+}
+
+.delete_button {
+    width: 100%;
+    filter: grayscale(1);
+    
+}
+
+.delete_button:hover{
+    filter: unset;
+}
+ 
 
 /* PRODUCTO INDIVIDUAL */
 
@@ -452,6 +493,34 @@
 }
 
 
+/* Slider de productos */
+@media (min-width:1024px) and (max-width: 1300px){
+    .product_1{
+        max-width: 260px !important;
+        min-width: 200px !important;
+    }
+    
+}
 
+
+@media (max-width: 1023px){
+    .carrousel_prod{
+        display:none !important;
+    }
+
+    .prods_{
+        display: block;
+    }
+    .prods_box{
+        display: flex;
+        width: 100%;
+        overflow-x: scroll;
+        scrollbar-width: none;
+    }
+
+    .product_1{
+        margin-right: 10px;
+    }
+}
 
 
