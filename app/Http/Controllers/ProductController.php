@@ -125,11 +125,11 @@ class ProductController extends Controller
     {
             $producto = Product::find($id);
             $allCategories = Category::all();
-            $subcategorias = Subcategory::all();
+            $subcategories = Subcategory::all();
             $photos = Multimedia::all();
             return view('productos.editar')->with('producto', $producto)
                                             ->with('allCategories', $allCategories)
-                                            ->with('subcategorias', $subcategorias)
+                                            ->with('subcategories', $subcategories)
                                             ->with('photos', $photos);
     }
 

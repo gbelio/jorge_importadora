@@ -46,14 +46,14 @@
                     @if($producto->subcategory_id !== null)
                         <option value="{{ $producto->subcategory->id }}" selected>{{ $producto->subcategory->name }}</option>
                     @endif
-                    @foreach($subcategorias as $subcategoria)
-                        <option value="{{ $subcategoria->id }}">{{ $subcategoria->name }}</option>
+                    @foreach($subcategories as $subcategory)
+                        <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
                     @endforeach
                 </select>
             </div>
             <br>
             <div class="d-flex md-form mt-0" style="justify-content:center">
-                <a href="/productos" class="btn btn-info btn-sm boton-eliminar" role="button" style="margin:2%; background-color:#007BFF;border-color:#007BFF;">Volver</a>
+                <a href="/productos/cargar" class="btn btn-info btn-sm boton-eliminar" role="button" style="margin:2%; background-color:#007BFF;border-color:#007BFF;">Volver</a>
                 <input type="submit" class="btn btn-info btn-sm boton-eliminar" style="margin:2%; background-color:#007BFF;border-color:#007BFF;" value="Confirmar Cambios">
             </div>
         </form>

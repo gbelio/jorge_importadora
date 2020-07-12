@@ -29,8 +29,8 @@
             
             <br>
             <div>
-                <input type="submit" class="btn btn-info btn-sm" style="margin:2% 0%; background-color:#007BFF;border-color:#007BFF;" value="Confirmar Cambios">
                 <a href="/categorias/cargar" class="btn btn-info btn-sm" role="button" style="margin:2% 0%; background-color:#007BFF;border-color:#007BFF;">Volver</a>
+                <input type="submit" class="btn btn-info btn-sm" style="margin:2% 0%; background-color:#007BFF;border-color:#007BFF;" value="Confirmar Cambios">
             </div>
         </form>
     </div>
