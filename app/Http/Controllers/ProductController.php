@@ -36,7 +36,7 @@ class ProductController extends Controller
         return redirect('login');
     }
 
-        $productos = Product::all()->sortByDesc('id'); 
+        $productos = Product::all()->sortByDesc('id');
         /* $productos = DB::table('products')->orderBy('id', 'desc')->paginate(15); */
         $allCategories=Category::all();
         $subcategories=Subcategory::all();
@@ -123,14 +123,16 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-            $producto = Product::find($id);
-            $allCategories = Category::all();
-            $subcategories = Subcategory::all();
-            $photos = Multimedia::all();
-            return view('productos.editar')->with('producto', $producto)
-                                            ->with('allCategories', $allCategories)
-                                            ->with('subcategories', $subcategories)
-                                            ->with('photos', $photos);
+        $productos = Product::all()->sortByDesc('id');
+        $producto = Product::find($id);
+        $allCategories = Category::all();
+        $subcategories = Subcategory::all();
+        $photos = Multimedia::all();
+        return view('productos.editar')->with('producto', $producto)
+                                        ->with('allCategories', $allCategories)
+                                        ->with('subcategories', $subcategories)
+                                        ->with('photos', $photos)
+                                        ->with('productos',$productos);
     }
 
 
