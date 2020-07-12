@@ -32,7 +32,7 @@
                 <br>
 
                 <div class="form-group">
-                    <input required type="submit" class="btn btn-primary btn-sm" >
+                    <input required type="submit" value="Agregar" class="btn btn-primary btn-sm" >
                 </div>
 
             </form>

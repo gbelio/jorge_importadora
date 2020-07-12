@@ -89,7 +89,13 @@ class SubcategoryController extends Controller
 
     public function destroy($id)
     {
-        Subcategory::find($id)->delete();
+        $subcategory=Subcategory::find($id);
+        $product = Product::where('subcategory_id', 'LIKE', "%$id%")->get();
+        if (count($product) == 0) {
+            $subcategory->delete();
+        }else{
+            return redirect("/subcategorias/cargar");
+        }
         return redirect("/subcategorias/cargar");
     }
 

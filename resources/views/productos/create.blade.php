@@ -112,7 +112,7 @@
     <div class="col-11 form-categorias1">
         <div id="listaProductos" class="panel panel-default">
             <div class="panel-body">
-                <div class="pull-left"><h3>Lista Categorias</h3></div>
+                <div class="pull-left"><h3>Lista Productos</h3></div>
         
                 <div class="table-container">
                     <table id="mytable" class="table table-bordered table-striped">

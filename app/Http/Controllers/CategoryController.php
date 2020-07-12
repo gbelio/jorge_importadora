@@ -105,7 +105,16 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
-        Category::find($id)->delete();
+        $category=Category::find($id);
+        $subcategory = Subcategory::where('category_id', 'LIKE', "%$id%")->get();
+        $product = Product::where('category_id', 'LIKE', "%$id%")->get();
+        if (count($product) == 0 && count($subcategory) == 0) {
+            $category->delete();
+        }else{
+            return redirect("/categorias/cargar");
+        }
+        
+        /* Category::find($id)->delete(); */
         return redirect("/categorias/cargar");
     }
 }
