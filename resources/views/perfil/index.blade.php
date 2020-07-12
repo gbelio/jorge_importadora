@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('content')
-
 <section class="user">
     <article class="user-content">
         <div class="user-avatar">
@@ -63,5 +62,4 @@
         @endisset
     </article>
 </section>
-
 @endsection

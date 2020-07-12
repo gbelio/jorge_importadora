@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('content')
-
 <section class="user">
     <article class="user-content">
         <div class="user-avatar">
@@ -70,9 +69,7 @@
                     @endif
                 </div>
             </div>
-
         @endforeach
     </article>
 </section>
-
 @endsection
