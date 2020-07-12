@@ -13,6 +13,10 @@
     <div class="container-multimedia">
         <div align="left" class="editor-multimedia">
             <h1 class="text-center __nuevasImagenes">Cargar nuevas imágenes</h1>
+            <hr>
+            <h4>Código de Producto: {{$producto->code}}</h4>
+            <h2>{{$producto->name}}</h2>
+            <h4> {{$producto->resume}}</h4>
             <form class="form-group __formulario" action="" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group" style="display:none;">
