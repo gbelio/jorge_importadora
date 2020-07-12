@@ -10,22 +10,22 @@
         </ul>
     </div>
 @endif
-<main class="form-multimedia" style="margin: 110px auto 20px;">
+<main class="form-multimedia">
 <div class="container-multimedia">
     <div align="left" class="editor-multimedia">
-        <h1 class="text-center __nuevasImagenes">Cargar nuevas imagenes</h1>
+        <h1 class="text-center __nuevasImagenes">Cargar nuevas imágenes</h1>
         <form class="form-group __formulario" action="" method="post" enctype="multipart/form-data">
             @csrf
-            <div class=form-group style="display:none;">
+            <div class="form-group" style="display:none;">
                 <input type="text" name= "product_id" value="{{$producto->id}}">
             </div>            
             <div class="load-img">
-                <div class="form-group">
+                <div class="form-group" style="margin:0 0 10px 0;">
                     <input class="__files" type="file" name="paths[]" multiple="multiple">
                 </div>
-                <div class="form-group">
-                    <input type="submit" class="btn btn-primary btn-sm" value="Agregar Imagenes" id="addImage">
-                    <a href="/productos/{{$producto->id}}" class="btn btn-primary btn-sm" role ="button">Volver</a>
+                <div class="form-group _carga-multimedia">
+                    <input type="submit" class="btn btn-primary btn-sm" value="Agregar Imagenes" id="addImage" style="font-family:'Raleway'; margin:0;">
+                    <a href="/productos/{{$producto->id}}" class="btn btn-secondary btn-sm" role ="button" style="font-family:'Raleway'; margin:0 0 0 5px;">Volver</a>
                 </div>
             </div>
             <hr>
@@ -50,6 +50,8 @@
         </div>
     </div>
 </div>
+ 
+
 </main>
 
 @endsection
