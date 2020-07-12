@@ -70,7 +70,7 @@ class ProductController extends Controller
         ];
         
         $this->validate($request, $reglas, $mensaje);
-        $cover = $request->file('cover')->store('covers','public');
+        $cover = $request->file('cover')->storeAs('covers', $request->file('cover')->getClientOriginalName(),'public');
         $producto = new Product($request->all());
         $producto->cover = $cover;
         $producto->save();
@@ -152,16 +152,17 @@ class ProductController extends Controller
         $mensaje = ['required' => 'el campo :attribute es obligatorio'];
         $this->validate($request, $reglas, $mensaje);
         $producto = Product::find($id);
+        $orignalName = $request->file('cover')->getClientOriginalName();
         $producto->name = $request->input('name') !== $producto->name ? $request->input('name') : $producto->name;
         $producto->description = $request->input('description') !== $producto->description ? $request->input('description') : $producto->description;
         $producto->category_id = $request->input('category_id') !== $producto->category_id ? $request->input('category_id') : $producto->category_id;
         $producto->subcategory_id = $request->input('subcategory_id') !== $producto->subcategory_id ? $request->input('subcategory_id') : $producto->subcategory_id;        
         if($request->file('cover') !== null){
-        $cover = $request->file('cover')->store('covers','public');
+        $cover = $request->file('cover')->storeAs('covers', $request->file('cover')->getClientOriginalName(),'public');
         $producto->cover = $cover;
-        }        
+        }
         $producto->save();
-        return redirect("/products");
+        return redirect("/productos/cargar");
     }
 
     /**
