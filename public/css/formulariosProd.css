@@ -28,13 +28,16 @@ body {
 }
 
 .form-categorias{
-    margin-top:100px;
+    margin-top:120px;
     padding: 25px 0px;
+    font-family: 'Raleway', sans-serif;
 }
+
 
 .form-categorias1{
   /*   margin-top:100px; */
     padding: 25px 0px;
+    font-family: 'Raleway', sans-serif;
 }
 
 .form-productos{
