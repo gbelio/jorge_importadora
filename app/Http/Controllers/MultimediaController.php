@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Multimedia;
 use App\Product;
+use App\Category;
+use App\Subcategory;
 use Illuminate\Http\Request;
 
 class MultimediaController extends Controller
@@ -27,8 +29,12 @@ class MultimediaController extends Controller
     {
         $producto = Product::find($id);
         $multimedias = Multimedia::all();
+        $allCategories = Category::all();
+        $subcategories = Subcategory::all();
         return view('multimedias.create')->with('producto',$producto)
-                                        ->with('multimedias',$multimedias);
+                                        ->with('multimedias',$multimedias)
+                                        ->with('subcategories',$subcategories)
+                                        ->with('allCategories',$allCategories);
     }
 
     /**
