@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}" >
     <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}" >
-    <link rel="stylesheet" href="{{ asset('css/fuentesYmedidas.css') }}">   
+    <link rel="stylesheet" href="{{ asset('css/navBar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fuentesYmedidas.css') }}">
     <link rel="stylesheet" href="{{ asset('css/modal.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/navBar.css') }}">    
-    <link rel="stylesheet" href="{{ asset('css/footer.css') }}">    
-    <link rel="stylesheet" href="{{ asset('css/index_mobile.css') }}">    
-    <link rel="stylesheet" href="{{ asset('css/login_mobile.css') }}">    
-    <link rel="stylesheet" href="{{ asset('css/register_mobile.css') }}">   
-    <link rel="stylesheet" href="{{ asset('css/faq_mobile.css') }}">    
+    <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/index_mobile.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/login_mobile.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/register_mobile.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/faq_mobile.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bienvenida_mobile.css') }}">
     <link rel="stylesheet" href="{{ asset('css/categorias_index.css') }}">
     <link rel="stylesheet" href="{{ asset('css/formulariosProd.css') }}">
