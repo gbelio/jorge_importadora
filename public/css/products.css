@@ -182,11 +182,13 @@
 }
 
 .edit_button{
+    
     width: 70%;
     filter: invert(1);
 }
 
 .delete_prod a{
+    border-radius: 100%;
     width: 25px;
     height: 25px;
     position: absolute;
