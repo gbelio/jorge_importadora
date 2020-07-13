@@ -32,13 +32,16 @@
                 <br>
 
                 <div class="form-group">
-                    <input required type="submit" class="btn btn-primary btn-sm" >
+                    <input required type="submit" value="Agregar" class="btn btn-primary btn-sm" >
                 </div>
 
             </form>
         </div>
     </div>
-<br>
+    <br>
+    @if($errors->any())
+        <h5 style="color:red">{{$errors->first()}}</h5>
+    @endif
     <div id="listaCategorias" class="panel panel-default">
         <div class="panel-body">
         <div class="pull-left"><h3>Lista Subcategorias</h3></div>
