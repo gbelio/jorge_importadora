@@ -111,7 +111,10 @@ class CategoryController extends Controller
         if (count($product) == 0 && count($subcategory) == 0) {
             $category->delete();
         }else{
-            return redirect("/categorias/cargar");
+            return redirect()->back()
+                            ->withErrors([
+                                'No se puede eliminar porque la categoría 
+                                se encuentra en uso por un producto o subcategoría.']);
         }
         
         /* Category::find($id)->delete(); */

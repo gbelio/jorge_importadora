@@ -38,7 +38,10 @@
             </form>
         </div>
     </div>
-<br>
+    <br>
+    @if($errors->any())
+        <h5 style="color:red">{{$errors->first()}}</h5>
+    @endif
     <div id="listaCategorias" class="panel panel-default">
         <div class="panel-body">
         <div class="pull-left"><h3>Lista Subcategorias</h3></div>
