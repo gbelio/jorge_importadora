@@ -103,9 +103,16 @@ class CategoryController extends Controller
         return redirect("/categorias/cargar");
     }
 
-    public function destroy($id)
+/*     public function destroy($id)
     {
         Category::find($id)->delete();
         return redirect("/categorias/cargar");
+    } */
+
+    public function destroy($id)
+    {
+        Category::find($id)->delete();
+        return response()->json(['status'=>'Registro eliminado con éxito']);
+ 
     }
 }

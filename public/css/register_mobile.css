@@ -194,7 +194,7 @@ input:focus::-webkit-input-placeholder {
 
 button {
     text-align: center;
-    font-family: "Wrestlemania", Arial, Helvetica, sans-serif;
+/*     font-family: "Wrestlemania", Arial, Helvetica, sans-serif; */
     color: white;
     align-self: center;
     padding: 0.1em 1em;

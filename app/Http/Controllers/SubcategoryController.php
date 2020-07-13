@@ -87,10 +87,17 @@ class SubcategoryController extends Controller
     }
 
 
-    public function destroy($id)
+  /*   public function destroy($id)
     {
         Subcategory::find($id)->delete();
         return redirect("/subcategorias/cargar");
+    } */
+
+    public function destroy($id)
+    {
+        Subcategory::find($id)->delete();
+        return response()->json(['status'=>'Registro eliminado con éxito']);
+ 
     }
 
     public function search(Request $request)

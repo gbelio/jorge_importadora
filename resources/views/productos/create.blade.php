@@ -114,71 +114,70 @@
             <div class="panel-body">
                 <div class="pull-left"><h3>Lista Categorias</h3></div>
         
-                <div class="table-container">
-                    <table id="mytable" class="table table-bordered table-striped">
-                        <thead>
-                            <th>Id</th>
-                            <th>Nombre</th>
-                            <th>Código</th>
-                            <th>Resumen</th>
-                            <th>Descripción</th>
-                            <th>Cover</th>
-                            <th>Categoría</th>
-                            <th>Subcategoría</th>
-                            <th>Fotos</th>
-                            <th>Editar</th>
-                            <th style="color:red;">Borrar</th>
-                        </thead>
-                        <tbody>
-                            @if($productos ?? ''->count())  
-                            @foreach($productos ?? '' as $producto)  
-                            <tr style="font-size:13px">
-                                <td>{{$producto->id}}</td>
-                                <td>{{$producto->name}}</td>
-                                <td>{{$producto->code}}</td>
-                                <td>{{$producto->resume}}</td>
-                                <td>{{$producto->description}}</td>
-                                @if ( $producto->cover == true)
-                                    <td>Si</td>
-                                @endif
-                                @if ($producto->cover == false)
-                                    <td>No</td>
-                                @endif
-                                
-                                <td>{{$producto->category->name}}</td>
-                                <td>{{$producto->subcategory->name}}</td>
-                                                           
-                                <td style="text-align:center"><a class="btn btn-secondary btn-sm" href="{{action('MultimediaController@create', $producto->id)}}">
-                                    <i class="fa fa-camera" style="font-size:16px"></i>
-                                </a></td>
+                    <div class="table-container">
+                        <table id="mytable" class="table table-bordered table-striped">
+                            <thead>
+                                <th>Id</th>
+                                <th>Nombre</th>
+                                <th>Código</th>
+                                <th>Resumen</th>
+                                <th>Descripción</th>
+                                <th>Cover</th>
+                                <th>Categoría</th>
+                                <th>Subcategoría</th>
+                                <th>Fotos</th>
+                                <th>Editar</th>
+                                <th style="color:red;">Borrar</th>
+                            </thead>
+                            <tbody>
+                                @if($productos ?? ''->count())  
+                                @foreach($productos ?? '' as $producto)  
+                                <tr style="font-size:13px">
+                                    <td>{{$producto->id}}</td>
+                                    <td>{{$producto->name}}</td>
+                                    <td>{{$producto->code}}</td>
+                                    <td>{{$producto->resume}}</td>
+                                    <td>{{$producto->description}}</td>
+                                    @if ( $producto->cover == true)
+                                        <td>Si</td>
+                                    @endif
+                                    @if ($producto->cover == false)
+                                        <td>No</td>
+                                    @endif
+                                    
+                                    <td>{{$producto->category->name}}</td>
+                                    <td>{{$producto->subcategory->name}}</td>
+                                                            
+                                    <td style="text-align:center"><a class="btn btn-secondary btn-sm" href="{{action('MultimediaController@create', $producto->id)}}">
+                                        <i class="fa fa-camera" style="font-size:16px"></i>
+                                    </a></td>
 
-                                <td style="text-align:center"><a class="btn btn-primary btn-sm" href="{{action('ProductController@edit', $producto->id)}}">
-                                    <i class="fa fa-pencil" style="font-size:16px"></i>
-                                </a></td>
+                                    <td style="text-align:center"><a class="btn btn-primary btn-sm" href="{{action('ProductController@edit', $producto->id)}}">
+                                        <i class="fa fa-pencil" style="font-size:16px"></i>
+                                    </a></td>
 
-                                <td style="text-align:center">
-        
-                                <form action="{{action('ProductController@destroy', $producto->id)}}" method="post">
-                                {{csrf_field()}}
-                                <input name="_method" type="hidden" value="DELETE">
-        
-                                <button class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
-                                    <i class="fa fa-trash" style="font-size:16px"></i>
-                                </button>
-        
-                                </form>
-                                </td>
-                            </tr>
-                            @endforeach 
-                            @else
-                            <tr>
-                                <td colspan="8">No hay registros actualmente</td>
-                            </tr>
-                            @endif
-                        </tbody>
-                    </table>
-                </div>
-        
+                                    <td style="text-align:center">
+            
+                                    <form action="{{action('ProductController@destroy', $producto->id)}}" method="post">
+                                        {{csrf_field()}}
+                                        <input class="serdelete_val_id" name="_method" type="hidden" value="<?= $producto->id ?>">
+                                        <button id="delete" data-id="<?= $producto->id ?>" class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
+                                            <i class="fa fa-trash" style="font-size:16px"></i>
+                                        </button>
+                                    </form>
+                                    
+                                    </td>
+                                </tr>
+                                @endforeach 
+                                @else
+                                <tr>
+                                    <td colspan="8">No hay registros actualmente</td>
+                                </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+            
                 </div>
                 {{-- <div style="display:flex; flex-direction: row; justify-content:center; align-items:center;">
                     {{ $productos->links() }}
