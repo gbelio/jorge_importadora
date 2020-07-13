@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Subcategory;
 use App\Category;
 use App\Product;
+use App\Http\Controllers\Redirect;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -24,12 +25,9 @@ class SubcategoryController extends Controller
         }
     
         $subcategorias = DB::table('subcategories')->orderBy('id', 'desc')->paginate(15);
-
         $allCategories = Category::all();
         $subcategories = Subcategory::all();
-
         $subcategorias = Subcategory::all()->sortByDesc('id'); 
-
         return view('subcategorias.create')->with('allCategories',$allCategories)
                                         ->with('subcategorias',$subcategorias)
                                         ->with('subcategories',$subcategories);
@@ -87,9 +85,18 @@ class SubcategoryController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        Subcategory::find($id)->delete();
+        $subcategory=Subcategory::find($id);
+        $product = Product::where('subcategory_id', 'LIKE', "%$id%")->get();
+        if (count($product) == 0) {
+            $subcategory->delete();
+        }else{
+            return redirect()->back()
+                            ->withErrors([
+                                'No se puede eliminar porque la subcategoría 
+                                se encuentra en uso por un producto.']);
+        }
         return redirect("/subcategorias/cargar");
     }
 

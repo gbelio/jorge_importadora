@@ -65,8 +65,8 @@
                                         <div class="prod_details">
                                             <h3 class="prod_name" maxlength="25">{{$product->name}}</h3> {{-- revisar que no rompa si es mayor a 25 caracteres --}}
                                             <div class="category_subcat">
-                                                <a href="#">{{$product->category->name}}</a>{{--  tiene que apuntar a todos los productos de esta categoria y traer el filtro de subcategoria --}}
-                                                <a href="#">{{$product->subcategory->name}}</a>{{-- tiene que apuntar a todos los productos de esta categoria y subcategoria --}}
+                                                <a href="/categorias/busqueda?clave={{$product->category->name}}">{{$product->category->name}}</a>
+                                                <a href="/subcategorias/busqueda?clave={{$product->subcategory->name}}">{{$product->subcategory->name}}</a>
                                             </div>
                                             <p maxlength="60">{{$product->resume}}</p>
                                            
