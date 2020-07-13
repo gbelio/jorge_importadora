@@ -103,7 +103,7 @@ class CategoryController extends Controller
         return redirect("/categorias/cargar");
     }
 
-    public function destroy($id)
+/*     public function destroy($id)
     {
         $category=Category::find($id);
         $subcategory = Subcategory::where('category_id', 'LIKE', "%$id%")->get();
@@ -119,5 +119,12 @@ class CategoryController extends Controller
         
         /* Category::find($id)->delete(); */
         return redirect("/categorias/cargar");
+    } */
+
+    public function destroy($id)
+    {
+        Category::find($id)->delete();
+        return response()->json(['status'=>'Registro eliminado con éxito']);
+ 
     }
 }
