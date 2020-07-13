@@ -44,15 +44,20 @@ class MultimediaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {    
-        foreach ($request->paths as $photo) {
+    {
+        $reglas = [
+            'multimedia'=>'required'
+        ];
+        $mensaje = ['required' => 'Necesita seleccionar una imagen'];
+        $this->validate($request, $reglas, $mensaje);
+        foreach ($request->paths as $photo){
             $filename = $photo->store('product','public');
             Multimedia::create([
                 'product_id' => $request->product_id,
                 'path' => $filename
             ]);
         }
-        return redirect ('/productos/' . $request->product_id);
+        return redirect ('/productos/usuario/cargar_imagen/' . $request->product_id);
     }
 
     /**

@@ -154,7 +154,6 @@ class ProductController extends Controller
         $mensaje = ['required' => 'el campo :attribute es obligatorio'];
         $this->validate($request, $reglas, $mensaje);
         $producto = Product::find($id);
-        $orignalName = $request->file('cover')->getClientOriginalName();
         $producto->name = $request->input('name') !== $producto->name ? $request->input('name') : $producto->name;
         $producto->description = $request->input('description') !== $producto->description ? $request->input('description') : $producto->description;
         $producto->category_id = $request->input('category_id') !== $producto->category_id ? $request->input('category_id') : $producto->category_id;
