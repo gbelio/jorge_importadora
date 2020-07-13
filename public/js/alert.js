@@ -6,6 +6,7 @@ $(document).ready(function(){
         }
     });
 
+    //producto
     $("tr td #delete").click(function(ev){
         ev.preventDefault();
         var nombre = $(this).parents('tr').find('td:nth-child(2)').text();
@@ -48,6 +49,8 @@ $(document).ready(function(){
         })
     })
 
+
+    //categoría
     $("tr td #delete1").click(function(ev){
         ev.preventDefault();
         var nombre = $(this).parents('tr').find('td:nth-child(2)').text();
@@ -63,6 +66,7 @@ $(document).ready(function(){
             confirmButtonText: 'Si, borrar',
             cancelButtonText: 'No',
             }).then((result) => {
+                
             if (result.value) {
 
                 var data = {
@@ -90,6 +94,8 @@ $(document).ready(function(){
         })
     })
 
+
+    //subcategoría
     $("tr td #delete2").click(function(ev){
         ev.preventDefault();
         var nombre = $(this).parents('tr').find('td:nth-child(2)').text();

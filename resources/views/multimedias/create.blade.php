@@ -29,16 +29,12 @@
                         </div>
                         <div class="load-img">
                             <div class="form-group" style="margin:0 0 10px 0;">
-                                <input class="__files" type="file" name="paths[]" multiple="multiple">
+                                <input required class="__files" type="file" name="paths[]" multiple="multiple">
                             </div>
                             <div class="form-group _carga-multimedia">
-                                <input type="submit" name="multimedia" required class="btn btn-primary btn-sm" value="Agregar Imagenes" id="addImage" style="font-family:'Raleway'; margin:0;width: 130px;">
+                                <input  type="submit" class="btn btn-primary btn-sm" value="Agregar Imagenes" id="addImage" style="font-family:'Raleway'; margin:0;width: 130px;">
                                 <a href="/productos/cargar" class="btn btn-secondary btn-sm" role ="button" style="font-family:'Raleway'; margin:0 0 0 5px;">Volver</a>
                             </div>
-                            @error('multimedia')
-                                <hr>
-                                <h6 style="color:red">{{ $message }}</h6>
-                            @enderror
                         </div>
                         <hr>
                     </form>

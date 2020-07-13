@@ -48,7 +48,7 @@ class MultimediaController extends Controller
         $reglas = [
             'multimedia'=>'required'
         ];
-        $mensaje = ['required' => 'Necesita seleccionar una imagen :attribute']; 
+        $mensaje = ['required' => 'Necesita seleccionar una imagen'];
         $this->validate($request, $reglas, $mensaje);
         foreach ($request->paths as $photo){
             $filename = $photo->store('product','public');

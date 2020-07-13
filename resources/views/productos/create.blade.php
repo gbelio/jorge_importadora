@@ -38,20 +38,20 @@
                     @enderror
                     <div class="form-group">
                         <label for="descripcion"><strong> Descripción del producto</strong></label>
-                        <textarea style="resize:none;" required type="text" name="description" value="{{ old("description") }}" class="form-control" maxlength="190"> </textarea>
+                        <textarea style="resize:none;" required type="text" name="description" value="{{ old("description") }}" class="form-control" maxlength="190"></textarea>
                     </div>
                     @error('description')
                     <span class="errors">{{ $message }}</span>
                     @enderror
                     <div class="form-group">
                         <label for="genero"><strong>Categoría</strong> </label>
-                        <select class="form-control" name="category_id">
+                        <select required class="form-control" name="category_id">
                             <option value="" disabled selected><strong>Seleccione la categoría correspondiente</strong></option>
                             @foreach($allCategories as $categoria)
                                 @if ($categoria->id == old("category_id"))
-                                    <option value="{{ $categoria->id }}" selected>{{ $categoria->name }}</option>
+                                    <option required value="{{ $categoria->id }}" selected>{{ $categoria->name }}</option>
                                 @else
-                                    <option value="{{ $categoria->id }}">{{ $categoria->name }}</option>
+                                    <option required value="{{ $categoria->id }}">{{ $categoria->name }}</option>
                                 @endif
                             @endforeach
                         </select>
@@ -61,13 +61,13 @@
                     @enderror
                     <div class="form-group">
                         <label for="genero"><strong> Sub Categoría</strong></label>
-                        <select class="form-control" name="subcategory_id">
+                        <select required class="form-control" name="subcategory_id">
                             <option value="" disabled selected><strong>Seleccione la sub categoría correspondiente</strong> </option>
                             @foreach($subcategories as $subcategory)
                                 @if ($subcategory->id == old("subcategory_id"))
-                                    <option value="{{ $subcategory->id }}" selected>{{ $subcategory->name }}</option>
+                                    <option required value="{{ $subcategory->id }}" selected>{{ $subcategory->name }}</option>
                                 @else
-                                    <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
+                                    <option required value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
                                 @endif
                             @endforeach
                         </select>
@@ -217,11 +217,7 @@
                             </tbody>
                         </table>
                     </div>
-            
                 </div>
-                {{-- <div style="display:flex; flex-direction: row; justify-content:center; align-items:center;">
-                    {{ $productos->links() }}
-                </div> --}}
         </div>
     </div>
 </div>

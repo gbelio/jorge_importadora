@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('content')
-
 {{-- SLIDER --}}
 @if (count($sliders) > 0)
     <div id="sliderHome" class="mt-100">
@@ -27,23 +26,18 @@
     </div>
 @endif
 {{-- SLIDER --}}
-
-
-
 <div class="caja-products-categories" style="flex-direction:column !important">
     @foreach ($allCategories as $category)
         <section class="{{-- products-all --}}" style="margin:0">
                 @if (count($category->product) > 0)
                     <div id="cat{{$category->id}}">
-                    <a href="/categorias/busqueda?clave={{$category->name}}" style="font-size:18px; text-decoration:none; color: black; ">{{$category->name}}</a>
-
+                        <a href="/categorias/busqueda?clave={{$category->name}}" style="font-size:18px; text-decoration:none; color: black; ">{{$category->name}}</a>
                         <div class="{{-- prods_ --}}owl-carousel owl-theme carrousel_prod">
                             @foreach ($products as $product)
                                 @if ($product->category->name == $category->name)
                                     <article class="product_1" style="margin-right:0px !important">
                                         <div class="product_1_img">
                                             @if(Auth::user() != null)
-                                            
                                                 <div class="edit_prod">
                                                     <a href="/productos/editar/{{$product->id}}">
                                                         <img class="edit_button" alt="edit_button" src="/img/edit_button.svg">
@@ -51,16 +45,12 @@
                                                 </div>
                                                 <div class="delete_prod">
                                                         <a href="#">
-                                                            <img class="delete_button" alt="delete_button" src="/img/delete_button.svg">
-                                                        </a>
+                                                        <img class="delete_button" alt="delete_button" src="/img/delete_button.svg"></a>
                                                 </div>
-                                                                
                                             @endif
                                             <span>{{$product->code}}</span>
                                             <img class="product_1_img_imagen" src="/storage/{{$product->cover}}" alt="imagen de producto">
-                                            <a href="../productos/{{$product->id}}" target="blank">
-                                                    VER MÁS
-                                            </a>                        
+                                            <a href="../productos/{{$product->id}}" target="blank">VER MÁS</a>
                                         </div>
                                         <div class="prod_details">
                                             <h3 class="prod_name" maxlength="25">{{$product->name}}</h3> {{-- revisar que no rompa si es mayor a 25 caracteres --}}
@@ -69,55 +59,46 @@
                                                 <a href="/subcategorias/busqueda?clave={{$product->subcategory->name}}">{{$product->subcategory->name}}</a>
                                             </div>
                                             <p maxlength="60">{{$product->resume}}</p>
-                                           
                                         </div>
                                     </article>
                                 @endif
                             @endforeach
                         </div>
-
                         <div class="prods_">
                             <div class="prods_box">
-                            @foreach ($products as $product)
-                                @if ($product->category->name == $category->name)
-                                    <article class="product_1">
-                                        <div class="product_1_img">
-                                            @if(Auth::user() != null)
-                                            
-                                                <div class="edit_prod">
-                                                    <a href="/productos/editar/{{$product->id}}">
-                                                        <img class="edit_button" alt="edit_button" src="/img/edit_button.svg">
-                                                    </a>
-                                                </div>
-                                                <div class="delete_prod">
-                                                        <a href="#">
-                                                            <img class="delete_button" alt="delete_button" src="/img/delete_button.svg">
+                                @foreach ($products as $product)
+                                    @if ($product->category->name == $category->name)
+                                        <article class="product_1">
+                                            <div class="product_1_img">
+                                                @if(Auth::user() != null)
+                                                    <div class="edit_prod">
+                                                        <a href="/productos/editar/{{$product->id}}">
+                                                            <img class="edit_button" alt="edit_button" src="/img/edit_button.svg">
                                                         </a>
-                                                </div>
-                                                                
-                                            @endif
-                                            <span>{{$product->code}}</span>
-                                            <img class="product_1_img_imagen" src="/storage/{{$product->cover}}" alt="imagen de producto">
-                                            <a href="../productos/{{$product->id}}" target="blank">
-                                                    VER MÁS
-                                            </a>                        
-                                        </div>
-                                        <div class="prod_details">
-                                            <h3 class="prod_name" maxlength="25">{{$product->name}}</h3> {{-- revisar que no rompa si es mayor a 25 caracteres --}}
-                                            <div class="category_subcat">
-                                                <a href="#">{{$product->category->name}}</a>{{--  tiene que apuntar a todos los productos de esta categoria y traer el filtro de subcategoria --}}
-                                                <a href="#">{{$product->subcategory->name}}</a>{{-- tiene que apuntar a todos los productos de esta categoria y subcategoria --}}
+                                                    </div>
+                                                    <div class="delete_prod">
+                                                            <a href="#">
+                                                                <img class="delete_button" alt="delete_button" src="/img/delete_button.svg">
+                                                            </a>
+                                                    </div>
+                                                @endif
+                                                <span>{{$product->code}}</span>
+                                                <img class="product_1_img_imagen" src="/storage/{{$product->cover}}" alt="imagen de producto">
+                                                <a href="../productos/{{$product->id}}" target="blank">VER MÁS</a>
                                             </div>
-                                            <p maxlength="60">{{$product->resume}}</p>
-                                           
-                                        </div>
-                                    </article>
-                                @endif
-                            @endforeach
-                                </div>
+                                            <div class="prod_details">
+                                                <h3 class="prod_name" maxlength="25">{{$product->name}}</h3> {{-- revisar que no rompa si es mayor a 25 caracteres --}}
+                                                <div class="category_subcat">
+                                                    <a href="#">{{$product->category->name}}</a>{{--  tiene que apuntar a todos los productos de esta categoria y traer el filtro de subcategoria --}}
+                                                    <a href="#">{{$product->subcategory->name}}</a>{{-- tiene que apuntar a todos los productos de esta categoria y subcategoria --}}
+                                                </div>
+                                                <p maxlength="60">{{$product->resume}}</p>
+                                            </div>
+                                        </article>
+                                    @endif
+                                @endforeach
+                            </div>
                         </div>
-
-
                         <div class="slider_nav">
                             <a class="am-next{{$category->id}}"><i class='fa fa-angle-left' style="color: black; font-size:40px"></i></a>
                             <a class="am-prev{{$category->id}}"><i class='fa fa-angle-right'style="color: black; font-size:40px"></i></a>
