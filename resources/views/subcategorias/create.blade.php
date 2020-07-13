@@ -69,9 +69,10 @@
 
                         <form action="{{action('SubcategoryController@destroy', $subcategoria->id)}}" method="post">
                         {{csrf_field()}}
-                        <input name="_method" type="hidden" value="DELETE">
+                        <input class="serdelete_val_id2" name="_method" type="hidden" value="<?= $subcategoria->id ?>">
+                        {{-- <input name="_method" type="hidden" value="DELETE"> --}}
 
-                        <button class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
+                        <button id="delete2" data-id="<?= $subcategoria->id ?>" class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
                             <i class="fa fa-trash" style="font-size:16px"></i>
                         </button>
 

@@ -172,11 +172,20 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+/*     public function destroy($id)
    {
        $producto=Product::find($id);
        $producto->delete();
        return redirect("/productos/cargar");
+
+   } */
+
+   public function destroy($id)
+   {
+       $producto=Product::find($id);
+       $producto->delete();
+       return response()->json(['status'=>'Registro eliminado con éxito']);
+
    }
 
    public function search(Request $request)

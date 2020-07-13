@@ -58,7 +58,7 @@
             <li class="nav-item" >
                 <form action="/productos/busqueda" class="form" method="GET" style="display:flex; flex-direction:row">
                     <input placeholder='Buscar' type="text" name="clave" class="input-group-text mb-3 mt-3 mr-3" style="text-align: left">
-                    <input type="submit" value="Buscar"class="btn btn-info" name="" id="" style="background-color:yellow; color:black; font-weight:bold; border: 1px solid yellow; margin:5%auto;">
+                    <input type="submit" value="Buscar" class="btn btn-info" name="" id="" style="background-color:yellow; color:black; font-weight:bold; border: 1px solid yellow; margin:5%auto;">
                 </form>
             </li>
         </ul>

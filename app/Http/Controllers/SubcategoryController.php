@@ -84,8 +84,7 @@ class SubcategoryController extends Controller
         return redirect("/subcategorias/cargar");
     }
 
-
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
         $subcategory=Subcategory::find($id);
         $product = Product::where('subcategory_id', 'LIKE', "%$id%")->get();
@@ -97,8 +96,15 @@ class SubcategoryController extends Controller
                                 'No se puede eliminar porque la subcategoría 
                                 se encuentra en uso por un producto.']);
         }
-        return redirect("/subcategorias/cargar");
+        return response()->json(['status'=>'Registro eliminado con éxito']);
     }
+
+    /*public function destroy($id)
+    {
+        Subcategory::find($id)->delete();
+        return response()->json(['status'=>'Registro eliminado con éxito']);
+ 
+    }*/
 
     public function search(Request $request)
     {

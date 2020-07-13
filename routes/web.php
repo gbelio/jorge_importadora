@@ -24,6 +24,7 @@ Route::group(['prefix'=>'categorias'], function(){
     Route::post('/cargar','CategoryController@store'); //va a guardar el categoria en la base de datos (solo administrador)
     Route::get('/{id}','CategoryController@show');
     Route::patch('/{id}/editar','CategoryController@update'); //va a editar en la base de datos
+    Route::delete('/delete/{id}','CategoryController@destroy');
 });
 
 //SubCategorias
@@ -34,6 +35,7 @@ Route::group(['prefix'=>'subcategorias'], function(){
     Route::post('/cargar','SubcategoryController@store'); //va a guardar el subcategoria en la base de datos (solo administrador)
     Route::patch('/{id}/editar','SubcategoryController@update'); //va a editar en la base de datos
     Route::get('/busqueda','SubcategoryController@search'); //Busca la subcategoría seleccionada del dropdown y te muestra los productos relacionados
+    Route::delete('/delete/{id}','SubcategoryController@destroy');
 });
 
 //Slider
@@ -55,7 +57,7 @@ Route::group(['prefix'=>'productos'], function(){
     Route::get('/categoria/{id}','ProductController@index'); //va a mostrar todos los productos segun el ID de categoria.    
     Route::get('/editar/{id}','ProductController@edit'); //va a llevar al formulario de edición
     Route::patch('/editar/{id}','ProductController@update'); //va a editar en la base de datos
-    Route::delete('/editar/{id}','ProductController@destroy');
+    Route::delete('/delete/{id}','ProductController@destroy');
     Route::get('/','ProductController@showAll'); //va a mostrar las fotos y detalle de un producto
     Route::get('/{id}','ProductController@show'); //va a mostrar las fotos y detalle de un producto
 });
@@ -70,8 +72,13 @@ Route::delete('/productos/usuario/cargar_imagen/{id}','MultimediaController@dest
 
 Route::get('logout','\App\Http\Controllers\Auth\LoginController@logout');
 
+
+//Recursos
+
 Route::resource('category','CategoryController');
 
 Route::resource('subcategory','SubcategoryController');
 
 Route::resource('sliders','SliderController');
+
+/* Route::resource('producto','ProductController'); */
