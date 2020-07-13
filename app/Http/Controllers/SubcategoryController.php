@@ -99,7 +99,7 @@ class SubcategoryController extends Controller
         return response()->json(['status'=>'Registro eliminado con éxito']);
     }
 
-
+  
 
     public function search(Request $request)
     {
