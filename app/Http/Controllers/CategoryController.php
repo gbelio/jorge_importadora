@@ -102,7 +102,7 @@ class CategoryController extends Controller
         $categoria->save();
         return redirect("/categorias/cargar");
     }
-    
+
      public function destroy($id)
     {
         $category=Category::find($id);
@@ -116,6 +116,10 @@ class CategoryController extends Controller
                                 'No se puede eliminar porque la categoría 
                                 se encuentra en uso por un producto o subcategoría.']);
         }
+
+        
         return response()->json(['status'=>'Registro eliminado con éxito']);
-    }
+    } 
+
+
 }
