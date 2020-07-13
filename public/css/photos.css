@@ -1,10 +1,10 @@
 .form-multimedia{
     height: 100vh;
     width: 100%;
+    margin-top: 160px;
 }
 
 .container-multimedia{
-    height: 100%;
     width: 100%;
 }
 
@@ -15,12 +15,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    margin-top: 20px;
 }
 
 .__nuevasImagenes{
     font-family: 'Raleway', sans-serif;
     font-size: 3rem;
     font-weight: bolder;
+    margin-bottom: 25px;
 }
 
 .__formulario{
@@ -28,6 +30,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.info_load{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
 }
 
 .load-img{
@@ -47,4 +57,78 @@
     justify-content: flex-start;
     align-items: center;
 }
+
+.__files{
+    font-family: 'Raleway',sans-serif;
+}
+
+.load_loaded{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+}
+
+.conjunto-imagenes{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.edicion-imagenes{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0;
+    flex-wrap: wrap;
+    margin-right: 10px;
+}
+
+.imagenes-cargadas .img img{
+    object-fit: cover;
+    height: 150px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+}
+
+.__boton{
+    font-family: 'Raleway', sans-serif;
+}
+
+/* MEDIA QUERIES */
+
+  /* ------------TABLETS-------------- */
+
+  @media /* (min-width: 600px) and */ (max-width: 1023px){
+  
+    .__nuevasImagenes{
+        font-size: 2rem;
+    }
+
+    .info_load{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .load_loaded{
+        margin-top: 10px;
+        align-items: center;
+    }
+
+    .__formulario {
+        width: 300px;
+    }
+    
+    .conjunto-imagenes{
+        justify-content: center;
+        align-self: center;
+    }
+}  
+
+
+
+
 

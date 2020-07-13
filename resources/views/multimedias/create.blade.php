@@ -13,10 +13,30 @@
     <div class="container-multimedia">
         <div align="left" class="editor-multimedia">
             <h1 class="text-center __nuevasImagenes">Cargar nuevas imágenes</h1>
-            <hr>
-            <h4>Código de Producto: {{$producto->code}}</h4>
-            <h2>{{$producto->name}}</h2>
-            <h4> {{$producto->resume}}</h4>
+            <div class="info_load">
+
+                                <article class="product_1">
+                                    <div class="product_1_img">
+                                     
+                                        <span>{{$producto->code}}</span>
+                                        <img class="product_1_img_imagen" src="/storage/{{$producto->cover}}" alt="imagen de producto">
+                                       <a href="/productos/{{$producto->id}}" target="blank">
+                                                VER MÁS
+                                        </a>                      
+                                    </div>
+                                    <div class="prod_details">
+                                        <h3 class="prod_name" maxlength="25">{{$producto->name}}</h3> 
+                                        <div class="category_subcat">
+                                            <a href="#">{{$producto->category->name}}</a>
+                                            <a href="#">{{$producto->subcategory->name}}</a>
+                                        </div>
+                                        <p maxlength="60">{{$producto->resume}}</p>
+                                    
+                                    </div>
+                                </article>
+                
+        <div class="load_loaded"> 
+
             <form class="form-group __formulario" action="" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group" style="display:none;">
@@ -27,7 +47,8 @@
                         <input class="__files" type="file" name="paths[]" multiple="multiple">
                     </div>
                     <div class="form-group _carga-multimedia">
-                        <input type="submit" class="btn btn-primary btn-sm" value="Agregar Imagenes" id="addImage" style="font-family:'Raleway'; margin:0;">
+                        <input type="submit" class="btn btn-primary btn-sm" value="Agregar Imagenes" id="addImage" style="font-family:'Raleway'; margin:0;width: 130px;">
+
                         <a href="/productos/cargar" class="btn btn-secondary btn-sm" role ="button" style="font-family:'Raleway'; margin:0 0 0 5px;">Volver</a>
                     </div>
                 </div>
@@ -51,6 +72,11 @@
                     @endif
                 @endforeach
             </div>
+
+        </div>
+        
+        </div>
+            
         </div>
     </div>
 </main>
