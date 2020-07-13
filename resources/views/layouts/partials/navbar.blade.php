@@ -39,18 +39,18 @@
                 <a class="nav-link usuario dropdown-toggle" data-toggle="dropdown" href="/profile">{{Auth::user()->name}}</a>
                 <ul class="dropdown-menu cascadaDos">
                     <li class="nav-item" style="margin-top: 10px">
-                        <a class="nav-link" href="/categorias/cargar">Administrar Categorías</a>
+                        <a class="nav-link" href="/categorias/cargar">Categorías</a>
                     </li>
                     <li class="nav-item" style="margin-top: 10px">
-                        <a class="nav-link" href="/subcategorias/cargar">Administrar Subcategorias</a>
+                        <a class="nav-link" href="/subcategorias/cargar">Subcategorías</a>
                     </li>
                     <li class="nav-item" style="margin: 10px 10px 0 0">
-                        <a class="nav-link" href="/productos/cargar">Administrar Productos</a>
+                        <a class="nav-link" href="/productos/cargar">Productos</a>
                     </li>
                     <li class="nav-item" style="margin: 10px 10px 0 0">
-                        <a class="nav-link" href="/slider/cargar">Administrar Imagenes Slider</a>
+                        <a class="nav-link" href="/slider/cargar">Imagenes De Slider</a>
                     </li>
-                    <li>
+                    <li class="borderli">
                         <a href="/logout">Cerrar Sesión</a>
                     </li>
                 </ul>
