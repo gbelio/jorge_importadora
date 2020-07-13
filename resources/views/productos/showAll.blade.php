@@ -50,7 +50,7 @@
                                             @endif
                                             <span>{{$product->code}}</span>
                                             <img class="product_1_img_imagen" src="/storage/{{$product->cover}}" alt="imagen de producto">
-                                            <a href="../productos/{{$product->id}}" target="blank">VER MÁS</a>
+                                            <a href="../productos/{{$product->id}}" >VER MÁS</a>
                                         </div>
                                         <div class="prod_details">
                                             <h3 class="prod_name" maxlength="25">{{$product->name}}</h3> {{-- revisar que no rompa si es mayor a 25 caracteres --}}

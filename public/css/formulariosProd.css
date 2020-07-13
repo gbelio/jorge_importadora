@@ -66,6 +66,12 @@ body {
 #mytable td, #mytable th{
     vertical-align: initial;
     padding: 3px;
+    vertical-align: initial;
+    padding: 3px;
+    max-width: 150px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .__mt-30{
