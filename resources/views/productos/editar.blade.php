@@ -13,12 +13,28 @@
             {{ method_field('PATCH') }}
             @csrf
             <div class="form-group">
-                <label for="name" ><strong> Nombre </strong></label>
-                <input name="name" value="{{$producto->name}}" type="text" class="form-control" placeholder="">
+                <label for="code"><strong>Código</strong></label>
+                <input required type="text" maxlength="50" name="code" value="{{$producto->code}}" class="form-control">
             </div>
-            <div class="button" style="margin-bottom:6%;">
+            <div class="form-group">
+                <label for="name" ><strong> Nombre </strong></label>
+                <input name="name" maxlength="25" value="{{$producto->name}}" type="text" class="form-control" placeholder="">
+            </div>
+            <div class="button" style="margin-bottom:1%;">
                 <label for="name"><strong> Cover </strong></label>
                 <input class="add_img" type="file" name="cover" value="{{$producto->cover}}">
+                <br>
+                <label for="name"><strong> {{$producto->cover}} </strong></label>
+            </div>
+            <label for="">
+            <div class="button">
+                <a class="btn btn-info btn-sm boton-eliminar" href="/productos/usuario/cargar_imagen/<?=$producto->id?>">Agregar fotos del producto</a>
+                
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="resume"><strong>Resumen del producto</strong> </label>
+                <input required type="text"maxlength="60" name="resume" value="{{$producto->resume}}" class="form-control" maxlength="60">
             </div>
             <div class="form-group">
                 <label for="description"><b> Descripción </b></label>
