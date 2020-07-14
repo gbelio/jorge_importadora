@@ -68,7 +68,10 @@ Route::get('/productos/usuario/cargar_imagen/{id}','MultimediaController@create'
 Route::post('/productos/usuario/cargar_imagen/{id}','MultimediaController@store');
 Route::get('/{id}/editar','MultimediaController@edit'); 
 Route::patch('/{id}/editar','MultimediaController@update'); 
+Route::get('/editar/{id}','MultimediaController@create1'); //va a llevar al formulario de edición
+Route::post('/editar/{id}','MultimediaController@store1'); //va a editar en la base de datos
 Route::delete('/productos/usuario/cargar_imagen/{id}','MultimediaController@destroy');
+Route::delete('/productos/editar/{id}','MultimediaController@destroy1');
 
 Route::get('logout','\App\Http\Controllers\Auth\LoginController@logout');
 
@@ -82,3 +85,5 @@ Route::resource('subcategory','SubcategoryController');
 Route::resource('sliders','SliderController');
 
 /* Route::resource('producto','ProductController'); */
+
+/* Route::get('/productos/cargar', 'ProductController@relacion1'); */

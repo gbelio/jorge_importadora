@@ -91,10 +91,7 @@ class SubcategoryController extends Controller
         if (count($product) == 0) {
             $subcategory->delete();
         }else{
-            return redirect()->back()
-                            ->withErrors([
-                                'No se puede eliminar porque la subcategoría 
-                                se encuentra en uso por un producto.']);
+            return redirect()->back();
         }
         return response()->json(['status'=>'Registro eliminado con éxito']);
     }

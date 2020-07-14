@@ -10,7 +10,7 @@
         </div>
         <br>
         <div style="display:flex; flex-direction:row; justify-content:center; align-items:center">
-            <img style="width: 50%; height: 50%; " src="/storage/{{$producto->cover}}" alt="imagen de producto">
+            <img style="max-width: 500px; max-height: 500px; " src="/storage/{{$producto->cover}}" alt="imagen de producto">
         </div>
 
         <form method="POST" action="" enctype="multipart/form-data">
@@ -41,7 +41,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="category_id"><b> Categoría </b></label>
+                <label for="category_id"><b> Subcategoría </b></label>
                 <select class="form-control" name="subcategory_id">
                     @if($producto->subcategory_id !== null)
                         <option value="{{ $producto->subcategory->id }}" selected>{{ $producto->subcategory->name }}</option>
@@ -51,6 +51,8 @@
                     @endforeach
                 </select>
             </div>
+
+
             <br>
             <div class="d-flex md-form mt-0" style="justify-content:center">
                 <a href="/productos/cargar" class="btn btn-info btn-sm boton-eliminar" role="button" style="margin:2%; background-color:#007BFF;border-color:#007BFF;">Volver</a>

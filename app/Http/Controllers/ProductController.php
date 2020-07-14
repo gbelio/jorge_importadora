@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+
 use App\Product;
 use App\User;
 Use App\Category;
 Use App\Subcategory;
 Use App\Multimedia;
 Use App\Slider;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 
 
 class ProductController extends Controller
@@ -41,6 +43,18 @@ class ProductController extends Controller
         return view('productos.create')->with('allCategories',$allCategories)
                                     ->with('subcategories',$subcategories)
                                     ->with('productos',$productos);
+    }
+
+    public function relacion1()
+    {
+ 
+        /* if(Auth::user() == null){
+            return redirect('login');
+        } */
+        $category_id = Input::get('category_id');
+        $subcategories = Subcategory::where('category_id', '=', $category_id)->get();
+        
+        return response()->json($subcategories);
     }
 
 
@@ -112,11 +126,11 @@ class ProductController extends Controller
         $producto = Product::find($id);
         $allCategories = Category::all();
         $subcategories = Subcategory::all();
-        $photos = Multimedia::all();
+        $multimedias = Multimedia::all();
         return view('productos.editar')->with('producto', $producto)
                                         ->with('allCategories', $allCategories)
                                         ->with('subcategories', $subcategories)
-                                        ->with('photos', $photos)
+                                        ->with('multimedias', $multimedias)
                                         ->with('productos',$productos);
     }
 

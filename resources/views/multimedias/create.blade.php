@@ -21,6 +21,7 @@
                         <p maxlength="60">{{$producto->resume}}</p>
                     </div>
                 </article>
+                
                 <div class="load_loaded"> 
                     <form class="form-group __formulario" action="" method="post" enctype="multipart/form-data">
                         @csrf

@@ -44,16 +44,12 @@
                     <span class="errors">{{ $message }}</span>
                     @enderror
                     <div class="form-group">
-                        <label for="genero"><strong>Categoría</strong> </label>
-                        <select required class="form-control" name="category_id">
-                            <option value="" disabled selected><strong>Seleccione la categoría correspondiente</strong></option>
-                            @foreach($allCategories as $categoria)
-                                @if ($categoria->id == old("category_id"))
-                                    <option required value="{{ $categoria->id }}" selected>{{ $categoria->name }}</option>
-                                @else
-                                    <option required value="{{ $categoria->id }}">{{ $categoria->name }}</option>
-                                @endif
-                            @endforeach
+                        <label for="genero"><strong>Categorías</strong> </label>
+                        <select required class="form-control" name="category_id" id="category_id">
+                        <option value="0" disable="true" selected="true">Seleccionar Categoría</option>
+                        @foreach ($allCategories as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
                         </select>
                     </div>
                     @error('category_id')
