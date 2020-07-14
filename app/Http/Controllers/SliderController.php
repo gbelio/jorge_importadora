@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 Use App\Slider;
@@ -19,18 +18,18 @@ class SliderController extends Controller
         $allCategories = Category::all();
         $subcategories = Subcategory::all();
         $sliders = DB::table('sliders')->orderBy('id', 'desc')->paginate(10);
-        
         return view('slider.create')->with('sliders',$sliders)
                                     ->with('allCategories',$allCategories)
                                     ->with('subcategories',$subcategories);
     }
 
+
     public function show($id)
     {
-
         $sliders = DB::table('sliders')->orderBy('id', 'desc')->paginate(10);
         return view('slider.create')->with('sliders',$sliders);
     }
+
 
     public function store(Request $request)
     {
@@ -53,8 +52,6 @@ class SliderController extends Controller
     }
 
 
-
-
     public function edit($id)
     {
         $slider = Slider::find($id);
@@ -73,7 +70,6 @@ class SliderController extends Controller
         $slider = Slider::find($id);
         $slider->s_estado = $request->input('s_estado') !== $slider->s_estado ? $request->input('s_estado') : $slider->s_estado;
         $slider->s_link = $request->input('s_link') !== $slider->s_link ? $request->input('s_link') : $slider->s_link;
-      
         $slider->save();
         return redirect("/slider/cargar");
     }

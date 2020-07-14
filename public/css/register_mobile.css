@@ -48,7 +48,6 @@ html::-webkit-scrollbar-thumb {
     width: 100vw;
     display: flex;
     flex-direction: column;
-    /* padding: 5% 13%; */
     text-align: center;
 
     /* Animacion modal*/
@@ -66,7 +65,6 @@ html::-webkit-scrollbar-thumb {
     justify-content: center;
     align-items: center;
     border: 16px solid black;
-    /* padding-bottom: 2%; */
     border-radius: 5px;
 }
 
@@ -197,12 +195,12 @@ button {
 /*     font-family: "Wrestlemania", Arial, Helvetica, sans-serif; */
     color: white;
     align-self: center;
-    padding: 0.1em 1em;
+    padding: 0.2em 0.5em;
     border: none;
     background: black;
     border-radius: 10px;
     font-size: 2rem;
-    letter-spacing: 0.1rem;
+    /* letter-spacing: 0.1rem; */
     font-weight: lighter;
     outline: none;
     cursor: pointer;
@@ -210,8 +208,8 @@ button {
     /* Animacion boton */
     opacity: 0;
     animation-name: button;
-    animation-duration: 1s;
-    animation-delay: 1s;
+/*     animation-duration: 1s;
+    animation-delay: 1s; */
     animation-fill-mode: forwards;
     transition-property: transform;
     transition-duration: 1s;

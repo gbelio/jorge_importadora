@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\User;
-Use App\Category; //recordemos son solo 4, hot stuff es por hits.
+Use App\Category;
 Use App\Subcategory;
 Use App\Multimedia;
 Use App\Slider;
@@ -33,27 +33,19 @@ class ProductController extends Controller
     public function create()
     {   
         if(Auth::user() == null){
-        return redirect('login');
-    }
-
+            return redirect('login');
+        }
         $productos = Product::all()->sortByDesc('id');
-        /* $productos = DB::table('products')->orderBy('id', 'desc')->paginate(15); */
         $allCategories=Category::all();
         $subcategories=Subcategory::all();
-        return view('productos.create')
-                ->with('allCategories',$allCategories)
-                ->with('subcategories',$subcategories)
-                ->with('productos',$productos);
+        return view('productos.create')->with('allCategories',$allCategories)
+                                    ->with('subcategories',$subcategories)
+                                    ->with('productos',$productos);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
-    {    
+    {
         $reglas = [
             'name'=>'required',
             'code'=>'required',
@@ -62,13 +54,12 @@ class ProductController extends Controller
             'cover'=>'required',
             'category_id'=>'required',
             'subcategory_id'=>'required',
-
         ];
 
         $mensaje=[
             'El :attribute es obligatorio'
         ];
-        
+
         $this->validate($request, $reglas, $mensaje);
         $cover = $request->file('cover')->storeAs('covers', $request->file('cover')->getClientOriginalName(),'public');
         $producto = new Product($request->all());
@@ -77,12 +68,7 @@ class ProductController extends Controller
         return redirect('/productos/cargar');
     }    
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {   
         $allCategories = Category::all();
@@ -95,32 +81,31 @@ class ProductController extends Controller
                                     ->with('multimedias',$multimedias);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
+
     public function showAll()
-    {   
+    {
+        $sliderstate = 0;
         $multimedias = Multimedia::all();
         $products = Product::all()->sortByDesc('id');
         $allCategories = Category::all();
         $subcategories = Subcategory::all();
         $sliders = Slider::all();
+        //verifica si hay sliders activos para mostrar//
+        foreach ($sliders as $slider) {
+            if ($slider->s_estado != 0){
+                $sliderstate =+ 1;
+            }
+        }
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^//
         return view('productos.showAll')->with('products', $products)
                                         ->with('multimedias',$multimedias)
                                         ->with('allCategories',$allCategories)
                                         ->with('subcategories',$subcategories)
+                                        ->with('sliderstate', $sliderstate)
                                         ->with('sliders',$sliders);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         $productos = Product::all()->sortByDesc('id');
@@ -136,13 +121,6 @@ class ProductController extends Controller
     }
 
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $reglas = [
@@ -166,28 +144,15 @@ class ProductController extends Controller
         return redirect("/productos/cargar");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-/*     public function destroy($id)
-   {
-       $producto=Product::find($id);
-       $producto->delete();
-       return redirect("/productos/cargar");
-
-   } */
 
    public function destroy($id)
    {
        $producto=Product::find($id);
        $producto->delete();
        return response()->json(['status'=>'Registro eliminado con éxito']);
-
    }
 
+   
    public function search(Request $request)
    {
        $clave = $request->clave;
