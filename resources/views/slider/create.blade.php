@@ -24,7 +24,7 @@
                     <input type="text" name="s_estado" value="{{1}}" class="form-control" maxlength="190">
                 </div>   
                 @error('s_estado')
-                <span class="errors">{{ $message }}</span>
+                    <span class="errors">{{ $message }}</span>
                 @enderror
                 <div class="form-group">
                     <label for="s_estado">Redirección <strong>(Ej: https://www.google.com.ar)</strong></label>
@@ -40,55 +40,65 @@
     <br>
     <div id="listaCategorias" class="panel panel-default">
         <div class="panel-body">
-        <div class="pull-left"><h3>Lista Slider</h3></div>
-        <div class="table-container">
-            <table id="mytable" class="table table-bordered table-striped">
-                <thead>
-                    <th>Id</th>
-                    <th>Imagen</th>
-                    <th>Estado</th>
-                    <th>Redirección (Con "https://")</th>
-                    <th></th>
-                    <th></th>
-                </thead>
-                <tbody>
-                    @if($sliders->count())  
-                    @foreach($sliders as $slider)  
-                    <tr style="font-size:13px">
-                        <td>{{$slider->id}}</td>
-                        <td>{{$slider->s_img}}</td>
-                        <td>
-                            @if( $slider->s_estado == 1)
-                                {{'Activo'}}
-                                @else
-                                {{'Desactivado'}}
-                            @endif
-                        </td>
-                        <td>{{$slider->s_link}}</td>
-                        <td style="text-align:center">
-                            <a class="btn btn-primary btn-sm" href="{{action('SliderController@edit', $slider->id)}}">
-                                <i class="fa fa-pencil" style="font-size:16px"></i>
-                            </a>
-                        </td>
-                        <td style="text-align:center">
-                            <form action="{{action('SliderController@destroy', $slider->id)}}" method="post">
-                            {{csrf_field()}}
-                                <input name="_method" type="hidden" value="DELETE">
-                                <button class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
-                                    <i class="fa fa-trash" style="font-size:16px"></i>
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach 
-                    @else
-                    <tr>
-                        <td colspan="8">No hay registro !!</td>
-                    </tr>
-                    @endif
-                </tbody>
-            </table>
-        </div>
+            <div class="pull-left"><h3>Lista Slider</h3></div>
+            <div class="table-container">
+                <table id="mytable" class="table table-bordered table-striped">
+                    <thead>
+                        <th>Id</th>
+                        <th>Imagen</th>
+                        <th>Estado</th>
+                        <th>Redirección (Con "https://")</th>
+                        <th></th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        @if($sliders->count())  
+                            @foreach($sliders as $slider)  
+                                <tr style="font-size:13px; text-align:center">
+                                    <td>{{$slider->id}}</td>
+                                    <td>{{$slider->s_img}}</td>
+                                    <td>
+                                        @if( $slider->s_estado == 1)
+                                            <form action="{{action('SliderController@update', $slider->id)}}" method="post">
+                                                <br>
+                                                @csrf
+                                                {{ method_field('PATCH') }}
+                                                <button style="font-size:15px" type="submit" name="s_estado" value="0"><i class="fa fa-check-square-o"></i></button>
+                                            </form>
+                                        @else
+                                            <form action="{{action('SliderController@update', $slider->id)}}" method="post">
+                                                <br>
+                                                @csrf
+                                                {{ method_field('PATCH') }}
+                                                <button style="font-size:15px" type="submit" name="s_estado" value="1"><i class="fa fa-close"></i></button>
+                                            </form>
+                                        @endif
+                                    </td>
+                                    <td>{{$slider->s_link}}</td>
+                                    <td style="text-align:center">
+                                        <a class="btn btn-primary btn-sm" href="{{action('SliderController@edit', $slider->id)}}">
+                                            <i class="fa fa-pencil" style="font-size:16px"></i>
+                                        </a>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <form action="{{action('SliderController@destroy', $slider->id)}}" method="post">
+                                        {{csrf_field()}}
+                                            <input name="_method" type="hidden" value="DELETE">
+                                            <button class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
+                                                <i class="fa fa-trash" style="font-size:16px"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach 
+                        @else
+                            <tr>
+                                <td colspan="8">No hay registro !!</td>
+                            </tr>
+                        @endif
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div style="display:flex; flex-direction: row; justify-content:center; align-items:center;">
             {{ $sliders->links() }}

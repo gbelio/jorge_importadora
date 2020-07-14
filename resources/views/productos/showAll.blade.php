@@ -1,22 +1,24 @@
 @extends('layouts.master')
 @section('content')
 {{-- SLIDER --}}
-@if (count($sliders) > 0)
+@if ($sliderstate > 0)
     <div id="sliderHome" class="mt-100">
         <div class="owl-carousel owl-theme">
-            @foreach ($sliders as $fila)   
-                <div class="slider" {{-- style="max-height:360px !important" --}}>
-                    @if (empty($fila->s_link))
-                        <img src="/storage/{{$fila->s_img}}" class="img-responsive">
-                        @else
-                        <a href="{{$fila->s_link}}" target="__blank">
+            @foreach ($sliders as $fila)
+                @if ($fila->s_estado != 0)
+                    <div class="slider" {{-- style="max-height:360px !important" --}}>
+                        @if (empty($fila->s_link))
                             <img src="/storage/{{$fila->s_img}}" class="img-responsive">
-                        </a>
-                        <div class="carousel-caption">
-                            <h3></h3>
-                        </div>
-                    @endif
-                </div>
+                        @else
+                            <a href="{{$fila->s_link}}" target="__blank">
+                            <img src="/storage/{{$fila->s_img}}" class="img-responsive">
+                            </a>
+                            <div class="carousel-caption">
+                                <h3></h3>
+                            </div>
+                        @endif
+                    </div>
+                @endif
             @endforeach
         </div>
         <div class="slider_nav">
