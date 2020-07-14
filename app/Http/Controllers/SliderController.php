@@ -43,11 +43,10 @@ class SliderController extends Controller
         ];
 
         $this->validate($request, $reglas, $mensaje);
-        $slider = $request->file('s_img')->store('sliders','public');
+        $slider = $request->file('s_img')->storeAs('sliders', $request->file('s_img')->getClientOriginalName(),'public');
         $sliders = new Slider($request->all());
         $sliders->s_img = $slider;
         $sliders->save();
-
         return redirect('/slider/cargar');
     }
 
