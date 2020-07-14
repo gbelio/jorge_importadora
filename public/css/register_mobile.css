@@ -223,11 +223,11 @@ button {
         opacity: 1;
     }
 }
-
+/* 
 button:hover {
     color: red;
     transition: 450ms;
-}
+} */
 
 .errors {
     color: red;

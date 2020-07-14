@@ -160,10 +160,10 @@ input:focus::-webkit-input-placeholder {
 
 /* Fin de animacion boton*/
 
-button:hover {
+/* button:hover {
     color: red;
     transition: 450ms;
-}
+} */
 
 .submitLogin {
     padding: 0.1em;

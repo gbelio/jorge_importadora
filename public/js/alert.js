@@ -1,12 +1,21 @@
 $(document).ready(function(){
 
+    //TOKEN AJAX (NECESARIO SIEMPRE)
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
 
-    //producto
+    //FIN TOKEN AJAX
+
+    /* -------------------------------------------------------------------------- */
+
+
+    //CONFIRMACIÓN BORRAR
+
+    //Producto (abm)
     $("tr td #delete").click(function(ev){
         ev.preventDefault();
         var nombre = $(this).parents('tr').find('td:nth-child(2)').text();
@@ -49,8 +58,7 @@ $(document).ready(function(){
         })
     })
 
-
-    //categoría
+    //Categoría (abm)
     $("tr td #delete1").click(function(ev){
         ev.preventDefault();
         var nombre = $(this).parents('tr').find('td:nth-child(2)').text();
@@ -67,35 +75,42 @@ $(document).ready(function(){
             cancelButtonText: 'No',
             }).then((result) => {
                 
-            if (result.value) {
+                if (result.value) {
 
-                var data = {
-                    "_token" : $('input[name=_token]').val(),
-                    "id" : id,
-                };
- 
-                $.ajax({
-                    type: 'DELETE',
-                    url: '/categorias/delete/'+id,
-                    data: data,
-                    success: function(response){ 
+                    var data = {
+                        "_token" : $('input[name=_token]').val(),
+                        "id" : id,
+                    };
+    
+                    $.ajax({
+                        type: 'DELETE',
+                        url: '/categorias/delete/'+id,
+                        data: data,
 
+                    })
+
+                    .done(function(response){
                         Swal.fire(
                             'Eliminado!',
                             'Tu registro ha sido eliminado correctamente',
                             'success'
-                          )
+                        )
                         .then ((result) => {
                             location.reload();
                         });
-                    }
-                })
-            }
-        })
+                    }).fail (function(response){
+                        Swal.fire(
+                            'Ups!',
+                            'Tu registro no se pudo eliminar, esta siendo utilizado por una subcategoría o un producto',
+                            'error'
+                        )
+                     
+                    })
+                }
+            })
     })
 
-
-    //subcategoría
+    //Subcategoría (abm)
     $("tr td #delete2").click(function(ev){
         ev.preventDefault();
         var nombre = $(this).parents('tr').find('td:nth-child(2)').text();
@@ -123,7 +138,59 @@ $(document).ready(function(){
                     type: 'DELETE',
                     url: '/subcategorias/delete/'+id,
                     data: data,
-                    success: function(response){ 
+
+                })
+                .done(function(response){
+                    Swal.fire(
+                        'Eliminado!',
+                        'Tu registro ha sido eliminado correctamente',
+                        'success'
+                    )
+                    .then ((result) => {
+                        location.reload();
+                    });
+                }).fail (function(response){
+                    Swal.fire(
+                        'Ups!',
+                        'Tu registro no se pudo eliminar, esta siendo utilizado por un producto',
+                        'error'
+                    )
+                 
+                })
+            }
+        })
+    })
+
+    //Producto (showAll)
+    $("form #delete4").click(function(ev){
+        ev.preventDefault();
+        var nombre = $(this).parents('#_form_eliminar').find('.serdelete_val_id5').val();
+        var id = $(this).parents('#_form_eliminar').find('.serdelete_val_id4').val();
+      
+        console.log(id);
+
+        Swal.fire({
+            title: '¿Realmente quieres eliminar el registro de '+nombre+' ?',
+            text: "El registro será eliminado permanentemente",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, borrar',
+            cancelButtonText: 'No',
+            }).then((result) => {
+            if (result.value) {
+
+                var data = {
+                    "_token" : $('input[name=_token]').val(),
+                    "id" : id,
+                };
+ 
+                $.ajax({
+                    type: 'DELETE',
+                    url: '/productos/delete/'+id,
+                    data: data,
+                    /* success: function(response){ 
 
                         Swal.fire(
                             'Eliminado!',
@@ -133,12 +200,32 @@ $(document).ready(function(){
                         .then ((result) => {
                             location.reload();
                         });
-                    }
+                    } */
+
+                })
+                .done(function(response){
+                    Swal.fire(
+                        'Eliminado!',
+                        'Tu registro ha sido eliminado correctamente',
+                        'success'
+                    )
+                    .then ((result) => {
+                        location.reload();
+                    });
+                }).fail (function(response){
+                    Swal.fire(
+                        'Ups!',
+                        'Tu registro no se pudo eliminar',
+                        'error'
+                    )
+                 
                 })
             }
         })
     })
 
-    
+    //FIN BORRAR
+
+
     
 })
