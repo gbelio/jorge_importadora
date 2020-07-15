@@ -224,6 +224,59 @@ $(document).ready(function(){
         })
     })
 
+    //Slider (abm)
+    $("form #delete5").click(function(ev){
+        ev.preventDefault();
+        var nombre = $(this).parents('td').find('.serdelete_val_id5').val();
+        var id = $(this).parents('td').find('.serdelete_val_id5').val();
+      
+        console.log(id);
+
+
+        Swal.fire({
+            title: '¿Realmente quieres eliminar el registro de '+nombre+' ?',
+            text: "El registro será eliminado permanentemente",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, borrar',
+            cancelButtonText: 'No',
+            }).then((result) => {
+            if (result.value) {
+
+                var data = {
+                    "_token" : $('input[name=_token]').val(),
+                    "id" : id,
+                };
+ 
+                $.ajax({
+                    type: 'DELETE',
+                    url: '/slider/delete/'+id,
+                    data: data,
+
+                })
+                .done(function(response){
+                    Swal.fire(
+                        'Eliminado!',
+                        'Tu registro ha sido eliminado correctamente',
+                        'success'
+                    )
+                    .then ((result) => {
+                        location.reload();
+                    });
+                }).fail (function(response){
+                    Swal.fire(
+                        'Ups!',
+                        'Tu registro no se pudo eliminar',
+                        'error'
+                    )
+                 
+                })
+            }
+        })
+    })
+
     //FIN BORRAR
 
 
