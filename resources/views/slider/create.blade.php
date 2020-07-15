@@ -80,15 +80,18 @@
                                             <i class="fa fa-pencil" style="font-size:16px"></i>
                                         </a>
                                     </td>
+
                                     <td style="text-align:center">
                                         <form action="{{action('SliderController@destroy', $slider->id)}}" method="post">
                                         {{csrf_field()}}
-                                            <input name="_method" type="hidden" value="DELETE">
-                                            <button class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
+                                            {{-- <input name="_method" type="hidden" value="DELETE"> --}}
+                                            <input class="serdelete_val_id5" name="_method" type="hidden" value="<?= $slider->id ?>">
+                                            <button id="delete5" data-id="<?= $slider->id ?>" class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
                                                 <i class="fa fa-trash" style="font-size:16px"></i>
                                             </button>
                                         </form>
                                     </td>
+
                                 </tr>
                             @endforeach 
                         @else

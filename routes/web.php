@@ -45,6 +45,7 @@ Route::group(['prefix'=>'slider'], function(){
     Route::get('/cargar','SliderController@create'); //al formulario de carga de subcategoria (solo administrador)
     Route::post('/cargar','SliderController@store'); //va a guardar el subcategoria en la base de datos (solo administrador)
     Route::patch('/{id}/editar','SliderController@update'); //va a editar en la base de datos
+    Route::delete('/delete/{id}','SliderController@destroy');
 });
 
 //Productos
