@@ -46,14 +46,12 @@
                                                     </a>
                                                 </div>
 
-
                                                 <div class="add_photos_prod">
                                                     <a href="/productos/usuario/cargar_imagen/<?=$product->id?>">
                                                         <i class="fa fa-file-image-o" style="font-size:15px; color: white"></i>
                                                     </a>
                                                 </div>
                                                                                           
-
                                                 <div class="delete_prod">
                                                     <form id="_form_eliminar" action="{{action('ProductController@destroy', $product->id)}}" method="post">
                                                         {{csrf_field()}}
@@ -63,7 +61,6 @@
                                                             <i class="fa fa-trash" style="font-size:16px"></i>
                                                         </button>
                                                     </form>
-
                                                 </div>
 
                                             @endif

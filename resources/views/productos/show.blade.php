@@ -28,7 +28,7 @@
                 <div> 
                     @if(Auth::user() != null)
                         <div class="_codigo_botones">
-                            <div>
+                            <div style="margin-bottom: 0px !important">
                                 <h4>Código de Producto: {{$producto->code}}</h4>
                             </div>
                             <div class="_contenedorBotones">
@@ -60,8 +60,6 @@
                     </div>
                     @endif
 
-                <div>
-                    <h4>Código de Producto: {{$producto->code}}</h4>
 
                     <h2>{{$producto->name}}</h2>
                     <p> {{$producto->resume}}</p>
