@@ -38,7 +38,7 @@
                                     </a>
                                 </div>
                                 <div class="add_photos_prod_show">
-                                    <a href="/productoos/usuario/cargar_imagen/<?=$producto->id?>">
+                                    <a href="/productos/usuario/cargar_imagen/<?=$producto->id?>">
                                         <i class="fa fa-file-image-o" style="font-size:15px; color: white"></i>
                                     </a>
                                 </div>
