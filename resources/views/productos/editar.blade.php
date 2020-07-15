@@ -1,9 +1,6 @@
 @extends('layouts.master')
 @section('content')
-
 <div class="" style="min-height:450px; margin-top:125px;">
-
-
     <div id="listaCategorias" class="offset-2 col-8 form-categorias">
         <div style="display:flex; flex-direction:row; justify-content:space-between">
             <h3 style="display:inline-block">Editar Producto</h3>
@@ -12,29 +9,43 @@
         <div style="display:flex; flex-direction:row; justify-content:center; align-items:center">
             <img style="max-width: 500px; max-height: 500px; " src="/storage/{{$producto->cover}}" alt="imagen de producto">
         </div>
-
         <form method="POST" action="" enctype="multipart/form-data">
             {{ method_field('PATCH') }}
             @csrf
             <div class="form-group">
-                <label for="name" ><strong> Nombre </strong></label>
-                <input name="name" value="{{$producto->name}}" type="text" class="form-control" placeholder="">
+                <label for="code"><strong>Código</strong></label>
+                <input required type="text" maxlength="50" name="code" value="{{$producto->code}}" class="form-control">
             </div>
-            <div class="button" style="margin-bottom:6%;">
+            <div class="form-group">
+                <label for="name" ><strong> Nombre </strong></label>
+                <input name="name" maxlength="25" value="{{$producto->name}}" type="text" class="form-control" placeholder="">
+            </div>
+            <div class="button" style="margin-bottom:1%;">
                 <label for="name"><strong> Cover </strong></label>
                 <input class="add_img" type="file" name="cover" value="{{$producto->cover}}">
+                <br>
+                <label for="name"><strong> {{$producto->cover}} </strong></label>
+            </div>
+            <label for="">
+            <div class="button">
+                <a class="btn btn-info btn-sm boton-eliminar" href="/productos/usuario/cargar_imagen/<?=$producto->id?>">Agregar fotos del producto</a>
+                
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="resume"><strong>Resumen del producto</strong> </label>
+                <input required type="text"maxlength="60" name="resume" value="{{$producto->resume}}" class="form-control" maxlength="60">
             </div>
             <div class="form-group">
                 <label for="description"><b> Descripción </b></label>
-                <input name="description" value="{{$producto->description}}" type="text" class="form-control"
-                    placeholder="">
+                <input name="description" value="{{$producto->description}}" type="text" class="form-control" placeholder="">
             </div>
             <div class="form-group">
                 <label for="category_id"><b> Categoría </b></label>
                 <select class="form-control" name="category_id">
                     <option value="{{ $producto->category->id }}" selected>{{ $producto->category->name }}</option>
-                    @isset($categorias)
-                        @foreach($categorias as $categoria)
+                    @isset($allCategories)
+                        @foreach($allCategories as $categoria)
                             <option value="{{ $categoria->id }}">{{ $categoria->name }}</option>
                         @endforeach
                     @endisset
@@ -51,8 +62,6 @@
                     @endforeach
                 </select>
             </div>
-
-
             <br>
             <div class="d-flex md-form mt-0" style="justify-content:center">
                 <a href="/productos/cargar" class="btn btn-info btn-sm boton-eliminar" role="button" style="margin:2%; background-color:#007BFF;border-color:#007BFF;">Volver</a>
@@ -80,39 +89,41 @@
                             <th style="color:red;">Borrar</th>
                         </thead>
                         <tbody>
-                            @if($productos ?? ''->count())  
-                                @foreach($productos ?? '' as $producto)  
-                                <tr style="font-size:13px">
-                                    <td>{{$producto->id}}</td>
-                                    <td>{{$producto->name}}</td>
-                                    <td>{{$producto->code}}</td>
-                                    <td>{{$producto->resume}}</td>
-                                    <td>{{$producto->description}}</td>
-                                    @if ( $producto->cover == true)
-                                        <td>Si</td>
-                                    @endif
-                                    @if ($producto->cover == false)
-                                        <td>No</td>
-                                    @endif
-                                    <td>{{$producto->category->name}}</td>
-                                    <td>{{$producto->subcategory->name}}</td>                         
-                                    <td style="text-align:center"><a class="btn btn-secondary btn-sm" href="{{action('MultimediaController@create', $producto->id)}}">
-                                        <i class="fa fa-camera" style="font-size:16px"></i>
-                                    </a></td>
-                                    <td style="text-align:center"><a class="btn btn-primary btn-sm" href="{{action('ProductController@edit', $producto->id)}}">
-                                        <i class="fa fa-pencil" style="font-size:16px"></i>
-                                    </a></td>
-                                    <td style="text-align:center">
-                                    <form action="{{action('ProductController@destroy', $producto->id)}}" method="post">
-                                    {{csrf_field()}}
-                                    <input name="_method" type="hidden" value="DELETE">
-                                    <button class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
-                                        <i class="fa fa-trash" style="font-size:16px"></i>
-                                    </button>
-                                    </form>
-                                    </td>
-                                </tr>
-                                @endforeach 
+                            @if($productos ?? ''->count())
+                                @foreach($productos ?? '' as $producto)
+                                    <tr style="font-size:13px">
+                                        <td>{{$producto->id}}</td>
+                                        <td>{{$producto->name}}</td>
+                                        <td>{{$producto->code}}</td>
+                                        <td>{{$producto->resume}}</td>
+                                        <td>{{$producto->description}}</td>
+                                        @if ( $producto->cover == true)
+                                            <td>Si</td>
+                                        @endif
+                                        @if ($producto->cover == false)
+                                            <td>No</td>
+                                        @endif
+                                        <td>{{$producto->category->name}}</td>
+                                        <td>{{$producto->subcategory->name}}</td>
+                                        <td style="text-align:center"><a class="btn btn-secondary btn-sm" href="{{action('MultimediaController@create', $producto->id)}}">
+                                            <i class="fa fa-camera" style="font-size:16px"></i>
+                                        </a></td>
+                                        <td style="text-align:center">
+                                            <a class="btn btn-primary btn-sm" href="{{action('ProductController@edit', $producto->id)}}">
+                                            <i class="fa fa-pencil" style="font-size:16px"></i>
+                                            </a>
+                                        </td>
+                                        <td style="text-align:center">
+                                            <form action="{{action('ProductController@destroy', $producto->id)}}" method="post">
+                                                {{csrf_field()}}
+                                                <input name="_method" type="hidden" value="DELETE">
+                                                <button class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
+                                                    <i class="fa fa-trash" style="font-size:16px"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             @else
                                 <tr>
                                     <td colspan="8">No hay registros actualmente</td>
@@ -121,13 +132,8 @@
                         </tbody>
                     </table>
                 </div>
-        
-                </div>
-                {{-- <div style="display:flex; flex-direction: row; justify-content:center; align-items:center;">
-                    {{ $productos->links() }}
-                </div> --}}
+            </div>
         </div>
     </div>
 </div>
-
 @endsection

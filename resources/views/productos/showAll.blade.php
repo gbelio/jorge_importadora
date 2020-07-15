@@ -11,7 +11,7 @@
                             <img src="/storage/{{$fila->s_img}}" class="img-responsive">
                         @else
                             <a href="{{$fila->s_link}}" target="__blank">
-                            <img src="/storage/{{$fila->s_img}}" class="img-responsive">
+                                <img src="/storage/{{$fila->s_img}}" class="img-responsive">
                             </a>
                             <div class="carousel-caption">
                                 <h3></h3>
@@ -40,12 +40,12 @@
                                     <article class="product_1" style="margin-right:0px !important">
                                         <div class="product_1_img">
                                             @if(Auth::user() != null)
-
                                                 <div class="edit_prod">
                                                     <a href="/productos/editar/{{$product->id}}">
                                                         <img class="edit_button" alt="edit_button" src="/img/edit_button.svg">
                                                     </a>
                                                 </div>
+
 
                                                 <div class="add_photos_prod">
                                                     <a href="/productos/usuario/cargar_imagen/<?=$product->id?>">
@@ -53,6 +53,7 @@
                                                     </a>
                                                 </div>
                                                                                           
+
                                                 <div class="delete_prod">
                                                     <form id="_form_eliminar" action="{{action('ProductController@destroy', $product->id)}}" method="post">
                                                         {{csrf_field()}}
@@ -62,8 +63,8 @@
                                                             <i class="fa fa-trash" style="font-size:16px"></i>
                                                         </button>
                                                     </form>
+
                                                 </div>
-                                                    
 
                                             @endif
                                             <span>{{$product->code}}</span>
@@ -95,9 +96,9 @@
                                                         </a>
                                                     </div>
                                                     <div class="delete_prod">
-                                                            <a href="#">
-                                                                <img class="delete_button" alt="delete_button" src="/img/delete_button.svg">
-                                                            </a>
+                                                        <a href="#">
+                                                            <img class="delete_button" alt="delete_button" src="/img/delete_button.svg">
+                                                        </a>
                                                     </div>
                                                 @endif
                                                 <span>{{$product->code}}</span>

@@ -16,22 +16,22 @@
                         <input required type="text" name= "user_id" value="{{Auth::user()->id}}">
                     </div>
                     <div class="form-group">
-                        <label for="code"><strong> Código</strong></label>
-                        <input required type="text" name="code" value="{{ old("code") }}" class="form-control" maxlength="190">
+                        <label for="code"><strong>Código</strong></label>
+                        <input required type="text" maxlength="50" name="code" value="{{ old("code") }}" class="form-control" maxlength="190">
                     </div>
                     @error('code')
                     <span class="errors">{{ $message }}</span>
                     @enderror
                     <div class="form-group">
                         <label for="producto"><strong> Nombre del producto</strong></label>
-                        <input required type="text" name="name" value="{{ old("name") }}" class="form-control">
+                        <input required type="text" name="name" maxlength="25" value="{{ old("name") }}" class="form-control">
                     </div>
                     @error('name')
                     <span class="errors">{{ $message }}</span>
                     @enderror
                     <div class="form-group">
                         <label for="resume"><strong>Resumen del producto</strong> </label>
-                        <input required type="text" name="resume" value="{{ old("resume") }}" class="form-control" maxlength="60">
+                        <input required type="text"maxlength="60" name="resume" value="{{ old("resume") }}" class="form-control" maxlength="60">
                     </div>
                     @error('resume')
                     <span class="errors">{{ $message }}</span>
