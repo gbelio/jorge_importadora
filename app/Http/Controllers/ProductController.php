@@ -33,7 +33,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
+    {
         if(Auth::user() == null){
             return redirect('login');
         }
@@ -45,6 +45,7 @@ class ProductController extends Controller
                                     ->with('productos',$productos);
     }
 
+
     public function relacion1()
     {
  
@@ -53,7 +54,6 @@ class ProductController extends Controller
         } */
         $category_id = Input::get('category_id');
         $subcategories = Subcategory::where('category_id', '=', $category_id)->get();
-        
         return response()->json($subcategories);
     }
 
@@ -80,7 +80,7 @@ class ProductController extends Controller
         $producto->cover = $cover;
         $producto->save();
         return redirect('/productos/cargar');
-    }    
+    }
 
 
     public function show($id)
@@ -139,6 +139,8 @@ class ProductController extends Controller
     {
         $reglas = [
             'name'=>'required',
+            'code'=>'required',
+            'resume'=>'required',
             'description'=>'required',
             'category_id'=>'required',
             'subcategory_id' => 'required',
@@ -147,6 +149,8 @@ class ProductController extends Controller
         $this->validate($request, $reglas, $mensaje);
         $producto = Product::find($id);
         $producto->name = $request->input('name') !== $producto->name ? $request->input('name') : $producto->name;
+        $producto->code = $request->input('code') !== $producto->code ? $request->input('code') : $producto->code;
+        $producto->resume = $request->input('resume') !== $producto->resume ? $request->input('resume') : $producto->resume;
         $producto->description = $request->input('description') !== $producto->description ? $request->input('description') : $producto->description;
         $producto->category_id = $request->input('category_id') !== $producto->category_id ? $request->input('category_id') : $producto->category_id;
         $producto->subcategory_id = $request->input('subcategory_id') !== $producto->subcategory_id ? $request->input('subcategory_id') : $producto->subcategory_id;        
@@ -155,7 +159,13 @@ class ProductController extends Controller
         $producto->cover = $cover;
         }
         $producto->save();
-        return redirect("/productos/cargar");
+        if ($request->input('+fotos') != 'Agregar Fotos'){
+            return redirect("/productos/cargar");
+        }else{
+            return redirect("/productos/usuario/cargar_imagen/$producto->id");
+        }
+        
+            
     }
 
 
@@ -166,7 +176,7 @@ class ProductController extends Controller
        return response()->json(['status'=>'Registro eliminado con éxito']);
    }
 
-   
+
    public function search(Request $request)
    {
        $clave = $request->clave;

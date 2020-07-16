@@ -1,9 +1,8 @@
 @extends('layouts.master')
 @section('content')
-
 <main class="form-multimedia">
     <div class="container-multimedia">
-        <div align="left" class="editor-multimedia">
+        <div class="editor-multimedia">
             <h1 class="text-center __nuevasImagenes">Cargar nuevas imágenes</h1>
             <div class="info_load">
                 <article class="product_1">
@@ -21,7 +20,6 @@
                         <p maxlength="60">{{$producto->resume}}</p>
                     </div>
                 </article>
-                
                 <div class="load_loaded"> 
                     <form class="form-group __formulario" action="" method="post" enctype="multipart/form-data">
                         @csrf

@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
-
     public function index()
     {
         $categorias = Category::all();
         return view('categorias.index')
                     ->with('categorias',$categorias);
     }
+
 
     public function create()
     {
@@ -33,6 +33,7 @@ class CategoryController extends Controller
                                         ->with('subcategories',$subcategories)
                                         ->with('allCategories',$allCategories);
     }
+
 
     public function store(Request $request)
     {
@@ -53,6 +54,7 @@ class CategoryController extends Controller
         return redirect('/categorias/cargar');
     }
 
+
     public function search(Request $request)
     {
         $clave = $request->clave;
@@ -71,6 +73,7 @@ class CategoryController extends Controller
                                         ->with('subcategories',$subcategories);
     }
 
+
     public function show($id)
     {
         $categoria=Category::find($id);
@@ -83,11 +86,13 @@ class CategoryController extends Controller
                                     ->with('multimedias',$multimedias);
     }
 
+
     public function edit($id)
     {
         $categoria = Category::find($id);
         return view('categorias.edit')->with('categoria', $categoria);
     }
+
 
     public function update(Request $request, $id)
     {
@@ -98,10 +103,10 @@ class CategoryController extends Controller
         $this->validate($request, $reglas, $mensaje);
         $categoria = Category::find($id);
         $categoria->name = $request->input('name') !== $categoria->name ? $request->input('name') : $categoria->name;
-      
         $categoria->save();
         return redirect("/categorias/cargar");
     }
+
 
      public function destroy($id)
     {
@@ -113,9 +118,6 @@ class CategoryController extends Controller
         }else{
             return redirect()->back();
         }
-        
         return response()->json(['status'=>'Registro eliminado con éxito']);
-    } 
-
-
+    }
 }
