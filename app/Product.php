@@ -8,7 +8,6 @@ class Product extends Model
 {
     protected $fillable = ['id', 'name', 'code', 'resume', 'description', 'cover', 'category_id', 'subcategory_id'];
 
-    //comparto
     public function multimedia()
     {
         return $this->hasMany('App\Multimedia');

@@ -12,18 +12,18 @@ use Illuminate\Support\Facades\Auth;
 
 class SubcategoryController extends Controller
 {
-    
+
     public function index()
     {
         //
     }
+
 
     public function create()
     {
         if(Auth::user() == null){
             return redirect('login');
         }
-    
         $subcategorias = DB::table('subcategories')->orderBy('id', 'desc')->paginate(15);
         $allCategories = Category::all();
         $subcategories = Subcategory::all();
@@ -32,6 +32,7 @@ class SubcategoryController extends Controller
                                         ->with('subcategorias',$subcategorias)
                                         ->with('subcategories',$subcategories);
     }
+
 
     public function store(Request $request)
     {
@@ -45,11 +46,8 @@ class SubcategoryController extends Controller
         ];
 
         $this->validate($request, $reglas, $mensaje);
-
         $subcategoria = new Subcategory($request->all());
-
         $subcategoria->save();
-
         return redirect('/subcategorias/cargar');
     }
 
@@ -68,21 +66,24 @@ class SubcategoryController extends Controller
                                             ->with('categorias', $categorias);
     }
 
+
     public function update(Request $request, $id)
     {
         $reglas = [
             'name'=>'required',
             'category_id' => 'required'
         ];
+
         $mensaje = ['required' => 'el campo :attribute es obligatorio'];
+
         $this->validate($request, $reglas, $mensaje);
         $subcategoria = Subcategory::find($id);
         $subcategoria->name = $request->input('name') !== $subcategoria->name ? $request->input('name') : $subcategoria->name;
         $subcategoria->category_id = $request->input('category_id') !== $subcategoria->category_id ? $request->input('category_id') : $subcategoria->category_id;
-      
         $subcategoria->save();
         return redirect("/subcategorias/cargar");
     }
+
 
     public function destroy($id)
     {
@@ -96,7 +97,6 @@ class SubcategoryController extends Controller
         return response()->json(['status'=>'Registro eliminado con éxito']);
     }
 
-  
 
     public function search(Request $request)
     {

@@ -52,7 +52,7 @@ Route::group(['prefix'=>'slider'], function(){
 
 Route::group(['prefix'=>'productos'], function(){
 
-    Route::get('/busqueda','ProductController@search');    
+    Route::get('/busqueda','ProductController@search');
     Route::get('/cargar','ProductController@create'); //va a llevar al formulario de carga de producto
     Route::post('/cargar','ProductController@store'); //va a guardar el producto en la base de datos
     Route::get('/categoria/{id}','ProductController@index'); //va a mostrar todos los productos segun el ID de categoria.    
@@ -67,8 +67,8 @@ Route::group(['prefix'=>'productos'], function(){
 
 Route::get('/productos/usuario/cargar_imagen/{id}','MultimediaController@create');
 Route::post('/productos/usuario/cargar_imagen/{id}','MultimediaController@store');
-Route::get('/{id}/editar','MultimediaController@edit'); 
-Route::patch('/{id}/editar','MultimediaController@update'); 
+Route::get('/{id}/editar','MultimediaController@edit');
+Route::patch('/{id}/editar','MultimediaController@update');
 Route::get('/editar/{id}','MultimediaController@create1'); //va a llevar al formulario de edición
 Route::post('/editar/{id}','MultimediaController@store1'); //va a editar en la base de datos
 Route::delete('/productos/usuario/cargar_imagen/{id}','MultimediaController@destroy');

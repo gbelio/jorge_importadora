@@ -16,6 +16,7 @@ class MultimediaController extends Controller
         //
     }
 
+
     public function create($id)
     {
         $producto = Product::find($id);
@@ -28,13 +29,9 @@ class MultimediaController extends Controller
                                         ->with('allCategories',$allCategories);
     }
 
+
     public function store(Request $request)
     {
-/*         $reglas = [
-            'multimedia'=>'required'
-        ];
-        $mensaje = ['required' => 'Necesita seleccionar una imagen'];
-        $this->validate($request, $reglas, $mensaje); */
         foreach ($request->paths as $photo){
             $filename = $photo->store('product','public');
             Multimedia::create([
@@ -44,6 +41,7 @@ class MultimediaController extends Controller
         }
         return redirect ('/productos/usuario/cargar_imagen/' . $request->product_id);
     }
+
 
     public function create1($id)
     {
@@ -57,9 +55,9 @@ class MultimediaController extends Controller
                                         ->with('allCategories',$allCategories);
     }
 
+
     public function store1(Request $request)
     {
-
         foreach ($request->paths as $photo){
             $filename = $photo->store('product','public');
             Multimedia::create([
@@ -69,6 +67,7 @@ class MultimediaController extends Controller
         }
         return redirect ('/productos/editar/' . $request->product_id);
     }
+
 
     public function show(Multimedia $multimedia)
     {
@@ -92,6 +91,7 @@ class MultimediaController extends Controller
         Multimedia::destroy($id);
         return redirect('/productos/usuario/cargar_imagen/'.$multimedia->product_id);
     }
+
 
     public function destroy1($id)
     {  

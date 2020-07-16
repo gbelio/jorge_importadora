@@ -14,7 +14,7 @@
             @csrf
             <div class="form-group">
                 <label for="code"><strong>Código</strong></label>
-                <input required type="text" maxlength="50" name="code" value="{{$producto->code}}" class="form-control">
+                <input required type="text" maxlength="25" name="code" value="{{$producto->code}}" class="form-control">
             </div>
             <div class="form-group">
                 <label for="name" ><strong> Nombre </strong></label>
@@ -28,8 +28,7 @@
             </div>
             <label for="">
             <div class="button">
-                <a class="btn btn-info btn-sm boton-eliminar" href="/productos/usuario/cargar_imagen/<?=$producto->id?>">Agregar fotos del producto</a>
-                
+                <input type="submit" name="+fotos" class="btn btn-info btn-sm boton-eliminar" style="margin:2%; background-color:#007BFF;border-color:#007BFF;" value="Agregar Fotos">
             </div>
             <br>
             <div class="form-group">
@@ -65,7 +64,7 @@
             <br>
             <div class="d-flex md-form mt-0" style="justify-content:center">
                 <a href="/productos/cargar" class="btn btn-info btn-sm boton-eliminar" role="button" style="margin:2%; background-color:#007BFF;border-color:#007BFF;">Volver</a>
-                <input type="submit" class="btn btn-info btn-sm boton-eliminar" style="margin:2%; background-color:#007BFF;border-color:#007BFF;" value="Confirmar Cambios">
+                <input type="submit" name="confirm" class="btn btn-info btn-sm boton-eliminar" style="margin:2%; background-color:#007BFF;border-color:#007BFF;" value="Confirmar Cambios">
             </div>
         </form>
     </div>
