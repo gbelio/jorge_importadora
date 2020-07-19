@@ -1,41 +1,55 @@
 @if(Auth::user() != null)
 <nav class="navbar navbar-expand-lg navbar-light bg-light">     
     <a class="navbar-brand" href="/"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-    </button>
-    @isset($allCategories)
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Categorias
-            </button>
-            <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                @foreach ($allCategories as $category)
-                    <li class="dropdown-submenu">
-                        <form action="/categorias/busqueda" class="form" method="GET">
-                            <input type="submit" value="<?=$category->name?>" class="dropdown-item" name="clave" id="">
-                        </form>
-                        <ul class="dropdown-menu">
-                            @isset($subcategories)
-                                @foreach ($subcategories as $subcategory)
-                                    @if ($subcategory->category_id == $category->id)
-                                        <li class="dropdown-item">
-                                            <form action="/subcategorias/busqueda" class="form" method="GET">
-                                                <input type="submit" value="<?=$subcategory->name?>" class="dropdown-item" name="clave" id="">
-                                            </form>
-                                        </li>
-                                    @endif
-                                @endforeach
-                            @endisset
-                        </ul>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
-    @endisset
+    </button> 
+  
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav cascadaUno" style="justify-content:flex-end; align-items:center">      
-            <li class="nav-item dropdown d-flex" >
+        <ul class="navbar-nav cascadaUno">
+       {{--  SEARCH --}}
+            <li class="nav-item" >
+                <form action="/productos/busqueda" class="form" method="GET" style="display:flex; flex-direction:row">
+                    <input class="searching_box" placeholder='Buscar' type="text" name="clave" class="input-group-text mb-3 mt-3 mr-3" style="text-align: left">
+
+                    <button type="submit" value="" class="{{-- btn btn-info --}} search_button" name="" id="">
+                        <img src="/img/search.svg" alt="search">
+                    </button>
+                    {{-- <input type="submit" value="" class="btn btn-info search_button" name="" id=""> --}}
+                </form>
+            </li>
+        {{-- CAJA FILTROS Y ADMIN --}}
+        <div class="box_filters_abm">
+            @isset($allCategories)
+            <div class="dropdown categorias_dropd">
+                <button class="btn btn-secondary dropdown-toggle button_categorias" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Categorias
+                </button>
+                <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                    @foreach ($allCategories as $category)
+                        <li class="dropdown-submenu">
+                            <form action="/categorias/busqueda" class="form" method="GET">
+                                <input type="submit" value="<?=$category->name?>" class="dropdown-item" name="clave" id="">
+                            </form>
+                            <ul class="dropdown-menu">
+                                @isset($subcategories)
+                                    @foreach ($subcategories as $subcategory)
+                                        @if ($subcategory->category_id == $category->id)
+                                            <li class="dropdown-item">
+                                                <form action="/subcategorias/busqueda" class="form" method="GET">
+                                                    <input type="submit" value="<?=$subcategory->name?>" class="dropdown-item" name="clave" id="">
+                                                </form>
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                @endisset
+                            </ul>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @endisset      
+            <li class="nav-item dropdown d-flex Admin_" >
                 <a class="nav-link usuario dropdown-toggle" data-toggle="dropdown" href="/profile">{{Auth::user()->name}}</a>
                 <ul class="dropdown-menu cascadaDos">
                     <li class="nav-item" style="margin-top: 10px">
@@ -55,17 +69,183 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item" >
-                <form action="/productos/busqueda" class="form" method="GET" style="display:flex; flex-direction:row">
-                    <input placeholder='Buscar' type="text" name="clave" class="input-group-text mb-3 mt-3 mr-3" style="text-align: left">
-                    <input type="submit" value="Buscar" class="btn btn-info" name="" id="" style="background-color:yellow; color:black; font-weight:bold; border: 1px solid yellow; margin:5%auto;">
-                </form>
-            </li>
+        </div>
+  
         </ul>
+        <div class="contactos-collapse">
+            <div class="phones_box">
+                <div class="contacto-img">
+                    <img class="phone" src="/img/phone.svg" alt="phone" style="width:30px;">
+                </div>    
+                <div class="phone_numbers">
+                    <p>(011) 4444-4444</p>
+                   {{--  <p>//</p> --}}
+                    <p>(011) 155-555-5555</p>
+                </div>    
+            </div>
+    
+            <div class="phones_box">
+                <div class="contacto-img">
+                    <img class="phone" src="/img/mail.svg" alt="mail" style="width:25px;">
+                </div>
+                <p>contacto@jorgeimportadora.com.ar</p>
+            </div>
+    
+            <div class="phones_box">
+                <div class="contacto-img">
+                     <img class="phone" src="/img/location.svg" alt="location" style="width:25px;">
+                </div>
+                <p class="envios">envíos a todo el país</p>
+            </div>   
+    
+        </div>
     </div>
+
+    <div class="contactos">
+        <div class="phones_box">
+            <div class="contacto-img">
+                <img class="phone" src="/img/phone.svg" alt="phone" style="width:30px;">
+            </div>    
+            <div class="phone_numbers">
+                <p>(011) 4444-4444</p>
+               {{--  <p>//</p> --}}
+                <p>(011) 155-555-5555</p>
+            </div>    
+        </div>
+
+        <div class="phones_box">
+            <div class="contacto-img">
+                <img class="phone" src="/img/mail.svg" alt="mail" style="width:25px;">
+            </div>
+            <p>contacto@jorgeimportadora.com.ar</p>
+        </div>
+
+        <div class="phones_box">
+            <div class="contacto-img">
+                 <img class="phone" src="/img/location.svg" alt="location" style="width:25px;">
+            </div>
+            <p class="envios">envíos a todo el país</p>
+        </div>   
+
+    </div>    
 </nav>
 @else
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">     
+    <a class="navbar-brand" href="/"></a>
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button> 
+  
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav cascadaUno">
+       {{--  SEARCH --}}
+            <li class="nav-item" >
+                <form action="/productos/busqueda" class="form" method="GET" style="display:flex; flex-direction:row">
+                    <input class="searching_box" placeholder='Buscar' type="text" name="clave" class="input-group-text mb-3 mt-3 mr-3" style="text-align: left">
+
+                    <button type="submit" value="" class="{{-- btn btn-info --}} search_button" name="" id="">
+                        <img src="/img/search.svg" alt="search">
+                    </button>
+                    {{-- <input type="submit" value="" class="btn btn-info search_button" name="" id=""> --}}
+                </form>
+            </li>
+        {{-- CAJA FILTROS Y ADMIN --}}
+        <div class="box_filters_abm">
+            @isset($allCategories)
+            <div class="dropdown categorias_dropd">
+                <button class="btn btn-secondary dropdown-toggle button_categorias" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Categorias
+                </button>
+                <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                    @foreach ($allCategories as $category)
+                        <li class="dropdown-submenu">
+                            <form action="/categorias/busqueda" class="form" method="GET">
+                                <input type="submit" value="<?=$category->name?>" class="dropdown-item" name="clave" id="">
+                            </form>
+                            <ul class="dropdown-menu">
+                                @isset($subcategories)
+                                    @foreach ($subcategories as $subcategory)
+                                        @if ($subcategory->category_id == $category->id)
+                                            <li class="dropdown-item">
+                                                <form action="/subcategorias/busqueda" class="form" method="GET">
+                                                    <input type="submit" value="<?=$subcategory->name?>" class="dropdown-item" name="clave" id="">
+                                                </form>
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                @endisset
+                            </ul>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @endisset      
+            
+        </div>
+  
+        </ul>
+        <div class="contactos-collapse">
+            <div class="phones_box">
+                <div class="contacto-img">
+                    <img class="phone" src="/img/phone.svg" alt="phone" style="width:30px;">
+                </div>    
+                <div class="phone_numbers">
+                    <p>(011) 4444-4444</p>
+                   {{--  <p>//</p> --}}
+                    <p>(011) 155-555-5555</p>
+                </div>    
+            </div>
+    
+            <div class="phones_box">
+                <div class="contacto-img">
+                    <img class="phone" src="/img/mail.svg" alt="mail" style="width:25px;">
+                </div>
+                <p>contacto@jorgeimportadora.com.ar</p>
+            </div>
+    
+            <div class="phones_box">
+                <div class="contacto-img">
+                     <img class="phone" src="/img/location.svg" alt="location" style="width:25px;">
+                </div>
+                <p class="envios">envíos a todo el país</p>
+            </div>   
+    
+        </div>
+    </div>
+
+    <div class="contactos">
+        <div class="phones_box">
+            <div class="contacto-img">
+                <img class="phone" src="/img/phone.svg" alt="phone" style="width:30px;">
+            </div>    
+            <div class="phone_numbers">
+                <p>(011) 4444-4444</p>
+               {{--  <p>//</p> --}}
+                <p>(011) 155-555-5555</p>
+            </div>    
+        </div>
+
+        <div class="phones_box">
+            <div class="contacto-img">
+                <img class="phone" src="/img/mail.svg" alt="mail" style="width:25px;">
+            </div>
+            <p>contacto@jorgeimportadora.com.ar</p>
+        </div>
+
+        <div class="phones_box">
+            <div class="contacto-img">
+                 <img class="phone" src="/img/location.svg" alt="location" style="width:25px;">
+            </div>
+            <p class="envios">envíos a todo el país</p>
+        </div>   
+
+    </div>    
+</nav>
+
+
+
+
+{{-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -107,5 +287,5 @@
             </form>
         </ul>
     </div>
-</nav>
+</nav> --}}
 @endif

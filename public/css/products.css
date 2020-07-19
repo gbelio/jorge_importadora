@@ -46,7 +46,7 @@
 
 .product_1{
     margin: 0;
-    max-width: 360px !important;
+    max-width: 340px !important;
     min-width: 300px !important;
     max-height: 400px;
     min-height: 400px;
@@ -304,15 +304,28 @@
     border: 1px solid gainsboro;
 }
 
-.prod_box_imgs div{
+#muestra_galeria{
     width: 100%;
     height: 19%;
     overflow-x: scroll;
     display: flex;
     flex-direction: row;
-    scrollbar-width: none;
     align-items: center;
 }
+
+#muestra_galeria::-webkit-scrollbar{
+    height: 4px;
+}
+
+#muestra_galeria::-webkit-scrollbar-thumb{
+    border-radius: 4px;
+    background-color: #001B7E;
+}
+
+#muestra_galeria::-webkit-scrollbar-track{
+    border-radius: 4px;
+    background-color: ghostwhite;
+} 
 
 .img_gallery{
     min-width: 135px;
@@ -388,14 +401,14 @@
     scrollbar-width: none;
 }
 
-::-webkit-scrollbar {
+.p-description{
+    min-height: 300px;
+}
+
+.prod_box_details p::-webkit-scrollbar {
     opacity: 0;
     height: 4px;
   }
-
-
-
-  /* MEDIA QUERIES */
 
 
   /* Brai agrega */
@@ -409,9 +422,12 @@ align-items:center !important;
 ._contenedorBotones{
 display:flex !important;
 flex-direction: row !important;
-justify-content: flex-end !important;
 height: 25px !important;
-margin-bottom: 0px !important;
+width: 100px !important;
+position: relative;
+top: 0;
+right: 0;
+z-index: 20;
 }
 
 ._contenedorCodigo{
@@ -419,26 +435,18 @@ margin-bottom: 0px !important;
 }
 
 .edit_prod_show{
-display:flex !important;
-flex-direction: row !important;
-justify-content: center !important;
-align-items:center !important;
-width: fit-content !important;
-margin-right: 0px !important;
-margin-left: 5px !important;
+    width: 25px !important;
+    height: 25px;
+    margin: 0 5px 0 0;
 }
 
 .edit_prod_show a{
-width: 25px;
-height: 25px;
-z-index: 10;
-border-radius: 100%;
-background-color: #626262;
-width:25px !important;
-display:flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
+    margin: 0;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    background-color: #626262;
+    display: flex;
 }
 
 .edit_prod_show a:hover{
@@ -446,16 +454,15 @@ background-color: #5FA8E5;
 }
 
 .delete_prod_show{
-width: fit-content !important;
-margin-right: 0px !important;
-margin-left: 5px !important;
+width: 25px !important;
+height: 25px !important;
+margin: 0 5px 0 0;
 }
 
 .delete_prod_show>form>button{
 border-radius: 100%;
-width: 25px !important;
-height: 25px !important;
-z-index: 10;
+width: 25px;
+height: 25px;
 display:flex;
 flex-direction: row;
 justify-content: center;
@@ -463,35 +470,26 @@ align-items: center;
 }
 
 .add_photos_prod_show{
-display:flex !important;
-flex-direction: row !important;
-justify-content: center !important;
-align-items:center !important;
-width: fit-content !important;
-margin-right: 0px !important;
-margin-left: 5px !important;
+    width: 25px !important;
+    height: 25px;
+    margin: 0 5px 0 0;
 }
 
 .add_photos_prod_show a{
-width: 25px;
-height: 25px;
-z-index: 10;
-border-radius: 100%;
-background-color: #626262;
-display:flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-width:25px !important;
+    margin: 0;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    background-color: #626262;
+    display: flex;
 }
 
 .add_photos_prod_show a:hover{
 background-color: #0937e9;
 }
-
-
-
   /* Brai cierra */
+
+    /* MEDIA QUERIES */
 
   /* ------------TABLETS-------------- */
 
@@ -523,6 +521,7 @@ background-color: #0937e9;
     .prod_box_details{
         width: 98%;
         height: unset;
+        margin-top: 20px;
     }
 
     .prod_box_details div{
@@ -582,6 +581,7 @@ background-color: #0937e9;
     .prod_box_details{
         width: 98%;
         height: unset;
+        margin-top: 20px;
     }
 
     .prod_box_details div{
@@ -637,7 +637,7 @@ background-color: #0937e9;
         display: flex;
         width: 100%;
         overflow-x: scroll;
-        scrollbar-width: none;
+        /* scrollbar-width: none; */
     }
 
     .product_1{

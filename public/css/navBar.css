@@ -1,18 +1,23 @@
 /* NAV BAR */
 .navbar {
-    background-color: black !important;
+    background-color: gainsboro !important;
     position: fixed !important;
     width: 100vw;
+    height: 100px;
     z-index: 100;
-    padding-top: 0;
-    padding-bottom: 0;
+    /* padding-top: 0;
+    padding-bottom: 0; */
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .navbar-brand {
     margin: 0;
-    width: 20%;
-    height: 15vh;
-    background-image: url("../img/jorge_importalogo.jpg");
+    width: 50%;
+    height: 90px;
+    background-image: url("../img/logo-horizontal--03.svg");
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -37,16 +42,29 @@
 }
 
 .nav-link:hover {
-    color: red !important;
+    color: gainsboro !important;
     transition: 300ms !important;
 }
 
 .collapse .usuario {
-    color: yellow !important;
+    color: #001B7E !important;
+    font-family: 'Raleway', sans-serif !important;
+    text-transform: uppercase;
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.cascadaUno{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
 }
 
 .cascadaDos {
-    background-color: rgba(0, 0, 0, 0.8) !important;
+    background-color: #001b7ead !important;
     width: 100%;
 }
 
@@ -63,13 +81,84 @@
     text-decoration: none;
 }
 
+.contactos{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5px;
+}
+
+.phones_box{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 0 5px;
+}
+
+.phones_box p{
+    margin: 0 5%;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #001B7E;
+}
+
+.contacto-img{
+    width: 30px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.envios{
+    margin: 0 5%;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 1rem !important;
+    text-transform: uppercase;
+    color: #5FA8E5 !important;
+}
+
+.phone{
+    margin:0;
+}
+
+.phone_numbers{
+    margin: 0 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.phone_numbers p{
+    margin: 0 10px 0 0;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #001B7E;
+}
+
+.contactos-collapse{
+    display: none;
+}
+
 /* MEDIA QUERIES NAVBAR (UNICA MEDIDA 990PX, PARA MAS PEQUEÑO YA ESTA HECHO.) */
 
-@media screen and (min-width: 990px) {
+
+
+
+@media screen and (min-width: 1024px) {
+
+    .navbar{
+        height: 110px;
+    }
+
     .navbar-brand {
-        width: 30%;
+        width: 20%;
         background-position: left;
-        background-image: url("../img/jorge_importalogo.jpg");
+        background-image: url("../img/logo-horizontal--03.svg");
         background-size: contain;
         background-repeat: no-repeat;
     }
@@ -81,37 +170,234 @@
 
     .nav-item {
         border: none;
+        width: 100%;
     }
+
+    .form{
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .searching_box{
+        text-align: left;
+        width: 80%;
+        box-shadow: 2px 2px 5px grey;
+        margin: 0 auto;
+        outline: gainsboro;
+        font-size: 0.8rem;
+        font-family: 'Raleway',sans-serif;
+        height: 35px;
+        padding: 5px;
+        border: 1px solid gainsboro;
+    }
+
+    .search_button{
+        background-color: white;
+        font-weight: bold;
+        margin: 0 auto;
+        width: 15%;
+        height: 35px;
+        border: 1px solid gainsboro;
+        padding: 5px;
+        box-shadow: 2px 2px 5px grey;
+        border-radius: 1px;
+        display: flex;
+    }
+
+    .search_button img{
+        height: 25px;
+    }
+
+    .search_button:hover{
+        background-color: #E8E8E8;
+        border: gray;
+    }
+
+    .box_filters_abm{
+        margin: 0;
+        display: flex;
+        width: 95%;
+        justify-content: flex-start;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .categorias_dropd{
+        width: 30%;
+        margin: 0;
+    }
+
+    .button_categorias{
+        color: #fff;
+        background-color: #001B7E !important;
+        border-color: #001B7E !important;
+        font-family: 'Raleway', sans-serif;
+        width: 100% !important;
+        outline: none !important;
+        text-align: left;
+        margin: 0;
+    }
+
+    .Admin_{
+        width: 50% !important;
+        margin-left: 10px;
+    }
+
+    .navbar-expand-lg .navbar-nav .dropdown-menu{
+        width: 100%;
+    }
+
     .usuario {
-        color: yellow !important;
+        color: #001B7E !important;
+    }
+
+    .cascadaUno{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        flex-direction: column !important;
     }
 
     .cascadaDos {
-        background-color: rgba(0, 0, 0, 0.8) !important;
+        background-color: #001b7ead !important;
     }
 
     .cascadaDos li {
         list-style-type: none;
         text-align: center;
-        height: 50px;
-        padding-top: 3%;
-        padding-bottom: 3%;
+        height: 35px;
         width: 100%;
+        margin: 0 !important;
     }
 
     .cascadaDos .borderli {
         border-top: 1px solid white !important;
+        display: flex;
+        align-items: center;
     }
 
     .cascadaDos a {
         color: white;
-        font-family: "Frutiger" !important;
+        font-family: 'Raleway', sans-serif !important;
         text-decoration: none;
+        font-size: 1rem;
     }
 
     .cascadaDos a:hover {
-        color: yellow;
+        color: gainsboro;
     }
+}
+
+@media (max-width: 1023px){
+    .contactos{
+        display: none;
+    }
+
+    .navbar-collapse{
+        background-color: gainsboro !important;
+ /*        margin-top: 20px !important; */
+        min-height: 50vh;
+    }
+
+    .nav-item{
+        width: 98%;
+    }
+
+    .searching_box{
+        text-align: left;
+        width: 80%;
+        height: 35px;
+        border: 1px solid gainsboro;
+        box-shadow: 3px 3px 6px grey;
+        font-size: 0.8rem;
+        font-family: 'Raleway', sans-serif;
+        padding: 1%;
+        margin:0;
+    }
+
+    .search_button{
+        width: 20%;
+        height: 35px;
+        border-radius: 1px;
+        margin: 0;
+        padding: 3px;
+        background-color: white;
+        border: 1px solid gainsboro;
+        outline: none;
+        box-shadow: 3px 3px 6px grey;
+        display: flex;
+    }
+
+    .search_button img{
+        height: 100%;
+    }
+
+    .box_filters_abm{
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        margin-top: 5%;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .categorias_dropd{
+        width: 50%;
+    }
+
+    .button_categorias{
+        width: 100%;
+        background-color: #001B7E;
+        border: 1px solid #001B7E;
+    }
+
+    .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle{
+        background-color: #001B7E !important;
+        border: 1px solid #001B7E !important;
+    }
+
+    .Admin_{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cascadaDos a{
+        font-family: 'Raleway', sans-serif !important;
+    }
+
+    .cascadaDos li{
+        margin: 0 !important;
+    }
+
+    .borderli a{
+        color: white;
+        padding: 2%;
+    }
+
+    .contactos-collapse{
+        display: block !important;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 20px auto;
+    }
+
+    .phones_box{
+        justify-content: center;
+    }
+
+
+
+    
 }
 
 

@@ -21,5 +21,6 @@
     <link rel="stylesheet" href="{{ asset('css/formulariosProd.css') }}">
     <link rel="stylesheet" href="{{ asset('css/products.css') }}">
     <link rel="stylesheet" href="{{ asset('css/photos.css')}}" >
+    <link rel="stylesheet" href="{{ asset('css/cat_prods.css')}}" >
     <title>Jorge Importadora</title>
 </head>
