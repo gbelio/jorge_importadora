@@ -38,7 +38,7 @@
                     @enderror
                     <div class="form-group">
                         <label for="descripcion"><strong> Descripción del producto</strong></label>
-                        <textarea style="resize:none;" required type="text" name="description" value="{{ old("description") }}" class="form-control" maxlength="190"></textarea>
+                        <textarea style="resize:none;" required type="text" name="description" value="{{ old("description") }}" class="form-control"></textarea>
                     </div>
                     @error('description')
                     <span class="errors">{{ $message }}</span>
