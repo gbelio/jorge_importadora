@@ -22,9 +22,7 @@
         <div class="box_filters_abm">
             @isset($allCategories)
             <div class="dropdown categorias_dropd">
-                <button class="btn btn-secondary dropdown-toggle button_categorias" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Categorias
-                </button>
+                <button class="btn btn-secondary dropdown-toggle button_categorias" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorias</button>
                 <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
                     @foreach ($allCategories as $category)
                         <li class="dropdown-submenu">

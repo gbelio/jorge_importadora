@@ -102,7 +102,7 @@ class SubcategoryController extends Controller
     {
         $clave = $request->clave;
         $allCategories = Category::all();
-        $subcategory = Subcategory::where('name', 'LIKE', "%$clave%")->get();
+        $subcategory = Subcategory::where('name', 'LIKE', "%$clave%")->get();        
         $subcategory_id = $subcategory[0]->id;
         $productsById = Product::where('subcategory_id', 'LIKE', "%$subcategory_id")->get();
         $categories = Category::all();
