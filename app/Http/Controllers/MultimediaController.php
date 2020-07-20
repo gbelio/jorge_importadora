@@ -33,7 +33,7 @@ class MultimediaController extends Controller
     public function store(Request $request)
     {
         foreach ($request->paths as $photo){
-            $filename = $photo->store('product','public');
+            $filename = $photo->storeAs('product', $photo->getClientOriginalName(),'public');
             Multimedia::create([
                 'product_id' => $request->product_id,
                 'path' => $filename
