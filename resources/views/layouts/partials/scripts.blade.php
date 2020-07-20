@@ -31,7 +31,7 @@
     }
 </script>
 
-
+{{-- <script src="{{asset('vendor/ckeditor/ckeditor.js')}}"></script> --}}
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script src="{{asset('js/carousel.js')}}"></script>
 <script src="{{asset('js/owl.carousel.min.js')}}"></script>

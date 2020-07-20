@@ -3,8 +3,8 @@
 <div>
     <section class="prod_1">
         <div class="prod_1_cat">
-            <a class="cat" href="#" target="blank">{{$producto->category->name}}></a>
-            <a class="subcat" href="#" target="blank"> {{$producto->subcategory->name}}</a>
+            <a class="cat" href="#">{{$producto->category->name}}></a>
+            <a class="subcat" href="#"> {{$producto->subcategory->name}}</a>
         </div>
         <div class="prod_box">
             <div class="prod_box_imgs" id="prod_box_img">
