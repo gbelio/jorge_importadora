@@ -26,7 +26,6 @@
                 <br>
                 <label for="name"><strong> {{$producto->cover}} </strong></label>
             </div>
-            <label for="">
             <div class="button">
                 <input type="submit" name="+fotos" class="btn btn-info btn-sm boton-eliminar" style="margin:2%; background-color:#007BFF;border-color:#007BFF;" value="Agregar Fotos">
             </div>
@@ -36,11 +35,8 @@
                 <input required type="text"maxlength="60" name="resume" value="{{$producto->resume}}" class="form-control" maxlength="60">
             </div>
             <div class="form-group">
-{{--                 <label for="description"><b> Descripción </b></label>
-                <textarea name="description" value="" type="text" class="form-control" placeholder=""> --}}
                 <label for="descripcion"><strong> Descripción del producto</strong></label>
                 <textarea style="resize:none;" required type="text" name="description" value="" class="form-control">{{$producto->description}}</textarea>
-
             </div>
             <div class="form-group">
                 <label for="category_id"><b> Categoría </b></label>
