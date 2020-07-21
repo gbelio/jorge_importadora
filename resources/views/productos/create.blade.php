@@ -23,7 +23,7 @@
                     <span class="errors">{{ $message }}</span>
                     @enderror
                     <div class="form-group">
-                        <label for="producto"><strong> Nombre del producto</strong></label>
+                        <label for="producto"><strong>Nombre del producto</strong></label>
                         <input required type="text" name="name" maxlength="25" value="{{ old("name") }}" class="form-control">
                     </div>
                     @error('name')

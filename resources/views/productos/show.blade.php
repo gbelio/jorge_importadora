@@ -14,17 +14,15 @@
                 <div id="muestra_galeria">
                     <img class="img_gallery" id="galery" src="/storage/{{$producto->cover}}">
                     @foreach($multimedias as $multimedia)
-                                @if($multimedia->product_id !== null)
-                                    @if ($producto->id == $multimedia->product_id)
-                                        <img class="img_gallery" id="galery" alt="galeria" src="/storage/{{$multimedia->path}}">
-                                    @endif
-                                @endif
+                        @if($multimedia->product_id !== null)
+                            @if ($producto->id == $multimedia->product_id)
+                                <img class="img_gallery" id="galery" alt="galeria" src="/storage/{{$multimedia->path}}">
+                            @endif
+                        @endif
                     @endforeach
                 </div>
             </div>
-
             <div class="prod_box_details">
-
                 <div> 
                     @if(Auth::user() != null)
                         <div class="_codigo_botones">
@@ -55,19 +53,15 @@
                             </div>
                         </div>
                     @else
-                    <div>
-                        <h4>Código de Producto: {{$producto->code}}</h4>
-                    </div>
+                        <div>
+                            <h4>Código de Producto: {{$producto->code}}</h4>
+                        </div>
                     @endif
-
-
                     <h2>{{$producto->name}}</h2>
                     <p> {{$producto->resume}}</p>
                 </div>
-                <p class="p-description">{{$producto->description}}</p>
-             </div>    
-
+                {!!$producto->description!!}
+            </div>
     </section>
 </div>
-
 @endsection

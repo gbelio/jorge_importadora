@@ -36,8 +36,11 @@
                 <input required type="text"maxlength="60" name="resume" value="{{$producto->resume}}" class="form-control" maxlength="60">
             </div>
             <div class="form-group">
-                <label for="description"><b> Descripción </b></label>
-                <input name="description" value="{{$producto->description}}" type="text" class="form-control" placeholder="">
+{{--                 <label for="description"><b> Descripción </b></label>
+                <textarea name="description" value="" type="text" class="form-control" placeholder=""> --}}
+                <label for="descripcion"><strong> Descripción del producto</strong></label>
+                <textarea style="resize:none;" required type="text" name="description" value="" class="form-control">{{$producto->description}}</textarea>
+
             </div>
             <div class="form-group">
                 <label for="category_id"><b> Categoría </b></label>
