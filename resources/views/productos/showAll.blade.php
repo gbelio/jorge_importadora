@@ -45,13 +45,11 @@
                                                         <img class="edit_button" alt="edit_button" src="/img/edit_button.svg">
                                                     </a>
                                                 </div>
-
                                                 <div class="add_photos_prod">
                                                     <a href="/productos/usuario/cargar_imagen/<?=$product->id?>">
                                                         <i class="fa fa-file-image-o" style="font-size:15px; color: white"></i>
                                                     </a>
                                                 </div>
-                                                                                          
                                                 <div class="delete_prod">
                                                     <form id="_form_eliminar" action="{{action('ProductController@destroy', $product->id)}}" method="post">
                                                         {{csrf_field()}}
@@ -62,7 +60,6 @@
                                                         </button>
                                                     </form>
                                                 </div>
-
                                             @endif
                                             <span>{{$product->code}}</span>
                                             <img class="product_1_img_imagen" src="/storage/{{$product->cover}}" alt="imagen de producto">
@@ -92,13 +89,11 @@
                                                         <img class="edit_button" alt="edit_button" src="/img/edit_button.svg">
                                                     </a>
                                                 </div>
-
                                                 <div class="add_photos_prod">
                                                     <a href="/productos/usuario/cargar_imagen/<?=$product->id?>">
                                                         <i class="fa fa-file-image-o" style="font-size:15px; color: white"></i>
                                                     </a>
                                                 </div>
-                                                                                          
                                                 <div class="delete_prod">
                                                     <form id="_form_eliminar" action="{{action('ProductController@destroy', $product->id)}}" method="post">
                                                         {{csrf_field()}}
@@ -115,10 +110,10 @@
                                                 <a href="../productos/{{$product->id}}" target="blank">VER MÁS</a>
                                             </div>
                                             <div class="prod_details">
-                                                <h3 class="prod_name" maxlength="25">{{$product->name}}</h3> {{-- revisar que no rompa si es mayor a 25 caracteres --}}
+                                                <h3 class="prod_name" maxlength="25">{{$product->name}}</h3>
                                                 <div class="category_subcat">
-                                                    <a href="#">{{$product->category->name}}</a>{{--  tiene que apuntar a todos los productos de esta categoria y traer el filtro de subcategoria --}}
-                                                    <a href="#">{{$product->subcategory->name}}</a>{{-- tiene que apuntar a todos los productos de esta categoria y subcategoria --}}
+                                                    <a href="#">{{$product->category->name}}</a>
+                                                    <a href="#">{{$product->subcategory->name}}</a>
                                                 </div>
                                                 <p maxlength="60">{{$product->resume}}</p>
                                             </div>
