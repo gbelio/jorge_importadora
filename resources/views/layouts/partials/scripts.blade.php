@@ -29,10 +29,6 @@
             })
         }
     }
-
-    CKEDITOR.config.height = 400;
-    CKEDITOR.config.width = 'auto';
-    CKEDITOR.replace('description');
 </script>
 
 <script src="{{asset('vendor/ckeditor/ckeditor.js')}}"></script>
