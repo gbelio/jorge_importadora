@@ -46,7 +46,7 @@
                     <div class="form-group">
                         <label for="genero"><strong>Categorías</strong> </label>
                         <select required class="form-control" name="category_id" id="category_id">
-                        <option value="0" disable="true" selected="true">Seleccionar Categoría</option>
+                        <option value="0" disabled selected="true">Seleccionar Categoría</option>
                         @foreach ($allCategories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
@@ -56,22 +56,12 @@
                     <span class="errors">{{ $message }}</span>
                     @enderror
                     <div class="form-group">
-                        <label for="genero"><strong> Sub Categoría</strong></label>
-                        <select required class="form-control" name="subcategory_id">
-                            <option value="" disabled selected><strong>Seleccione la sub categoría correspondiente</strong> </option>
-                            @foreach($subcategories as $subcategory)
-                                @if ($subcategory->id == old("subcategory_id"))
-                                    <option required value="{{ $subcategory->id }}" selected>{{ $subcategory->name }}</option>
-                                @else
-                                    <option required value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
-                                @endif
-                            @endforeach
-                        </select>
+                        <label for="genero"><strong> Subcategoría</strong></label>
+                    <select required enabled id="subcategory_id" class="form-control" name="subcategory_id"></select>
                     </div>
                     @error('subcategory_id')
                     <span class="errors">{{ $message }}</span>
                     @enderror
-                    {{-- Si el ID de la categoría es igual al catgory_id de subcategoría, que muestre las subcategorías con ese ID --}}
                     <div class="button">
                         <label for="poster" class="add_img"><strong>Selecione una imagen de portada</strong> </label>
                         <input required class="" type="file" name="cover">
@@ -134,7 +124,6 @@
                                 <td style="text-align:center">
                                 <form action="{{action('ProductController@destroy', $producto->id)}}" method="post">
                                 {{csrf_field()}}
-                               {{--  <input name="_method" type="hidden" value="DELETE"> --}}
                                 <input class="serdelete_val_id" name="_method" type="hidden" value="<?= $producto->id ?>">
                                 <button id="delete" data-id="<?= $producto->id ?>" class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
                                     <i class="fa fa-trash" style="font-size:16px"></i>
