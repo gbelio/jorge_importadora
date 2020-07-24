@@ -15,7 +15,7 @@ class SubcategoryController extends Controller
 
     public function index()
     {
-        //
+        $subcategories = Subcategory::all();
     }
 
 
@@ -112,5 +112,15 @@ class SubcategoryController extends Controller
                                             ->with('subcategories', $subcategories)
                                             ->with('categories', $categories)
                                             ->with('allCategories', $allCategories);
+    }
+
+    public function getSubcategories(Request $request){
+        if ($request->ajax()) {
+            $subcategories = Subcategory::where('category_id', $request->category_id)->get();
+            foreach ($subcategories as $subcategory){
+                $subcatsArr[$subcategory->id] = $subcategory->name;
+            }
+            return response()->json($subcatsArr);
+        }
     }
 }

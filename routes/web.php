@@ -7,14 +7,6 @@ Auth::routes();
 
 Route::get('/','ProductController@showAll');
 
-Route::get('/faq','FaqController@index');
-
-Route::group(['prefix'=>'profile'], function(){
-    
-    Route::get('/','ProfileController@index');
-    Route::get('/{id}','ProfileController@show');
-});
-
 //Categorias
 
 Route::group(['prefix'=>'categorias'], function(){
@@ -31,6 +23,7 @@ Route::group(['prefix'=>'categorias'], function(){
 
 Route::group(['prefix'=>'subcategorias'], function(){
 
+    Route::get('/index','SubcategoryController@getSubcategories'); //muestra todas las subcategorías
     Route::get('/cargar','SubcategoryController@create'); //al formulario de carga de subcategoria (solo administrador)
     Route::post('/cargar','SubcategoryController@store'); //va a guardar el subcategoria en la base de datos (solo administrador)
     Route::patch('/{id}/editar','SubcategoryController@update'); //va a editar en la base de datos
@@ -84,7 +77,3 @@ Route::resource('category','CategoryController');
 Route::resource('subcategory','SubcategoryController');
 
 Route::resource('sliders','SliderController');
-
-/* Route::resource('producto','ProductController'); */
-
-/* Route::get('/productos/cargar', 'ProductController@relacion1'); */

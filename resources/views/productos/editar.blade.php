@@ -40,7 +40,7 @@
             </div>
             <div class="form-group">
                 <label for="category_id"><b> Categoría </b></label>
-                <select class="form-control" name="category_id">
+                <select required class="form-control" name="category_id" id="category_id">
                     <option value="{{ $producto->category->id }}" selected>{{ $producto->category->name }}</option>
                     @isset($allCategories)
                         @foreach($allCategories as $categoria)
@@ -51,14 +51,9 @@
             </div>
             <div class="form-group">
                 <label for="category_id"><b> Subcategoría </b></label>
-                <select class="form-control" name="subcategory_id">
-                    @if($producto->subcategory_id !== null)
-                        <option value="{{ $producto->subcategory->id }}" selected>{{ $producto->subcategory->name }}</option>
-                    @endif
-                    @foreach($subcategories as $subcategory)
-                        <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
-                    @endforeach
-                </select>
+                <select required enabled id="subcategory_id" class="form-control" name="subcategory_id" value="{{ $producto->subcategory->id }}">
+                <option value="{{ $producto->subcategory->id }}"></option>
+            </select>
             </div>
             <br>
             <div class="d-flex md-form mt-0" style="justify-content:center">
