@@ -17,21 +17,12 @@ Use App\Slider;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         if(Auth::user() == null){
@@ -43,18 +34,6 @@ class ProductController extends Controller
         return view('productos.create')->with('allCategories',$allCategories)
                                     ->with('subcategories',$subcategories)
                                     ->with('productos',$productos);
-    }
-
-
-    public function relacion1()
-    {
- 
-        /* if(Auth::user() == null){
-            return redirect('login');
-        } */
-        $category_id = Input::get('category_id');
-        $subcategories = Subcategory::where('category_id', '=', $category_id)->get();
-        return response()->json($subcategories);
     }
 
 
