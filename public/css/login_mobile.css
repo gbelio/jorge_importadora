@@ -1,10 +1,10 @@
 /*-----------------------
 LOGIN MOBILE FIRST
 -----------------------*/
-@font-face {
+/* @font-face {
     font-family: Wrestlemania;
     src: url(../Fonts/wrestlemania/WRESTLEMANIA.ttf);
-}
+} */
 
 @font-face {
     font-family: Frutiger;
@@ -60,17 +60,10 @@ html::-webkit-scrollbar-thumb {
 
 /* Fin de animacion modal */
 
-.cajita h1 {
-    font-family: "Wrestlemania", Arial, Helvetica, sans-serif;
-    margin-top: 0;
-    margin-bottom: 0.2em;
-    font-size: 4rem;
-    letter-spacing: 0.1rem;
-    font-weight: lighter;
-}
 
 .cajita {
-    margin-top: 27%;
+    margin-top: 30%;
+    margin-bottom: 5%;
     width: 100vw;
     padding: 1.5%;
 }
@@ -88,6 +81,24 @@ html::-webkit-scrollbar-thumb {
     border-radius: 0.5em;
     border: 1px solid black;
     outline: none;
+    margin: 2% 0%;
+}
+
+.divSubmitLogin{
+    display:flex;
+    justify-content:center;
+}
+
+.botonLogin{
+    width: auto;
+    background-color: #3f6eb0;
+    border: 1px solid gainsboro;
+    padding: 5px 10px;
+    font-size: 17px;
+    color: white;
+    font-weight: 500;
+    border-radius: 5px;
+    font-family: 'Raleway', sans-serif;
 }
 
 .formulario-login input::placeholder {
@@ -125,7 +136,6 @@ input:focus::-webkit-input-placeholder {
 
 .formulario-login .submitLogin {
     text-align: center;
-    font-family: "Wrestlemania", Arial, Helvetica, sans-serif;
     color: white;
     align-self: center;
     padding: 0.1em 1em;
@@ -148,6 +158,12 @@ input:focus::-webkit-input-placeholder {
     transition-duration: 1s;
 }
 
+.inicioSesion{
+    color: #041c7c;
+    font-family: 'Raleway', sans-serif;
+    font-size: 30px;
+}
+
 @keyframes button {
     0% {
         opacity: 0;
@@ -160,10 +176,6 @@ input:focus::-webkit-input-placeholder {
 
 /* Fin de animacion boton*/
 
-/* button:hover {
-    color: red;
-    transition: 450ms;
-} */
 
 .submitLogin {
     padding: 0.1em;
@@ -194,12 +206,17 @@ input:focus::-webkit-input-placeholder {
         margin-bottom: 5%;
         width: 50vw;
         padding: 1.5%;
-        border: 1em solid black;
+        /* border: 2px solid #041c7c; */
         border-radius: 0.2em;
+        background-color: gainsboro;
     }
 
     .inputLogin {
         margin-bottom: 0;
+    }
+
+    .inputRememeber{
+        margin: 0% 2%;
     }
 }
 
@@ -209,17 +226,22 @@ input:focus::-webkit-input-placeholder {
         margin-bottom: 6%;
         width: 40vw;
         padding: 3.5%;
-        border: 1em solid black;
+        /* border: 2px solid #041c7c; */
         border-radius: 0.2em;
-    }
-
-    .cajita h1 {
-        font-size: 6em;
-        margin: 0;
+        background-color: gainsboro;
     }
 
     .inputLogin {
         margin-bottom: 0;
+    }
+
+    .inputRememeber{
+        margin: 0% 2%;
+    }
+
+    .inicioSesion{
+        color: #041c7c;
+        font-family: 'Raleway', sans-serif;
     }
 }
 
@@ -227,5 +249,14 @@ input:focus::-webkit-input-placeholder {
     .cajita {
         margin-top: 10%;
         border-radius: 0.2em;
+    }
+
+    .inputRememeber{
+        margin: 0% 2%;
+    }
+
+    .inicioSesion{
+        color: #041c7c;
+        font-family: 'Raleway', sans-serif;
     }
 }

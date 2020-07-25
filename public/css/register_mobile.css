@@ -56,6 +56,8 @@ html::-webkit-scrollbar-thumb {
     animation-duration: 1s;
     animation-fill-mode: forwards;
 }
+
+
 .colorRojo {
     color: red;
     font-size: 0.5em;
@@ -64,8 +66,8 @@ html::-webkit-scrollbar-thumb {
     width: 100vw;
     justify-content: center;
     align-items: center;
-    border: 16px solid black;
     border-radius: 5px;
+    margin: 35% 0% 5% 0%;
 }
 
 .formularioRegister {
@@ -103,11 +105,9 @@ html::-webkit-scrollbar-thumb {
 }
 
 .cajita2 h1 {
-    font-family: "Wrestlemania", Arial, Helvetica, sans-serif;
-    margin-bottom: 0.2em;
-    font-size: 4rem;
-    letter-spacing: 0.1rem;
-    font-weight: lighter;
+    color: #041c7c;
+    font-family: 'Raleway', sans-serif;
+    margin-bottom: 7.5px;
 }
 
 .texto-bienvenida {
@@ -122,8 +122,7 @@ html::-webkit-scrollbar-thumb {
     border-radius: 0.5em;
     border: 1px solid black;
     outline: none;
-    margin: 0.1em;
-    width: 100%;
+    margin: 2% 0%;
 }
 
 form input::placeholder {
@@ -356,14 +355,23 @@ button:hover {
         overflow-x: hidden;
     }
 
+    .formularioRegister{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
     .register {
         padding: 0;
         width: 100vw;
         flex-direction: row;
+        justify-content: center;
+        align-items: center;
     }
 
     .cajita-texto {
-        width: 50vw;
+        width: 40vw;
         justify-content: center;
         align-items: center;
         margin-top: 8%;
@@ -390,9 +398,13 @@ button:hover {
         margin: 0;
     }
     .cajita2 {
-        width: 50vw;
-        border: 1em solid black;
-        margin: 12% 5% 4% 0%;
+        margin-top: 15%;
+        margin-bottom: 6%;
+        width: 40vw;
+        padding: 3.5%;
+        /* border: 2px solid #041c7c; */
+        border-radius: 0.2em;
+        background-color: gainsboro;
     }
     form input {
         margin-top: 0.4em;

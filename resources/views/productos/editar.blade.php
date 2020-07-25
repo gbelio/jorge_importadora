@@ -44,7 +44,9 @@
                     <option value="{{ $producto->category->id }}" selected>{{ $producto->category->name }}</option>
                     @isset($allCategories)
                         @foreach($allCategories as $categoria)
-                            <option value="{{ $categoria->id }}">{{ $categoria->name }}</option>
+                            @if ($producto->category->id != $categoria->id)
+                                <option value="{{ $categoria->id }}">{{ $categoria->name }}</option>
+                            @endif
                         @endforeach
                     @endisset
                 </select>
