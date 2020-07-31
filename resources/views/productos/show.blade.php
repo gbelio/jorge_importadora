@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="prod_box_details">
-                <div> 
+                <div>
                     @if(Auth::user() != null)
                         <div class="_codigo_botones">
                             <div style="margin-bottom: 0px !important">
@@ -64,4 +64,7 @@
             </div>
     </section>
 </div>
+@endsection
+@section('scripts')
+    <script src="{{asset('js/modal.js')}}"></script>
 @endsection

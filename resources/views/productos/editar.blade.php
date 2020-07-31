@@ -132,3 +132,7 @@
     </div>
 </div>
 @endsection
+@section('scripts')
+    <script src="{{asset('vendor/ckeditor/ckeditor.js')}}"></script>
+    <script src="{{asset('js/CKEditorCFG.js')}}"></script>
+@endsection

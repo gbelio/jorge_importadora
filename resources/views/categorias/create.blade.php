@@ -1,15 +1,12 @@
 @extends('layouts.master')
 @section('content')
-
 <div class="offset-2 col-8 form-categorias" style="min-height:450px;">
-
     <div id="listaCategorias">
         <div style="display:flex; flex-direction:row; justify-content:space-between">
             <h3 style="display:inline-block"> Agregar Categoría</h3>
             <button id="botonFormProd" style="font-size: 0px; background-color: white; color: black;" class="pull-right"><i class="fa fa-plus-square-o pull-right" style="font-size:30px; margin:0 !important"></i></button>
             <button id="botonFormProd1" style="font-size: 0px; background-color: white; color: black; display:none" class="pull-right"><i class="fa fa-minus-square-o" style="font-size:30px"></i></button>
         </div>
-
         <div id="target" style="display:none">
             <br>
             <form class="form-group" action="" method="post" enctype="multipart/form-data">
@@ -25,59 +22,54 @@
             </form>
         </div>
     </div>
-
-<br>
+    <br>
     @if($errors->any())
         <h5 style="color:red">{{$errors->first()}}</h5>
     @endif
     <div id="listaCategorias" class="panel panel-default">
         <div class="panel-body">
-        <div class="pull-left"><h3>Lista Categorias</h3></div>
-
-        <div class="table-container">
-            <table id="mytable" class="table table-bordered table-striped">
-                <thead>
-                    <th>Id</th>
-                    <th>Nombre</th>
-                    <th></th>
-                    <th></th>
-                </thead>
-                <tbody>
-                    @if($categorias->count())  
-                    @foreach($categorias as $categoria)  
-                    <tr style="font-size:13px">
-                        <td>{{$categoria->id}}</td>
-                        <td>{{$categoria->name}}</td>
-                        <td style="text-align:center"><a class="btn btn-primary btn-sm" href="{{action('CategoryController@edit', $categoria->id)}}">
-                            <i class="fa fa-pencil" style="font-size:16px"></i>
-                        </a></td>
-                        <td style="text-align:center">
-
-                        <form action="{{action('CategoryController@destroy', $categoria->id)}}" method="post">
-                        {{csrf_field()}}
-                        <input class="serdelete_val_id1" name="_method" type="hidden" value="<?= $categoria->id ?>">
-                        {{-- <input name="_method" type="hidden" value="DELETE"> --}}
-
-                        <button id="delete1" data-id="<?= $categoria->id ?>" class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
-                            <i class="fa fa-trash" style="font-size:16px"></i>
-                        </button>
-
-                        </form>
-                        </td>
-                    </tr>
-                    @endforeach 
-                    @else
-                    <tr>
-                        <td colspan="8">No hay registro !!</td>
-                    </tr>
-                    @endif
-                </tbody>
-            </table>
-        </div>
-
+            <div class="pull-left"><h3>Lista Categorias</h3></div>
+            <div class="table-container">
+                <table id="mytable" class="table table-bordered table-striped">
+                    <thead>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th></th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        @if($categorias->count())
+                            @foreach($categorias as $categoria)
+                                <tr style="font-size:13px">
+                                    <td>{{$categoria->id}}</td>
+                                    <td>{{$categoria->name}}</td>
+                                    <td style="text-align:center"><a class="btn btn-primary btn-sm" href="{{action('CategoryController@edit', $categoria->id)}}">
+                                    <i class="fa fa-pencil" style="font-size:16px"></i>
+                                    </a></td>
+                                    <td style="text-align:center">
+                                        <form action="{{action('CategoryController@destroy', $categoria->id)}}" method="post">
+                                            {{csrf_field()}}
+                                            <input class="serdelete_val_id1" name="_method" type="hidden" value="<?= $categoria->id ?>">
+                                            <button id="delete1" data-id="<?= $categoria->id ?>" class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
+                                                <i class="fa fa-trash" style="font-size:16px"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach 
+                        @else
+                            <tr>
+                                <td colspan="8">No hay registro !!</td>
+                            </tr>
+                        @endif
+                    </tbody>
+                </table>
+            </div>
         </div>
         {{ $categorias->links() }}
     </div>
 </div>
-
+@endsection
+@section('scripts')
+    <script src="{{asset('js/toggle.js')}}"></script>
 @endsection
