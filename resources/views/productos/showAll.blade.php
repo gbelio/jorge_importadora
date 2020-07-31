@@ -55,7 +55,7 @@
                                                         {{csrf_field()}}
                                                         <input class="serdelete_val_id4" name="_method" type="hidden" value="<?= $product->id ?>">
                                                         <input class="serdelete_val_id5" name="_method" type="hidden" value="<?= $product->name ?>">
-                                                        <button class="delete_button_showall" id="delete4" data-id="<?= $product->id ?>"  type="submit" >
+                                                        <button class="delete_button_showall" id="delete4" data-id="<?= $product->id ?>"  type="submit">
                                                             <i class="fa fa-trash" style="font-size:16px"></i>
                                                         </button>
                                                     </form>
@@ -66,7 +66,7 @@
                                             <a href="../productos/{{$product->id}}" >VER MÁS</a>
                                         </div>
                                         <div class="prod_details">
-                                            <h3 class="prod_name" maxlength="25">{{$product->name}}</h3> {{-- revisar que no rompa si es mayor a 25 caracteres --}}
+                                            <h3 class="prod_name" maxlength="25">{{$product->name}}</h3>
                                             <div class="category_subcat">
                                                 <a href="/categorias/busqueda?clave={{$product->category->name}}">{{$product->category->name}}</a>
                                                 <a href="/subcategorias/busqueda?clave={{$product->subcategory->name}}">{{$product->subcategory->name}}</a>
@@ -99,7 +99,7 @@
                                                         {{csrf_field()}}
                                                         <input class="serdelete_val_id4" name="_method" type="hidden" value="<?= $product->id ?>">
                                                         <input class="serdelete_val_id5" name="_method" type="hidden" value="<?= $product->name ?>">
-                                                        <button class="delete_button_showall" id="delete4" data-id="<?= $product->id ?>"  type="submit" >
+                                                        <button class="delete_button_showall" id="delete4" data-id="<?= $product->id ?>"  type="submit">
                                                             <i class="fa fa-trash" style="font-size:16px"></i>
                                                         </button>
                                                     </form>
@@ -131,4 +131,8 @@
         </section>
     @endforeach
 </div>
+@endsection
+@section('scripts')
+    <script src="{{asset('js/carousel.js')}}"></script>
+    <script src="{{asset('js/owl.carousel.min.js')}}"></script>
 @endsection

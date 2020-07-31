@@ -5,8 +5,7 @@
         @include('layouts.partials.navbar')
         @yield('content')
         @include('layouts.partials.footer')
-        @include('layouts.partials.scripts')     
+        @include('layouts.partials.scripts')
+        @yield('scripts')
     </body>
 </html>
-
-
