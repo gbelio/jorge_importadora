@@ -149,4 +149,5 @@
     <script src="{{asset('js/toggle.js')}}"></script>
     <script src="{{asset('vendor/ckeditor/ckeditor.js')}}"></script>
     <script src="{{asset('js/CKEditorCFG.js')}}"></script>
+    <script src="{{asset('js/subcategorias.js')}}"></script>
 @endsection
