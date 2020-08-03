@@ -7,7 +7,7 @@
     z-index: 100;
     /* padding-top: 0;
     padding-bottom: 0; */
-    padding: 10px;
+    padding: 0px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -21,6 +21,7 @@
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+    padding: 0;
 }
 
 .navbar-toggler {
@@ -28,6 +29,7 @@
     border: none;
     outline: none !important;
     margin: 0;
+    margin-right: 20px;
 }
 
 .nav-item {
@@ -153,6 +155,7 @@
 
     .navbar{
         height: 110px;
+        padding: 10px;
     }
 
     .navbar-brand {
@@ -238,8 +241,13 @@
         font-family: 'Raleway', sans-serif;
         width: 100% !important;
         outline: none !important;
-        text-align: left;
+        text-align: center;
         margin: 0;
+    }
+
+    .button_categorias::after{
+        display: none !important;
+        outline: none !important;
     }
 
     .Admin_{

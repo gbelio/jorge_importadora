@@ -2,7 +2,8 @@
 @section('content')
 <div class="caja-categorias-resultados">
     <div class="categoriaFiltro">
-        <h2 class="cat-name">{{($subcategory[0]->category->name)}} ></h2>
+        <a class="cat-name" href="/categorias/busqueda?clave={{($subcategory[0]->category->name)}}" style="text-decoration:none;margin:0">{{($subcategory[0]->category->name)}} > </a>
+        {{-- <h2 class="cat-name">{{($subcategory[0]->category->name)}} ></h2> --}}
         <h2 class="subcat-name">{{$subcategory[0]->name}}</h2>
     </div>
     <section class="productos-categoria">
