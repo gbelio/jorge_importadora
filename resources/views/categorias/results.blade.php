@@ -3,7 +3,35 @@
 <div class="caja-categorias-resultados">
     <div class="categoriaFiltro">
         <h2 class="cat-name">{{$category[0]->name}} ></h2>
-        <h2 class="subcat-name">{{$productsById[0]->subcategory->name}}</h2>
+        {{-- <h2 class="subcat-name">{{$productsById[0]->subcategory->name}}</h2> --}}
+        
+            
+            <ul class="dropdown_subcategorias">
+                <a class="dropdown_name" data-toggle="dropdown" href="/profile"> <b>FILTRAR POR</b> Subcategorías
+                </a>
+                
+                <li class="dropdown_content">
+                    @foreach ($subcategories as $subcategory)
+                @if ($subcategory->category_id == $category[0]->id)
+                    <form action="/subcategorias/busqueda" class="form _subcatForm" method="GET">
+                        <input type="submit" value="<?=$subcategory->name?>" class="dropdown-item item_subcat" name="clave" id="">
+                    </form>
+                    @endif
+                    @endforeach
+                </li> 
+              
+            </ul>
+    
+
+
+
+              {{--   <li class="dropdown-item">
+                    <form action="/subcategorias/busqueda" class="form" method="GET">
+                        <input type="submit" value="<?=$subcategory->name?>" class="dropdown-item" name="clave" id="">
+                    </form>
+                </li> --}}
+
+
     </div>
     <section class="productos-categoria">
         @foreach ($productsById as $product)
@@ -42,8 +70,9 @@
                             <div class="category_subcat">
                                 <a href="/categorias/busqueda?clave={{$product->category->name}}">{{$product->category->name}}</a>
                                 <a href="/subcategorias/busqueda?clave={{$product->subcategory->name}}">{{$product->subcategory->name}}</a>
-                                <p maxlength="60">{{$product->resume}}</p>
+                                
                             </div>
+                            <p maxlength="60">{{$product->resume}}</p>
                     </article>
                 </div>
         @endforeach
