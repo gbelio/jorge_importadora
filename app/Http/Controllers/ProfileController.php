@@ -7,13 +7,13 @@ use App\Product;
 use App\Category;
 use App\Subcategory;
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Hash;
 use Auth;
-
 
 class ProfileController extends Controller
 {
     public function index()
-    {   
+    {
         if(Auth::user() == null){
             return redirect('login');
         }
@@ -27,23 +27,34 @@ class ProfileController extends Controller
 
     public function show($id)
     {
-        $allCategories = Category::all();
-        $subcategories = Subcategory::all();
-        return view('perfil.show')->with("user", User::find($id))
-                                ->with('allCategories',$allCategories)
-                                ->with('subcategories',$subcategories);
+
     }
 
 
-    public function edit($id)
+    public function edit()
     {
-        //
+        if(Auth::user() == null){
+            return redirect('login');
+        }
+        return view('perfil.edit')->with('user', Auth::user());
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $reglas = [
+            'name'=>'required',
+        ];
+        $mensaje = ['required' => 'el campo :attribute es obligatorio'];
+        $this->validate($request, $reglas, $mensaje);
+        $user = Auth::user();
+        $user->name = $request->input('name') !== $user->name ? $request->input('name') : $user->name;
+        if ($request->input('password') == $request->input('password_confirmation') && strlen($request->input('password')) > 7){
+            $user->password = Hash::make($request->input('password'));
+            $length = strlen($request->input('password'));
+        }
+        $user->save();
+        return redirect('/perfil');
     }
 
 

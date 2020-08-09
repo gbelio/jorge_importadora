@@ -61,6 +61,9 @@
                                 <a class="nav-link" href="/slider/cargar">Imagenes De Slider</a>
                             </li>
                             <li class="borderli">
+                                <a href="/perfil">Perfil</a>
+                            </li>
+                            <li class="nav-item" style="margin: 10px 10px 0 0">
                                 <a href="/logout">Cerrar Sesión</a>
                             </li>
                         </ul>

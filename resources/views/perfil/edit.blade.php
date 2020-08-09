@@ -1,33 +1,32 @@
 @extends('layouts.master')
 @section('content')
-<div class="" style="min-height:450px; margin-top:125px;">
-    <div id="listaCategorias" class="offset-2 col-8 form-categorias">
-        <div style="display:flex; flex-direction:row; justify-content:space-between">
-            <h3 style="display:inline-block">Editar Usuario</h3>
-        </div>
-        @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        <br>
-        <form action="{{action('CategoryController@update', $categoria->id)}}" method="post">
-            @csrf
+<section class="container">
+    <article class="col-lg-5">
+        <h2 class="">Editar Perfil:</h2>
+        <h3>{{ $user->name }}</h3>
+        <form class="" action="{{action('ProfileController@update')}}" method="POST" enctype="multipart/form-data">
             {{ method_field('PATCH') }}
+            @csrf
             <div class="form-group">
-                <label for="name" class=""><strong> Nombre </strong></label>
-                <input name="name" value="{{$categoria->name}}" type="text" class="form-control" placeholder="">
+                <label for="Nombre">Usuario</label>
+                <input type="text" name="name" value="{{ $user->name }}" class="form-control">
             </div>
-            <br>
-            <div>
-                <a href="/categorias/cargar" class="btn btn-info btn-sm" role="button" style="margin:2% 0%; background-color:#007BFF;border-color:#007BFF;">Volver</a>
-                <input type="submit" class="btn btn-info btn-sm" style="margin:2% 0%; background-color:#007BFF;border-color:#007BFF;" value="Confirmar Cambios">
+            <div class="form-group">
+                <label for="Email">Email</label>
+                <label type="email" name="email" value="" class="form-control">{{ $user->email }}</label>
+            </div>
+            <div class="form-group">
+                <label for="Password">Password</label>
+                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
+            </div>
+            <div class="form-group">
+                <label for="repassword">Confirmar Password</label>
+                <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  autocomplete="new-password">
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-info" value="Confirmar Cambios">
             </div>
         </form>
-    </div>
-</div>
+    </article>
+</section>
 @endsection
