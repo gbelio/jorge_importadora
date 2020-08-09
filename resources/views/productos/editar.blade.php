@@ -111,8 +111,8 @@
                                         <td style="text-align:center">
                                             <form action="{{action('ProductController@destroy', $producto->id)}}" method="post">
                                                 {{csrf_field()}}
-                                                <input name="_method" type="hidden" value="DELETE">
-                                                <button class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
+                                                <input class="serdelete_val_id" name="_method" type="hidden" value="<?= $producto->id ?>">
+                                                <button id="delete" data-id="<?= $producto->id ?>" class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
                                                     <i class="fa fa-trash" style="font-size:16px"></i>
                                                 </button>
                                             </form>
