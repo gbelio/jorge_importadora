@@ -2,10 +2,10 @@
 @section('content')
 
 <div class="caja-productos-categoria">
-    <h1 class="titulo-categoria" style="text-align: center;">{{$categoria->name}}</h1>        
+    <h1 class="titulo-categoria" style="text-align: center;">{{$categoria->name}}</h1>
     <section class="productos-perfil">
         @foreach ($productos as $producto)
-            @if($categoria->id == $producto->category_id)       
+            @if($categoria->id == $producto->category_id)
                 <article class="producto-individual">
                     <div class="producto">
                         <img class="imagen-producto" src="/storage/{{$producto->cover}}" alt="imagen de producto">
@@ -20,7 +20,7 @@
                         </div>
                     @endif
                     <div class="info" style="margin-top:3%">
-                        <h4 class="nombre-producto"> {{$producto->name}} </h4>
+                        <h4 class="nombre-producto"> {{$producto->name}}</h4>
                         <div class="categorias">
                             <h5 class="nombre-categoria"> {{$producto->categoria->name}}</h5>
                             @if($producto->subcategory_id != null)
@@ -29,9 +29,9 @@
                         </div>
                     </div>
                     <div class="edicion">
-                    <a href="../productos/{{$producto->id}}">
-                        <h5 class="ver-fotos">VER</h5>
-                    </a>
+                        <a href="../productos/{{$producto->id}}">
+                            <h5 class="ver-fotos">VER</h5>
+                        </a>
                     </div>
                     <div class="edicion">
                         <a href="../profile/{{$producto->user_id}}">
@@ -44,5 +44,4 @@
     </section>
     {{$productos->links()}}
 </div>
-
 @endsection

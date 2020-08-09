@@ -3,7 +3,7 @@
 <div class="" style="min-height:450px; margin-top:125px;">
     <div id="listaCategorias" class="offset-2 col-8 form-categorias">
         <div style="display:flex; flex-direction:row; justify-content:space-between">
-            <h3 style="display:inline-block">Editar Categoría</h3>
+            <h3 style="display:inline-block">Editar Usuario</h3>
         </div>
         @if (count($errors) > 0)
             <div class="alert alert-danger">
