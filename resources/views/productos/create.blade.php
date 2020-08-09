@@ -20,54 +20,54 @@
                         <input required type="text" maxlength="50" name="code" value="{{ old("code") }}" class="form-control" maxlength="190">
                     </div>
                     @error('code')
-                    <span class="errors">{{ $message }}</span>
+                        <span class="errors">{{ $message }}</span>
                     @enderror
                     <div class="form-group">
                         <label for="producto"><strong>Nombre del producto</strong></label>
                         <input required type="text" name="name" maxlength="25" value="{{ old("name") }}" class="form-control">
                     </div>
                     @error('name')
-                    <span class="errors">{{ $message }}</span>
+                        <span class="errors">{{ $message }}</span>
                     @enderror
                     <div class="form-group">
                         <label for="resume"><strong>Resumen del producto</strong> </label>
                         <input required type="text"maxlength="60" name="resume" value="{{ old("resume") }}" class="form-control" maxlength="60">
                     </div>
                     @error('resume')
-                    <span class="errors">{{ $message }}</span>
+                        <span class="errors">{{ $message }}</span>
                     @enderror
                     <div class="form-group">
                         <label for="descripcion"><strong> Descripción del producto</strong></label>
                         <textarea style="resize:none;" required type="text" name="description" value="{{ old("description") }}" class="form-control"></textarea>
                     </div>
                     @error('description')
-                    <span class="errors">{{ $message }}</span>
+                        <span class="errors">{{ $message }}</span>
                     @enderror
                     <div class="form-group">
                         <label for="genero"><strong>Categorías</strong> </label>
                         <select required class="form-control" name="category_id" id="category_id">
-                        <option value="0" disabled selected="true">Seleccionar Categoría</option>
-                        @foreach ($allCategories as $category)
-                            <option value="{{$category->id}}">{{$category->name}}</option>
-                        @endforeach
+                            <option value="0" disabled selected="true">Seleccionar Categoría</option>
+                            @foreach ($allCategories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                     @error('category_id')
-                    <span class="errors">{{ $message }}</span>
+                        <span class="errors">{{ $message }}</span>
                     @enderror
                     <div class="form-group">
                         <label for="genero"><strong> Subcategoría</strong></label>
                     <select required enabled id="subcategory_id" class="form-control" name="subcategory_id"></select>
                     </div>
                     @error('subcategory_id')
-                    <span class="errors">{{ $message }}</span>
+                        <span class="errors">{{ $message }}</span>
                     @enderror
                     <div class="button">
                         <label for="poster" class="add_img"><strong>Selecione una imagen de portada</strong> </label>
                         <input required class="" type="file" name="cover">
                     </div>
                     @error('cover')
-                    <span class="errors">{{ $message }}</span>
+                        <span class="errors">{{ $message }}</span>
                     @enderror
                     <br>
                     <div class="form-group">
@@ -81,8 +81,7 @@
     <div class="col-11 form-categorias1">
         <div id="listaProductos" class="panel panel-default">
             <div class="panel-body panel-productos">
-                <div class="pull-left"><h3>Lista Productos</h3>
-                </div>
+                <div class="pull-left"><h3>Lista Productos</h3></div>
                 <div class="table-container table_productos">
                     <table id="mytable" class="table table-bordered table-striped">
                         <thead>
@@ -99,43 +98,43 @@
                             <th style="color:red;">Borrar</th>
                         </thead>
                         <tbody>
-                            @if($productos ?? ''->count())  
-                            @foreach($productos ?? '' as $producto)  
-                            <tr style="font-size:13px">
-                                <td>{{$producto->id}}</td>
-                                <td>{{$producto->name}}</td>
-                                <td>{{$producto->code}}</td>
-                                <td>{{$producto->resume}}</td>
-                                <td>{{$producto->description}}</td>
-                                @if ( $producto->cover == true)
-                                    <td>Si</td>
-                                @endif
-                                @if ($producto->cover == false)
-                                    <td>No</td>
-                                @endif
-                                <td>{{$producto->category->name}}</td>
-                                <td>{{$producto->subcategory->name}}</td>
-                                <td style="text-align:center"><a class="btn btn-secondary btn-sm" href="{{action('MultimediaController@create', $producto->id)}}">
-                                    <i class="fa fa-camera" style="font-size:16px"></i>
-                                </a></td>
-                                <td style="text-align:center"><a class="btn btn-primary btn-sm" href="{{action('ProductController@edit', $producto->id)}}">
-                                    <i class="fa fa-pencil" style="font-size:16px"></i>
-                                </a></td>
-                                <td style="text-align:center">
-                                <form action="{{action('ProductController@destroy', $producto->id)}}" method="post">
-                                {{csrf_field()}}
-                                <input class="serdelete_val_id" name="_method" type="hidden" value="<?= $producto->id ?>">
-                                <button id="delete" data-id="<?= $producto->id ?>" class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
-                                    <i class="fa fa-trash" style="font-size:16px"></i>
-                                </button>
-                                </form>
-                                </td>
-                            </tr>
-                            @endforeach 
+                            @if($productos ?? ''->count())
+                                @foreach($productos ?? '' as $producto)
+                                    <tr style="font-size:13px">
+                                        <td>{{$producto->id}}</td>
+                                        <td>{{$producto->name}}</td>
+                                        <td>{{$producto->code}}</td>
+                                        <td>{{$producto->resume}}</td>
+                                        <td>{{$producto->description}}</td>
+                                        @if ( $producto->cover == true)
+                                            <td>Si</td>
+                                        @endif
+                                        @if ($producto->cover == false)
+                                            <td>No</td>
+                                        @endif
+                                        <td>{{$producto->category->name}}</td>
+                                        <td>{{$producto->subcategory->name}}</td>
+                                        <td style="text-align:center"><a class="btn btn-secondary btn-sm" href="{{action('MultimediaController@create', $producto->id)}}">
+                                            <i class="fa fa-camera" style="font-size:16px"></i></a>
+                                        </td>
+                                        <td style="text-align:center"><a class="btn btn-primary btn-sm" href="{{action('ProductController@edit', $producto->id)}}">
+                                            <i class="fa fa-pencil" style="font-size:16px"></i></a>
+                                        </td>
+                                        <td style="text-align:center">
+                                            <form action="{{action('ProductController@destroy', $producto->id)}}" method="post">
+                                                {{csrf_field()}}
+                                                <input class="serdelete_val_id" name="_method" type="hidden" value="<?= $producto->id ?>">
+                                                <button id="delete" data-id="<?= $producto->id ?>" class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
+                                                    <i class="fa fa-trash" style="font-size:16px"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach 
                             @else
-                            <tr>
-                                <td colspan="8">No hay registros actualmente</td>
-                            </tr>
+                                <tr>
+                                    <td colspan="8">No hay registros actualmente</td>
+                                </tr>
                             @endif
                         </tbody>
                     </table>
