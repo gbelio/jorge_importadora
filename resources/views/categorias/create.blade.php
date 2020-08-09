@@ -43,9 +43,11 @@
                                 <tr style="font-size:13px">
                                     <td>{{$categoria->id}}</td>
                                     <td>{{$categoria->name}}</td>
-                                    <td style="text-align:center"><a class="btn btn-primary btn-sm" href="{{action('CategoryController@edit', $categoria->id)}}">
-                                    <i class="fa fa-pencil" style="font-size:16px"></i>
-                                    </a></td>
+                                    <td style="text-align:center">
+                                        <a class="btn btn-primary btn-sm" href="{{action('CategoryController@edit', $categoria->id)}}">
+                                            <i class="fa fa-pencil" style="font-size:16px"></i>
+                                        </a>
+                                    </td>
                                     <td style="text-align:center">
                                         <form action="{{action('CategoryController@destroy', $categoria->id)}}" method="post">
                                             {{csrf_field()}}
