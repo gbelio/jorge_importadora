@@ -67,13 +67,15 @@ Route::post('/editar/{id}','MultimediaController@store1'); //va a editar en la b
 Route::delete('/productos/usuario/cargar_imagen/{id}','MultimediaController@destroy');
 Route::delete('/productos/editar/{id}','MultimediaController@destroy1');
 
+//Perfil
+Route::get('/perfil','ProfileController@edit');
+Route::patch('/perfil','ProfileController@update');
+
 Route::get('logout','\App\Http\Controllers\Auth\LoginController@logout');
 
 
 //Recursos
 
 Route::resource('category','CategoryController');
-
 Route::resource('subcategory','SubcategoryController');
-
 Route::resource('sliders','SliderController');
