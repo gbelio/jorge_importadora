@@ -101,6 +101,9 @@ class ProductController extends Controller
 
     public function edit($id)
     {
+        if(Auth::user() == null){
+            return redirect('login');
+        }
         $productos = Product::all()->sortByDesc('id');
         $producto = Product::find($id);
         $allCategories = Category::all();
@@ -150,6 +153,9 @@ class ProductController extends Controller
 
    public function destroy($id)
    {
+        if(Auth::user() == null){
+            return redirect('login');
+        }
        $producto=Product::find($id);
        $producto->delete();
        return response()->json(['status'=>'Registro eliminado con éxito']);
@@ -165,7 +171,7 @@ class ProductController extends Controller
        $categories = Category::where('name', 'LIKE', "%$clave%")->get();
        $subcategory = Subcategory::where('name', 'LIKE', "%$clave%")->get();
        $subcategories = Subcategory::all();
-       $mensaje = 'Encontramos'." ".count($products)." ".'resultados para tu busqueda';
+       $mensaje = 'Encontramos'." ".count($products)." ".'resultados para ' . "'$clave'";
        return view('productos.results')->with('products', $products)
                                         ->with('categories', $categories)
                                         ->with('subcategories', $subcategories)
