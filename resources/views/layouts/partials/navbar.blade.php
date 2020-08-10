@@ -70,7 +70,7 @@
             <div class="contactos-collapse">
                 <div class="phones_box">
                     <div class="contacto-img">
-                        <img class="phone" src="/img/phone.svg" alt="phone" style="width:30px;">
+                        <img class="phone" src="/img/phone.svg" alt="phone">
                     </div>    
                     <div class="phone_numbers">
                         <p>(011) 4444-4444</p>
@@ -94,7 +94,7 @@
         <div class="contactos">
             <div class="phones_box">
                 <div class="contacto-img">
-                    <img class="phone" src="/img/phone.svg" alt="phone" style="width:30px;">
+                    <img class="phone" src="/img/phone.svg" alt="phone">
                 </div>
                 <div class="phone_numbers">
                     <p>(011) 4444-4444</p>
@@ -168,7 +168,7 @@
             <div class="contactos-collapse">
                 <div class="phones_box">
                     <div class="contacto-img">
-                        <img class="phone" src="/img/phone.svg" alt="phone" style="width:30px;">
+                        <img class="phone" src="/img/phone.svg" alt="phone">
                     </div>
                     <div class="phone_numbers">
                         <p>(011) 4444-4444</p>
@@ -192,7 +192,7 @@
         <div class="contactos">
             <div class="phones_box">
                 <div class="contacto-img">
-                    <img class="phone" src="/img/phone.svg" alt="phone" style="width:30px;">
+                    <img class="phone" src="/img/phone.svg" alt="phone">
                 </div>    
                 <div class="phone_numbers">
                     <p>(011) 4444-4444</p>
