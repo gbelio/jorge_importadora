@@ -229,9 +229,6 @@ $(document).ready(function(){
         ev.preventDefault();
         var nombre = $(this).parents('td').find('.serdelete_val_id5').val();
         var id = $(this).parents('td').find('.serdelete_val_id5').val();
-      
-        console.log(id);
-
 
         Swal.fire({
             title: '¿Realmente quieres eliminar el registro de '+nombre+' ?',
@@ -272,6 +269,56 @@ $(document).ready(function(){
                         'error'
                     )
                  
+                })
+            }
+        })
+    })
+
+    //Producto (Editar Producto Individual)
+    $("form #delete6").click(function(ev){
+        ev.preventDefault();
+        var nombre = $(this).parents('form').find('.serdelete_val_id_7').val();
+        var id = $(this).parents('form').find('.serdelete_val_id_6').val();
+      
+        Swal.fire({
+            title: '¿Realmente quieres eliminar el registro de '+nombre+' ?',
+            text: "El registro será eliminado permanentemente",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, borrar',
+            cancelButtonText: 'No',
+            }).then((result) => {
+            if (result.value) {
+
+                var data = {
+                    "_token" : $('input[name=_token]').val(),
+                    "id" : id,
+                };
+ 
+                $.ajax({
+                    type: 'DELETE',
+                    url: '/productos/delete/'+id,
+                    data: data,
+                })
+                .done(function(response){
+                    Swal.fire(
+                        'Eliminado!',
+                        'Tu registro ha sido eliminado correctamentee',
+                        'success'
+                    )
+                    .then ((result) => {
+                        location.assign("http://127.0.0.1:8000/productos")
+                    });
+
+                    }).fail (function(response){
+                        Swal.fire(
+                            'Ups!',
+                            'Tu registro no se pudo eliminar',
+                            'error'
+                    )
+                      
                 })
             }
         })
