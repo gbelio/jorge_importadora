@@ -33,7 +33,7 @@
         <section class="{{-- products-all --}}" style="margin:0">
                 @if (count($category->product) > 0)
                     <div id="cat{{$category->id}}">
-                        <a href="/categorias/busqueda?clave={{$category->name}}" style="font-size:18px; text-decoration:none; color: black; ">{{$category->name}}</a>
+                        <a href="/categorias/busqueda?clave={{$category->name}}" class="cat-name" style="text-decoration:none; color:#5FA8E5;">{{$category->name}}</a>
                         <div class="{{-- prods_ --}}owl-carousel owl-theme carrousel_prod">
                             @foreach ($products as $product)
                                 @if ($product->category->name == $category->name)

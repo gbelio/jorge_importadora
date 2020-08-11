@@ -6,7 +6,6 @@
             <h3 style="display:inline-block">Editar Producto</h3>
             <form id="formularioDeleteEdit" action="{{action('ProductController@destroy', $producto->id)}}" method="post">
                 {{csrf_field()}}
-                {{-- <input name="_method" type="hidden" value="DELETE"> --}}
                 <input class="serdelete_val_id_6" name="_method" type="hidden" value="<?= $producto->id ?>">
                 <input class="serdelete_val_id_7" name="_method" type="hidden" value="<?= $producto->name ?>">
                 <button id="delete6" data-id="<?= $producto->id ?>" type="submit" style="margin:0 !important;">
@@ -18,18 +17,6 @@
         <div style="display:flex; flex-direction:row; justify-content:center; align-items:center">
             <img style="max-width: 500px; max-height: 500px; " src="/storage/{{$producto->cover}}" alt="imagen de producto">
         </div>
-
-        {{-- <form id="_form_eliminar_editarProd" action="{{action('ProductController@destroy', $producto->id)}}" method="POST">
-            {{csrf_field()}}
-            <input class="serdelete_val_id_6" name="_method" type="hidden" value="<?= $producto->id ?>">
-            <input class="serdelete_val_id_7" name="_method" type="hidden" value="<?= $producto->name ?>">
-            <button class="delete_button_showall" id="delete6" data-id="<?= $producto->id ?>"  type="submit">
-                <i class="fa fa-trash" style="font-size:16px"></i>
-            </button>
-        </form> --}}
-
-
-
         <form method="POST" action="" enctype="multipart/form-data">
             {{ method_field('PATCH') }}
             @csrf
@@ -75,8 +62,8 @@
             <div class="form-group">
                 <label for="category_id"><b> Subcategoría </b></label>
                 <select required enabled id="subcategory_id" class="form-control" name="subcategory_id" value="{{ $producto->subcategory->id }}">
-                <option value="{{ $producto->subcategory->id }}"></option>
-            </select>
+                    <option value="{{ $producto->subcategory->id }}"></option>
+                </select>
             </div>
             <br>
             <div class="d-flex md-form mt-0" style="justify-content:center">

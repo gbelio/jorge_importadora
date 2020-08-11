@@ -52,6 +52,9 @@ class ProfileController extends Controller
         if ($request->input('password') == $request->input('password_confirmation') && strlen($request->input('password')) > 7){
             $user->password = Hash::make($request->input('password'));
             $length = strlen($request->input('password'));
+        }elseif ($request->input('password') !== null){
+            $error="El password debe tener más de 7 caracteres y coincidir en ambos casilleros";
+            return view('perfil.edit')->with('error', $error);
         }
         $user->save();
         return redirect('/perfil');
