@@ -3,7 +3,6 @@
 <div class="caja-categorias-resultados">
     <div class="categoriaFiltro">
         <a class="cat-name" href="/categorias/busqueda?clave={{($subcategory[0]->category->name)}}" style="text-decoration:none;margin:0">{{($subcategory[0]->category->name)}} > </a>
-        {{-- <h2 class="cat-name">{{($subcategory[0]->category->name)}} ></h2> --}}
         <h2 class="subcat-name">{{$subcategory[0]->name}}</h2>
     </div>
     <section class="productos-categoria">
@@ -21,7 +20,7 @@
                                 <a href="/productos/usuario/cargar_imagen/<?=$product->id?>">
                                     <i class="fa fa-file-image-o" style="font-size:15px; color: white"></i>
                                 </a>
-                            </div>                            
+                            </div>
                             <div class="delete_prod">
                                 <form id="_form_eliminar" action="{{action('ProductController@destroy', $product->id)}}" method="post">
                                     {{csrf_field()}}
