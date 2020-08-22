@@ -171,7 +171,7 @@ class ProductController extends Controller
        $categories = Category::where('name', 'LIKE', "%$clave%")->get();
        $subcategory = Subcategory::where('name', 'LIKE', "%$clave%")->get();
        $subcategories = Subcategory::all();
-       $mensaje = 'Encontramos'." ".count($products)." ".'resultados para ' . "'$clave'";
+       $mensaje = 'Encontramos'." ".count($products)." ".'productos para su búsqueda: ' . "'$clave'";
        return view('productos.results')->with('products', $products)
                                         ->with('categories', $categories)
                                         ->with('subcategories', $subcategories)
