@@ -16,6 +16,25 @@
     align-items: center;
 }
 
+.searchMessage{
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #5FA8E5;
+    margin: 0;
+    padding: 2%;
+}
+
+.offer_msg{
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2rem;
+    color:#001B7E;
+    margin-bottom: 2%;
+    font-weight: bold;
+}
+
 .cat-name{
     font-family: 'Raleway', sans-serif;
     font-size: 1.5rem;
@@ -25,6 +44,7 @@
     padding: 1%;
     font-weight: bolder;
     color: #5FA8E5;
+    margin: 0;
 }
 
 .subcat-name{
@@ -47,7 +67,7 @@
 
 .cat-prod{
     margin:0 0 20px 0;
-    width: 340px;
+    width: 315px;
 }
 
 .productos-categoria{
@@ -61,6 +81,12 @@
 
 /* ------- MEDIA QUERIES ------ */
 
+@media (min-width:481px) and (max-width:1023){
+    .cat-prod{
+        width: 300px;
+    }
+}
+
 @media (max-width: 480px) {
 
     .cat-prod{
@@ -70,9 +96,15 @@
 
     .cat-name{
         font-size: 1rem;
+        margin: 0;
+    }
+
+    .subcat-name{
+        font-size: 1rem;
     }
 
     .categoriaFiltro{
-        align-items: unset;
+        align-items: center;
+        margin-bottom: 5%;
     }
 }

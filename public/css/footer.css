@@ -4,7 +4,7 @@
 footer{
   width: 100vw;
   height: 70vh;
-  background: #001B7E;
+  background: black;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -12,7 +12,7 @@ footer{
   color: white;
   font-family: 'Raleway', sans-serif;
   position: absolute;
-  padding: 2%;
+  padding: 3%;
 }
 
 .ji_info{
@@ -46,6 +46,7 @@ footer{
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-end;
+  padding: 0 2%;
 }
 
 .logo_svg_caja{
@@ -100,7 +101,7 @@ footer{
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  height: 60px;
+  height:40px;
   margin: 0;
 }
 
@@ -114,13 +115,6 @@ footer{
 
 .ji_face:hover{
   filter: blur(1px);
-}
-
-.footer_separador{
-  width: 1px;
-  height: 50%;
-  background-color: white;
-
 }
 
 .development{
@@ -148,19 +142,21 @@ footer{
 
   footer{
     height: 90vh;
+    justify-content: flex-end;
   }
 
   .ji_info{
     width: 100%;
-    height: 90%;
+    height: 85%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-flow: wrap-reverse;
   }
 
   .development{
-    height: 10%;
+    height: 8%;
   }
 
   .development_logo{
@@ -183,15 +179,13 @@ footer{
     height: unset;
   }
 
-  .phone_numbers_footer>p{
-    font-size: 0.8rem;
+  .contacto-img-footer{
+    width: 5%;
   }
 
-  .footer_separador{
-    width: 50%;
-    height: 0.5px;
-    background-color: white;
-  }
+/*   .phone_numbers_footer>p{
+    font-size: 1.5rem;
+  } */ 
 
   .ji_logo-location{
     width: 100%;
@@ -207,7 +201,7 @@ footer{
   }
 
   .logo_svg{
-    width: 130px;;
+    width: 200px;;
   }
 
   .ji_address{
@@ -215,7 +209,7 @@ footer{
   }
 
   .ji_address>p{
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 
   .phone_numbers_footer{

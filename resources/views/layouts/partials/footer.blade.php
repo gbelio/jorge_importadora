@@ -45,7 +45,6 @@
 
         </div>
 
-        <div class="footer_separador"></div>
 
         <div class="ji_logo-location">
             <div class="logo_svg_caja">
