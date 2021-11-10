@@ -70,7 +70,10 @@
                     </li>
                 </div>
             </ul>
-            <div class="contactos-collapse">
+            <a href="#footer">
+            <button type="button" class="btn btn-dark" style="font-size: 1.5rem; font-weight:bold; background-color:#5FA8E5; border:none;">¡CONTACTANOS!</button>
+            </a>
+{{--             <div class="contactos-collapse">
                 <div class="phones_box">
                     <div class="contacto-img">
                         <img class="phone" src="/img/phone.svg" alt="phone">
@@ -92,30 +95,7 @@
                     </div>
                     <p class="envios">envíos a todo el país</p>
                 </div>
-            </div>
-        </div>
-        <div class="contactos">
-            <div class="phones_box">
-                <div class="contacto-img">
-                    <img class="phone" src="/img/phone.svg" alt="phone">
-                </div>
-                <div class="phone_numbers">
-                    <p>(011) 4444-4444</p>
-                    <p>(011) 155-555-5555</p>
-                </div>
-            </div>
-            <div class="phones_box">
-                <div class="contacto-img">
-                    <img class="phone" src="/img/mail.svg" alt="mail" style="width:25px;">
-                </div>
-                <p>contacto@jorgeimportadora.com.ar</p>
-            </div>
-            <div class="phones_box">
-                <div class="contacto-img">
-                    <img class="phone" src="/img/location.svg" alt="location" style="width:25px;">
-                </div>
-                <p class="envios">envíos a todo el país</p>
-            </div>
+            </div> --}}
         </div>
     </nav>
 @else
@@ -168,7 +148,10 @@
                     @endisset
                 </div>
             </ul>
-            <div class="contactos-collapse">
+            <a href="#footer">
+                <button type="button" class="btn btn-dark"  style="font-size: 1.5rem; font-weight:bold; background-color:#5FA8E5; border: none;">¡CONTACTANOS!</button>
+                </a>
+{{--             <div class="contactos-collapse">
                 <div class="phones_box">
                     <div class="contacto-img">
                         <img class="phone" src="/img/phone.svg" alt="phone">
@@ -190,30 +173,7 @@
                     </div>
                     <p class="envios">envíos a todo el país</p>
                 </div>
-            </div>
-        </div>
-        <div class="contactos">
-            <div class="phones_box">
-                <div class="contacto-img">
-                    <img class="phone" src="/img/phone.svg" alt="phone">
-                </div>    
-                <div class="phone_numbers">
-                    <p>(011) 4444-4444</p>
-                    <p>(011) 155-555-5555</p>
-                </div>
-            </div>
-            <div class="phones_box">
-                <div class="contacto-img">
-                    <img class="phone" src="/img/mail.svg" alt="mail" style="width:25px;">
-                </div>
-                <p>contacto@jorgeimportadora.com.ar</p>
-            </div>
-            <div class="phones_box">
-                <div class="contacto-img">
-                    <img class="phone" src="/img/location.svg" alt="location" style="width:25px;">
-                </div>
-                <p class="envios">envíos a todo el país</p>
-            </div>
+            </div> --}}
         </div>
     </nav>
 @endif

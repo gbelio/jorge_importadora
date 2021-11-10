@@ -1,4 +1,4 @@
-<footer>
+<footer id="footer">
 
     <div class="ji_info">
         <div class="ji_contact">
