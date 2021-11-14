@@ -28,7 +28,7 @@
                     <img class="phone-footer" src="/img/mail_footer.svg" alt="mail">
                 </div>    
                 <div class="phone_numbers_footer">
-                    <p>contacto@jorgeimportadora.com.ar</p>
+                    <a href="mailto:cavagnalucia@gmail.com">contacto@jorgeimportadora.com.ar</a>
                 </div>
             </div>
             <div class="ji_telefonos">
