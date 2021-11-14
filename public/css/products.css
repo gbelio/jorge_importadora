@@ -47,10 +47,10 @@
 
 .product_1{
     margin: 0;
-    max-width: 340px !important;
-    min-width: 300px !important;
-    max-height: 400px;
-    min-height: 400px;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    max-height: 500px;
+    min-height: 500px;
     border: 1px solid gainsboro;
     border-radius: 5px;
     display: flex;
@@ -648,6 +648,13 @@ align-items: center;
 
 
 /* Slider de productos */
+@media portrait and (max-width: 800px){
+    .product_1{
+        max-width: 260px !important;
+        min-width: 200px !important;
+    }
+}
+
 @media (min-width:1024px) and (max-width: 1300px){
     .product_1{
         max-width: 260px !important;
