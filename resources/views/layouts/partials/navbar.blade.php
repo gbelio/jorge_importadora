@@ -45,57 +45,31 @@
                             </ul>
                         </div>
                     @endisset
-                    <li class="nav-item dropdown d-flex Admin_" >
-                        <a class="nav-link usuario dropdown-toggle" data-toggle="dropdown" href="/profile">{{Auth::user()->name}}</a>
-                        <ul class="dropdown-menu cascadaDos">
-                            <li class="nav-item" style="margin-top: 10px">
-                                <a class="nav-link" href="/categorias/cargar">Categorías</a>
-                            </li>
-                            <li class="nav-item" style="margin-top: 10px">
-                                <a class="nav-link" href="/subcategorias/cargar">Subcategorías</a>
-                            </li>
-                            <li class="nav-item" style="margin: 10px 10px 0 0">
-                                <a class="nav-link" href="/productos/cargar">Productos</a>
-                            </li>
-                            <li class="nav-item" style="margin: 10px 10px 0 0">
-                                <a class="nav-link" href="/slider/cargar">Imagenes De Slider</a>
-                            </li>
-                            <li class="borderli">
-                                <a href="/perfil">Perfil</a>
-                            </li>
-                            <li class="nav-item" style="margin: 10px 10px 0 0">
-                                <a href="/logout">Cerrar Sesión</a>
-                            </li>
-                        </ul>
-                    </li>
                 </div>
             </ul>
-            <a href="#footer">
-            <button type="button" class="btn btn-dark" style="font-size: 1.5rem; font-weight:bold; background-color:#5FA8E5; border:none;">¡CONTACTANOS!</button>
-            </a>
-{{--             <div class="contactos-collapse">
-                <div class="phones_box">
-                    <div class="contacto-img">
-                        <img class="phone" src="/img/phone.svg" alt="phone">
-                    </div>    
-                    <div class="phone_numbers">
-                        <p>(011) 4444-4444</p>
-                        <p>(011) 155-555-5555</p>
-                    </div>
-                </div>
-                <div class="phones_box">
-                    <div class="contacto-img">
-                        <img class="phone" src="/img/mail.svg" alt="mail" style="width:25px;">
-                    </div>
-                    <p>contacto@jorgeimportadora.com.ar</p>
-                </div>
-                <div class="phones_box">
-                    <div class="contacto-img">
-                        <img class="phone" src="/img/location.svg" alt="location" style="width:25px;">
-                    </div>
-                    <p class="envios">envíos a todo el país</p>
-                </div>
-            </div> --}}
+            <li class="nav-item dropdown d-flex Admin_" >
+                <a class="nav-link usuario dropdown-toggle" data-toggle="dropdown" href="/profile">{{Auth::user()->name}}</a>
+                <ul class="dropdown-menu cascadaDos">
+                    <li class="nav-item" style="margin-top: 10px">
+                        <a class="nav-link" href="/categorias/cargar">Categorías</a>
+                    </li>
+                    <li class="nav-item" style="margin-top: 10px">
+                        <a class="nav-link" href="/subcategorias/cargar">Subcategorías</a>
+                    </li>
+                    <li class="nav-item" style="margin: 10px 10px 0 0">
+                        <a class="nav-link" href="/productos/cargar">Productos</a>
+                    </li>
+                    <li class="nav-item" style="margin: 10px 10px 0 0">
+                        <a class="nav-link" href="/slider/cargar">Imagenes De Slider</a>
+                    </li>
+                    <li class="borderli">
+                        <a href="/perfil">Perfil</a>
+                    </li>
+                    <li class="nav-item" style="margin: 10px 10px 0 0">
+                        <a href="/logout">Cerrar Sesión</a>
+                    </li>
+                </ul>
+            </li>
         </div>
     </nav>
 @else
@@ -148,32 +122,12 @@
                     @endisset
                 </div>
             </ul>
-            <a href="#footer">
-                <button type="button" class="btn btn-dark"  style="font-size: 1.5rem; font-weight:bold; background-color:#5FA8E5; border: none;">¡CONTACTANOS!</button>
-                </a>
-{{--             <div class="contactos-collapse">
-                <div class="phones_box">
-                    <div class="contacto-img">
-                        <img class="phone" src="/img/phone.svg" alt="phone">
-                    </div>
-                    <div class="phone_numbers">
-                        <p>(011) 4444-4444</p>
-                        <p>(011) 155-555-5555</p>
-                    </div>
-                </div>
-                <div class="phones_box">
-                    <div class="contacto-img">
-                        <img class="phone" src="/img/mail.svg" alt="mail" style="width:25px;">
-                    </div>
-                    <p>contacto@jorgeimportadora.com.ar</p>
-                </div>
-                <div class="phones_box">
-                    <div class="contacto-img">
-                        <img class="phone" src="/img/location.svg" alt="location" style="width:25px;">
-                    </div>
-                    <p class="envios">envíos a todo el país</p>
-                </div>
-            </div> --}}
+            <a href="#footer" class="btn btn-dark contact-us">
+                ¡CONTACTANOS!
+            </a>
+           {{--  <a href="#footer">
+            <button type="button" class="btn btn-dark contact-us">¡CONTACTANOS!</button>
+            </a> --}}
         </div>
     </nav>
 @endif
