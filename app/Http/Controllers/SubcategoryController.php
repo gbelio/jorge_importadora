@@ -27,7 +27,7 @@ class SubcategoryController extends Controller
         $subcategorias = DB::table('subcategories')->orderBy('id', 'desc')->paginate(15);
         $allCategories = Category::all();
         $subcategories = Subcategory::all();
-        $subcategorias = Subcategory::all()->sortByDesc('id'); 
+        $subcategorias = Subcategory::all()->sortByDesc('id');
         return view('subcategorias.create')->with('allCategories',$allCategories)
                                         ->with('subcategorias',$subcategorias)
                                         ->with('subcategories',$subcategories);
@@ -102,9 +102,9 @@ class SubcategoryController extends Controller
     {
         $clave = $request->clave;
         $allCategories = Category::all();
-        $subcategory = Subcategory::where('name', 'LIKE', "%$clave%")->get();        
+        $subcategory = Subcategory::query()->where('name', 'LIKE', "%$clave%")->get();
         $subcategory_id = $subcategory[0]->id;
-        $productsById = Product::where('subcategory_id', 'LIKE', "%$subcategory_id")->get();
+        $productsById = Product::where('subcategory_id', $subcategory_id)->paginate(20)->withQueryString();
         $categories = Category::all();
         $subcategories = Subcategory::all();
         return view('subcategorias.results')->with('productsById', $productsById)

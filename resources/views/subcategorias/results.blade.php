@@ -1,10 +1,12 @@
 @extends('layouts.master')
 @section('content')
 <div class="caja-categorias-resultados">
+
     <div class="categoriaFiltro">
         <a class="cat-name" href="/categorias/busqueda?clave={{($subcategory[0]->category->name)}}" style="text-decoration:none;margin:0">{{($subcategory[0]->category->name)}} > </a>
         <h2 class="subcat-name">{{$subcategory[0]->name}}</h2>
     </div>
+
     <section class="productos-categoria">
         @foreach ($productsById as $product)
             <div class="cat-prod">
@@ -48,5 +50,7 @@
             </div>
         @endforeach
     </section>
+
+    {{$productsById->links()}}
 </div>
 @endsection

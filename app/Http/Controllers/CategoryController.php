@@ -61,7 +61,7 @@ class CategoryController extends Controller
         $allCategories = Category::all();
         $category = Category::where('name', 'LIKE', "%$clave%")->get();
         $category_id = $category[0]->id;
-        $productsById = Product::where('category_id', 'LIKE', "%$category_id")->get();
+        $productsById = Product::where('category_id', 'LIKE', "%$category_id%")->paginate(20)->withQueryString();
         $subcategoriesById = Subcategory::where('category_id', 'LIKE', "%$category_id%")->get();
         $categories = Category::all();
         $subcategories = Subcategory::all();

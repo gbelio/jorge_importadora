@@ -27,6 +27,8 @@
         </div>
     </div>
 @endif
+
+
 {{-- SLIDER --}}
 <div class="caja-products-categories" style="flex-direction:column !important">
     @foreach ($allCategories as $category)
@@ -34,49 +36,55 @@
                 @if (count($category->product) > 0)
                     <div id="cat{{$category->id}}">
                         <a href="/categorias/busqueda?clave={{$category->name}}" class="cat-name" style="text-decoration:none; color:#5FA8E5;">{{$category->name}}</a>
+
                         <div class="{{-- prods_ --}}owl-carousel owl-theme carrousel_prod">
-                            @foreach ($products as $product)
-                                @if ($product->category->name == $category->name)
-                                    <article class="product_1" style="margin-right:0px !important">
-                                        <div class="product_1_img">
-                                            @if(Auth::user() != null)
-                                                <div class="edit_prod">
-                                                    <a href="/productos/editar/{{$product->id}}">
-                                                        <img class="edit_button" alt="edit_button" src="/img/edit_button.svg">
-                                                    </a>
-                                                </div>
-                                                <div class="add_photos_prod">
-                                                    <a href="/productos/usuario/cargar_imagen/<?=$product->id?>">
-                                                        <i class="fa fa-file-image-o" style="font-size:15px; color: white"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="delete_prod">
-                                                    <form id="_form_eliminar" action="{{action('ProductController@destroy', $product->id)}}" method="post">
-                                                        {{csrf_field()}}
-                                                        <input class="serdelete_val_id4" name="_method" type="hidden" value="<?= $product->id ?>">
-                                                        <input class="serdelete_val_id5" name="_method" type="hidden" value="<?= $product->name ?>">
-                                                        <button class="delete_button_showall" id="delete4" data-id="<?= $product->id ?>"  type="submit">
-                                                            <i class="fa fa-trash" style="font-size:16px"></i>
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            @endif
-                                            <span>{{$product->code}}</span>
-                                            <img class="product_1_img_imagen" src="/storage/{{$product->cover}}" alt="imagen de producto">
-                                            <a href="../productos/{{$product->id}}" >VER MÁS</a>
-                                        </div>
-                                        <div class="prod_details">
-                                            <h3 class="prod_name" maxlength="25">{{$product->name}}</h3>
-                                            <div class="category_subcat">
-                                                <a href="/categorias/busqueda?clave={{$product->category->name}}">{{$product->category->name}}</a>
-                                                <a href="/subcategorias/busqueda?clave={{$product->subcategory->name}}">{{$product->subcategory->name}}</a>
+
+                            @foreach($product_collections as $products)
+                                @foreach ($products as $product)
+                                    @if ($product->category->name == $category->name)
+                                        <article class="product_1" style="margin-right:0px !important">
+                                            <div class="product_1_img">
+                                                @if(Auth::user() != null)
+                                                    <div class="edit_prod">
+                                                        <a href="/productos/editar/{{$product->id}}">
+                                                            <img class="edit_button" alt="edit_button" src="/img/edit_button.svg">
+                                                        </a>
+                                                    </div>
+                                                    <div class="add_photos_prod">
+                                                        <a href="/productos/usuario/cargar_imagen/<?=$product->id?>">
+                                                            <i class="fa fa-file-image-o" style="font-size:15px; color: white"></i>
+                                                        </a>
+                                                    </div>
+                                                    <div class="delete_prod">
+                                                        <form id="_form_eliminar" action="{{action('ProductController@destroy', $product->id)}}" method="post">
+                                                            {{csrf_field()}}
+                                                            <input class="serdelete_val_id4" name="_method" type="hidden" value="<?= $product->id ?>">
+                                                            <input class="serdelete_val_id5" name="_method" type="hidden" value="<?= $product->name ?>">
+                                                            <button class="delete_button_showall" id="delete4" data-id="<?= $product->id ?>"  type="submit">
+                                                                <i class="fa fa-trash" style="font-size:16px"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                @endif
+                                                <span>{{$product->code}}</span>
+                                                <img class="product_1_img_imagen" src="/storage/{{$product->cover}}" alt="imagen de producto">
+                                                <a href="../productos/{{$product->id}}" >VER MÁS</a>
                                             </div>
-                                            <p maxlength="60">{{$product->resume}}</p>
-                                        </div>
-                                    </article>
-                                @endif
+                                            <div class="prod_details">
+                                                <h3 class="prod_name" maxlength="25">{{$product->name}}</h3>
+                                                <div class="category_subcat">
+                                                    <a href="/categorias/busqueda?clave={{$product->category->name}}">{{$product->category->name}}</a>
+                                                    <a href="/subcategorias/busqueda?clave={{$product->subcategory->name}}">{{$product->subcategory->name}}</a>
+                                                </div>
+                                                <p maxlength="60">{{$product->resume}}</p>
+                                            </div>
+                                        </article>
+                                    @endif
+                                @endforeach
                             @endforeach
+
                         </div>
+
                         <div class="prods_">
                             <div class="prods_box">
                                 @foreach ($products as $product)
