@@ -58,5 +58,7 @@
             </div>
         @endforeach
     </section>
+
+    {{$productsById->links()}}
 </div>
 @endsection
