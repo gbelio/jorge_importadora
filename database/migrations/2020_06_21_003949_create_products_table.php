@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string("name", 100);
             $table->char('code', 100);
-            $table->string("resume", 60);
+            $table->text("resume");
             $table->text("description");
             $table->string("cover", 255);
             $table->bigInteger("category_id");
