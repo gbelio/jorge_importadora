@@ -28,6 +28,10 @@
                 <label for="name" ><strong> Nombre </strong></label>
                 <input name="name" maxlength="25" value="{{$producto->name}}" type="text" class="form-control" placeholder="">
             </div>
+            <div class="form-group">
+                <label for="amount"><strong>Precio</strong> </label>
+                <input type="number" value="{{$producto->amount}}" min="0" step="0.01" name="amount" value="{{ old("amount") }}" class="form-control">
+            </div>
             <div class="button" style="margin-bottom:1%;">
                 <label for="name"><strong> Cover </strong></label>
                 <input class="add_img" type="file" name="cover" value="{{$producto->cover}}">
@@ -139,6 +143,7 @@
         </div>
     </div>
 </div>
+{{$productos->links()}}
 @endsection
 @section('scripts')
     <script src="{{asset('vendor/ckeditor/ckeditor.js')}}"></script>

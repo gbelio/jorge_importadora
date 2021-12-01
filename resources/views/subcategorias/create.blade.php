@@ -75,6 +75,7 @@
         </div>
     </div>
 </div>
+{{$subcategorias->links()}}
 @endsection
 @section('scripts')
     <script src="{{asset('js/toggle.js')}}"></script>

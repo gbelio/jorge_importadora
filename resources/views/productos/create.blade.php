@@ -30,6 +30,13 @@
                         <span class="errors">{{ $message }}</span>
                     @enderror
                     <div class="form-group">
+                        <label for="amount"><strong>Precio</strong> </label>
+                        <input type="number" min="0" step="0.01" name="amount" value="{{ old("amount") }}" class="form-control">
+                    </div>
+                    @error('amount')
+                        <span class="errors">{{ $message }}</span>
+                    @enderror
+                    <div class="form-group">
                         <label for="resume"><strong>Resumen del producto</strong> </label>
                         <input required type="text"maxlength="60" name="resume" value="{{ old("resume") }}" class="form-control" maxlength="60">
                     </div>

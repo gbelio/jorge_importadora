@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $fillable = ['id', 'name', 'code', 'resume', 'description', 'cover', 'category_id', 'subcategory_id'];
+    protected $fillable = ['id', 'name', 'code','amount', 'resume', 'description', 'cover', 'category_id', 'subcategory_id'];
 
     public function multimedia()
     {
