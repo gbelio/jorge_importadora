@@ -28,6 +28,9 @@
                         <div class="_codigo_botones">
                             <div style="margin-bottom: 0px !important">
                                 <h4>Código de Producto: {{$producto->code}}</h4>
+                                @if($producto->amount > 0)
+                                <h5>${{$producto->amount}}</h5>
+                                @endif
                             </div>
                             <div class="_contenedorBotones">
                                 <div class="edit_prod_show">
@@ -55,6 +58,9 @@
                     @else
                         <div>
                             <h4>Código de Producto: {{$producto->code}}</h4>
+                            @if($producto->amount > 0)
+                            <h5>${{$producto->amount}}</h5>
+                            @endif
                         </div>
                     @endif
                     <h2>{{$producto->name}}</h2>

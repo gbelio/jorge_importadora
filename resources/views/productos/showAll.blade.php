@@ -77,6 +77,9 @@
                                                     <a href="/subcategorias/busqueda?clave={{$product->subcategory->name}}">{{$product->subcategory->name}}</a>
                                                 </div>
                                                 <p maxlength="60">{{$product->resume}}</p>
+                                                @if($product->amount > 0)
+                                                <h5>${{$product->amount}}</h5>
+                                                @endif
                                             </div>
                                         </article>
                                     @endif
@@ -124,6 +127,9 @@
                                                     <a href="#">{{$product->subcategory->name}}</a>
                                                 </div>
                                                 <p maxlength="60">{{$product->resume}}</p>
+                                                @if($product->amount > 0)
+                                                <h5>${{$product->amount}}</h5>
+                                                @endif
                                             </div>
                                         </article>
                                     @endif
