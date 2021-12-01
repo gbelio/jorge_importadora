@@ -14,6 +14,7 @@ use App\Category;
 use App\Subcategory;
 use App\Multimedia;
 use App\Slider;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
@@ -36,7 +37,7 @@ class ProductController extends Controller
         if (Auth::user() == null) {
             return redirect('login');
         }
-        $productos = Product::all()->sortByDesc('id');
+        $productos = Product::paginate(20);
         $allCategories = Category::all();
         $subcategories = Subcategory::all();
         return view('productos.create')->with('allCategories', $allCategories)

@@ -143,6 +143,7 @@
         </div>
     </div>
 </div>
+{{$productos->links()}}
 @endsection
 @section('scripts')
     <script src="{{asset('js/toggle.js')}}"></script>
