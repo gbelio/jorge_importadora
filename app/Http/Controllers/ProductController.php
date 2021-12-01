@@ -139,7 +139,7 @@ class ProductController extends Controller
         if (Auth::user() == null) {
             return redirect('login');
         }
-        $productos = Product::all()->sortByDesc('id');
+        $productos = Product::paginate(20);
         $producto = Product::find($id);
         $allCategories = Category::all();
         $subcategories = Subcategory::all();
@@ -172,6 +172,7 @@ class ProductController extends Controller
         $producto = Product::find($id);
         $producto->name = $request->input('name') !== $producto->name ? $request->input('name') : $producto->name;
         $producto->code = $request->input('code') !== $producto->code ? $request->input('code') : $producto->code;
+        $producto->amount = $request->input('amount') !== $producto->amount ? $request->input('amount') : $producto->amount;
         $producto->resume = $request->input('resume') !== $producto->resume ? $request->input('resume') : $producto->resume;
         $producto->description = $request->input('description') !== $producto->description ? $request->input('description') : $producto->description;
         $producto->category_id = $request->input('category_id') !== $producto->category_id ? $request->input('category_id') : $producto->category_id;
