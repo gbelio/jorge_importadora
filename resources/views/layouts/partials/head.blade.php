@@ -24,5 +24,5 @@
     <link rel="stylesheet" href="{{ asset('css/photos.css')}}" >
     <link rel="stylesheet" href="{{ asset('css/cat_prods.css')}}" >
     <link rel="stylesheet" href="{{ asset('css/dropdown_subcategorias.css')}}" >
-    <title>Jorge Importadora</title>
+    <title>Importadora Jorge</title>
 </head>

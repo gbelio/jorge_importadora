@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 
@@ -48,7 +49,7 @@ Route::group(['prefix'=>'productos'], function(){
     Route::get('/busqueda','ProductController@search');
     Route::get('/cargar','ProductController@create'); //va a llevar al formulario de carga de producto
     Route::post('/cargar','ProductController@store'); //va a guardar el producto en la base de datos
-    Route::get('/categoria/{id}','ProductController@index'); //va a mostrar todos los productos segun el ID de categoria.    
+    Route::get('/categoria/{id}','ProductController@index'); //va a mostrar todos los productos segun el ID de categoria.
     Route::get('/editar/{id}','ProductController@edit'); //va a llevar al formulario de edición
     Route::patch('/editar/{id}','ProductController@update'); //va a editar en la base de datos
     Route::delete('/delete/{id}','ProductController@destroy');
