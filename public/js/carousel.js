@@ -1,9 +1,12 @@
 $(document).ready(function(){
 
+    let siguienteCarrousel = $('.siguienteCarrousel');
+    let anteriorCarrousel = $('.anteriorCarrousel');
+
     $('#sliderHome>.owl-carousel').owlCarousel({
         items:1,
         margin:0,
-        navText: [$('.siguienteCarrousel'),$('.anteriorCarrousel')],
+        navText: [siguienteCarrousel,anteriorCarrousel],
         nav:true,
         dots: true,
         loop:true,
@@ -11,126 +14,49 @@ $(document).ready(function(){
         autoplayTimeout:3000,
     })
 
-    $('#cat1>.owl-carousel').owlCarousel({
-        items:4,
-        margin:15,
-        navText: [$('.am-next1'),$('.am-prev1')],
-        nav:true,
-        dots: false,
-    })
+    for(let i = 0; i < 14; i++){
 
-    $('#cat2>.owl-carousel').owlCarousel({
-        items:4,
-        margin:15,
-        navText: [$('.am-next2'),$('.am-prev2')],
-        nav:true,
-        dots: false,
-    })
+        let full_items = 4;
+        let items_responsive_0_600 = 1;
+        let items_responsive_600_1000 = 2;
 
-    $('#cat3>.owl-carousel').owlCarousel({
-        items:4,
-        margin:15,
-        navText: [$('.am-next3'),$('.am-prev3')],
-        nav:true,
-        dots: false,
-    })
-    $('#cat4>.owl-carousel').owlCarousel({
-        items:4,
-        margin:15,
-        navText: [$('.am-next4'),$('.am-prev4')],
-        nav:true,
-        dots: false,
-    })
+        let next_button = $('.am-next'+i);
+        let prev_button = $('.am-prev'+i);
 
-    $('#cat5>.owl-carousel').owlCarousel({
-        items:4,
-        margin:15,
-        navText: [$('.am-next5'),$('.am-prev5')],
-        nav:true,
-        dots: false,
-    })
+        $('#cat'+i+'>.owl-carousel').owlCarousel({
+            items: full_items,
+            margin:15,
+            navText: [next_button,prev_button],
+            nav:true,
+            dots: false,
+            responsiveClass:true,
+            responsive: {
+                0:{
+                    items: items_responsive_0_600,
+                    margin:15,
+                    navText: [next_button,prev_button],
+                    nav:true,
+                    dots: false,
+                },
+                600:{
+                    items: items_responsive_600_1000,
+                    margin:15,
+                    navText: [next_button,prev_button],
+                    nav:true,
+                    dots: false,
+                },
+                1000:{
+                    items: full_items,
+                    margin:15,
+                    navText: [next_button,prev_button],
+                    nav:true,
+                    dots: false,
+                }
+            }
+        })
+    }
 
-    $('#cat6>.owl-carousel').owlCarousel({
-        items:4,
-        margin:15,
-        navText: [$('.am-next6'),$('.am-prev6')],
-        nav:true,
-        dots: false,
-    })
-
-    $('#cat7>.owl-carousel').owlCarousel({
-        items:4,
-        margin:15,
-        navText: [$('.am-next7'),$('.am-prev7')],
-        nav:true,
-        dots: false,
-    })
-
-    $('#cat8>.owl-carousel').owlCarousel({
-        items:4,
-        margin:15,
-        navText: [$('.am-next8'),$('.am-prev8')],
-        nav:true,
-        dots: false,
-    })
-
-    $('#cat9>.owl-carousel').owlCarousel({
-        items:4,
-        margin:15,
-        navText: [$('.am-next9'),$('.am-prev9')],
-        nav:true,
-        dots: false,
-    })
-
-    $('#cat10>.owl-carousel').owlCarousel({
-        items:4,
-        margin:15,
-        navText: [$('.am-next10'),$('.am-prev10')],
-        nav:true,
-        dots: false,
-    })
-
-    $('#cat11>.owl-carousel').owlCarousel({
-        items:4,
-        margin:15,
-        navText: [$('.am-next11'),$('.am-prev11')],
-        nav:true,
-        dots: false,
-    })
-
-    $('#cat12>.owl-carousel').owlCarousel({
-        items:4,
-        margin:15,
-        navText: [$('.am-next12'),$('.am-prev12')],
-        nav:true,
-        dots: false,
-    })
-
-    $('#cat13>.owl-carousel').owlCarousel({
-        items:4,
-        margin:15,
-        navText: [$('.am-next13'),$('.am-prev13')],
-        nav:true,
-        dots: false,
-    })
-
-    $('#cat14>.owl-carousel').owlCarousel({
-        items:4,
-        margin:15,
-        navText: [$('.am-next14'),$('.am-prev14')],
-        nav:true,
-        dots: false,
-    })
-
-    $('#cat15>.owl-carousel').owlCarousel({
-        items:4,
-        margin:15,
-        navText: [$('.am-next15'),$('.am-prev15')],
-        nav:true,
-        dots: false,
-    })
-
-    var cajaGrande = $('.item');
+    let cajaGrande = $('.item');
 
     function boxShadowOn(){
         $(this).css('boxShadow', ' 0px 0px 4px 1px rgba(0,0,0,0.45)')

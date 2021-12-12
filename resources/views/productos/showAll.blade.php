@@ -28,7 +28,6 @@
     </div>
 @endif
 
-
 {{-- SLIDER --}}
 <div class="caja-products-categories" style="flex-direction:column !important">
     @foreach ($allCategories as $category)
@@ -37,7 +36,7 @@
                     <div id="cat{{$category->id}}">
                         <a href="/categorias/busqueda?clave={{$category->name}}" class="cat-name" style="text-decoration:none; color:#5FA8E5;">{{$category->name}}</a>
 
-                        <div class="{{-- prods_ --}}owl-carousel owl-theme carrousel_prod">
+                        <div class="owl-carousel owl-theme">
 
                             @foreach($product_collections as $products)
                                 @foreach ($products as $product)

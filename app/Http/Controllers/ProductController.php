@@ -37,7 +37,7 @@ class ProductController extends Controller
         if (Auth::user() == null) {
             return redirect('login');
         }
-        $productos = Product::paginate(20);
+        $productos = Product::query()->orderBy('id', 'desc')->paginate(20);
         $allCategories = Category::all();
         $subcategories = Subcategory::all();
         return view('productos.create')->with('allCategories', $allCategories)
