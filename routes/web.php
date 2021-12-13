@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 
-Auth::routes();
+Auth::routes(["register" => false]);
 
 Route::get('/','ProductController@showAll');
 
