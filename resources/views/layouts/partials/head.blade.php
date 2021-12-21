@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/navBar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fuentesYmedidas.css') }}">
     <link rel="stylesheet" href="{{ asset('css/modal.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
     <link rel="stylesheet" href="{{ asset('css/index_mobile.css') }}">
     <link rel="stylesheet" href="{{ asset('css/login_mobile.css') }}">

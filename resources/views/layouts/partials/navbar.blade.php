@@ -13,7 +13,6 @@
                         <button type="submit" value="" class="{{-- btn btn-info --}} search_button" name="" id="">
                             <img src="/img/search.svg" alt="search">
                         </button>
-                        {{-- <input type="submit" value="" class="btn btn-info search_button" name="" id=""> --}}
                     </form>
                 </li>
                 {{-- CAJA FILTROS Y ADMIN --}}
@@ -47,9 +46,13 @@
                     @endisset
                 </div>
             </ul>
+            <a href="/cart" class="carrito-icono">
+                <img src="/img/icono_carrito.svg">
+           </a>
             <li class="nav-item dropdown d-flex Admin_" >
                 <a class="nav-link usuario dropdown-toggle" data-toggle="dropdown" href="/profile">{{Auth::user()->name}}</a>
                 <ul class="dropdown-menu cascadaDos">
+                    @if (Auth::user()->role == 9)
                     <li class="nav-item" style="margin-top: 10px">
                         <a class="nav-link" href="/categorias/cargar">Categorías</a>
                     </li>
@@ -62,6 +65,15 @@
                     <li class="nav-item" style="margin: 10px 10px 0 0">
                         <a class="nav-link" href="/slider/cargar">Imagenes De Slider</a>
                     </li>
+                    <li class="nav-item" style="margin: 10px 10px 0 0">
+                        <a class="nav-link" href="/compras/usuarios">Compras de Usuarios</a>
+                    </li>
+                    @else
+                    <li class="nav-item" style="margin: 10px 10px 0 0">
+                        <a class="nav-link2" href="/compras">Mis Compras</a>
+                    </li>
+                    <br>
+                    @endif
                     <li class="borderli">
                         <a href="/perfil">Perfil</a>
                     </li>
@@ -84,7 +96,7 @@
                 <li class="nav-item" >
                     <form action="/productos/busqueda" class="form" method="GET" style="display:flex; flex-direction:row">
                         <input class="searching_box" placeholder='Buscar' type="text" name="clave" class="input-group-text mb-3 mt-3 mr-3" style="text-align: left">
-                        <button type="submit" value="" class="{{-- btn btn-info --}} search_button" name="" id="">
+                        <button type="submit" value="" class="search_button" name="" id="">
                             <img src="/img/search.svg" alt="search">
                         </button>
                     </form>
@@ -125,9 +137,6 @@
             <a href="#footer" class="btn btn-dark contact-us">
                 ¡CONTACTANOS!
             </a>
-           {{--  <a href="#footer">
-            <button type="button" class="btn btn-dark contact-us">¡CONTACTANOS!</button>
-            </a> --}}
         </div>
     </nav>
 @endif

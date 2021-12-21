@@ -1,0 +1,22 @@
+.__boton-eliminar{
+    width: 40px !important;
+    height: 40px;
+}
+
+.__img-carrito{
+    width: 100px;
+    height: 100px;
+}
+
+.__contenedor-compras{
+    margin-top: 12vh;
+}
+
+.__contenedor-nav-admin{
+    min-height: 10vh;
+    width: 100%;
+    margin-top: 111px !important;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 0;
+}

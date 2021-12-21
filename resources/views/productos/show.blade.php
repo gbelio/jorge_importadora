@@ -67,6 +67,17 @@
                     <p> {{$producto->resume}}</p>
                 </div>
                 {!!$producto->description!!}
+                <div>
+                    <form id="" action="{{action('OrderDetailController@add', $producto->id)}}" method="post">
+                        {{csrf_field()}}
+                        {{ method_field('POST') }}
+                        @csrf
+                        <h5 id="amount" name="amount">${{$producto->amount}}</h5>
+                        <button type="submit">
+                                <img src="/img/icono_carrito.svg">
+                        </button>
+                    </form>
+                </div>
             </div>
     </section>
 </div>
