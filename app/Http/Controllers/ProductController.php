@@ -14,6 +14,8 @@ use App\Category;
 use App\Subcategory;
 use App\Multimedia;
 use App\Slider;
+use App\OrderDetail;
+use App\Order;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
@@ -95,6 +97,17 @@ class ProductController extends Controller
      */
     public function showAll()
     {
+        $orderDetails = OrderDetailController::getOrderDetails();
+        if (Auth::check()){
+            if ($orderDetails['orderShopping']->first() == null){
+                $newAdd = new Order([
+                    'user_id' => Auth::user()->id,
+                    'status' => 1,
+                    'total' => 0
+                ]);
+                $newAdd->save();
+            }
+        }
         $sliderstate = 0;
         $multimedias = Multimedia::all();
         $sliders = Slider::all();
@@ -111,8 +124,6 @@ class ProductController extends Controller
 
             array_push($product_collections, $products_per_category);
         }
-
-
         //<editor-fold desc="Verifica si hay sliders activos para mostrar">
         foreach ($sliders as $slider) {
             if ($slider->s_estado != 0) {
@@ -120,7 +131,6 @@ class ProductController extends Controller
             }
         }
         //</editor-fold>
-
         return view('productos.showAll')
             ->with('product_collections', $product_collections)
             ->with('multimedias', $multimedias)

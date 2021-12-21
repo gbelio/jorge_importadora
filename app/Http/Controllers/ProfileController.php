@@ -24,12 +24,11 @@ class ProfileController extends Controller
                                 ->with('subcategories',$subcategories);
     }
 
-
     public function show($id)
     {
-
+        $profile = User::find($id);
+        return view('perfil.show')->with('profile', $profile);
     }
-
 
     public function edit()
     {
@@ -38,7 +37,6 @@ class ProfileController extends Controller
         }
         return view('perfil.edit')->with('user', Auth::user());
     }
-
 
     public function update(Request $request)
     {
@@ -59,7 +57,6 @@ class ProfileController extends Controller
         $user->save();
         return redirect('/perfil');
     }
-
 
     public function destroy($id)
     {
