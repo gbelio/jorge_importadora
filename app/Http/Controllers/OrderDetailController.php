@@ -32,7 +32,7 @@ class OrderDetailController extends Controller
                 'order_id' => $orderShopping[0]->id,
             ])->get();
             foreach ($userOrderDetails as $OrderDetail) {
-                $total += $OrderDetail->product->amount;
+                $total += $OrderDetail->product->amount*$OrderDetail->quantity;
             }
         }
         return ['userOrderDetails' => $userOrderDetails, 'total' => $total, 'orderShopping' => $orderShopping];
@@ -52,21 +52,20 @@ class OrderDetailController extends Controller
             ->with('total', $orderDetails['total']);
     }
 
-    public function add($id)
+    public function add()
     {
-        $product = Product::find($id);
         $orderShopping = Order::where([
             'user_id' => Auth::user()->id,
             'status' => 'shopping'
         ])->get();
         $newAdd = new OrderDetail([
             'order_id' => $orderShopping[0]->id,
-            'product_id' => $product->id,
-            'name' => $product->name,
-            'code' => $product->code,
-            'amount' => $product->amount,
-            'cover' => $product->cover,
-            'quantity' => 1,
+            'product_id' => $_POST['product_id'],
+            'name' => $_POST['name'],
+            'code' => $_POST['code'],
+            'amount' => $_POST['amount'],
+            'cover' => $_POST['cover'],
+            'quantity' => $_POST['quantity'],
         ]);
         $newAdd->save();
         return redirect()->back();

@@ -134,6 +134,12 @@
                     @endisset
                 </div>
             </ul>
+            <a href="/login" class="btn btn-dark">
+                LOGIN
+            </a>
+            <a href="/register" class="btn btn-dark">
+                REGISTER
+            </a>
             <a href="#footer" class="btn btn-dark contact-us">
                 ¡CONTACTANOS!
             </a>

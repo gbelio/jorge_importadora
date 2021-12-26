@@ -14,7 +14,7 @@
     @isset($response)
         <span class="offset-1" style="color: red"><b>{{$response}}</b></span>
     @endisset
-     {{---------------------- ****************LISTA COMPRAS**************** ----------------------------}}
+    {{---------------------- ****************LISTA COMPRAS**************** ----------------------------}}
     <section>
         <div><h3>LISTA DE COMPRAS</h3></div>
         <table id="mytable" class="table table-striped">
