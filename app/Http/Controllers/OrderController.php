@@ -85,6 +85,7 @@ class OrderController extends Controller
             'total' => 0,
         ]);
         $newAdd->save();
+        Mail::to('gastonb.bkp@gmail.com')->send(new AlertsMailable($order));
         return view('comprobantes.show');
     }
 
@@ -94,6 +95,9 @@ class OrderController extends Controller
         $order = Order::find($request->id);
         $order->status = $request->status;
         $order->save();
+        if ($order->status == 3){
+            Mail::to($order->user->email)->send(new AlertsMailable($order));
+        }
         return redirect('/compras/usuarios');
     }
 }
