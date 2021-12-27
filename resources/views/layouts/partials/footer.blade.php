@@ -16,8 +16,7 @@
 
             <div class="ji_telefonos">
                 <div class="contacto-img-footer">
-<!--                    <img class="phone-footer" src="/img/phone_footer.svg" alt="phone">-->
-                    <img class="phone-footer" src="{{asset('img/whatsapp.svg')}}" alt="facebook">
+                    <img class="phone-footer" src="{{asset('img/whatsapp.svg')}}" alt="whatsapp">
                 </div>
                 <div class="phone_numbers_footer">
                     <a href="https://api.whatsapp.com/send?phone=541124772468">+54 11 2477-2468</a>
@@ -28,7 +27,7 @@
                     <img class="phone-footer" src="/img/mail_footer.svg" alt="mail">
                 </div>
                 <div class="phone_numbers_footer">
-                    <a href="mailto:cavagnalucia@gmail.com">contacto@jorgeimportadora.com.ar</a>
+                    <a href="mailto:contacto@jorgeimportadora.com.ar">contacto@jorgeimportadora.com.ar</a>
                 </div>
             </div>
             <div class="ji_telefonos">
