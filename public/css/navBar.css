@@ -65,7 +65,8 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 80%;
+    min-width: 60%;
+    max-width: 70%;
 }
 
 .cascadaDos {
@@ -111,9 +112,9 @@
 }
 
 .contact-us{
-    padding: 10px;
+    padding: 5px;
     margin: 0 20px;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: bold;
     background-color:#001d35;
     border: none;
@@ -162,10 +163,24 @@
     display: none;
 }
 
+.nav-actions{
+    display: flex;
+}
+
+.action-login{
+    background-color: transparent;
+    color: #212529;
+    margin: 0 5px;
+    padding: 5px 10px;
+}
+
+.action-register{
+    background-color: #5FA8E5;
+    border-color: #5FA8E5;
+    margin: 0 5px;
+}
+
 /* MEDIA QUERIES NAVBAR (UNICA MEDIDA 990PX, PARA MAS PEQUEÑO YA ESTA HECHO.) */
-
-
-
 
 @media screen and (min-width: 1024px) {
 
@@ -239,7 +254,7 @@
     .box_filters_abm{
         margin: 0 20px;
         display: flex;
-        width: 30%;
+        width: 25%;
         justify-content: flex-start;
         align-items: center;
     }
@@ -259,7 +274,7 @@
         text-align: center;
         margin: 0;
         text-transform: uppercase;
-        font-size: 1.5rem;
+        font-size: 1rem;
         letter-spacing: 0.1rem;
         font-weight: bolder;
     }
@@ -306,6 +321,12 @@
 
     .cascadaDos a:hover {
         color: gainsboro;
+    }
+}
+
+@media screen and (max-width: 1025px){
+    .contact-us{
+        margin: 0 10px;
     }
 }
 
@@ -422,7 +443,7 @@
 
     .contact-us{
         margin: 15px 0px 0px;
-        font-size: 1rem;
+        font-size: .8rem;
     }
 }
     
