@@ -4,19 +4,51 @@
     <div id="listaCategorias" class="offset-2 col-8 form-categorias">
         <div style="display:flex; flex-direction:row; justify-content:space-between; align-items:baseline">
             <h3 style="display:inline-block">Editar Producto</h3>
+
+
             <form id="formularioDeleteEdit" action="{{action('ProductController@destroy', $producto->id)}}" method="post">
                 {{csrf_field()}}
                 <input class="serdelete_val_id_6" name="_method" type="hidden" value="<?= $producto->id ?>">
                 <input class="serdelete_val_id_7" name="_method" type="hidden" value="<?= $producto->name ?>">
+
                 <button id="delete6" data-id="<?= $producto->id ?>" type="submit" style="margin:0 !important;">
                     <img id="img_delete" src="/img/eliminar.svg" alt="Eliminar" srcset="">
                 </button>
+
             </form>
+
         </div>
         <br>
         <div style="display:flex; flex-direction:row; justify-content:center; align-items:center">
             <img style="max-width: 500px; max-height: 500px; " src="/storage/{{$producto->cover}}" alt="imagen de producto">
         </div>
+
+        <br>
+
+        <div class="form-group">
+            <form action="{{action('ProductController@editColour', $producto->id)}}" method="post" style="display: flex; flex-direction: column">
+                {{ method_field('POST') }}
+                @csrf
+                <label for="colours_id" style="margin: 0"><strong>Seleccione Colores</strong></label>
+                <select name="colours_id" id="colours_id" multiple>
+
+                    @foreach($rest_of_colours as $colour)
+                        <option value="{{$colour->id}}">{{$colour->name}}</option>
+                    @endforeach
+
+                </select>
+                <div style="margin:0">
+                    <button type="submit" class="btn btn-info btn-sm boton-eliminar" style="margin:2%; background-color:#007BFF;border-color:#007BFF;">Agregar colores</button>
+                </div>
+            </form>
+
+            <div style="display: flex; flex-direction: row;">
+                @foreach($product_colours as $product_colour)
+                    <div style="width: 20px; height: 20px; background-color: {{$product_colour->colour->hex}}; border-radius: 50%; margin: 0px 5px; border:1px solid black"></div>
+                @endforeach
+            </div>
+        </div>
+        <br>
         <form method="POST" action="" enctype="multipart/form-data">
             {{ method_field('PATCH') }}
             @csrf
