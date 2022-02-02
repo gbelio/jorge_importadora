@@ -4,17 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Category;
-use App\Subcategory;
 use App\OrderDetail;
 use App\Order;
-use Auth;
-use DB;
-use Illuminate\Support\Facades\Cookie;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderDetailController extends Controller
 {
-    static function getOrderDetails()
+    /**
+     * @return array
+     */
+    static function getOrderDetails(): array
     {
         $total = 0;
         $userOrderDetails = [];
@@ -23,12 +24,14 @@ class OrderDetailController extends Controller
         if(Auth::check()){
             $userId = Auth::user()->id;
         }
-        $orderShopping = Order::where([
+        $orderShopping = Order::query()
+            ->where([
             'user_id' => $userId,
             'status' => 'shopping',
         ])->get();
         if(!$orderShopping->isEmpty()){
-            $userOrderDetails = OrderDetail::where([
+            $userOrderDetails = OrderDetail::query()
+                ->where([
                 'order_id' => $orderShopping[0]->id,
             ])->get();
             foreach ($userOrderDetails as $OrderDetail) {
@@ -42,7 +45,6 @@ class OrderDetailController extends Controller
     {
         $products = Product::all();
         $categories = Category::all();
-        $subcategories = Subcategory::all();
         $orderDetails = $this->getOrderDetails();
         return view('carrito.show')
             ->with('products', $products)
@@ -52,9 +54,13 @@ class OrderDetailController extends Controller
             ->with('total', $orderDetails['total']);
     }
 
-    public function add()
+    /**
+     * @return RedirectResponse
+     */
+    public function add(): RedirectResponse
     {
-        $orderShopping = Order::where([
+        $orderShopping = Order::query()
+        ->where([
             'user_id' => Auth::user()->id,
             'status' => 'shopping'
         ])->get();
@@ -71,16 +77,27 @@ class OrderDetailController extends Controller
         return redirect()->back();
     }
 
-    public function update(Request $request)
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function update(Request $request): RedirectResponse
     {
-        $OrderDetail = OrderDetail::find($request->id);
+        $OrderDetail = OrderDetail::query()
+            ->find($request->id);
         $OrderDetail->save();
         return redirect()->back();
     }
 
-    public function destroy($id)
+    /**
+     * @param $id
+     * @return RedirectResponse
+     * @throws \Exception
+     */
+    public function destroy($id): RedirectResponse
     {
-        $item = OrderDetail::find($id);
+        $item = OrderDetail::query()
+            ->find($id);
         $item->delete();
         return redirect()->back();
     }

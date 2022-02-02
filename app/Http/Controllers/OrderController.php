@@ -63,7 +63,7 @@ class OrderController extends Controller
 
     public function showAll()
     {
-        $orders = Order::whereNotIn('status', ['shopping'])->Paginate(20);
+        $orders = Order::query()->whereNotIn('status', ['shopping'])->Paginate(20);
         return view('compras.showAll')
                     ->with('orders', $orders);
     }
@@ -74,7 +74,9 @@ class OrderController extends Controller
         if($request->order_total == 0){
             return redirect()->back();
         }
-        $order = Order::find($request->order_id);
+
+        /** @var Order $order */
+        $order = Order::query()->find($request->order_id);
         $order->date = date("Y-m-d H:i:s");
         $order->total = $request->order_total;
         $order->status = 2;
