@@ -37,6 +37,7 @@
         </table>
     </section>
         <hr>
+
         <div>
             <div>
                 <b>Monto final: ${{ $total }}</b>
@@ -53,10 +54,11 @@
                 </form>
             </div>
         </div>
+
         <br>
         <br>
-    </section>
-</div>
+
+    </div>
 @endsection
 @section('scripts')
     <script src="{{asset('js/preventSubmit.js')}}"></script>

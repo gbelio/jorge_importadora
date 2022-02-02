@@ -25,6 +25,7 @@
                 <th class="text-center">Actualizado</th>
                 <th class="text-center">Total</th>
                 <th class="text-center">Estado</th>
+                <th class="text-center">Cambiar de estado</th>
             </thead>
             <tbody>
                 @foreach ($orders as $order)
@@ -35,18 +36,6 @@
                         <td data-title="Actualizado" class="text-center">{{$order->updated_at}}</td>
                         <td data-title="Total" class="text-center">${{$order->total}}</td>
                         <td data-title="Estado" class="text-center">
-                            <form id="" action="{{action('OrderController@updateStatus')}}" method="POST">
-                                {{ method_field('PATCH') }}
-                                @csrf
-                                <select class="form-select" aria-label="Default select example" style="display: inline-block; margin-top: -22px; margin-left: 5px" name="status" id="status" onchange="this.form.submit()">
-                                    <option></option>
-                                    <option value="2">Preparando</option>
-                                    <option value="3">Listo!</option>
-                                    <option value="4">Finalizado</option>
-                                    <option value="5">Cancelado</option>
-                                </select>
-                                <input type="hidden" name="id" value="{{$order->id}}"></label>
-                            </form>
                             @switch($order->status)
                                 @case('preparing')
                                     <b>Preparando</b>
@@ -61,6 +50,20 @@
                                     <b>Cancelado</b>
                                     @break
                             @endswitch
+                        </td>
+                        <td data-title="Cambiar de estado" class="text-center">
+                            <form id="" action="{{action('OrderController@updateStatus')}}" method="POST">
+                                {{ method_field('PATCH') }}
+                                @csrf
+                                <select class="form-select" aria-label="Default select example" style="display: inline-block; margin-top: -22px; margin-left: 5px" name="status" id="status" onchange="this.form.submit()">
+                                    <option></option>
+                                    <option value="2">Preparando</option>
+                                    <option value="3">Listo!</option>
+                                    <option value="4">Finalizado</option>
+                                    <option value="5">Cancelado</option>
+                                </select>
+                                <input type="hidden" name="id" value="{{$order->id}}">
+                            </form>
                         </td>
                     </tr>
                 @endforeach

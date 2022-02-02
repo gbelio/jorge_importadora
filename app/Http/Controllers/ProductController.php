@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Colour;
+use App\ProductColour;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -14,9 +16,7 @@ use App\Category;
 use App\Subcategory;
 use App\Multimedia;
 use App\Slider;
-use App\OrderDetail;
 use App\Order;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
@@ -115,6 +115,8 @@ class ProductController extends Controller
         $subcategories = Subcategory::all();
         $product_collections = [];
 
+        $product_colours = ProductColour::all();
+
         foreach ($allCategories as $category) {
             $limit = 20;
             $products_per_category = Product::query()
@@ -137,7 +139,8 @@ class ProductController extends Controller
             ->with('allCategories', $allCategories)
             ->with('subcategories', $subcategories)
             ->with('sliderstate', $sliderstate)
-            ->with('sliders', $sliders);
+            ->with('sliders', $sliders)
+            ->with('product_colours', $product_colours);
     }
 
     /**
@@ -154,10 +157,30 @@ class ProductController extends Controller
         $allCategories = Category::all();
         $subcategories = Subcategory::all();
         $multimedias = Multimedia::all();
+
+        //Colores del producto
+        $product_colours = ProductColour::query()
+            ->where('product_id', $id)
+            ->get();
+
+        $colour_ids = ProductColour::query()
+            ->select('id')
+            ->where('product_id', $id)
+            ->get();
+
+        //Colores SIN los colores del producto
+        $rest_of_colours = Colour::query()
+                ->whereNotIn('id',$colour_ids)
+                ->get();
+
+
+
         return view('productos.editar')->with('producto', $producto)
             ->with('allCategories', $allCategories)
             ->with('subcategories', $subcategories)
             ->with('multimedias', $multimedias)
+            ->with('rest_of_colours', $rest_of_colours)
+            ->with('product_colours', $product_colours)
             ->with('productos', $productos);
     }
 
@@ -198,7 +221,6 @@ class ProductController extends Controller
             return redirect("/productos/usuario/cargar_imagen/$producto->id");
         }
 
-
     }
 
     /**
@@ -237,5 +259,21 @@ class ProductController extends Controller
             ->with('clave', $clave)
             ->with('allCategories', $allCategories)
             ->with('mensaje', $mensaje);
+    }
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @return Application|Redirector|RedirectResponse
+     */
+    public function editColour(Request $request, $id)
+    {
+        $attributes = $request->all();
+        $productColour = new ProductColour();
+        $productColour->product_id = $id;
+        $productColour->colour_id = $attributes['colours_id'];
+        $productColour->available = 1;
+        $productColour->save();
+        return redirect('/productos/editar/'.$id);
     }
 }

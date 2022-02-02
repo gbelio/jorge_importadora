@@ -1,5 +1,8 @@
 $(document).ready(function(){
 
+    //Cantidad de categorías
+    let categoriesCount = parseInt($('#categories-count').val());
+
     let siguienteCarrousel = $('.siguienteCarrousel');
     let anteriorCarrousel = $('.anteriorCarrousel');
 
@@ -14,39 +17,41 @@ $(document).ready(function(){
         autoplayTimeout:3000,
     })
 
-    for(let i = 0; i < 14; i++){
+    for(let i = 1; i <= categoriesCount; i++){
 
-        let full_items = 4;
-        let items_responsive_0_600 = 1;
-        let items_responsive_600_1000 = 2;
 
         let next_button = $('.am-next'+i);
         let prev_button = $('.am-prev'+i);
 
         $('#cat'+i+'>.owl-carousel').owlCarousel({
-            items: full_items,
+            items: 4,
             margin:15,
-            navText: [next_button,prev_button],
             nav:true,
-            dots: false,
             responsiveClass:true,
             responsive: {
                 0:{
-                    items: items_responsive_0_600,
+                    items: 1,
                     margin:15,
                     navText: [next_button,prev_button],
                     nav:true,
                     dots: false,
                 },
-                600:{
-                    items: items_responsive_600_1000,
+                500:{
+                    items: 2,
                     margin:15,
                     navText: [next_button,prev_button],
                     nav:true,
                     dots: false,
                 },
-                1000:{
-                    items: full_items,
+                750:{
+                    items: 3,
+                    margin:15,
+                    navText: [next_button,prev_button],
+                    nav:true,
+                    dots: false,
+                },
+                1024:{
+                    items: 4,
                     margin:15,
                     navText: [next_button,prev_button],
                     nav:true,
@@ -58,20 +63,22 @@ $(document).ready(function(){
 
     let cajaGrande = $('.item');
 
-    function boxShadowOn(){
-        $(this).css('boxShadow', ' 0px 0px 4px 1px rgba(0,0,0,0.45)')
-        $(this).css('transition', '200ms')
-        $(this).css('cursor', 'pointer')
-	}
-
-	function boxShadowOff(){
-        $(this).css('boxShadow', '0px 0px 4px 0px rgba(0, 0, 0, 0)')
-                .css('transition', '200ms')
-    }
-
-
 	cajaGrande.each(function(){
         $(this).hover(boxShadowOn,boxShadowOff);
     });
 
 })
+
+
+function boxShadowOn(){
+    $(this).css('boxShadow', ' 0px 0px 4px 1px rgba(0,0,0,0.45)')
+    $(this).css('transition', '200ms')
+    $(this).css('cursor', 'pointer')
+}
+
+function boxShadowOff(){
+    $(this).css('boxShadow', '0px 0px 4px 0px rgba(0, 0, 0, 0)')
+        .css('transition', '200ms')
+}
+
+
