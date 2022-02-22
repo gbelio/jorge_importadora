@@ -11,3 +11,4 @@
 {{-- <script src="{{asset('js/owl.carousel.min.js')}}"></script> Solo en productos/showall --}}
 {{-- <script src="{{asset('js/modal.js')}}"></script> --}} {{-- Solo en productos/show --}}
 {{-- <script src="{{asset('js/toggle.js')}}"></script> --}} {{-- Agregar producto, categoria, subcategoria, slider --}}
+<script src="{{asset('js/navbar.js')}}"></script>{{--  Solo en productos/showall --}}

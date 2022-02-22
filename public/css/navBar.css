@@ -33,7 +33,6 @@
 }
 
 .nav-item {
-    border-bottom: 1px solid white;
     margin: 0;
 }
 
@@ -50,23 +49,24 @@
 
 .collapse .usuario {
     font-weight: bold; 
-    background-color:#5FA8E5; 
+    background-color:#5FA8E5;
+    border-radius: 5px; 
     border: none;
     color: white;
     font-family: 'Raleway', sans-serif !important;
     text-transform: uppercase;
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: bold;
     width: 100%;
+    letter-spacing: 0.1rem;
 }
 
 .cascadaUno{
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    min-width: 60%;
-    max-width: 70%;
+    width: 100%;
 }
 
 .cascadaDos {
@@ -82,9 +82,10 @@
 }
 
 .cascadaDos a {
-    color: yellow;
-    font-family: "Frutiger" !important;
+    color: white;
+    font-family: 'Raleway', sans-serif !important;
     text-decoration: none;
+    font-size: 1rem;
 }
 
 .contactos{
@@ -204,7 +205,11 @@
 
     .nav-item {
         border: none;
-        width: 60%;
+        width: 30%;
+    }
+
+    .searchNoUser{
+        width: 70% !important;
     }
 
     .form{
@@ -285,9 +290,8 @@
     }
 
     .Admin_{
-        width: 20% !important;
         margin: 0 10px;
-        font-size: 1.5rem; 
+        font-size: 1rem; 
     }
 
     .navbar-expand-lg .navbar-nav .dropdown-menu{
@@ -326,13 +330,17 @@
 
 @media screen and (max-width: 1025px){
     .contact-us{
-        margin: 0 10px;
+        font-size: .8rem;
     }
 }
 
 @media (max-width: 1023px){
     .contactos{
         display: none;
+    }
+
+    .navbar-brand{
+        width: 35%;
     }
 
     .navbar-collapse{
@@ -395,6 +403,16 @@
         width: 100%;
         background-color: #001B7E;
         border: 1px solid #001B7E;
+        color: #fff;
+        font-family: 'Raleway', sans-serif;
+        width: 100% !important;
+        outline: none !important;
+        text-align: center;
+        margin: 0;
+        text-transform: uppercase;
+        font-size: 1rem;
+        letter-spacing: 0.1rem;
+        font-weight: bolder;
     }
 
     .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle{
@@ -403,8 +421,12 @@
     }
 
     .Admin_{
-        display: flex;
+        margin: 10px 0;
         flex-direction: column;
+    }
+
+    .cascadaUno{
+        width: 70%;
     }
 
     .cascadaDos a{
@@ -413,6 +435,10 @@
 
     .cascadaDos li{
         margin: 0 !important;
+    }
+
+    .borderli{
+        border-top: 1px solid white !important;
     }
 
     .borderli a{
@@ -437,13 +463,24 @@
 
 @media (max-width:800px)
 {
+    .navbar-brand{
+        width: 50%;
+    }
+
     .cascadaUno{
         width: 85%;
     }
 
+    .nav-actions{
+        margin-top: 15px;
+    }
+
+    .Admin_{
+        margin: 10px 0;
+    }
+
     .contact-us{
         margin: 15px 0px 0px;
-        font-size: .8rem;
     }
 }
     
