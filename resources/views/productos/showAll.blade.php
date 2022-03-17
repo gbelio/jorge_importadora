@@ -82,8 +82,7 @@
                                                 <div style="display:flex; flex-direction: row;">
                                                     @foreach($product_colours as $product_colour)
                                                         @if($product->id === $product_colour->product_id)
-                                                            <div
-                                                                style="width: 20px; height: 20px; background-color: {{$product_colour->colour->hex}}; border-radius: 50%; margin: 0px 5px"></div>
+                                                            <div style="width: 20px; height: 20px; background-color: {{$product_colour->colour->hex}}; border-radius: 50%; margin: 0px 5px"></div>
                                                         @endif
                                                     @endforeach
                                                 </div>
