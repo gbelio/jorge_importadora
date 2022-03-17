@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Colour;
+use App\ProductColour;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -94,14 +95,23 @@ class ColourController extends Controller
 
     /**
      * @param $id
-     * @return JsonResponse
+     * @return false|JsonResponse
      * @throws Exception
      */
-    public function  destroy($id): JsonResponse
+    public function  destroy($id)
     {
-        $color = Colour::query()
-            ->find($id);
-        $color->delete();
+        $isUsed = ProductColour::query()
+            ->where('colour_id', '=', $id)
+            ->first();
+
+        if (!$isUsed){
+            $color = Colour::query()
+                ->find($id);
+            $color->delete();
+        }else{
+            return false;
+        }
+
         return response()->json(['status' => 'Registro eliminado con éxito']);
     }
 }

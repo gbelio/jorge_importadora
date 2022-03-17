@@ -325,13 +325,13 @@ $(document).ready(function(){
     })
 
     //Color (abm)
-    $("tr td #delete7").click(function(ev){
+    $("tr td #delete7").click(function(ev) {
         ev.preventDefault();
         var nombre = $(this).parents('tr').find('td:nth-child(2)').text();
         var id = $(this).parents('tr').find('.serdelete_val_id7').val();
 
         Swal.fire({
-            title: '¿Realmente quieres eliminar el registro de '+nombre+' ?',
+            title: '¿Realmente quieres eliminar el registro de ' + nombre + ' ?',
             text: "El registro será eliminado permanentemente",
             icon: 'warning',
             showCancelButton: true,
@@ -340,44 +340,40 @@ $(document).ready(function(){
             confirmButtonText: 'Si, borrar',
             cancelButtonText: 'No',
         }).then((result) => {
-
             if (result.value) {
 
                 var data = {
-                    "_token" : $('input[name=_token]').val(),
-                    "id" : id,
+                    "_token": $('input[name=_token]').val(),
+                    "id": id,
                 };
 
                 $.ajax({
                     type: 'DELETE',
-                    url: '/colores/delete/'+id,
+                    url: '/colores/delete/' + id,
                     data: data,
-
-                })
-
-                    .done(function(response){
-                        Swal.fire(
-                            'Eliminado!',
-                            'Tu registro ha sido eliminado correctamente',
-                            'success'
-                        )
-                            .then ((result) => {
+                    success: function (data) {
+                        if(data !== ''){
+                            Swal.fire(
+                                'Eliminado!',
+                                'Tu registro ha sido eliminado correctamentee',
+                                'success'
+                            ).then ((result) => {
                                 location.reload();
                             });
-                    }).fail (function(response){
-                    Swal.fire(
-                        'Ups!',
-                        'Tu registro no se pudo eliminar, esta siendo utilizado por una producto',
-                        'error'
-                    )
-
+                        }else{
+                            Swal.fire(
+                                'Ups!',
+                                'Tu registro no se pudo eliminar, esta siendo utilizado por una producto',
+                                'error'
+                            )
+                        }
+                    },
                 })
             }
-        })
-    })
-
+        });
+    });
     //FIN BORRAR
 
 
 
-})
+});
