@@ -3,14 +3,14 @@
         <a class="navbar-brand" href="/"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button> 
+        </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav cascadaUno">
             {{--  SEARCH --}}
                 <li class="nav-item" >
                     <form action="/productos/busqueda" class="form" method="GET" style="display:flex; flex-direction:row">
                         <input class="searching_box" placeholder='Buscar' type="text" name="clave" class="input-group-text mb-3 mt-3 mr-3" style="text-align: left">
-                        <button type="submit" value="" class="{{-- btn btn-info --}} search_button" name="" id="">
+                        <button type="submit" value="" class="search_button" name="" id="">
                             <img src="/img/search.svg" alt="search">
                         </button>
                     </form>
@@ -24,7 +24,7 @@
                                 @foreach ($allCategories as $category)
                                     <li class="dropdown-submenu">
                                         <form action="/categorias/busqueda" class="form" method="GET">
-                                            <input type="submit" value="<?=$category->name?>" class="dropdown-item" name="clave" id="">
+                                            <input type="submit" value="{{$category->name}}" class="dropdown-item" name="clave" id="">
                                         </form>
                                         <ul class="dropdown-menu">
                                             @isset($subcategories)
@@ -32,7 +32,7 @@
                                                     @if ($subcategory->category_id == $category->id)
                                                         <li class="dropdown-item">
                                                             <form action="/subcategorias/busqueda" class="form" method="GET">
-                                                                <input type="submit" value="<?=$subcategory->name?>" class="dropdown-item" name="clave" id="">
+                                                                <input type="submit" value="{{$subcategory->name}}" class="dropdown-item" name="clave" id="">
                                                             </form>
                                                         </li>
                                                     @endif
@@ -63,6 +63,9 @@
                         <a class="nav-link" href="/productos/cargar">Productos</a>
                     </li>
                     <li class="nav-item" style="margin: 10px 10px 0 0">
+                        <a class="nav-link" href="/colores/cargar">Colores</a>
+                    </li>
+                    <li class="nav-item" style="margin: 10px 10px 0 0">
                         <a class="nav-link" href="/slider/cargar">Imagenes De Slider</a>
                     </li>
                     <li class="nav-item" style="margin: 10px 10px 0 0">
@@ -89,7 +92,7 @@
         <a class="navbar-brand" href="/"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button> 
+        </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav cascadaUno">
                 {{--  SEARCH --}}
@@ -112,7 +115,7 @@
                                 @foreach ($allCategories as $category)
                                     <li class="dropdown-submenu">
                                         <form action="/categorias/busqueda" class="form" method="GET">
-                                            <input type="submit" value="<?=$category->name?>" class="dropdown-item" name="clave" id="">
+                                            <input type="submit" value="{{$category->name}}" class="dropdown-item" name="clave" id="">
                                         </form>
                                         <ul class="dropdown-menu">
                                             @isset($subcategories)
@@ -120,7 +123,7 @@
                                                     @if ($subcategory->category_id == $category->id)
                                                         <li class="dropdown-item">
                                                             <form action="/subcategorias/busqueda" class="form" method="GET">
-                                                                <input type="submit" value="<?=$subcategory->name?>" class="dropdown-item" name="clave" id="">
+                                                                <input type="submit" value="{{$subcategory->name}}" class="dropdown-item" name="clave" id="">
                                                             </form>
                                                         </li>
                                                     @endif

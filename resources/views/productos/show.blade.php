@@ -39,16 +39,16 @@
                                     </a>
                                 </div>
                                 <div class="add_photos_prod_show">
-                                    <a href="/productos/usuario/cargar_imagen/<?=$producto->id?>">
+                                    <a href="/productos/usuario/cargar_imagen/{{$producto->id}}">
                                         <i class="fa fa-file-image-o" style="font-size:15px; color: white; margin-top:5px;"></i>
                                     </a>
                                 </div>
                                 <div class="delete_prod_show">
                                     <form id="_form_eliminar" action="{{action('ProductController@destroy', $producto->id)}}" method="post">
                                         {{csrf_field()}}
-                                        <input class="serdelete_val_id4" name="_method" type="hidden" value="<?= $producto->id ?>">
-                                        <input class="serdelete_val_id5" name="_method" type="hidden" value="<?= $producto->name ?>">
-                                        <button class="delete_button_showall" id="delete4" data-id="<?= $producto->id ?>"  type="submit" >
+                                        <input class="serdelete_val_id4" name="_method" type="hidden" value="{{$producto->id}}">
+                                        <input class="serdelete_val_id5" name="_method" type="hidden" value="{{$producto->name}}">
+                                        <button class="delete_button_showall" id="delete4" data-id="{{$producto->id}}"  type="submit" >
                                             <i class="fa fa-trash" style="font-size:16px"></i>
                                         </button>
                                     </form>
@@ -85,6 +85,7 @@
                     </form>
                 </div>
             </div>
+        </div>
     </section>
 </div>
 @endsection

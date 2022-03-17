@@ -19,7 +19,8 @@ class MultimediaController extends Controller
 
     public function create($id)
     {
-        $producto = Product::find($id);
+        $producto = Product::query()
+            ->find($id);
         $multimedias = Multimedia::all();
         $allCategories = Category::all();
         $subcategories = Subcategory::all();
@@ -34,10 +35,11 @@ class MultimediaController extends Controller
     {
         foreach ($request->paths as $photo){
             $filename = $photo->storeAs('product', $photo->getClientOriginalName(),'public');
-            Multimedia::create([
-                'product_id' => $request->product_id,
-                'path' => $filename
-            ]);
+            Multimedia::query()
+                ->create([
+                    'product_id' => $request->product_id,
+                    'path' => $filename
+                ]);
         }
         return redirect ('/productos/usuario/cargar_imagen/' . $request->product_id);
     }
@@ -45,7 +47,8 @@ class MultimediaController extends Controller
 
     public function create1($id)
     {
-        $producto = Product::find($id);
+        $producto = Product::query()
+            ->find($id);
         $multimedias = Multimedia::all();
         $allCategories = Category::all();
         $subcategories = Subcategory::all();
@@ -60,10 +63,11 @@ class MultimediaController extends Controller
     {
         foreach ($request->paths as $photo){
             $filename = $photo->store('product','public');
-            Multimedia::create([
-                'product_id' => $request->product_id,
-                'path' => $filename
-            ]);
+            Multimedia::query()
+                ->create([
+                    'product_id' => $request->product_id,
+                    'path' => $filename
+                ]);
         }
         return redirect ('/productos/editar/' . $request->product_id);
     }
@@ -86,16 +90,18 @@ class MultimediaController extends Controller
 
 
     public function destroy($id)
-    {  
-        $multimedia = Multimedia::find($id);
+    {
+        $multimedia = Multimedia::query()
+            ->find($id);
         Multimedia::destroy($id);
         return redirect('/productos/usuario/cargar_imagen/'.$multimedia->product_id);
     }
 
 
     public function destroy1($id)
-    {  
-        $multimedia = Multimedia::find($id);
+    {
+        $multimedia = Multimedia::query()
+            ->find($id);
         Multimedia::destroy($id);
         return redirect('/productos/editar/'.$multimedia->product_id);
     }

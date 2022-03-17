@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
 use App\Category;
 use App\Subcategory;
 use Illuminate\Foundation\Auth\User;
@@ -26,7 +25,8 @@ class ProfileController extends Controller
 
     public function show($id)
     {
-        $profile = User::find($id);
+        $profile = User::query()
+            ->find($id);
         return view('perfil.show')->with('profile', $profile);
     }
 

@@ -17,7 +17,9 @@ class SliderController extends Controller
         }
         $allCategories = Category::all();
         $subcategories = Subcategory::all();
-        $sliders = DB::table('sliders')->orderBy('id', 'desc')->paginate(10);
+        $sliders = DB::table('sliders')
+            ->orderBy('id', 'desc')
+            ->paginate(10);
         return view('slider.create')->with('sliders',$sliders)
                                     ->with('allCategories',$allCategories)
                                     ->with('subcategories',$subcategories);
@@ -26,7 +28,9 @@ class SliderController extends Controller
 
     public function show($id)
     {
-        $sliders = DB::table('sliders')->orderBy('id', 'desc')->paginate(10);
+        $sliders = DB::table('sliders')
+            ->orderBy('id', 'desc')
+            ->paginate(10);
         return view('slider.create')->with('sliders',$sliders);
     }
 
@@ -53,7 +57,8 @@ class SliderController extends Controller
 
     public function edit($id)
     {
-        $slider = Slider::find($id);
+        $slider = Slider::query()
+            ->find($id);
         return view('slider.edit')
             ->with('slider', $slider);
     }
@@ -66,7 +71,8 @@ class SliderController extends Controller
         ];
         $mensaje = ['required' => 'el campo :attribute es obligatorio'];
         $this->validate($request, $reglas, $mensaje);
-        $slider = Slider::find($id);
+        $slider = Slider::query()
+            ->find($id);
         $slider->s_estado = $request->input('s_estado') !== $slider->s_estado ? $request->input('s_estado') : $slider->s_estado;
         $slider->s_link = $request->input('s_link') !== $slider->s_link ? $request->input('s_link') : $slider->s_link;
         $slider->save();
@@ -76,7 +82,8 @@ class SliderController extends Controller
 
     public function destroy($id)
     {
-        $slider = Slider::find($id);
+        $slider = Slider::query()
+            ->find($id);
         $slider->delete();
         return response()->json(['status'=>'Registro eliminado con éxito']);
     }
