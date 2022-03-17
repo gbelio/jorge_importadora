@@ -9,7 +9,7 @@
                 @foreach ($subcategories as $subcategory)
                     @if ($subcategory->category_id == $category[0]->id)
                         <form action="/subcategorias/busqueda" class="form _subcatForm" method="GET">
-                            <input type="submit" value="<?=$subcategory->name?>" class="dropdown-item item_subcat" name="clave" id="">
+                            <input type="submit" value="{{$subcategory->name}}" class="dropdown-item item_subcat" name="clave" id="">
                         </form>
                     @endif
                 @endforeach
@@ -21,23 +21,23 @@
             <div class="cat-prod">
                 <article class="product_1">
                     <div class="product_1_img">
-                        @if(Auth::user() != null)
+                        @if(Auth::user() != null && Auth::user()->role === 9)
                             <div class="edit_prod">
                                 <a href="/productos/editar/{{$product->id}}">
                                     <img class="edit_button" alt="edit_button" src="/img/edit_button.svg">
                                 </a>
                             </div>
                             <div class="add_photos_prod">
-                                <a href="/productos/usuario/cargar_imagen/<?=$product->id?>">
+                                <a href="/productos/usuario/cargar_imagen/{{$product->id}}">
                                     <i class="fa fa-file-image-o" style="font-size:15px; color: white"></i>
                                 </a>
                             </div>
                             <div class="delete_prod">
                                 <form id="_form_eliminar" action="{{action('ProductController@destroy', $product->id)}}" method="post">
                                     {{csrf_field()}}
-                                    <input class="serdelete_val_id4" name="_method" type="hidden" value="<?= $product->id ?>">
-                                    <input class="serdelete_val_id5" name="_method" type="hidden" value="<?= $product->name ?>">
-                                    <button class="delete_button_showall" id="delete4" data-id="<?= $product->id ?>"  type="submit" >
+                                    <input class="serdelete_val_id4" name="_method" type="hidden" value="{{$product->id}}">
+                                    <input class="serdelete_val_id5" name="_method" type="hidden" value="{{$product->name}}">
+                                    <button class="delete_button_showall" id="delete4" data-id="{{$product->id}}"  type="submit" >
                                         <i class="fa fa-trash" style="font-size:16px"></i>
                                     </button>
                                 </form>
@@ -54,6 +54,7 @@
                             <a href="/subcategorias/busqueda?clave={{$product->subcategory->name}}">{{$product->subcategory->name}}</a>
                         </div>
                         <p maxlength="60">{{$product->resume}}</p>
+                    </div>
                 </article>
             </div>
         @endforeach

@@ -54,7 +54,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="add_photos_prod">
-                                                        <a href="/productos/usuario/cargar_imagen/<?=$product->id?>">
+                                                        <a href="/productos/usuario/cargar_imagen/{{$product->id}}">
                                                             <i class="fa fa-file-image-o"
                                                                style="font-size:15px; color: white"></i>
                                                         </a>
@@ -65,11 +65,11 @@
                                                               method="post">
                                                             {{csrf_field()}}
                                                             <input class="serdelete_val_id4" name="_method"
-                                                                   type="hidden" value="<?= $product->id ?>">
+                                                                   type="hidden" value="{{$product->id}}">
                                                             <input class="serdelete_val_id5" name="_method"
-                                                                   type="hidden" value="<?= $product->name ?>">
+                                                                   type="hidden" value="{{$product->name}}">
                                                             <button class="delete_button_showall" id="delete4"
-                                                                    data-id="<?= $product->id ?>" type="submit">
+                                                                    data-id="{{$product->id}}" type="submit">
                                                                 <i class="fa fa-trash" style="font-size:16px"></i>
                                                             </button>
                                                         </form>

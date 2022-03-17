@@ -19,7 +19,6 @@ $(document).ready(function(){
 
     for(let i = 1; i <= categoriesCount; i++){
 
-
         let next_button = $('.am-next'+i);
         let prev_button = $('.am-prev'+i);
 
@@ -72,8 +71,8 @@ $(document).ready(function(){
 
 function boxShadowOn(){
     $(this).css('boxShadow', ' 0px 0px 4px 1px rgba(0,0,0,0.45)')
-    $(this).css('transition', '200ms')
-    $(this).css('cursor', 'pointer')
+        .css('transition', '200ms')
+        .css('cursor', 'pointer')
 }
 
 function boxShadowOff(){

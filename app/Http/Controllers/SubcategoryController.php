@@ -24,10 +24,9 @@ class SubcategoryController extends Controller
         if(Auth::user() == null){
             return redirect('login');
         }
-        $subcategorias = DB::table('subcategories')->orderBy('id', 'desc')->paginate(15);
+        $subcategorias = DB::table('subcategories')->orderBy('id', 'desc')->paginate(20);
         $allCategories = Category::all();
         $subcategories = Subcategory::all();
-        $subcategorias = Subcategory::paginate(20);
         return view('subcategorias.create')->with('allCategories',$allCategories)
                                         ->with('subcategorias',$subcategorias)
                                         ->with('subcategories',$subcategories);
@@ -61,7 +60,8 @@ class SubcategoryController extends Controller
     public function edit($id)
     {
         $categorias = Category::all();
-        $subcategoria = Subcategory::find($id);
+        $subcategoria = Subcategory::query()
+            ->find($id);
         return view('subcategorias.edit')->with('subcategoria', $subcategoria)
                                             ->with('categorias', $categorias);
     }
@@ -77,7 +77,8 @@ class SubcategoryController extends Controller
         $mensaje = ['required' => 'el campo :attribute es obligatorio'];
 
         $this->validate($request, $reglas, $mensaje);
-        $subcategoria = Subcategory::find($id);
+        $subcategoria = Subcategory::query()
+            ->find($id);
         $subcategoria->name = $request->input('name') !== $subcategoria->name ? $request->input('name') : $subcategoria->name;
         $subcategoria->category_id = $request->input('category_id') !== $subcategoria->category_id ? $request->input('category_id') : $subcategoria->category_id;
         $subcategoria->save();
@@ -87,8 +88,10 @@ class SubcategoryController extends Controller
 
     public function destroy($id)
     {
-        $subcategory=Subcategory::find($id);
-        $product = Product::where('subcategory_id', 'LIKE', "%$id%")->get();
+        $subcategory=Subcategory::query()
+            ->find($id);
+        $product = Product::query()
+            ->where('subcategory_id', 'LIKE', "%$id%")->get();
         if (count($product) == 0) {
             $subcategory->delete();
         }else{
@@ -102,9 +105,13 @@ class SubcategoryController extends Controller
     {
         $clave = $request->clave;
         $allCategories = Category::all();
-        $subcategory = Subcategory::query()->where('name', 'LIKE', "%$clave%")->get();
+        $subcategory = Subcategory::query()
+            ->where('name', 'LIKE', "%$clave%")->get();
         $subcategory_id = $subcategory[0]->id;
-        $productsById = Product::where('subcategory_id', $subcategory_id)->paginate(20)->withQueryString();
+        $productsById = Product::query()
+            ->where('subcategory_id', $subcategory_id)
+            ->paginate(20)
+            ->withQueryString();
         $categories = Category::all();
         $subcategories = Subcategory::all();
         return view('subcategorias.results')->with('productsById', $productsById)
@@ -116,7 +123,9 @@ class SubcategoryController extends Controller
 
     public function getSubcategories(Request $request){
         if ($request->ajax()) {
-            $subcategories = Subcategory::where('category_id', $request->category_id)->get();
+            $subcategories = Subcategory::query()
+                ->where('category_id', $request->category_id)
+                ->get();
             foreach ($subcategories as $subcategory){
                 $subcatsArr[$subcategory->id] = $subcategory->name;
             }
