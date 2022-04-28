@@ -5,13 +5,12 @@
         <div style="display:flex; flex-direction:row; justify-content:space-between; align-items:baseline">
             <h3 style="display:inline-block">Editar Producto</h3>
 
-
             <form id="formularioDeleteEdit" action="{{action('ProductController@destroy', $producto->id)}}" method="post">
                 {{csrf_field()}}
-                <input class="serdelete_val_id_6" name="_method" type="hidden" value="<?= $producto->id ?>">
-                <input class="serdelete_val_id_7" name="_method" type="hidden" value="<?= $producto->name ?>">
+                <input class="serdelete_val_id_6" name="_method" type="hidden" value="{{$producto->id}}">
+                <input class="serdelete_val_id_7" name="_method" type="hidden" value="{{$producto->name}}">
 
-                <button id="delete6" data-id="<?= $producto->id ?>" type="submit" style="margin:0 !important;">
+                <button id="delete6" data-id="{{$producto->id}}" type="submit" style="margin:0 !important;">
                     <img id="img_delete" src="/img/eliminar.svg" alt="Eliminar" srcset="">
                 </button>
 
@@ -26,27 +25,50 @@
         <br>
 
         <div class="form-group">
-            <form action="{{action('ProductController@editColour', $producto->id)}}" method="post" style="display: flex; flex-direction: column">
+            <!--            Editar colores-->
+            <form action="{{action('ProductController@editColour', $producto->id)}}" method="post" >
                 {{ method_field('POST') }}
                 @csrf
-                <label for="colours_id" style="margin: 0"><strong>Seleccione Colores</strong></label>
-                <select name="colours_id" id="colours_id" multiple>
 
-                    @foreach($rest_of_colours as $colour)
-                        <option value="{{$colour->id}}">{{$colour->name}}</option>
-                    @endforeach
+                <label for="colores"><strong> Seleccionar colores</strong></label>
+                <br>
+                @foreach($rest_of_colours as $colour)
+                    <label class="colour-container">
+                        <div style="background-color: {{$colour->hex}}; width: 25px; height: 25px; margin-right: 10px; border-radius: 50%">
+                        </div>
+                        {{$colour->name}}
+                        <input type="checkbox" name ="colours[]" value="{{$colour->id}}">
+                        <span class="checkmark"></span>
+                    </label>
+                @endforeach
 
-                </select>
                 <div style="margin:0">
                     <button type="submit" class="btn btn-info btn-sm boton-eliminar" style="margin:2%; background-color:#007BFF;border-color:#007BFF;">Agregar colores</button>
                 </div>
             </form>
 
-            <div style="display: flex; flex-direction: row;">
-                @foreach($product_colours as $product_colour)
-                    <div style="width: 20px; height: 20px; background-color: {{$product_colour->colour->hex}}; border-radius: 50%; margin: 0px 5px; border:1px solid black"></div>
-                @endforeach
+            <!--            Eliminar colores-->
+            <div style="display: flex; flex-direction: column;">
+                <label for="colours_id" style="margin: 0"><strong>Eliminar colores</strong></label>
+                <div style="display: flex; flex-direction: row; margin-top: 15px; overflow-x: scroll; width: 100%;">
+                    @foreach($product_colours as $product_colour)
+                        <div>
+                            <form action="{{action('ProductController@deleteColour', $product_colour->product->id)}}" method="post" style="display: flex; justify-content: center; align-items: center">
+                                {{ method_field('DELETE') }}
+                                @csrf
+                                <input type="hidden" id="product_colour_id" name="product_colour_id" value="{{$product_colour->id}}">
+                                <label class="colour-container" style="">
+                                    <div style="background-color: {{$product_colour->colour->hex}}; width: 25px; height: 25px; margin-right: 10px; border-radius: 50%; border: 1px solid grey">
+                                    </div>
+                                    {{$product_colour->colour->name}}
+                                </label>
+                                <button class="button-delete-colour" type="submit" style="border:none; background-color: transparent !Important"><i class="fa fa-close" style="font-size: 10px; color: black"></i> </button>
+                            </form>
+                        </div>
+                    @endforeach
+                </div>
             </div>
+
         </div>
         <br>
         <form method="POST" action="" enctype="multipart/form-data">
@@ -62,7 +84,7 @@
             </div>
             <div class="form-group">
                 <label for="amount"><strong>Precio</strong> </label>
-                <input type="number" value="{{$producto->amount}}" min="0" step="0.01" name="amount" value="{{ old("amount") }}" class="form-control">
+                <input type="number" value="{{$producto->amount}}" min="0" step="0.01" name="amount" class="form-control">
             </div>
             <div class="button" style="margin-bottom:1%;">
                 <label for="name"><strong> Cover </strong></label>
@@ -128,7 +150,7 @@
                             <th style="color:red;">Borrar</th>
                         </thead>
                         <tbody>
-                            @if($productos ?? ''->count())
+                            @if($productos)
                                 @foreach($productos ?? '' as $producto)
                                     <tr style="font-size:13px">
                                         <td>{{$producto->id}}</td>
@@ -155,8 +177,8 @@
                                         <td style="text-align:center">
                                             <form action="{{action('ProductController@destroy', $producto->id)}}" method="post">
                                                 {{csrf_field()}}
-                                                <input class="serdelete_val_id" name="_method" type="hidden" value="<?= $producto->id ?>">
-                                                <button id="delete" data-id="<?= $producto->id ?>" class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
+                                                <input class="serdelete_val_id" name="_method" type="hidden" value="{{$producto->id}}">
+                                                <button id="delete" data-id="{{$producto->id}}" class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
                                                     <i class="fa fa-trash" style="font-size:16px"></i>
                                                 </button>
                                             </form>
@@ -181,4 +203,7 @@
     <script src="{{asset('vendor/ckeditor/ckeditor.js')}}"></script>
     <script src="{{asset('js/CKEditorCFG.js')}}"></script>
     <script src="{{asset('js/subcategorias.js')}}"></script>
+    <script>
+
+    </script>
 @endsection

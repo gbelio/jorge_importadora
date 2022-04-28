@@ -22,7 +22,7 @@
                 <div class="form-group" style="display:none">
                     <label for="s_estado">Estado</label>
                     <input type="text" name="s_estado" value="{{1}}" class="form-control" maxlength="190">
-                </div>   
+                </div>
                 @error('s_estado')
                     <span class="errors">{{ $message }}</span>
                 @enderror
@@ -52,8 +52,8 @@
                         <th></th>
                     </thead>
                     <tbody>
-                        @if($sliders->count())  
-                            @foreach($sliders as $slider)  
+                        @if($sliders->count())
+                            @foreach($sliders as $slider)
                                 <tr style="font-size:13px; text-align:center">
                                     <td>{{$slider->id}}</td>
                                     <td>{{$slider->s_img}}</td>
@@ -85,15 +85,15 @@
                                         <form action="{{action('SliderController@destroy', $slider->id)}}" method="post">
                                         {{csrf_field()}}
                                             {{-- <input name="_method" type="hidden" value="DELETE"> --}}
-                                            <input class="serdelete_val_id5" name="_method" type="hidden" value="<?= $slider->id ?>">
-                                            <button id="delete5" data-id="<?= $slider->id ?>" class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
+                                            <input class="serdelete_val_id5" name="_method" type="hidden" value="{{$slider->id}}">
+                                            <button id="delete5" data-id="{{$slider->id}}" class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
                                                 <i class="fa fa-trash" style="font-size:16px"></i>
                                             </button>
                                         </form>
                                     </td>
 
                                 </tr>
-                            @endforeach 
+                            @endforeach
                         @else
                             <tr>
                                 <td colspan="8">No hay registro !!</td>

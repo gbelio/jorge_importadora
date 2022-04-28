@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Colour;
 use App\ProductColour;
+use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -39,12 +41,16 @@ class ProductController extends Controller
         if (Auth::user() == null) {
             return redirect('login');
         }
-        $productos = Product::query()->orderBy('id', 'desc')->paginate(20);
+        $productos = Product::query()
+            ->orderBy('id', 'desc')
+            ->paginate(20);
         $allCategories = Category::all();
         $subcategories = Subcategory::all();
-        return view('productos.create')->with('allCategories', $allCategories)
-            ->with('subcategories', $subcategories)
-            ->with('productos', $productos);
+        $colores = Colour::all();
+        return view('productos.create')->with(['allCategories' => $allCategories,
+                                                    'subcategories'=> $subcategories,
+                                                    'productos'=> $productos,
+                                                    'colores' => $colores]);
     }
 
     /**
@@ -62,6 +68,7 @@ class ProductController extends Controller
             'cover' => 'required',
             'category_id' => 'required',
             'subcategory_id' => 'required',
+            'colours' => 'sometimes',
         ];
 
         $mensaje = [
@@ -70,9 +77,22 @@ class ProductController extends Controller
 
         $this->validate($request, $reglas, $mensaje);
         $cover = $request->file('cover')->storeAs('covers', $request->file('cover')->getClientOriginalName(), 'public');
-        $producto = new Product($request->all());
+
+        $producto = new Product($request->except('colours'));
         $producto->cover = $cover;
         $producto->save();
+
+        $colours = $request->colours;
+        if($colours){
+            foreach ($colours as $colour){
+                $new_color = new ProductColour();
+                $new_color->product_id = $producto->id;
+                $new_color->colour_id = $colour;
+                $new_color->available = 1;
+                $new_color->save();
+            }
+        }
+
         return redirect('/productos/cargar');
     }
 
@@ -84,7 +104,8 @@ class ProductController extends Controller
     {
         $allCategories = Category::all();
         $multimedias = Multimedia::all();
-        $product = Product::find($id);
+        $product = Product::query()
+            ->find($id);
         $subcategories = Subcategory::all();
         return view('productos.show')->with('producto', $product)
             ->with('allCategories', $allCategories)
@@ -152,19 +173,22 @@ class ProductController extends Controller
         if (Auth::user() == null) {
             return redirect('login');
         }
-        $productos = Product::paginate(20);
-        $producto = Product::find($id);
+        $productos = Product::query()
+            ->paginate(20);
+        $producto = Product::query()
+            ->find($id);
         $allCategories = Category::all();
         $subcategories = Subcategory::all();
         $multimedias = Multimedia::all();
 
         //Colores del producto
         $product_colours = ProductColour::query()
+            ->with('product')
             ->where('product_id', $id)
             ->get();
 
         $colour_ids = ProductColour::query()
-            ->select('id')
+            ->select('colour_id')
             ->where('product_id', $id)
             ->get();
 
@@ -202,7 +226,8 @@ class ProductController extends Controller
         ];
         $mensaje = ['required' => 'el campo :attribute es obligatorio'];
         $this->validate($request, $reglas, $mensaje);
-        $producto = Product::find($id);
+        $producto = Product::query()
+            ->find($id);
         $producto->name = $request->input('name') !== $producto->name ? $request->input('name') : $producto->name;
         $producto->code = $request->input('code') !== $producto->code ? $request->input('code') : $producto->code;
         $producto->amount = $request->input('amount') !== $producto->amount ? $request->input('amount') : $producto->amount;
@@ -225,14 +250,16 @@ class ProductController extends Controller
 
     /**
      * @param $id
-     * @return Application|\Illuminate\Http\JsonResponse|RedirectResponse|Redirector
+     * @return Application|JsonResponse|RedirectResponse|Redirector
+     * @throws Exception
      */
     public function destroy($id)
     {
         if (Auth::user() == null) {
             return redirect('login');
         }
-        $producto = Product::find($id);
+        $producto = Product::query()
+            ->find($id);
         $producto->delete();
         return response()->json(['status' => 'Registro eliminado con éxito']);
     }
@@ -244,11 +271,18 @@ class ProductController extends Controller
     public function search(Request $request)
     {
         $clave = $request->clave;
-        $products = Product::where('name', 'LIKE', "%$clave%")->paginate(20)->withQueryString();
+        $products = Product::query()
+            ->where('name', 'LIKE', "%$clave%")
+            ->paginate(20)
+            ->withQueryString();
         $allProducts = Product::all();
         $allCategories = Category::all();
-        $categories = Category::where('name', 'LIKE', "%$clave%")->get();
-        $subcategory = Subcategory::where('name', 'LIKE', "%$clave%")->get();
+        $categories = Category::query()
+            ->where('name', 'LIKE', "%$clave%")
+            ->get();
+        $subcategory = Subcategory::query()
+            ->where('name', 'LIKE', "%$clave%")
+            ->get();
         $subcategories = Subcategory::all();
         $mensaje = 'Encontramos' . " " . count($products) . " " . 'productos para su búsqueda: ' . "'$clave'";
         return view('productos.results')->with('products', $products)
@@ -269,11 +303,27 @@ class ProductController extends Controller
     public function editColour(Request $request, $id)
     {
         $attributes = $request->all();
-        $productColour = new ProductColour();
-        $productColour->product_id = $id;
-        $productColour->colour_id = $attributes['colours_id'];
-        $productColour->available = 1;
-        $productColour->save();
+
+        $colours = $attributes['colours'];
+        foreach ($colours as $colour) {
+            $productColour = new ProductColour();
+            $productColour->product_id = $id;
+            $productColour->colour_id = $colour;
+            $productColour->available = 1;
+            $productColour->save();
+        }
+
+        return redirect('/productos/editar/'.$id);
+    }
+
+    public function deleteColour(Request $request, $id)
+    {
+        $attributes = $request->all();
+
+        $productColour = ProductColour::query()
+            ->find($attributes['product_colour_id']);
+
+        $productColour->delete();
         return redirect('/productos/editar/'.$id);
     }
 }

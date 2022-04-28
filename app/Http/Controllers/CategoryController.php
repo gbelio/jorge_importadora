@@ -59,10 +59,17 @@ class CategoryController extends Controller
     {
         $clave = $request->clave;
         $allCategories = Category::all();
-        $category = Category::where('name', 'LIKE', "%$clave%")->get();
+        $category = Category::query()
+            ->where('name', 'LIKE', "%$clave%")
+            ->get();
         $category_id = $category[0]->id;
-        $productsById = Product::where('category_id', 'LIKE', "%$category_id%")->paginate(20)->withQueryString();
-        $subcategoriesById = Subcategory::where('category_id', 'LIKE', "%$category_id%")->get();
+        $productsById = Product::query()
+            ->where('category_id', 'LIKE', "%$category_id%")
+            ->paginate(20)
+            ->withQueryString();
+        $subcategoriesById = Subcategory::query()
+            ->where('category_id', 'LIKE', "%$category_id%")
+            ->get();
         $categories = Category::all();
         $subcategories = Subcategory::all();
         return view('categorias.results')->with('category', $category)
@@ -76,8 +83,11 @@ class CategoryController extends Controller
 
     public function show($id)
     {
-        $categoria=Category::find($id);
-        $productos = Product::where('category_id', $id)->paginate(15);
+        $categoria=Category::query()
+            ->find($id);
+        $productos = Product::query()
+            ->where('category_id', $id)
+            ->paginate(15);
         $multimedias=Multimedia::all();
         $allCategories=Category::all();
         return view('categorias.show')->with('categoria',$categoria)
@@ -89,7 +99,8 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
-        $categoria = Category::find($id);
+        $categoria = Category::query()
+            ->find($id);
         return view('categorias.edit')->with('categoria', $categoria);
     }
 
@@ -101,7 +112,8 @@ class CategoryController extends Controller
         ];
         $mensaje = ['required' => 'el campo :attribute es obligatorio'];
         $this->validate($request, $reglas, $mensaje);
-        $categoria = Category::find($id);
+        $categoria = Category::query()
+            ->find($id);
         $categoria->name = $request->input('name') !== $categoria->name ? $request->input('name') : $categoria->name;
         $categoria->save();
         return redirect("/categorias/cargar");
@@ -110,9 +122,14 @@ class CategoryController extends Controller
 
      public function destroy($id)
     {
-        $category=Category::find($id);
-        $subcategory = Subcategory::where('category_id', 'LIKE', "%$id%")->get();
-        $product = Product::where('category_id', 'LIKE', "%$id%")->get();
+        $category=Category::query()
+            ->find($id);
+        $subcategory = Subcategory::query()
+            ->where('category_id', 'LIKE', "%$id%")
+            ->get();
+        $product = Product::query()
+            ->where('category_id', 'LIKE', "%$id%")
+            ->get();
         if (count($product) == 0 && count($subcategory) == 0) {
             $category->delete();
         }else{

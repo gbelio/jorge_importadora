@@ -20,7 +20,7 @@ $(document).ready(function(){
         ev.preventDefault();
         var nombre = $(this).parents('tr').find('td:nth-child(2)').text();
         var id = $(this).parents('tr').find('.serdelete_val_id').val();
-      
+
         Swal.fire({
             title: '¿Realmente quieres eliminar el registro de '+nombre+' ?',
             text: "El registro será eliminado permanentemente",
@@ -37,12 +37,12 @@ $(document).ready(function(){
                     "_token" : $('input[name=_token]').val(),
                     "id" : id,
                 };
- 
+
                 $.ajax({
                     type: 'DELETE',
                     url: '/productos/delete/'+id,
                     data: data,
-                    success: function(response){ 
+                    success: function(response){
 
                         Swal.fire(
                             'Eliminado!',
@@ -63,7 +63,7 @@ $(document).ready(function(){
         ev.preventDefault();
         var nombre = $(this).parents('tr').find('td:nth-child(2)').text();
         var id = $(this).parents('tr').find('.serdelete_val_id1').val();
-      
+
         Swal.fire({
             title: '¿Realmente quieres eliminar el registro de '+nombre+' ?',
             text: "El registro será eliminado permanentemente",
@@ -74,14 +74,14 @@ $(document).ready(function(){
             confirmButtonText: 'Si, borrar',
             cancelButtonText: 'No',
             }).then((result) => {
-                
+
                 if (result.value) {
 
                     var data = {
                         "_token" : $('input[name=_token]').val(),
                         "id" : id,
                     };
-    
+
                     $.ajax({
                         type: 'DELETE',
                         url: '/categorias/delete/'+id,
@@ -104,7 +104,7 @@ $(document).ready(function(){
                             'Tu registro no se pudo eliminar, esta siendo utilizado por una subcategoría o un producto',
                             'error'
                         )
-                     
+
                     })
                 }
             })
@@ -116,7 +116,7 @@ $(document).ready(function(){
         var nombre = $(this).parents('tr').find('td:nth-child(2)').text();
         var id = $(this).parents('tr').find('.serdelete_val_id2').val();
 
-      
+
         Swal.fire({
             title: '¿Realmente quieres eliminar el registro de '+nombre+' ?',
             text: "El registro será eliminado permanentemente",
@@ -133,7 +133,7 @@ $(document).ready(function(){
                     "_token" : $('input[name=_token]').val(),
                     "id" : id,
                 };
- 
+
                 $.ajax({
                     type: 'DELETE',
                     url: '/subcategorias/delete/'+id,
@@ -155,7 +155,7 @@ $(document).ready(function(){
                         'Tu registro no se pudo eliminar, esta siendo utilizado por un producto',
                         'error'
                     )
-                 
+
                 })
             }
         })
@@ -166,7 +166,7 @@ $(document).ready(function(){
         ev.preventDefault();
         var nombre = $(this).parents('#_form_eliminar').find('.serdelete_val_id5').val();
         var id = $(this).parents('#_form_eliminar').find('.serdelete_val_id4').val();
-      
+
         console.log(id);
 
         Swal.fire({
@@ -185,12 +185,12 @@ $(document).ready(function(){
                     "_token" : $('input[name=_token]').val(),
                     "id" : id,
                 };
- 
+
                 $.ajax({
                     type: 'DELETE',
                     url: '/productos/delete/'+id,
                     data: data,
-                    /* success: function(response){ 
+                    /* success: function(response){
 
                         Swal.fire(
                             'Eliminado!',
@@ -218,7 +218,7 @@ $(document).ready(function(){
                         'Tu registro no se pudo eliminar',
                         'error'
                     )
-                 
+
                 })
             }
         })
@@ -246,7 +246,7 @@ $(document).ready(function(){
                     "_token" : $('input[name=_token]').val(),
                     "id" : id,
                 };
- 
+
                 $.ajax({
                     type: 'DELETE',
                     url: '/slider/delete/'+id,
@@ -268,7 +268,7 @@ $(document).ready(function(){
                         'Tu registro no se pudo eliminar',
                         'error'
                     )
-                 
+
                 })
             }
         })
@@ -279,7 +279,7 @@ $(document).ready(function(){
         ev.preventDefault();
         var nombre = $(this).parents('form').find('.serdelete_val_id_7').val();
         var id = $(this).parents('form').find('.serdelete_val_id_6').val();
-      
+
         Swal.fire({
             title: '¿Realmente quieres eliminar el registro de '+nombre+' ?',
             text: "El registro será eliminado permanentemente",
@@ -296,7 +296,7 @@ $(document).ready(function(){
                     "_token" : $('input[name=_token]').val(),
                     "id" : id,
                 };
- 
+
                 $.ajax({
                     type: 'DELETE',
                     url: '/productos/delete/'+id,
@@ -318,14 +318,62 @@ $(document).ready(function(){
                             'Tu registro no se pudo eliminar',
                             'error'
                     )
-                      
+
                 })
             }
         })
     })
 
+    //Color (abm)
+    $("tr td #delete7").click(function(ev) {
+        ev.preventDefault();
+        var nombre = $(this).parents('tr').find('td:nth-child(2)').text();
+        var id = $(this).parents('tr').find('.serdelete_val_id7').val();
+
+        Swal.fire({
+            title: '¿Realmente quieres eliminar el registro de ' + nombre + ' ?',
+            text: "El registro será eliminado permanentemente",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, borrar',
+            cancelButtonText: 'No',
+        }).then((result) => {
+            if (result.value) {
+
+                var data = {
+                    "_token": $('input[name=_token]').val(),
+                    "id": id,
+                };
+
+                $.ajax({
+                    type: 'DELETE',
+                    url: '/colores/delete/' + id,
+                    data: data,
+                    success: function (data) {
+                        if(data !== ''){
+                            Swal.fire(
+                                'Eliminado!',
+                                'Tu registro ha sido eliminado correctamentee',
+                                'success'
+                            ).then ((result) => {
+                                location.reload();
+                            });
+                        }else{
+                            Swal.fire(
+                                'Ups!',
+                                'Tu registro no se pudo eliminar, esta siendo utilizado por una producto',
+                                'error'
+                            )
+                        }
+                    },
+                })
+            }
+        });
+    });
     //FIN BORRAR
 
 
-    
-})
+
+});

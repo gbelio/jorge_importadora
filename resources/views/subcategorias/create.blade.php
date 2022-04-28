@@ -15,7 +15,7 @@
                     <label for="categoria"><strong> Nombre de la Subcategoría</strong></label>
                     <input required type="text" name="name" value="" class="form-control">
                 </div>
-                <div class="form-group"> 
+                <div class="form-group">
                     <label for="genero"><strong>¿A qué categoría pertenece?</strong></label>
                     <select class="form-control" name="category_id">
                         @foreach($allCategories as $categoria)
@@ -44,8 +44,8 @@
                         <th></th>
                     </thead>
                     <tbody>
-                        @if($subcategorias->count())  
-                            @foreach($subcategorias as $subcategoria)  
+                        @if($subcategorias->count())
+                            @foreach($subcategorias as $subcategoria)
                                 <tr style="font-size:13px">
                                     <td>{{$subcategoria->id}}</td>
                                     <td>{{$subcategoria->name}}</td>
@@ -56,14 +56,14 @@
                                     <td style="text-align:center">
                                         <form action="{{action('SubcategoryController@destroy', $subcategoria->id)}}" method="post">
                                             {{csrf_field()}}
-                                            <input class="serdelete_val_id2" name="_method" type="hidden" value="<?= $subcategoria->id ?>">
-                                            <button id="delete2" data-id="<?= $subcategoria->id ?>" class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
+                                            <input class="serdelete_val_id2" name="_method" type="hidden" value="{{$subcategoria->id}}">
+                                            <button id="delete2" data-id="{{$subcategoria->id}}" class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
                                                 <i class="fa fa-trash" style="font-size:16px"></i>
                                             </button>
                                         </form>
                                     </td>
                                 </tr>
-                            @endforeach 
+                            @endforeach
                         @else
                             <tr>
                                 <td colspan="8">No hay registro !!</td>
