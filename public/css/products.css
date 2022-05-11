@@ -58,6 +58,7 @@
     justify-content: space-between;
     font-family: 'Raleway', sans-serif;
     margin-right: 20px;
+    background-color: white;
 }
 
 .product_1:hover{
@@ -67,7 +68,7 @@
 .product_1_img{
     position: relative;
     width: 100%;
-    height: 280px;
+    height: 300px;
 }
 
 .product_1_img span{
@@ -116,7 +117,7 @@
 
 .prod_details{
     width: 100%;
-    height: 120px;
+    height: 200px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -134,6 +135,9 @@
     text-transform: uppercase;
     font-family: 'Raleway', sans-serif;
     font-size: 1.2rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .category_subcat{
@@ -286,6 +290,7 @@
 #imagen-principal{
     width: 100%;
     height: 79%;
+    background-color: white;
 }
 #imagen-principal img{
     object-fit: contain;
@@ -306,6 +311,7 @@
 
 #muestra_galeria::-webkit-scrollbar{
     height: 4px;
+    background-color: #f4f4f4;
 }
 
 #muestra_galeria::-webkit-scrollbar-thumb{
@@ -316,6 +322,7 @@
 #muestra_galeria::-webkit-scrollbar-track{
     border-radius: 4px;
     background-color: ghostwhite;
+    background-color: #f4f4f4;
 } 
 
 .img_gallery{
@@ -343,11 +350,23 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    background-color: white;
 /*     border-bottom: 1px solid gainsboro; */
     margin-bottom: 1%;
 }
 
+.prod_description{
+    height: 60%;
+    overflow-y: scroll;
+}
+
+.prod_description::-webkit-scrollbar{
+    width: 5px;
+}
+
+.prod_description::-webkit-scrollbar-thumb{
+    background-color: black;
+    border-radius: 5px;
+}
 .prod_box_details div h4 {
     color: #5FA8E5;
     text-transform: uppercase;
@@ -401,7 +420,53 @@
     height: 4px;
   }
 
+.quantity_selected{
+    display: flex;
+    flex-direction: row !important;
+    width: 158px !important;
+    align-items: baseline !important;
+    justify-content: space-between !important;
+    margin-left: 0;
+}
 
+#quantity_price{
+    display: flex;
+    flex-direction: row;
+    width: 330px;
+    margin-left: 0;
+    align-items: baseline;
+}
+
+#quantity_price>h5,#quantity_price>div>h5 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #001B7E;
+}
+
+#quantity{
+    border: 2px solid #919191;
+}
+
+#buy_action{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#buy_action>button{
+    display: flex;
+    width: 35px;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    background-color: #001B7E !important;
+}
+
+#buy_action>button>img{
+    width: 100%;
+}
   /* Brai agrega */
 
 ._codigo_botones{

@@ -87,7 +87,7 @@
                 </a>
                 @endif
             </ul>
-{{--             <li class="nav-item dropdown d-flex Admin_" >
+{{--            <li class="nav-item dropdown d-flex Admin_" >
                 <a class="nav-link usuario dropdown-toggle" data-toggle="dropdown" href="/profile">{{Auth::user()->name}}</a>
                 <ul class="dropdown-menu cascadaDos">
                     @if (Auth::user()->role == 9)
