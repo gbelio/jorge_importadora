@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Category;
+use App\Subcategory;
 use App\OrderDetail;
 use App\Order;
 use Illuminate\Http\RedirectResponse;
@@ -44,14 +45,16 @@ class OrderDetailController extends Controller
     public function index()
     {
         $products = Product::all();
-        $categories = Category::all();
+        $allCategories = Category::all();
+        $subcategories = Subcategory::all();
         $orderDetails = $this->getOrderDetails();
         return view('carrito.show')
             ->with('products', $products)
-            ->with('categories', $categories)
+            ->with('allCategories', $allCategories)
             ->with('userOrderDetails', $orderDetails['userOrderDetails'])
             ->with('orderShopping', $orderDetails['orderShopping'][0]->id)
-            ->with('total', $orderDetails['total']);
+            ->with('total', $orderDetails['total'])
+            ->with('subcategories', $subcategories);
     }
 
     /**

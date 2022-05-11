@@ -156,9 +156,9 @@
 
 
                         <div class="slider_nav" style="display:none">
-                            <a class="am-next{{$category->id}}"><i class='fa fa-angle-left'
+                            <a class="am-next{{$category->id}} d-none d-sm-block"><i class='fa fa-angle-left'
                                                                    style="color: black; font-size:40px"></i></a>
-                            <a class="am-prev{{$category->id}}"><i class='fa fa-angle-right'
+                            <a class="am-prev{{$category->id}} d-none d-sm-block"><i class='fa fa-angle-right'
                                                                    style="color: black; font-size:40px"></i></a>
                         </div>
 
