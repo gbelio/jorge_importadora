@@ -79,6 +79,13 @@
                         <input type="hidden" name="code" value="{{$producto->code}}">
                         <input type="number" name="quantity" value="1" min="1" max="999">
                         <h5 id="amount" name="amount">${{$producto->amount}}</h5>
+                        <label for="colour_id">Seleccione el color</label>
+                        <select id="colour_id" name="colour_id">
+                            @foreach($product_colours as $product_colour)
+                                <option value="{{$product_colour->colour->id}}">{{$product_colour->colour->name}}</option>
+                            @endforeach
+                        </select>
+                        <br>
                         <button type="submit">
                             <img src="/img/icono_carrito.svg">
                         </button>

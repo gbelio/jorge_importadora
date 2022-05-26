@@ -35,7 +35,7 @@ class OrderController extends Controller
                 ->with('orders', $orders);
     }
 
-     public function search(Request $request)
+    public function search(Request $request)
     {
         $user = User::query()
             ->where('email', 'like', '%'.$request->clave.'%')
@@ -58,13 +58,13 @@ class OrderController extends Controller
             ->with('orders', $orders);
     }
 
-
     public function show($id)
     {
         $orderDetails = OrderDetailController::getOrderDetails();
         $order = Order::query()
             ->find($id);
         $orderDetail = OrderDetail::query()
+            ->with('colour')
             ->where([
                 'order_id' => $id
             ])->get();
@@ -75,14 +75,12 @@ class OrderController extends Controller
             ->with('userOrderDetails', $orderDetails['userOrderDetails']);
     }
 
-
     public function showAll()
     {
         $orders = Order::query()->whereNotIn('status', ['shopping'])->Paginate(20);
         return view('compras.showAll')
                     ->with('orders', $orders);
     }
-
 
     public function update(Request $request)
     {
@@ -105,7 +103,6 @@ class OrderController extends Controller
         Mail::to('gastonb.bkp@gmail.com')->send(new AlertsMailable($order));
         return view('comprobantes.show');
     }
-
 
     public function updateStatus(Request $request)
     {

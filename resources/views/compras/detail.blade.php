@@ -9,6 +9,7 @@
         <table id="mytable" class="table">
             <thead>
                 <th class="text-center">Artículo</th>
+                <th class="text-center">Color</th>
                 <th class="text-center">Foto</th>
                 <th class="text-center">Cantidad</th>
                 <th class="text-center">Precio</th>
@@ -16,12 +17,13 @@
             <tbody>
                 @foreach ($orderDetail as $detail)
                     <tr>
-                        <td><b>{{$detail->name}}</b></td>
-                        <td>
+                        <td class="text-center"><b>{{$detail->name}}</b></td>
+                        <td class="text-center"><b>{{$detail->colour->name}}</b></td>
+                        <td class="text-center">
                             <a href="/productos/{{$detail->product_id}}"><img src="/storage/{{$detail->cover}}" style="width:50px; height:50px" alt="{{$detail->name}}"></a>
                         </td>
-                        <td><b>{{$detail->quantity}}</b></td>
-                        <td><b>${{$detail->amount}}</b></td>
+                        <td class="text-center"><b>{{$detail->quantity}}</b></td>
+                        <td class="text-center"><b>${{$detail->amount}}</b></td>
                     </tr>
                @endforeach
             </tbody>

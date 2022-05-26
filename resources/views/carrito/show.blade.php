@@ -6,6 +6,7 @@
         <table id="mytable" class="table">
             <thead>
                 <th class="text-center">Artículo</th>
+                <th class="text-center">Color</th>
                 <th class="text-center">Foto</th>
                 <th class="text-center">Cantidad</th>
                 <th class="text-center">Precio Unidad</th>
@@ -15,14 +16,15 @@
             <tbody>
                 @foreach ($userOrderDetails as $orderDetail)
                 <tr>
-                    <td data-title="Nombre"><b>{{$orderDetail->product->name}}</b></td>
-                    <td data-title="img">
+                    <td class="text-center" data-title="Nombre"><b>{{$orderDetail->product->name}}</b></td>
+                    <td class="text-center" data-title="Color"><b>{{$orderDetail->colour->name}}</b></td>
+                    <td class="text-center" data-title="img">
                         <a href="/productos/{{$orderDetail->product->id}}"><img src="/storage/{{$orderDetail->product->cover}}" class="__img-carrito" alt="{{$orderDetail->product->name}}"></a>
                     </td>
-                    <td data-title="Cantidad"><b>{{$orderDetail->quantity}}</b></td>
-                    <td data-title="Total"><b>${{$orderDetail->product->amount}}</b></td>
-                    <td data-title="Total"><b>${{$orderDetail->product->amount*$orderDetail->quantity}}</b></td>
-                    <td data-title="Eliminar">
+                    <td class="text-center" data-title="Cantidad"><b>{{$orderDetail->quantity}}</b></td>
+                    <td class="text-center" data-title="Total"><b>${{$orderDetail->product->amount}}</b></td>
+                    <td class="text-center" data-title="Total"><b>${{$orderDetail->product->amount*$orderDetail->quantity}}</b></td>
+                    <td class="text-center" data-title="Eliminar">
                         @if(Auth::check())
                         <b>
                         <a href="{{url("cart/remove/$orderDetail->id")}}">
