@@ -70,6 +70,7 @@ class OrderDetailController extends Controller
         $newAdd = new OrderDetail([
             'order_id' => $orderShopping[0]->id,
             'product_id' => $_POST['product_id'],
+            'colour_id' => $_POST['colour_id'],
             'name' => $_POST['name'],
             'code' => $_POST['code'],
             'amount' => $_POST['amount'],

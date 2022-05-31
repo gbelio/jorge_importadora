@@ -104,12 +104,17 @@ class ProductController extends Controller
     {
         $allCategories = Category::all();
         $multimedias = Multimedia::all();
+        $product_colours = ProductColour::query()
+            ->where('product_id', $id)
+            ->where('available', '=', 1)
+            ->get();
         $product = Product::query()
             ->find($id);
         $subcategories = Subcategory::all();
         return view('productos.show')->with('producto', $product)
             ->with('allCategories', $allCategories)
             ->with('subcategories', $subcategories)
+            ->with('product_colours', $product_colours)
             ->with('multimedias', $multimedias);
     }
 
