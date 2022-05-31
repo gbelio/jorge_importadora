@@ -288,6 +288,19 @@ class ProductController extends Controller
         $subcategory = Subcategory::query()
             ->where('name', 'LIKE', "%$clave%")
             ->get();
+        
+        $results=[];
+        foreach($subcategory as $each){
+            if($each !== null){
+                array_push($results,$each);
+            }
+        }
+        foreach($categories as $category){
+            if($category !== null){
+                array_push($results,$category);
+            }
+        }
+
         $subcategories = Subcategory::all();
         $mensaje = 'Encontramos' . " " . count($products) . " " . 'productos para su búsqueda: ' . "'$clave'";
         return view('productos.results')->with('products', $products)
@@ -297,7 +310,8 @@ class ProductController extends Controller
             ->with('allProducts', $allProducts)
             ->with('clave', $clave)
             ->with('allCategories', $allCategories)
-            ->with('mensaje', $mensaje);
+            ->with('mensaje', $mensaje)
+            ->with('results', $results);
     }
 
     /**

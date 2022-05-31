@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Order;
 use App\User;
 use App\OrderDetail;
+use App\Category;
+use App\Subcategory;
 use Illuminate\Http\Request;
 use App\Mail\AlertsMailable;
 use Illuminate\Support\Facades\Mail;
@@ -13,6 +15,8 @@ class OrderController extends Controller
 {
     public function index()
     {
+        $allCategories = Category::all();
+        $subcategories = Subcategory::all();
         $user = Auth::user();
         $orders = Order::query()
             ->whereNotIn('status', ['shopping'])
@@ -32,7 +36,9 @@ class OrderController extends Controller
         return view('compras.show')
                 ->with('userOrderDetails', $userOrderDetails)
                 ->with('total', $orderDetails['total'])
-                ->with('orders', $orders);
+                ->with('orders', $orders)
+                ->with('allCategories', $allCategories)
+                ->with('subcategories', $subcategories);
     }
 
     public function search(Request $request)

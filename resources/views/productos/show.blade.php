@@ -58,17 +58,16 @@
                     @else
                         <div>
                             <h4>Código de Producto: {{$producto->code}}</h4>
-                            @if($producto->amount > 0)
-                                <h5>${{$producto->amount}}</h5>
-                            @endif
                         </div>
                     @endif
                     <h2>{{$producto->name}}</h2>
                     <p> {{$producto->resume}}</p>
                 </div>
+                <div class="prod_description">
                 {!!$producto->description!!}
+                </div>
                 <div>
-                    <form id="" action="{{action('OrderDetailController@add', $producto)}}" method="post">
+                    <form id="buy_action" action="{{action('OrderDetailController@add', $producto)}}" method="post">
                         {{csrf_field()}}
                         {{ method_field('POST') }}
                         @csrf
