@@ -17,7 +17,6 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string("name", 100);
             $table->char('code', 100);
-            $table->decimal('amount', 19,2)->nullable();
             $table->text("resume");
             $table->text("description");
             $table->string("cover", 255);

@@ -79,13 +79,14 @@
                                                 <img class="product_1_img_imagen" src="/storage/{{$product->cover}}"
                                                      alt="imagen de producto">
                                                 <a href="../productos/{{$product->id}}">VER MÁS</a>
+                                             {{--   COLOURS - DO NOT DISPLAY
                                                 <div style="display:flex; flex-direction: row;">
                                                     @foreach($product_colours as $product_colour)
                                                         @if($product->id === $product_colour->product_id)
                                                             <div style="width: 20px; height: 20px; background-color: {{$product_colour->colour->hex}}; border-radius: 50%; margin: 0px 5px"></div>
                                                         @endif
                                                     @endforeach
-                                                </div>
+                                                </div> --}}
                                             </div>
                                             <div class="prod_details">
                                                 <h3 class="prod_name" maxlength="25">{{$product->name}}</h3>
@@ -95,7 +96,7 @@
                                                 </div>
                                                 <p maxlength="60">{{$product->resume}}</p>
                                                 @if($product->amount > 0)
-                                                    <h5>${{$product->amount}}</h5>
+                                                    <h5 class="amount">${{$product->amount}}</h5>
                                                 @endif
                                             </div>
                                         </article>

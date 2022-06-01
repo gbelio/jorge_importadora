@@ -104,17 +104,33 @@ class ProductController extends Controller
     {
         $allCategories = Category::all();
         $multimedias = Multimedia::all();
-        $product_colours = ProductColour::query()
+/*         $product_colours = ProductColour::query()
             ->where('product_id', $id)
             ->where('available', '=', 1)
+            ->get(); */
+        $product_colours = ProductColour::query()
+            ->with('product')
+            ->where('product_id', $id)
             ->get();
+        $rest_of_colours = Colour::query()
+            ->get();
+        $colours = [];
+       
+        foreach($rest_of_colours as $colour){
+            foreach($product_colours as $product_colour){
+                if($colour->id == $product_colour->colour_id){
+                    array_push($colours, $colour);
+                }
+            }
+        }
+
         $product = Product::query()
             ->find($id);
         $subcategories = Subcategory::all();
         return view('productos.show')->with('producto', $product)
             ->with('allCategories', $allCategories)
             ->with('subcategories', $subcategories)
-            ->with('product_colours', $product_colours)
+            ->with('product_colours', $colours)
             ->with('multimedias', $multimedias);
     }
 
