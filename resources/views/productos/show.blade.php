@@ -28,9 +28,9 @@
                         <div class="_codigo_botones">
                             <div style="margin-bottom: 0px !important">
                                 <h4>Código de Producto: {{$producto->code}}</h4>
-                                @if($producto->amount > 0)
+                               {{--  @if($producto->amount > 0)
                                     <h5>${{$producto->amount}}</h5>
-                                @endif
+                                @endif --}}
                             </div>
                             <div class="_contenedorBotones">
                                 <div class="edit_prod_show">
@@ -76,15 +76,26 @@
                         <input type="hidden" name="amount" value="{{$producto->amount}}">
                         <input type="hidden" name="cover" value="{{$producto->cover}}">
                         <input type="hidden" name="code" value="{{$producto->code}}">
-                        <input type="number" name="quantity" value="1" min="1" max="999">
-                        <h5 id="amount" name="amount">${{$producto->amount}}</h5>
-                        <label for="colour_id">Seleccione el color</label>
-                        <select id="colour_id" name="colour_id">
-                            @foreach($product_colours as $product_colour)
-                                <option value="{{$product_colour->colour->id}}">{{$product_colour->colour->name}}</option>
-                            @endforeach
-                        </select>
-                        <br>
+                            <input type="number" name="quantity" value="1" min="1" max="999">
+                            @if($producto->amount > 0)
+                                <h5 id="change_amount"> ${{$producto->amount}}</h5>
+                            @endif
+                        <div>
+                            <label for="colour_id">Seleccione el color</label>
+                           {{--  <select id="colour_id" name="colour_id" > --}}
+                            <div class="color_selector">
+                                @foreach($product_colours as $product_colour)
+                                    {{-- <option value="{{$product_colour->id}}" style="background-color:{{$product_colour->hex}}">
+                                        <span>   {{$product_colour->name}}   </span>
+                                    </option> --}}
+                                <label class="container">
+                                    <input class="color_input" selected type="radio" name="colours[]" value="{{$product_colour->id}}" style="background-color:{{$product_colour->hex}}">
+                                    <span class="colorcheck" style="background-color:{{$product_colour->hex}}"> </span>
+                                </label>
+                                @endforeach
+                            </div>
+                            {{-- </select> --}}
+                        </div>
                         <button type="submit">
                             <img src="/img/icono_carrito.svg">
                         </button>
