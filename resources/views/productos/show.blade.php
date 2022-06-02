@@ -76,11 +76,17 @@
                         <input type="hidden" name="amount" value="{{$producto->amount}}">
                         <input type="hidden" name="cover" value="{{$producto->cover}}">
                         <input type="hidden" name="code" value="{{$producto->code}}">
-                            <input type="number" name="quantity" value="1" min="1" max="999">
-                            @if($producto->amount > 0)
-                                <h5 id="change_amount"> ${{$producto->amount}}</h5>
-                            @endif
-                        <div>
+                        <div class="box">
+                            <label>Unidades</label>
+                            <input id="quantitySelected" class="quantity" type="number" name="quantity" value="1" min="1" max="9999">
+                        </div>
+                        @if($producto->amount > 0)
+                       <div class="box">{{--  revisar como queda sin precio --}}
+                            <label>Precio unitario</label>
+                            <h5 id="change_amount"> ${{$producto->amount}}</h5>
+                        </div>
+                        @endif
+                        <div class="box tripleBox">
                             <label for="colour_id">Seleccione el color</label>
                            {{--  <select id="colour_id" name="colour_id" > --}}
                             <div class="color_selector">
@@ -89,7 +95,7 @@
                                         <span>   {{$product_colour->name}}   </span>
                                     </option> --}}
                                 <label class="container">
-                                    <input class="color_input" selected type="radio" name="colours[]" value="{{$product_colour->id}}" style="background-color:{{$product_colour->hex}}">
+                                    <input class="color_input" selected type="radio" name="colours[]" value="{{$product_colour->id}}" style="background-color:{{$product_colour->hex}}" selected>
                                     <span class="colorcheck" style="background-color:{{$product_colour->hex}}"> </span>
                                 </label>
                                 @endforeach

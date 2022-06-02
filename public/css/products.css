@@ -473,7 +473,7 @@
 #buy_action{
     display: flex;
     /* justify-content: center; */
-    align-items: center;
+    align-items: flex-start;
 }
 #buy_action>input,
 #buy_action>h5,
@@ -481,6 +481,38 @@
 #buy_action>button,
 #buy_action>label{
     margin:0;
+}
+
+#buy_action>.box{
+    display: flex;
+    width: 150px;
+    flex-direction: column;
+    margin: 0 15px 0 0;
+    border-right: 1px solid darkgray;
+}
+
+#buy_action>.tripleBox{
+    width: 300px !important;
+    border-right: none !important;
+}
+
+#buy_action>.box>label{
+    margin:0;
+}
+
+#buy_action>.box>.quantity{
+    width: 60px;
+    border: darkgray;
+    box-shadow: 1px 1px 5px darkgrey;
+    padding: 3px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
+}
+
+#buy_action>.box>h5{
+    margin: 5px 0px 5px 0;
+    font-size: 1.1rem;
+    font-family: 'Roboto', sans-serif;
 }
 
 #buy_action>button{
@@ -493,6 +525,7 @@
     background-color: #001B7E !important;
     position: absolute;
     right: 30px;
+    align-self: baseline;
 }
 
 #buy_action>button>img{
@@ -500,14 +533,27 @@
 }
 
 .color_selector{
-    height: 30px;
+    max-height: 100px;
+    min-width: 30px;
     width: fit-content !important;
-    max-width: 70%;
+    max-width: 100%;
     margin: 0;
     display: flex;
     flex-direction: row !important;
     align-items: flex-start !important;
     justify-content: flex-start !important;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    padding:5px;
+}
+
+.color_selector::-webkit-scrollbar {
+    width: 5px;
+}
+
+.color_selector::-webkit-scrollbar-thumb{
+    background-color: rgb(61, 61, 61);
+    border-radius: 5px;
 }
 
 /* Customize the label (the container) */
@@ -522,7 +568,9 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    margin:0;
+    margin: 0 0 10px 0;
+    height: 25px;
+    width: 25px;
   }
   
   /* Hide the browser's default radio button */
@@ -575,6 +623,7 @@
     height: 8px;
     border-radius: 50%;
     background: white;
+    border:1px solid darkgray;
   }
 
 
