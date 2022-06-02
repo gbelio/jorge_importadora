@@ -50,7 +50,7 @@
             <!--            Eliminar colores-->
             <div style="display: flex; flex-direction: column;">
                 <label for="colours_id" style="margin: 0"><strong>Eliminar colores</strong></label>
-                <div style="display: flex; flex-direction: row; margin-top: 15px; overflow-x: scroll; width: 100%;">
+                <div style="display: flex; flex-direction: row; margin-top: 15px; overflow-x: scroll; width: 100%; flex-wrap: wrap;">
                     @foreach($product_colours as $product_colour)
                         <div>
                             <form action="{{action('ProductController@deleteColour', $product_colour->product->id)}}" method="post" style="display: flex; justify-content: center; align-items: center">
