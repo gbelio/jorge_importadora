@@ -95,7 +95,7 @@
                                         <span>   {{$product_colour->name}}   </span>
                                     </option> --}}
                                 <label class="container">
-                                    <input class="color_input" selected type="radio" name="colours[]" value="{{$product_colour->id}}" style="background-color:{{$product_colour->hex}}" selected>
+                                    <input class="color_input" selected type="radio" name="colour_id" value="{{$product_colour->id}}" style="background-color:{{$product_colour->hex}}" selected>
                                     <span class="colorcheck" style="background-color:{{$product_colour->hex}}"> </span>
                                 </label>
                                 @endforeach

@@ -7,6 +7,7 @@ use App\User;
 use App\OrderDetail;
 use App\Category;
 use App\Subcategory;
+use App\Colour;
 use Illuminate\Http\Request;
 use App\Mail\AlertsMailable;
 use Illuminate\Support\Facades\Mail;
@@ -69,6 +70,8 @@ class OrderController extends Controller
         $orderDetails = OrderDetailController::getOrderDetails();
         $order = Order::query()
             ->find($id);
+        $rest_of_colours = Colour::query()
+        ->get();
         $orderDetail = OrderDetail::query()
             ->with('colour')
             ->where([
@@ -78,7 +81,8 @@ class OrderController extends Controller
             ->with('orderDetail', $orderDetail)
             ->with('order', $order)
             ->with('total', $orderDetails['total'])
-            ->with('userOrderDetails', $orderDetails['userOrderDetails']);
+            ->with('userOrderDetails', $orderDetails['userOrderDetails'])
+            ->with('rest_of_colours',$rest_of_colours);
     }
 
     public function showAll()

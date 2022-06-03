@@ -386,7 +386,7 @@
 }
 
 .prod_description::-webkit-scrollbar-thumb, .prod_description>p::-webkit-scrollbar-thumb{
-    background-color: black;
+    background-color: rgb(110, 110, 110);
     border-radius: 5px;
 }
 .prod_box_details div h4 {
@@ -552,7 +552,7 @@
 }
 
 .color_selector::-webkit-scrollbar-thumb{
-    background-color: rgb(61, 61, 61);
+    background-color: rgb(110, 110, 110);
     border-radius: 5px;
 }
 
@@ -802,6 +802,16 @@ align-items: center;
 /* ------MOBILE------ */
 
 @media (max-width:599px){
+
+    #buy_action{
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+
+    #buy_action>button{
+        right: 15px;
+    }
+
     .prod_1 {
         height: unset;
         margin: 110px auto 30px;
@@ -880,6 +890,7 @@ align-items: center;
 
 
 @media (max-width: 1023px){
+
     .carrousel_prod{
         display:none !important;
     }

@@ -2,7 +2,7 @@
 @section('content')
 <div>
     {{---------------------- ****************BARRA DE BUSQUEDA**************** ----------------------------}}
-    <div class="col-12" style="margin-top: 200px">
+    <div class="col-12 searchBar">
         <form action="/compras/busqueda" class="offset-1" method="get" style="">
             @csrf
             <input required placeholder='email' type="text" name="clave">
@@ -15,7 +15,7 @@
         <span class="offset-1" style="color: red"><b>{{$response}}</b></span>
     @endisset
     {{---------------------- ****************LISTA COMPRAS**************** ----------------------------}}
-    <section>
+    <section class="orderTable">
         <div><h3>LISTA DE COMPRAS</h3></div>
         <table id="mytable" class="table table-striped">
             <thead>
@@ -38,16 +38,16 @@
                         <td data-title="Estado" class="text-center">
                             @switch($order->status)
                                 @case('preparing')
-                                    <b>Preparando</b>
+                                    <b style="color:orange;">Preparando</b>
                                     @break
                                 @case('ready')
-                                    <b>Listo!</b>
+                                    <b style="color:blue;">Listo!</b>
                                     @break
                                 @case('finish')
-                                    <b>Finalizado</b>
+                                    <b style="color:green;">Finalizado</b>
                                     @break
                                 @case('cancelled')
-                                    <b>Cancelado</b>
+                                    <b style="color:red;">Cancelado</b>
                                     @break
                             @endswitch
                         </td>
@@ -55,7 +55,7 @@
                             <form id="" action="{{action('OrderController@updateStatus')}}" method="POST">
                                 {{ method_field('PATCH') }}
                                 @csrf
-                                <select class="form-select" aria-label="Default select example" style="display: inline-block; margin-top: -22px; margin-left: 5px" name="status" id="status" onchange="this.form.submit()">
+                                <select class="form-select" aria-label="Default select example" style="display: inline-block; margin-top: -22px; margin-left: 5px;" name="status" id="status" onchange="this.form.submit()">
                                     <option></option>
                                     <option value="2">Preparando</option>
                                     <option value="3">Listo!</option>

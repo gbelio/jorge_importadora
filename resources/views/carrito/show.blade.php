@@ -13,7 +13,7 @@
                 <th class="text-center">Total</th>
                 <th class="text-center">Eliminar</th>
             </thead>
-            <tbody>
+          {{--   <tbody>
                 <tr>
                     <td data-title="Nombre"><b>lalalalalal</b></td>
                     <td data-title="img">
@@ -32,25 +32,31 @@
                         @endif
                     </td>
                 </tr>
-            </tbody>
+            </tbody> --}}
             <tbody>
                 @foreach ($userOrderDetails as $orderDetail)
                 <tr>
-                    <td class="text-center" data-title="Nombre"><b>{{$orderDetail->product->name}}</b></td>
-                    <td class="text-center" data-title="Color"><b>{{$orderDetail->colour->name}}</b></td>
+                    <td class="text-center" data-title="Nombre">{{$orderDetail->product->name}}</td>
+                    <td class="text-center" data-title="Color">
+                    @foreach ($rest_of_colours as $colour)
+                        @if($orderDetail->colour_id == $colour->id)
+                            <div class="colourBox" style="background-color:{{$colour->hex}};"></div>
+                        @endif
+                    @endforeach
+                    </td>
                     <td class="text-center" data-title="img">
                         <a href="/productos/{{$orderDetail->product->id}}"><img src="/storage/{{$orderDetail->product->cover}}" class="__img-carrito" alt="{{$orderDetail->product->name}}"></a>
                     </td>
-                    <td class="text-center" data-title="Cantidad"><b>{{$orderDetail->quantity}}</b></td>
-                    <td class="text-center" data-title="Total"><b>${{$orderDetail->product->amount}}</b></td>
-                    <td class="text-center" data-title="Total"><b>${{$orderDetail->product->amount*$orderDetail->quantity}}</b></td>
+                    <td class="text-center" data-title="Cantidad">{{$orderDetail->quantity}}</td>
+                    <td class="text-center" data-title="Total">${{$orderDetail->product->amount}}</td>
+                    <td class="text-center" data-title="Total">${{$orderDetail->product->amount*$orderDetail->quantity}}</td>
                     <td class="text-center" data-title="Eliminar">
                         @if(Auth::check())
-                        <b>
+                  
                         <a href="{{url("cart/remove/$orderDetail->id")}}">
                             <img class="__boton-eliminar" alt="delete_button" src="/img/eliminar.svg">
                         </a>
-                        </b>
+                  
                         @endif
                     </td>
                 </tr>
@@ -63,7 +69,8 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td class="final_ammount">Monto final: ${{ $total }}</td>
+                    <td style="font-weight: bold; align-text:center; text-transform:uppercase; font-family:'Roboto', sans-serif;">Monto final:</td>
+                    <td class="final_ammount">${{ $total }}</td>
                     <td>
                         <form id="" action="{{action('OrderController@update')}}" method="POST">
                             {{ method_field('PATCH') }}

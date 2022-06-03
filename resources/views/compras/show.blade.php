@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 <div>
-    <section style="margin-top:200px">
+    <section class="userOrders">
         <div><h3>MIS COMPRAS</h3></div>
         <table class="table table-hover">
             <thead>
@@ -19,16 +19,16 @@
                         <td>
                             @switch($order->status)
                                 @case('preparing')
-                                    <b class="center">Preparando</b>
+                                    <b style="color:orange;">Preparando</b>
                                     @break
                                 @case('ready')
-                                    <b>Listo!</b>
+                                    <b style="color:blue;">Listo!</b>
                                     @break
                                 @case('finish')
-                                    <b>Finalizado</b>
+                                    <b style="color:green;">Finalizado</b>
                                     @break
                                 @case('cancelled')
-                                    <b>Cancelado</b>
+                                    <b style="color:red;">Cancelado</b>
                                     @break
                             @endswitch
                         </td>
