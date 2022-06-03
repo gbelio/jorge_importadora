@@ -7,6 +7,7 @@ use App\Category;
 use App\Subcategory;
 use App\OrderDetail;
 use App\Order;
+use App\Colour;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,13 +49,16 @@ class OrderDetailController extends Controller
         $allCategories = Category::all();
         $subcategories = Subcategory::all();
         $orderDetails = $this->getOrderDetails();
+        $rest_of_colours = Colour::query()
+        ->get();
         return view('carrito.show')
             ->with('products', $products)
             ->with('allCategories', $allCategories)
             ->with('userOrderDetails', $orderDetails['userOrderDetails'])
             ->with('orderShopping', $orderDetails['orderShopping'][0]->id)
             ->with('total', $orderDetails['total'])
-            ->with('subcategories', $subcategories);
+            ->with('subcategories', $subcategories)
+            ->with('rest_of_colours',$rest_of_colours);
     }
 
     /**

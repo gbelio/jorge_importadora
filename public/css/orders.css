@@ -1,0 +1,46 @@
+
+.searchBar{
+  margin-top: 130px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.searchBar>form{
+  margin:0;
+}
+
+.searchBar>form>input{
+  margin: 0 !important;
+  padding: 2px;
+  font-size: 10px;
+  width: 200px;
+  border: 1px solid darkgray;
+  height: 25px;
+  border: 1px solid darkgray;
+  border-radius: 3px;
+}
+
+.searchBar>form>button{
+  margin-left: 20px;
+  background-color: black;
+  font-weight: bold;
+}
+
+.searchBar>form>button:hover{
+  background-color: #5FA8E5;
+  border: none;
+  box-shadow: 1px 1px 5px darkgray;
+}
+
+.orderTable{
+  min-height: 300px;
+  font-family: 'Roboto', sans-serif;
+  margin: 0 15px;
+}
+
+.orderTable>div>h3{
+  color: #001B7E;
+  font-weight: bold;
+  font-weight: bold;
+}
