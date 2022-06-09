@@ -24,12 +24,13 @@ class SubcategoryController extends Controller
         if(Auth::user() == null){
             return redirect('login');
         }
-        $subcategorias = DB::table('subcategories')->orderBy('id', 'desc')->paginate(20);
+        $subcategorias = Subcategory::query()->orderBy('id', 'desc')->paginate(20);
         $allCategories = Category::all();
         $subcategories = Subcategory::all();
-        return view('subcategorias.create')->with('allCategories',$allCategories)
-                                        ->with('subcategorias',$subcategorias)
-                                        ->with('subcategories',$subcategories);
+        return view('subcategorias.create')
+            ->with('allCategories',$allCategories)
+            ->with('subcategorias',$subcategorias)
+            ->with('subcategories',$subcategories);
     }
 
 

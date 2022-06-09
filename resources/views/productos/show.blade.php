@@ -86,6 +86,8 @@
                             <h5 id="change_amount"> ${{$producto->amount}}</h5>
                         </div>
                         @endif
+                        <input class="color_input" type="radio" name="colour_id" value="1" hidden checked>
+                        @if(count($product_colours) > 1)
                         <div class="box tripleBox">
                             <label for="colour_id">Seleccione el color</label>
                            {{--  <select id="colour_id" name="colour_id" > --}}
@@ -94,14 +96,17 @@
                                     {{-- <option value="{{$product_colour->id}}" style="background-color:{{$product_colour->hex}}">
                                         <span>   {{$product_colour->name}}   </span>
                                     </option> --}}
+                                @if($product_colour->id != 1)
                                 <label class="container">
-                                    <input class="color_input" selected type="radio" name="colour_id" value="{{$product_colour->id}}" style="background-color:{{$product_colour->hex}}" selected>
+                                    <input class="color_input" type="radio" name="colour_id" value="{{$product_colour->id}}" style="background-color:{{$product_colour->hex}}">
                                     <span class="colorcheck" style="background-color:{{$product_colour->hex}}"> </span>
                                 </label>
+                                @endif
                                 @endforeach
                             </div>
                             {{-- </select> --}}
                         </div>
+                        @endif
                         <button type="submit">
                             <img src="/img/icono_carrito.svg">
                         </button>
