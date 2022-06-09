@@ -59,6 +59,9 @@
                             <a class="nav-link" href="/productos/cargar">Productos</a>
                         </li>
                         <li class="nav-item" style="margin: 10px 10px 0 0">
+                            <a class="nav-link" href="/colores/cargar">Colores</a>
+                        </li>
+                        <li class="nav-item" style="margin: 10px 10px 0 0">
                             <a class="nav-link" href="/slider/cargar">Imagenes De Slider</a>
                         </li>
                         <li class="nav-item" style="margin: 10px 10px 0 0">
