@@ -181,6 +181,27 @@
     margin: 0 5px;
 }
 
+.carrito-icono{
+    height: 38px;
+    width: 38px;
+    padding: 5px;
+    background-color: #eaeaea;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carrito-icono>img{
+    width: 25px;
+    height: 25px;
+    filter: invert(1);
+}
+
+.carrito-icono>img:hover{
+    filter: invert(0);
+}
+
 /* MEDIA QUERIES NAVBAR (UNICA MEDIDA 990PX, PARA MAS PEQUEÑO YA ESTA HECHO.) */
 
 @media screen and (min-width: 1024px) {

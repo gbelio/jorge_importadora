@@ -72,6 +72,26 @@ tbody>tr>td>b, tbody>tr>td>a{
     font-weight: normal;
 }
 
+.back{
+    width: 50px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    color: #5FA8E5;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+ .back:hover{
+    color: #001B7E;
+    text-decoration: none;
+    border: none;
+  }
+
 .__contenedor-nav-admin{
     min-height: 10vh;
     width: 100%;

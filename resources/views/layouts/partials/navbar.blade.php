@@ -82,8 +82,8 @@
                     </ul>
                 </li>
                 @if (Auth::user()->role !== 9)
-                <a href="/cart" class="carrito-icono" style="height: 100%;">
-                    <img src="/img/icono_carrito.svg" style="filter:invert(1);">
+                <a href="/cart" class="carrito-icono">
+                    <img src="/img/icono_carrito.svg">
                </a>
                 <a href="#footer" class="btn btn-dark contact-us" onclick="closeNavBar()">
                     ¡CONTACTANOS!
