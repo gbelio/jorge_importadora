@@ -28,5 +28,7 @@
     <link rel="stylesheet" href="{{ asset('css/orders.css')}}" >
     <link rel="stylesheet" href="{{ asset('css/orderDetail.css')}}" >
     <link rel="stylesheet" href="{{ asset('css/userOrders.css')}}" >
+    <link rel="stylesheet" href="{{ asset('css/status.css')}}" >
+    <link rel="stylesheet" href="{{ asset('css/perfil.css')}}" >
     <title>Importadora Jorge</title>
 </head>

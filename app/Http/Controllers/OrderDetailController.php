@@ -81,8 +81,10 @@ class OrderDetailController extends Controller
             'cover' => $_POST['cover'],
             'quantity' => $_POST['quantity'],
         ]);
+        $user=Auth::user()->id;
         $newAdd->save();
-        return redirect()->back();
+        /* return redirect()->back(); */
+        return redirect('/cart');
     }
 
     /**

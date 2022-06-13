@@ -1,15 +1,15 @@
 @extends('layouts.master')
 @section('content')
-<div style="margin-top: 200px">
+<div id="userProfile">
     <div>
         <div>
-            <h3>DATOS</h3>
-            <h3>Nombre: {{$profile->name}} {{$profile->last_name}}</h3>
-            <h3>Email: {{$profile->email}}</h3>
-            <h3>Teléfono: {{$profile->phone}}</h3>
-            <h3>Comentario: {{$profile->comment}}</h3>
+            <h3>DATOS DEL USUARIO</h3>
+            <h3><b>Usuario:</b> {{$profile->name}} {{$profile->last_name}}</h3>
+            <h3><b>Email:</b> {{$profile->email}}</h3>
+            <h3><b>Teléfono:</b> {{$profile->phone}}</h3>
+            <h3><b>Comentario:</b> {{$profile->comment}}</h3>
         </div>
-        <div>
+        <div class="backButton">
             <a href="{{ url()->previous() }}" role="button">
                 VOLVER
             </a>
