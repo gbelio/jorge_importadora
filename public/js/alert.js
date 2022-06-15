@@ -11,7 +11,48 @@ $(document).ready(function(){
     //FIN TOKEN AJAX
 
     /* -------------------------------------------------------------------------- */
+    //CONFIRMACIÓN DE COMPRA
+    $("tr td form #buy").click(function(ev){
+        ev.preventDefault();
+        var id = $(this).parents('tr').find('.order_id').val();
+        
+        Swal.fire({
+            title: '¿Realmente quieres confirmar esta orden de compra?',
+            text: "Una vez enviada la orden de compra no podrá ser modificada de manera virtual, deberá contactar al vendedor.",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Confirmar',
+            cancelButtonText: 'Cancelar',
+            }).then((result) => {
+            if (result.value) {
 
+                var data = {
+                    "_token" : $('input[name=_token]').val(),
+                    "order_id" : id,
+                    "order_total": 1,
+                };
+                console.log(data);
+                $.ajax({
+                    type: 'PATCH',
+                    url: '/status',
+                    data: data,
+                    success: function(response){
+
+                        Swal.fire(
+                            'Enviado!',
+                            'Tu orden ha sido procesada.',
+                            'success'
+                          )
+                        .then ((result) => {
+                            location.replace('/');
+                        });
+                    }
+                })
+            }
+        })
+    })
 
     //CONFIRMACIÓN BORRAR
 

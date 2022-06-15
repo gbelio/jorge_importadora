@@ -84,8 +84,8 @@
                                 {{ method_field('PATCH') }}
                                 @csrf
                                 <input name="order_total" type="hidden" value="{{$total}}">
-                                <input name="order_id" type="hidden" value="{{$orderShopping ?? ''}}">
-                                <button id="buy" type="submit">
+                                <input class="order_id" name="order_id" type="hidden" value="{{$orderShopping ?? ''}}">
+                                <button  id="buy" type="submit">
                                     <b>COMPRAR</b>
                                 </button>
                             </form>

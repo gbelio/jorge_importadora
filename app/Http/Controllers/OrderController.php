@@ -88,8 +88,12 @@ class OrderController extends Controller
     public function showAll()
     {
         $orders = Order::query()->whereNotIn('status', ['shopping'])->Paginate(20);
+        $allCategories = Category::all();
+        $subcategories = Subcategory::all();
         return view('compras.showAll')
-                    ->with('orders', $orders);
+                    ->with('orders', $orders)
+                    ->with('allCategories', $allCategories)
+                    ->with('subcategories', $subcategories);
     }
 
     public function update(Request $request)

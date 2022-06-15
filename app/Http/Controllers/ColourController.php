@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Colour;
 use App\ProductColour;
+use App\Category;
+use App\Subcategory;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -26,8 +28,12 @@ class ColourController extends Controller
         $colores = DB::table('colours')
             ->orderBy('id', 'desc')
             ->paginate(15);
+        $allCategories = Category::all();
+        $subcategories = Subcategory::all();
 
-        return view('colores.create')->with('colores', $colores);
+        return view('colores.create')->with('colores', $colores)
+                                     ->with('allCategories', $allCategories)
+                                     ->with('subcategories', $subcategories);
     }
 
 

@@ -44,3 +44,9 @@
   font-weight: bold;
   font-weight: bold;
 }
+
+.orderTable>table>tbody>tr>td>form>select{
+  background-color: transparent;
+  border:none;
+  text-align-last: center;
+}
