@@ -46,7 +46,7 @@ $(document).ready(function(){
                             'success'
                           )
                         .then ((result) => {
-                            location.redirect();
+                            location.replace('/');
                         });
                     }
                 })
