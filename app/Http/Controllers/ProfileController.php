@@ -25,9 +25,12 @@ class ProfileController extends Controller
 
     public function show($id)
     {
-        $profile = User::query()
-            ->find($id);
-        return view('perfil.show')->with('profile', $profile);
+        $profile = User::query()->find($id);
+        $allCategories = Category::all();
+        $subcategories = Subcategory::all();
+        return view('perfil.show')->with('profile', $profile)
+                                  ->with('allCategories',$allCategories)
+                                  ->with('subcategories',$subcategories);
     }
 
     public function edit()

@@ -99,5 +99,5 @@ Route::get('/compras', 'OrderController@index')->middleware('auth'); //muestra l
 Route::get('/compras/detalle/{id}', 'OrderController@show')->middleware('auth'); //Muestra el detalle de la compra.
 Route::get('/compras/usuarios', 'OrderController@showAll')->middleware('admin'); //Muestra el detalle de la compra.
 Route::get('/compras/busqueda', 'OrderController@search')->middleware('admin'); //Busca una compra.
-Route::patch('/status', 'OrderController@update')->middleware('auth'); //actualiza el estado de la orden a "Pendiente de Pago".
+Route::patch('/status', 'OrderController@update')->middleware('auth'); //genera una orden de compra.
 Route::patch('/orderStatus', 'OrderController@updateStatus')->middleware('admin'); //actualiza el estado del pedido desde "Preparando" hasta "Finalizado".
