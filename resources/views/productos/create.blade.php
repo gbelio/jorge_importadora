@@ -125,6 +125,7 @@
                             <th>Fotos</th>
                             <th>Editar</th>
                             <th style="color:red;">Borrar</th>
+                            <th>Estado</th>
                         </thead>
                         <tbody>
                             @if($productos)
@@ -155,6 +156,16 @@
                                                 <input class="serdelete_val_id" name="_method" type="hidden" value="{{$producto->id}}">
                                                 <button id="delete" data-id="{{$producto->id}}" class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
                                                     <i class="fa fa-trash" style="font-size:16px"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                        <td style="text-align:center">
+                                            <form action="{{action('ProductController@deactivate', $producto->id)}}" method="post">
+                                                {{csrf_field()}}
+                                                @method('PATCH')
+                                                <input type="hidden" name="active" value="{{$producto->active == 1 ? 0 : 1}}">
+                                                <button id="deactivate" class="btn btn-sm" type="submit" style="margin:0 !important; color: white; {{$producto->active == 1 ? 'background-color: red' : 'background-color: green'}}">
+                                                    {{$producto->active == 1 ? 'Desactivar' : 'Activar'}}
                                                 </button>
                                             </form>
                                         </td>
