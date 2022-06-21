@@ -9,7 +9,8 @@
 
     <section class="productos-categoria">
         @foreach ($productsById as $product)
-            <div class="cat-prod">
+            @if($product->active == 1)
+                <div class="cat-prod">
                 <article class="product_1">
                     <div class="product_1_img">
                         @if(Auth::user() != null && Auth::user()->role === 9)
@@ -48,6 +49,7 @@
                     </div>
                 </article>
             </div>
+            @endif
         @endforeach
     </section>
 

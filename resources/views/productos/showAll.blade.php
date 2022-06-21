@@ -43,7 +43,8 @@
                         <div class="owl-carousel owl-theme">
                             @foreach($product_collections as $products)
                                 @foreach ($products as $product)
-                                    @if ($product->category->name == $category->name)
+                                    @if($product->active == 1)
+                                        @if ($product->category->name == $category->name)
                                         <article class="product_1" style="margin-right:0px !important">
                                             <div class="product_1_img">
                                                 @if(Auth::user() != null && Auth::user()->role === 9)
@@ -100,6 +101,7 @@
                                                 @endif
                                             </div>
                                         </article>
+                                    @endif
                                     @endif
                                 @endforeach
                             @endforeach
