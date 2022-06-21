@@ -297,6 +297,7 @@ class ProductController extends Controller
         $clave = $request->clave;
         $products = Product::query()
             ->where('name', 'LIKE', "%$clave%")
+            ->where('active', 1)
             ->paginate(20)
             ->withQueryString();
         $allProducts = Product::all();
