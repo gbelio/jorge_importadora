@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string name
  * @property string code
  * @property int amount
+ * @property int active
  * @property string resume
  * @property string description
  * @property string cover
@@ -21,7 +22,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Product extends Model
 {
-    protected $fillable = ['id', 'name', 'code','amount', 'resume', 'description', 'cover', 'category_id', 'subcategory_id'];
+    protected $fillable = ['id', 'name', 'code','amount', 'resume', 'description', 'cover', 'category_id', 'subcategory_id', 'active'];
 
     public function multimedia(): HasMany
     {

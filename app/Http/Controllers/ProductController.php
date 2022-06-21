@@ -48,9 +48,9 @@ class ProductController extends Controller
         $subcategories = Subcategory::all();
         $colores = Colour::all();
         return view('productos.create')->with(['allCategories' => $allCategories,
-                                                    'subcategories'=> $subcategories,
-                                                    'productos'=> $productos,
-                                                    'colores' => $colores]);
+            'subcategories' => $subcategories,
+            'productos' => $productos,
+            'colores' => $colores]);
     }
 
     /**
@@ -80,11 +80,12 @@ class ProductController extends Controller
 
         $producto = new Product($request->except('colours'));
         $producto->cover = $cover;
+        $producto->active = 1;
         $producto->save();
 
         $colours = $request->colours;
-        if($colours){
-            foreach ($colours as $colour){
+        if ($colours) {
+            foreach ($colours as $colour) {
                 $new_color = new ProductColour();
                 $new_color->product_id = $producto->id;
                 $new_color->colour_id = $colour;
@@ -104,10 +105,10 @@ class ProductController extends Controller
     {
         $allCategories = Category::all();
         $multimedias = Multimedia::all();
-/*         $product_colours = ProductColour::query()
-            ->where('product_id', $id)
-            ->where('available', '=', 1)
-            ->get(); */
+        /*         $product_colours = ProductColour::query()
+                    ->where('product_id', $id)
+                    ->where('available', '=', 1)
+                    ->get(); */
         $product_colours = ProductColour::query()
             ->with('product')
             ->where('product_id', $id)
@@ -115,10 +116,10 @@ class ProductController extends Controller
         $rest_of_colours = Colour::query()
             ->get();
         $colours = [];
-       
-        foreach($rest_of_colours as $colour){
-            foreach($product_colours as $product_colour){
-                if($colour->id == $product_colour->colour_id){
+
+        foreach ($rest_of_colours as $colour) {
+            foreach ($product_colours as $product_colour) {
+                if ($colour->id == $product_colour->colour_id) {
                     array_push($colours, $colour);
                 }
             }
@@ -140,8 +141,8 @@ class ProductController extends Controller
     public function showAll()
     {
         $orderDetails = OrderDetailController::getOrderDetails();
-        if (Auth::check()){
-            if ($orderDetails['orderShopping']->first() == null){
+        if (Auth::check()) {
+            if ($orderDetails['orderShopping']->first() == null) {
                 $newAdd = new Order([
                     'user_id' => Auth::user()->id,
                     'status' => 1,
@@ -215,9 +216,8 @@ class ProductController extends Controller
 
         //Colores SIN los colores del producto
         $rest_of_colours = Colour::query()
-                ->whereNotIn('id',$colour_ids)
-                ->get();
-
+            ->whereNotIn('id', $colour_ids)
+            ->get();
 
 
         return view('productos.editar')->with('producto', $producto)
@@ -242,11 +242,13 @@ class ProductController extends Controller
             'code' => 'required',
             'resume' => 'required',
             'description' => 'required',
+            'active' => 'sometimes',
             'category_id' => 'required',
             'subcategory_id' => 'required',
         ];
         $mensaje = ['required' => 'el campo :attribute es obligatorio'];
         $this->validate($request, $reglas, $mensaje);
+        /** @var Product $producto */
         $producto = Product::query()
             ->find($id);
         $producto->name = $request->input('name') !== $producto->name ? $request->input('name') : $producto->name;
@@ -256,6 +258,7 @@ class ProductController extends Controller
         $producto->description = $request->input('description') !== $producto->description ? $request->input('description') : $producto->description;
         $producto->category_id = $request->input('category_id') !== $producto->category_id ? $request->input('category_id') : $producto->category_id;
         $producto->subcategory_id = $request->input('subcategory_id') !== $producto->subcategory_id ? $request->input('subcategory_id') : $producto->subcategory_id;
+        $producto->active = $request->input('active') !== $producto->active ? $request->input('active') : $producto->active;
         if ($request->file('cover') !== null) {
             $cover = $request->file('cover')->storeAs('covers', $request->file('cover')->getClientOriginalName(), 'public');
             $producto->cover = $cover;
@@ -304,16 +307,16 @@ class ProductController extends Controller
         $subcategory = Subcategory::query()
             ->where('name', 'LIKE', "%$clave%")
             ->get();
-        
-        $results=[];
-        foreach($subcategory as $each){
-            if($each !== null){
-                array_push($results,$each);
+
+        $results = [];
+        foreach ($subcategory as $each) {
+            if ($each !== null) {
+                array_push($results, $each);
             }
         }
-        foreach($categories as $category){
-            if($category !== null){
-                array_push($results,$category);
+        foreach ($categories as $category) {
+            if ($category !== null) {
+                array_push($results, $category);
             }
         }
 
@@ -348,7 +351,7 @@ class ProductController extends Controller
             $productColour->save();
         }
 
-        return redirect('/productos/editar/'.$id);
+        return redirect('/productos/editar/' . $id);
     }
 
     public function deleteColour(Request $request, $id)
@@ -359,6 +362,28 @@ class ProductController extends Controller
             ->find($attributes['product_colour_id']);
 
         $productColour->delete();
-        return redirect('/productos/editar/'.$id);
+        return redirect('/productos/editar/' . $id);
+    }
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @return Application|RedirectResponse|Redirector
+     * @throws ValidationException
+     */
+    public function deactivate(Request $request, $id){
+        $reglas = [
+            'active' => 'required',
+        ];
+        $mensaje = ['required' => 'el campo :attribute es obligatorio'];
+
+        $this->validate($request, $reglas, $mensaje);
+        /** @var Product $producto */
+        $producto = Product::query()
+            ->find($id);
+        $producto->active = $request->input('active') !== $producto->active ? $request->input('active') : $producto->active;
+        $producto->save();
+
+        return redirect("/productos/cargar");
     }
 }

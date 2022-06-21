@@ -110,7 +110,7 @@ class OrderController extends Controller
         $order->save();
         $newAdd = new Order([
             'user_id' => $order->user_id,
-            'status' => 1,
+            'status' => 6,
             'total' => 0,
         ]);
         $newAdd->save();

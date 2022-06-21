@@ -25,6 +25,19 @@
         <br>
 
         <div class="form-group">
+            <form action="{{action('ProductController@deactivate', $producto->id)}}" method="post">
+                {{csrf_field()}}
+                @method('PATCH')
+                <input type="hidden" name="active" value="{{$producto->active == 1 ? 0 : 1}}">
+                <label for="colores"><strong> Estado</strong></label>
+                <br>
+                <button id="deactivate" class="btn btn-sm" type="submit" style="margin:0 !important; color: white; {{$producto->active == 1 ? 'background-color: red' : 'background-color: green'}}">
+                    {{$producto->active == 1 ? 'Desactivar' : 'Activar'}}
+                </button>
+            </form>
+
+            <br>
+
             <!--            Editar colores-->
             <form action="{{action('ProductController@editColour', $producto->id)}}" method="post" >
                 {{ method_field('POST') }}

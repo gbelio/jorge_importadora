@@ -44,6 +44,7 @@ Route::group(['prefix' => 'productos'], function () {
     Route::get('/categoria/{id}', 'ProductController@index'); //va a mostrar todos los productos segun el ID de categoria.
     Route::get('/editar/{id}', 'ProductController@edit'); //va a llevar al formulario de edición
     Route::patch('/editar/{id}', 'ProductController@update'); //va a editar producto en la base de datos
+    Route::patch('/deactivate/{id}', 'ProductController@deactivate'); //va a editar producto en la base de datos
     Route::post('/colores/editar/{id}', 'ProductController@editColour'); //va a editar producto en la base de datos
     Route::delete('/colores/eliminar/{id}', 'ProductController@deleteColour'); //va a editar producto en la base de datos
     Route::delete('/delete/{id}', 'ProductController@destroy'); //va a eliminar producto en la base de datos
