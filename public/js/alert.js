@@ -15,6 +15,7 @@ $(document).ready(function(){
     $("tr td form #buy").click(function(ev){
         ev.preventDefault();
         var id = $(this).parents('tr').find('.order_id').val();
+        var order_total = $(this).parents('tr').find('.order_total').val();
         
         Swal.fire({
             title: '¿Realmente quieres confirmar esta orden de compra?',
@@ -31,7 +32,7 @@ $(document).ready(function(){
                 var data = {
                     "_token" : $('input[name=_token]').val(),
                     "order_id" : id,
-                    "order_total": 1,
+                    "order_total": order_total,
                 };
                 console.log(data);
                 $.ajax({

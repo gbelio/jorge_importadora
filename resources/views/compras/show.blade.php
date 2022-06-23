@@ -14,10 +14,13 @@
             <tbody>
                 @foreach ($orders as $order)
                     <tr>
-                        <th scope="row"><a href="/compras/detalle/{{$order->id}}">{{$order->id}}</a></th>
+                        <td scope="row"><a href="/compras/detalle/{{$order->id}}">{{$order->id}}</a></td>
                         <td>${{$order->total}}</td>
                         <td>
                             @switch($order->status)
+                                @case('pending')
+                                    <b style="color:black;">Pendiente </b>
+                                @break
                                 @case('preparing')
                                     <b style="color:orange;">Preparando</b>
                                     @break

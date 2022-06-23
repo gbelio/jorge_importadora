@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->bigInteger('user_id');
             $table->date('date')->nullable();
-            $table->enum('status', ['shopping', 'preparing', 'ready', 'finish', 'cancelled', 'pending'])->default('pending');
+            $table->enum('status', ['shopping', 'preparing', 'ready', 'finish', 'cancelled', 'pending'])->default('shopping');
             $table->float('total', 10, 2);
             $table->timestamps();
         });

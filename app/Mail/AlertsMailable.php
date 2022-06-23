@@ -28,7 +28,7 @@ class AlertsMailable extends Mailable
      */
     public function build()
     {
-        if ($this->order->status == 3){
+        if ($this->order->status == 6){
             $subject="Importadora Jorge: Pedido generado";
             return $this->markdown('emails.buy')->subject($subject);
         }
