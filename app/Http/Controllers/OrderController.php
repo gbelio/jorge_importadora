@@ -67,6 +67,8 @@ class OrderController extends Controller
 
     public function show($id)
     {
+        $allCategories = Category::all();
+        $subcategories = Subcategory::all();
         $orderDetails = OrderDetailController::getOrderDetails();
         $order = Order::query()
             ->find($id);
@@ -82,7 +84,9 @@ class OrderController extends Controller
             ->with('order', $order)
             ->with('total', $orderDetails['total'])
             ->with('userOrderDetails', $orderDetails['userOrderDetails'])
-            ->with('rest_of_colours',$rest_of_colours);
+            ->with('rest_of_colours',$rest_of_colours)
+            ->with('allCategories', $allCategories)
+            ->with('subcategories', $subcategories);
     }
 
     public function showAll()
@@ -106,15 +110,16 @@ class OrderController extends Controller
         $order = Order::query()->find($request->order_id);
         $order->date = date("Y-m-d H:i:s");
         $order->total = $request->order_total;
-        $order->status = 2;
+        $order->status = 6;
         $order->save();
         $newAdd = new Order([
             'user_id' => $order->user_id,
-            'status' => 6,
+            'status' => 1,
             'total' => 0,
         ]);
         $newAdd->save();
         Mail::to('gastonb.bkp@gmail.com')->send(new AlertsMailable($order));
+        Mail::to($order->user->email)->send(new AlertsMailable($order));
         return view('comprobantes.show');
     }
 

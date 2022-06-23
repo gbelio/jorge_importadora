@@ -1,5 +1,5 @@
 @component('mail::message')
-<h1>SU PEDIDO ESTÁ LISTO PARA SER RETIRADO</h1>
+<h1 style="color:green;">SU PEDIDO ESTÁ LISTO PARA SER RETIRADO</h1>
 <h2>Número de orden: {{$order->id}}</h2>
 <br>
 <h2>Dirección de retiro: Sarmiento 2441 - CP 1044</h2>

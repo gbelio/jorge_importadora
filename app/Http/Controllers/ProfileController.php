@@ -35,10 +35,14 @@ class ProfileController extends Controller
 
     public function edit()
     {
+        $allCategories = Category::all();
+        $subcategories = Subcategory::all();
         if(Auth::user() == null){
             return redirect('login');
         }
-        return view('perfil.edit')->with('user', Auth::user());
+        return view('perfil.edit')->with('user', Auth::user())
+                                ->with('allCategories',$allCategories)
+                                ->with('subcategories',$subcategories);
     }
 
     public function update(Request $request)
