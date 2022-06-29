@@ -125,7 +125,7 @@
                             <th>Fotos</th>
                             <th>Editar</th>
                             <th style="color:red;">Borrar</th>
-                            <th>Estado</th>
+                            <th>Cambiar Estado</th>
                         </thead>
                         <tbody>
                             @if($productos)
