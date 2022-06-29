@@ -1,9 +1,21 @@
 @component('mail::message')
-<h1>PEDIDO ENTRANTE</h1>
-<h2>Número de orden: <a href="http://www.dev.importadorajorge.com.ar/compras/detalle/{{$order->id}}">{{$order->id}}</a></h2>
-<h2>Total: ${{$order->total}}</h2>
-<br>
-<h3>Nombre: {{$order->user->name}} {{$order->user->last_name}}</h3>
-<h3>Email: {{$order->user->email}}</h3>
-<h3>Teléfono: {{$order->user->phone}}</h3>
+<div>
+    <div>
+        <h1>PEDIDO ENTRANTE</h1>
+        <p>Número de orden: <a href="http://www.dev.importadorajorge.com.ar/compras/detalle/{{$order->id}}">{{$order->id}}</a></p>
+        <h2>TOTAL: <strong> ${{$order->total}} </strong></h2>
+    </div>
+    <p style="font-weight: normal; font-size:10px;"><strong>Nombre de usuario: </strong>{{$order->user->name}} {{$order->user->last_name}}</p>
+    <p style="font-weight: normal; font-size:10px;"><strong>Email asociado: </strong>{{$order->user->email}}</p>
+    <p style="font-weight: normal; font-size:10px;"><strong>Teléfono de contacto: </strong>{{$order->user->phone}}</p>
+    <br>
+    <hr>
+    <h3> Ante cualquier consulta, por favor comuníquese con nosotros </h3>
+    <a href="https://api.whatsapp.com/send?phone=541124772468">+54 11 2477-2468</a>
+    <br>
+    <a href="mailto:contacto@jorgeimportadora.com.ar">contacto@jorgeimportadora.com.ar</a>
+    <br>
+    <br>
+    <h3>¡Muchas Gracias!</h3>
+</div>
 @endcomponent

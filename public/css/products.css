@@ -8,7 +8,16 @@
     height: 500px;
 }
 
+.confirmar{
+    background-color:#5fa8e5;
+    border-color: #5fa8e5;
+}
 
+.confirmar:hover{
+    color: white;
+    background-color: #001B7E;
+    border-color: #001B7E;
+}
 
 /*caja categorias*/
 .caja-products-categories{

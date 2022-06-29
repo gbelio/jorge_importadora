@@ -73,7 +73,7 @@
                         @csrf
                         <input type="hidden" name="product_id" value="{{$producto->id}}">
                         <input type="hidden" name="name" value="{{$producto->name}}">
-                        <input type="hidden" name="amount" value="{{$producto->amount}}">
+                        <input type="hidden" name="amount" value="{{$producto->amount === null ? 0 : $producto->amount}}">
                         <input type="hidden" name="cover" value="{{$producto->cover}}">
                         <input type="hidden" name="code" value="{{$producto->code}}">
                         <div class="box">

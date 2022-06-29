@@ -385,6 +385,6 @@ class ProductController extends Controller
         $producto->active = $request->input('active') !== $producto->active ? $request->input('active') : $producto->active;
         $producto->save();
 
-        return redirect("/productos/cargar");
+        return redirect()->back();/* redirect("/productos/cargar"); */
     }
 }

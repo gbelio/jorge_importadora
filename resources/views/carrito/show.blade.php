@@ -44,7 +44,11 @@
                         <td class="text-center" data-title="Color">
                         @foreach ($rest_of_colours as $colour)
                             @if($orderDetail->colour_id == $colour->id)
+                                @if($colour->name !== "Sin Color")
                                 <div class="colourBox" style="background-color:{{$colour->hex}};"></div>
+                                @else
+                                <div class="colourBox">N/A</div>
+                                @endif
                             @endif
                         @endforeach
                         </td>
@@ -52,8 +56,17 @@
                             <a href="/productos/{{$orderDetail->product->id}}"><img src="/storage/{{$orderDetail->product->cover}}" class="__img-carrito" alt="{{$orderDetail->product->name}}"></a>
                         </td>
                         <td class="text-center" data-title="Cantidad">{{$orderDetail->quantity}}</td>
-                        <td class="text-center" data-title="Total">${{$orderDetail->product->amount}}</td>
-                        <td class="text-center" data-title="Total">${{$orderDetail->product->amount*$orderDetail->quantity}}</td>
+                        @if($orderDetail->product->amount != 0)
+                            <td class="text-center" data-title="Total">${{$orderDetail->product->amount}}</td>
+                        @else
+                            <td class="text-center" data-title="Total">N/A</td>
+                        @endif
+
+                        @if($orderDetail->product->amount*$orderDetail->quantity !== 0)
+                            <td class="text-center" data-title="Total">${{$orderDetail->product->amount*$orderDetail->quantity}}</td>
+                        @else
+                            <td class="text-center" data-title="Total">N/A</td>
+                         @endif
                         <td class="text-center" data-title="Eliminar">
                             @if(Auth::check())
                     
