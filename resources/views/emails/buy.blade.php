@@ -1,18 +1,24 @@
 @component('mail::message')
-<h1 style="color:green;">SU PEDIDO ESTÁ LISTO PARA SER RETIRADO</h1>
-<h2>Número de orden: {{$order->id}}</h2>
-<br>
-<h2>Dirección de retiro: Sarmiento 2441 - CP 1044</h2>
-<br>
-<a href="https://api.whatsapp.com/send?phone=541124772468">+54 11 2477-2468</a>
-<br>
-<a href="mailto:contacto@jorgeimportadora.com.ar">contacto@jorgeimportadora.com.ar</a>
-<br>
-<h4>Total: ${{$order->total}}</h2>
-<br>
-<h4>{{$order->user->name}} {{$order->user->last_name}}!</h4>
-<h4>Ante cualquier duda nos comunicaremos al siguiente número:</h4>
-<h4>Teléfono: {{$order->user->phone}}</h4>
-Gracias,<br>
-Importadora Jorge
+<div>
+    <div>
+        <h1 style="color: green;">SU PEDIDO ESTÁ LISTO PARA SER RETIRADO</h1>
+        <p>Número de orden: <a href="http://www.dev.importadorajorge.com.ar/compras/detalle/{{$order->id}}">{{$order->id}}</a></p>
+        <h2>TOTAL: <strong> ${{$order->total}} </strong></h2>
+        <h3>Dirección de retiro: <strong> Sarmiento 2441 - CP 1044 </strong> </h3>
+    </div>
+    <p style="font-weight: normal; font-size:10px;"><strong>Nombre de usuario: </strong>{{$order->user->name}} {{$order->user->last_name}}</p>
+    <p style="font-weight: normal; font-size:10px;"><strong>Email asociado: </strong>{{$order->user->email}}</p>
+    <p style="font-weight: normal; font-size:10px;"><strong>Su teléfono de contacto: </strong>{{$order->user->phone}}</p>
+    <br>
+    <hr>
+    <h3> Ante cualquier consulta, por favor comuníquese con nosotros </h3>
+    <a href="https://api.whatsapp.com/send?phone=541124772468">+54 11 2477-2468</a>
+    <br>
+    <a href="mailto:contacto@jorgeimportadora.com.ar">contacto@jorgeimportadora.com.ar</a>
+    <br>
+    <br>
+    <h3>¡Muchas Gracias!</h3>
+    <br>
+    <h1> - Jorge Importadora - </h1>
+</div>
 @endcomponent

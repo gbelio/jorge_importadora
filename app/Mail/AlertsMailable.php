@@ -32,6 +32,10 @@ class AlertsMailable extends Mailable
             $subject="Importadora Jorge: Pedido Listo";
             return $this->markdown('emails.buy')->subject($subject);
         }
+        if ($this->order->status == 5){
+            $subject="Importadora Jorge: Pedido Cancelado";
+            return $this->markdown('emails.cancel')->subject($subject);
+        }
         $subject="Importadora Jorge: pedido de ".$this->order->user->email;
         return $this->markdown('emails.sale')->subject($subject);
     }
