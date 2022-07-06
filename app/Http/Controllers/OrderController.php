@@ -133,6 +133,9 @@ class OrderController extends Controller
         if ($order->status == 3){
             Mail::to($order->user->email)->send(new AlertsMailable($order));
         }
+        if ($order->status == 5){
+            Mail::to($order->user->email)->send(new AlertsMailable($order));
+        }
         return redirect('/compras/usuarios');
     }
 }
