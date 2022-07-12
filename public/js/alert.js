@@ -212,7 +212,7 @@ $(document).ready(function(){
         console.log(id);
 
         Swal.fire({
-            title: '¿Realmente quieres eliminar el registro de '+nombre+' ?',
+            title: '¿!Realmente quieres eliminar el registro de '+nombre+' ?',
             text: "El registro será eliminado permanentemente",
             icon: 'warning',
             showCancelButton: true,
@@ -252,7 +252,7 @@ $(document).ready(function(){
                         'success'
                     )
                     .then ((result) => {
-                        location.reload();
+                        location.assign("/")
                     });
                 }).fail (function(response){
                     Swal.fire(
