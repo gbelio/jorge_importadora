@@ -1,42 +1,33 @@
 <?php
-
 namespace App\Mail;
-
+ini_set('max_execution_time', 120);
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Storage;
 
 class AlertsMailable extends Mailable
+
 {
     use Queueable, SerializesModels;
-    public $order;
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public function __construct($order)
+    public $theme = 'default';
+    public function __construct($asunto, $titulo, $cuerpo)
     {
-        $this->order = $order;
+        $this->asunto = $asunto;
+        $this->titulo = $titulo;
+        $this->cuerpo = $cuerpo;
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
     public function build()
+
     {
-        if ($this->order->status == 3){
-            $subject="Importadora Jorge: Pedido Listo";
-            return $this->markdown('emails.buy')->subject($subject);
-        }
-        if ($this->order->status == 5){
-            $subject="Importadora Jorge: Pedido Cancelado";
-            return $this->markdown('emails.cancel')->subject($subject);
-        }
-        $subject="Importadora Jorge: pedido de ".$this->order->user->email;
-        return $this->markdown('emails.sale')->subject($subject);
+        $plantilla = 'emails.mailGenerico';
+        $nombre = $this->asunto;
+        return $this->markdown($plantilla)
+            ->with('titulo', $this->titulo)
+            ->with('cuerpo', $this->cuerpo)
+            ->from('notificacion@importadorajorge.com.ar', 'Importadora Jorge')
+            ->subject( $nombre );
     }
 }
