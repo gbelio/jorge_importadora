@@ -43,10 +43,11 @@ class MailerController extends Controller
 
     static function userOrderReady($order){
         $asunto = "Importadora Jorge - ¡Tu pedido está listo!";
-        $titulo = "SU PEDIDO ESTÁ LISTO PARA SER RETIRADO";
+        $titulo = "¡CONTÁCTANOS!";
         $cuerpo = "
 <div>
 <div>
+<h1 style='color: green;'>SU PEDIDO ESTÁ LISTO PARA SER RETIRADO</h1>
 <p>Número de orden: <a href='http://www.dev.importadorajorge.com.ar/compras/detalle/{$order->id}'>{$order->id}</a></p>
 <h2>TOTAL: <strong> $$order->total </strong></h2>
 <h3>Dirección de retiro: <strong> Sarmiento 2441 - CP 1044 </strong></h3>
