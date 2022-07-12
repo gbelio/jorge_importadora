@@ -11,7 +11,7 @@ use App\Colour;
 use Illuminate\Http\Request;
 use App\Mail\AlertsMailable;
 use Illuminate\Support\Facades\Mail;
-
+use App\Http\Controllers\MailerController;
 class OrderController extends Controller
 {
     public function index()
@@ -118,8 +118,10 @@ class OrderController extends Controller
             'total' => 0,
         ]);
         $newAdd->save();
-        Mail::to('gastonb.bkp@gmail.com')->send(new AlertsMailable($order));
-        Mail::to($order->user->email)->send(new AlertsMailable($order));
+        MailerController::userOrderConfirmation($order);
+        MailerController::adminOrderReception($order);
+/*         Mail::to('gastonb.bkp@gmail.com')->send(new AlertsMailable($order));
+        Mail::to($order->user->email)->send(new AlertsMailable($order)); */
         return view('comprobantes.show');
     }
 
@@ -131,10 +133,12 @@ class OrderController extends Controller
         $order->status = $request->status;
         $order->save();
         if ($order->status == 3){
-            Mail::to($order->user->email)->send(new AlertsMailable($order));
+            MailerController::userOrderReady($order);
+            /* Mail::to($order->user->email)->send(new AlertsMailable($order)); */
         }
         if ($order->status == 5){
-            Mail::to($order->user->email)->send(new AlertsMailable($order));
+            MailerController::userOrderCancelation($order);
+            /* Mail::to($order->user->email)->send(new AlertsMailable($order)); */
         }
         return redirect('/compras/usuarios');
     }
