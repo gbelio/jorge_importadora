@@ -1,33 +1,32 @@
 <?php
-
 namespace App\Mail;
-
+ini_set('max_execution_time', 120);
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Storage;
 
-class AlertsMailable extends Mailable
+class MailGenerico extends Mailable
+
 {
     use Queueable, SerializesModels;
-
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public $theme = 'default';
+    public function __construct($asunto, $titulo, $cuerpo)
     {
-        //
+        $this->asunto = $asunto;
+        $this->titulo = $titulo;
+        $this->cuerpo = $cuerpo;
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
     public function build()
+
     {
-        return $this->view('view.name');
+        $plantilla = 'emails.mailGenerico';
+        return $this->markdown($plantilla)
+            ->with('titulo', $this->titulo)
+            ->with('cuerpo', $this->cuerpo)
+            ->from('notificacion@importadorajorge.com.ar', 'Importadora Jorge')
+            ->subject( $this->asunto );
     }
 }
