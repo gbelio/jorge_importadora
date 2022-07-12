@@ -79,6 +79,7 @@
                     <div class="form-group">
                         <label for="colores"><strong> Seleccionar colores</strong></label>
                         <br>
+                        <input type="checkbox" name ="colours[]" value="1" hidden checked>
                         @foreach($colores as $color)
                             <label class="colour-container">
                                 <div style="background-color: {{$color->hex}}; width: 25px; height: 25px; margin-right: 10px; border-radius: 50%">

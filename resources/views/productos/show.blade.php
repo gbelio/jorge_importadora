@@ -87,7 +87,7 @@
                         </div>
                         @endif
                         <input class="color_input" type="radio" name="colour_id" value="1" hidden checked>
-                        {{-- @if(count($product_colours) > 1) --}}
+                        @if(count($product_colours) > 1)
                         <div class="box tripleBox">
                             <label for="colour_id">Seleccione el color</label>
                            {{--  <select id="colour_id" name="colour_id" > --}}
@@ -106,7 +106,7 @@
                             </div>
                             {{-- </select> --}}
                         </div>
-                        {{-- @endif --}}
+                        @endif
                         <button type="submit">
                             <img src="/img/icono_carrito.svg">
                         </button>
