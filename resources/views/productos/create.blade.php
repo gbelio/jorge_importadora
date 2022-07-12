@@ -17,11 +17,12 @@
                     </div>
                     <div class="form-group">
                         <label for="code"><strong>Código</strong></label>
-                        <input required type="text" maxlength="50" name="code" value="{{ old("code") }}" class="form-control" maxlength="190">
+                        <input required type="text" maxlength="50" name="code" value="{{ old("code") }}" class="form-control">
                     </div>
                     @error('code')
                         <span class="errors">{{ $message }}</span>
                     @enderror
+
                     <div class="form-group">
                         <label for="producto"><strong>Nombre del producto</strong></label>
                         <input required type="text" name="name" maxlength="25" value="{{ old("name") }}" class="form-control">
@@ -29,6 +30,7 @@
                     @error('name')
                         <span class="errors">{{ $message }}</span>
                     @enderror
+
                     <div class="form-group">
                         <label for="amount"><strong>Precio</strong> </label>
                         <input type="number" min="0" step="0.01" name="amount" value="{{ old("amount") }}" class="form-control">
@@ -36,6 +38,7 @@
                     @error('amount')
                         <span class="errors">{{ $message }}</span>
                     @enderror
+
                     <div class="form-group">
                         <label for="resume"><strong>Resumen del producto</strong> </label>
                         <input required type="text"maxlength="60" name="resume" value="{{ old("resume") }}" class="form-control" maxlength="60">
@@ -43,6 +46,7 @@
                     @error('resume')
                         <span class="errors">{{ $message }}</span>
                     @enderror
+
                     <div class="form-group">
                         <label for="descripcion"><strong> Descripción del producto</strong></label>
                         <textarea style="resize:none;" required type="text" name="description" value="{{ old("description") }}" class="form-control"></textarea>
@@ -50,6 +54,7 @@
                     @error('description')
                         <span class="errors">{{ $message }}</span>
                     @enderror
+
                     <div class="form-group">
                         <label for="genero"><strong>Categorías</strong> </label>
                         <select required class="form-control" name="category_id" id="category_id">
@@ -62,13 +67,29 @@
                     @error('category_id')
                         <span class="errors">{{ $message }}</span>
                     @enderror
+
                     <div class="form-group">
                         <label for="genero"><strong> Subcategoría</strong></label>
-                    <select required enabled id="subcategory_id" class="form-control" name="subcategory_id"></select>
+                        <select required enabled id="subcategory_id" class="form-control" name="subcategory_id"></select>
                     </div>
                     @error('subcategory_id')
                         <span class="errors">{{ $message }}</span>
                     @enderror
+
+                    <div class="form-group">
+                        <label for="colores"><strong> Seleccionar colores</strong></label>
+                        <br>
+                        @foreach($colores as $color)
+                            <label class="colour-container">
+                                <div style="background-color: {{$color->hex}}; width: 25px; height: 25px; margin-right: 10px; border-radius: 50%">
+                                </div>
+                                {{$color->name}}
+                                <input type="checkbox" name ="colours[]" value="{{$color->id}}">
+                                <span class="checkmark"></span>
+                            </label>
+                        @endforeach
+                    </div>
+
                     <div class="button">
                         <label for="poster" class="add_img"><strong>Selecione una imagen de portada</strong> </label>
                         <input required class="" type="file" name="cover">
@@ -76,6 +97,7 @@
                     @error('cover')
                         <span class="errors">{{ $message }}</span>
                     @enderror
+
                     <br>
                     <div class="form-group">
                         <input required type="submit" class="btn btn-primary __agregarProd" value="Agregar Producto" id="addMovie">
@@ -103,10 +125,11 @@
                             <th>Fotos</th>
                             <th>Editar</th>
                             <th style="color:red;">Borrar</th>
+                            <th>Cambiar Estado</th>
                         </thead>
                         <tbody>
-                            @if($productos ?? ''->count())
-                                @foreach($productos ?? '' as $producto)
+                            @if($productos)
+                                @foreach($productos as $producto)
                                     <tr style="font-size:13px">
                                         <td>{{$producto->id}}</td>
                                         <td>{{$producto->name}}</td>
@@ -130,14 +153,24 @@
                                         <td style="text-align:center">
                                             <form action="{{action('ProductController@destroy', $producto->id)}}" method="post">
                                                 {{csrf_field()}}
-                                                <input class="serdelete_val_id" name="_method" type="hidden" value="<?= $producto->id ?>">
-                                                <button id="delete" data-id="<?= $producto->id ?>" class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
+                                                <input class="serdelete_val_id" name="_method" type="hidden" value="{{$producto->id}}">
+                                                <button id="delete" data-id="{{$producto->id}}" class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
                                                     <i class="fa fa-trash" style="font-size:16px"></i>
                                                 </button>
                                             </form>
                                         </td>
+                                        <td style="text-align:center">
+                                            <form action="{{action('ProductController@deactivate', $producto->id)}}" method="post">
+                                                {{csrf_field()}}
+                                                @method('PATCH')
+                                                <input type="hidden" name="active" value="{{$producto->active == 1 ? 0 : 1}}">
+                                                <button id="deactivate" class="btn btn-sm" type="submit" style="margin:0 !important; color: white; {{$producto->active == 1 ? 'background-color: red' : 'background-color: green'}}">
+                                                    {{$producto->active == 1 ? 'Desactivar' : 'Activar'}}
+                                                </button>
+                                            </form>
+                                        </td>
                                     </tr>
-                                @endforeach 
+                                @endforeach
                             @else
                                 <tr>
                                     <td colspan="8">No hay registros actualmente</td>

@@ -28,9 +28,9 @@
                         <div class="_codigo_botones">
                             <div style="margin-bottom: 0px !important">
                                 <h4>Código de Producto: {{$producto->code}}</h4>
-                                @if($producto->amount > 0)
+                               {{--  @if($producto->amount > 0)
                                     <h5>${{$producto->amount}}</h5>
-                                @endif
+                                @endif --}}
                             </div>
                             <div class="_contenedorBotones">
                                 <div class="edit_prod_show">
@@ -39,16 +39,16 @@
                                     </a>
                                 </div>
                                 <div class="add_photos_prod_show">
-                                    <a href="/productos/usuario/cargar_imagen/<?=$producto->id?>">
+                                    <a href="/productos/usuario/cargar_imagen/{{$producto->id}}">
                                         <i class="fa fa-file-image-o" style="font-size:15px; color: white; margin-top:5px;"></i>
                                     </a>
                                 </div>
                                 <div class="delete_prod_show">
                                     <form id="_form_eliminar" action="{{action('ProductController@destroy', $producto->id)}}" method="post">
                                         {{csrf_field()}}
-                                        <input class="serdelete_val_id4" name="_method" type="hidden" value="<?= $producto->id ?>">
-                                        <input class="serdelete_val_id5" name="_method" type="hidden" value="<?= $producto->name ?>">
-                                        <button class="delete_button_showall" id="delete4" data-id="<?= $producto->id ?>"  type="submit" >
+                                        <input class="serdelete_val_id4" name="_method" type="hidden" value="{{$producto->id}}">
+                                        <input class="serdelete_val_id5" name="_method" type="hidden" value="{{$producto->name}}">
+                                        <button class="delete_button_showall" id="delete4" data-id="{{$producto->id}}"  type="submit" >
                                             <i class="fa fa-trash" style="font-size:16px"></i>
                                         </button>
                                     </form>
@@ -58,33 +58,62 @@
                     @else
                         <div>
                             <h4>Código de Producto: {{$producto->code}}</h4>
-                            @if($producto->amount > 0)
-                                <h5>${{$producto->amount}}</h5>
-                            @endif
                         </div>
                     @endif
                     <h2>{{$producto->name}}</h2>
                     <p> {{$producto->resume}}</p>
                 </div>
+                <div class="prod_description">
                 {!!$producto->description!!}
+                </div>
                 <div>
-                    <form id="" action="{{action('OrderDetailController@add', $producto)}}" method="post">
+                    <form id="buy_action" action="{{action('OrderDetailController@add', $producto)}}" method="post">
                         {{csrf_field()}}
                         {{ method_field('POST') }}
                         @csrf
                         <input type="hidden" name="product_id" value="{{$producto->id}}">
                         <input type="hidden" name="name" value="{{$producto->name}}">
-                        <input type="hidden" name="amount" value="{{$producto->amount}}">
+                        <input type="hidden" name="amount" value="{{$producto->amount === null ? 0 : $producto->amount}}">
                         <input type="hidden" name="cover" value="{{$producto->cover}}">
                         <input type="hidden" name="code" value="{{$producto->code}}">
-                        <input type="number" name="quantity" value="1" min="1" max="999">
-                        <h5 id="amount" name="amount">${{$producto->amount}}</h5>
+                        <div class="box">
+                            <label>Unidades</label>
+                            <input id="quantitySelected" class="quantity" type="number" name="quantity" value="1" min="1" max="9999">
+                        </div>
+                        @if($producto->amount > 0)
+                       <div class="box">{{--  revisar como queda sin precio --}}
+                            <label>Precio unitario</label>
+                            <h5 id="change_amount"> ${{$producto->amount}}</h5>
+                        </div>
+                        @endif
+                        <input class="color_input" type="radio" name="colour_id" value="1" hidden checked>
+                        @if(count($product_colours) > 1)
+                        <div class="box tripleBox">
+                            <label for="colour_id">Seleccione el color</label>
+                           {{--  <select id="colour_id" name="colour_id" > --}}
+                            <div class="color_selector">
+                                @foreach($product_colours as $product_colour)
+                                    {{-- <option value="{{$product_colour->id}}" style="background-color:{{$product_colour->hex}}">
+                                        <span>   {{$product_colour->name}}   </span>
+                                    </option> --}}
+                                @if($product_colour->id != 1)
+                                <label class="container">
+                                    <input class="color_input" type="radio" name="colour_id" value="{{$product_colour->id}}" style="background-color:{{$product_colour->hex}}">
+                                    <span class="colorcheck" style="background-color:{{$product_colour->hex}}"> </span>
+                                </label>
+                                @endif
+                                @endforeach
+                            </div>
+                            {{-- </select> --}}
+                        </div>
+                        @endif
                         <button type="submit">
                             <img src="/img/icono_carrito.svg">
                         </button>
                     </form>
                 </div>
             </div>
+        </div>
     </section>
 </div>
 @endsection

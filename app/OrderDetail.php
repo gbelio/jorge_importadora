@@ -3,19 +3,25 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class OrderDetail extends Model
 {
     protected $guarded = ['id'];
-    protected $fillable = ['order_id', 'product_id', 'name', 'code','amount', 'cover', 'quantity', 'user_id', 'status'];
-    
-    public function order()
+    protected $fillable = ['order_id', 'product_id', 'colour_id', 'name', 'code','amount', 'cover', 'quantity', 'user_id', 'status'];
+
+    public function order(): BelongsTo
     {
         return $this->belongsTo('App\Order');
     }
 
-    public function product()
+    public function product(): BelongsTo
     {
         return $this->belongsTo('App\Product');
+    }
+
+    public function colour(): BelongsTo
+    {
+        return $this->belongsTo('App\Colour');
     }
 }

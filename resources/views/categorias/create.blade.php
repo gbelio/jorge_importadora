@@ -51,14 +51,14 @@
                                     <td style="text-align:center">
                                         <form action="{{action('CategoryController@destroy', $categoria->id)}}" method="post">
                                             {{csrf_field()}}
-                                            <input class="serdelete_val_id1" name="_method" type="hidden" value="<?= $categoria->id ?>">
-                                            <button id="delete1" data-id="<?= $categoria->id ?>" class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
+                                            <input class="serdelete_val_id1" name="_method" type="hidden" value="{{$categoria->id}}">
+                                            <button id="delete1" data-id="{{$categoria->id}}" class="btn btn-danger btn-sm" type="submit" style="margin:0 !important;">
                                                 <i class="fa fa-trash" style="font-size:16px"></i>
                                             </button>
                                         </form>
                                     </td>
                                 </tr>
-                            @endforeach 
+                            @endforeach
                         @else
                             <tr>
                                 <td colspan="8">No hay registro !!</td>

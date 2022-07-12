@@ -23,11 +23,11 @@
       @error('password')
         <span class="errors">{{ $message }}</span>
       @enderror
-{{--       @if (Route::has('password.request'))
+      @if (Route::has('password.request'))
         <a class="btn btn-link" href="{{ route('password.request') }}">
             {{ __('Olvidaste tu password?') }}
         </a>
-      @endif --}}
+      @endif
       <div class="divSubmitLogin">
         <p>Recordarme<input class="inputRememeber" class="check" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}></p>
       </div>

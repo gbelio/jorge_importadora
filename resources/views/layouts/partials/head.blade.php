@@ -25,5 +25,10 @@
     <link rel="stylesheet" href="{{ asset('css/photos.css')}}" >
     <link rel="stylesheet" href="{{ asset('css/cat_prods.css')}}" >
     <link rel="stylesheet" href="{{ asset('css/dropdown_subcategorias.css')}}" >
+    <link rel="stylesheet" href="{{ asset('css/orders.css')}}" >
+    <link rel="stylesheet" href="{{ asset('css/orderDetail.css')}}" >
+    <link rel="stylesheet" href="{{ asset('css/userOrders.css')}}" >
+    <link rel="stylesheet" href="{{ asset('css/status.css')}}" >
+    <link rel="stylesheet" href="{{ asset('css/perfil.css')}}" >
     <title>Importadora Jorge</title>
 </head>

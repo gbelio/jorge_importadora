@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
 use App\Category;
 use App\Subcategory;
 use Illuminate\Foundation\Auth\User;
@@ -26,16 +25,24 @@ class ProfileController extends Controller
 
     public function show($id)
     {
-        $profile = User::find($id);
-        return view('perfil.show')->with('profile', $profile);
+        $profile = User::query()->find($id);
+        $allCategories = Category::all();
+        $subcategories = Subcategory::all();
+        return view('perfil.show')->with('profile', $profile)
+                                  ->with('allCategories',$allCategories)
+                                  ->with('subcategories',$subcategories);
     }
 
     public function edit()
     {
+        $allCategories = Category::all();
+        $subcategories = Subcategory::all();
         if(Auth::user() == null){
             return redirect('login');
         }
-        return view('perfil.edit')->with('user', Auth::user());
+        return view('perfil.edit')->with('user', Auth::user())
+                                ->with('allCategories',$allCategories)
+                                ->with('subcategories',$subcategories);
     }
 
     public function update(Request $request)

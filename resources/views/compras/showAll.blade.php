@@ -2,7 +2,7 @@
 @section('content')
 <div>
     {{---------------------- ****************BARRA DE BUSQUEDA**************** ----------------------------}}
-    <div class="col-12" style="margin-top: 200px">
+    <div class="col-12 searchBar">
         <form action="/compras/busqueda" class="offset-1" method="get" style="">
             @csrf
             <input required placeholder='email' type="text" name="clave">
@@ -15,7 +15,7 @@
         <span class="offset-1" style="color: red"><b>{{$response}}</b></span>
     @endisset
     {{---------------------- ****************LISTA COMPRAS**************** ----------------------------}}
-    <section>
+    <section class="orderTable">
         <div><h3>LISTA DE COMPRAS</h3></div>
         <table id="mytable" class="table table-striped">
             <thead>
@@ -25,7 +25,6 @@
                 <th class="text-center">Actualizado</th>
                 <th class="text-center">Total</th>
                 <th class="text-center">Estado</th>
-                <th class="text-center">Cambiar de estado</th>
             </thead>
             <tbody>
                 @foreach ($orders as $order)
@@ -35,32 +34,53 @@
                         <td data-title="Fecha compra" class="text-center">{{$order->created_at}}</td>
                         <td data-title="Actualizado" class="text-center">{{$order->updated_at}}</td>
                         <td data-title="Total" class="text-center">${{$order->total}}</td>
-                        <td data-title="Estado" class="text-center">
-                            @switch($order->status)
-                                @case('preparing')
-                                    <b>Preparando</b>
-                                    @break
-                                @case('ready')
-                                    <b>Listo!</b>
-                                    @break
-                                @case('finish')
-                                    <b>Finalizado</b>
-                                    @break
-                                @case('cancelled')
-                                    <b>Cancelado</b>
-                                    @break
-                            @endswitch
-                        </td>
                         <td data-title="Cambiar de estado" class="text-center">
                             <form id="" action="{{action('OrderController@updateStatus')}}" method="POST">
                                 {{ method_field('PATCH') }}
                                 @csrf
-                                <select class="form-select" aria-label="Default select example" style="display: inline-block; margin-top: -22px; margin-left: 5px" name="status" id="status" onchange="this.form.submit()">
-                                    <option></option>
-                                    <option value="2">Preparando</option>
-                                    <option value="3">Listo!</option>
-                                    <option value="4">Finalizado</option>
-                                    <option value="5">Cancelado</option>
+                                @php 
+                                    $color = "";
+                                    switch($order->status){
+                                        case('pending'):
+                                           $color="black";
+                                           break;
+                                        case('preparing'):
+                                           $color="orange";
+                                           break;
+                                       case('ready'):
+                                           $color= "blue";
+                                           break;
+                                       case('finish'):
+                                           $color= "green";
+                                           break;
+                                       case('cancelled'):
+                                           $color= "red";
+                                           break;
+                                    }
+                                @endphp
+                                <select class="form-select" aria-label="Default select example" style="display: inline-block; margin-top: -22px; margin-left: 5px; color:{{$color}}" name="status" id="status" onchange="this.form.submit()">
+                                    @switch($order->status)
+                                        @case('pending')
+                                            <option style="color:black;">Pendiente </option>
+                                            @break
+                                        @case('preparing')
+                                            <option style="color:orange;">Preparando </option>
+                                            @break
+                                        @case('ready')
+                                            <option style="color:blue;">Listo!</option>
+                                            @break
+                                        @case('finish')
+                                            <option style="color:green;">Finalizado</option>
+                                            @break
+                                        @case('cancelled')
+                                            <option style="color:red;">Cancelado</option>
+                                            @break
+                                    @endswitch
+                                    <option value="1" style="color:black;">Pendiente </option>
+                                    <option value="2" style="color:orange;">Preparando</option>
+                                    <option value="3" style="color:blue;">Listo!</option>
+                                    <option value="4" style="color:green;">Finalizado</option>
+                                    <option value="5" style="color:red;">Cancelado</option>
                                 </select>
                                 <input type="hidden" name="id" value="{{$order->id}}">
                             </form>

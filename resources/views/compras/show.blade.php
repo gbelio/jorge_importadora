@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 <div>
-    <section style="margin-top:200px">
+    <section class="userOrders">
         <div><h3>MIS COMPRAS</h3></div>
         <table class="table table-hover">
             <thead>
@@ -14,21 +14,24 @@
             <tbody>
                 @foreach ($orders as $order)
                     <tr>
-                        <th scope="row"><a href="/compras/detalle/{{$order->id}}">{{$order->id}}</a></th>
+                        <td scope="row"><a href="/compras/detalle/{{$order->id}}">{{$order->id}}</a></td>
                         <td>${{$order->total}}</td>
                         <td>
                             @switch($order->status)
+                                @case('pending')
+                                    <b style="color:black;">Pendiente </b>
+                                @break
                                 @case('preparing')
-                                    <b class="center">Preparando</b>
+                                    <b style="color:orange;">Preparando</b>
                                     @break
                                 @case('ready')
-                                    <b>Listo!</b>
+                                    <b style="color:blue;">Listo!</b>
                                     @break
                                 @case('finish')
-                                    <b>Finalizado</b>
+                                    <b style="color:green;">Finalizado</b>
                                     @break
                                 @case('cancelled')
-                                    <b>Cancelado</b>
+                                    <b style="color:red;">Cancelado</b>
                                     @break
                             @endswitch
                         </td>

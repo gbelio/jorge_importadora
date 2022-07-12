@@ -1,7 +1,7 @@
 .form-multimedia{
     height: 100vh;
     width: 100%;
-    margin-top: 160px;
+    margin-top: 120px;
 }
 
 .container-multimedia{
@@ -71,10 +71,21 @@
 
 .conjunto-imagenes{
     width: 100%;
+    max-height: 370px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
+    overflow-y: scroll;
+}
+
+.conjunto-imagenes::-webkit-scrollbar {
+    width: 5px;
+}
+
+.conjunto-imagenes::-webkit-scrollbar-thumb{
+    background-color: rgb(110, 110, 110);
+    border-radius: 5px;
 }
 
 .edicion-imagenes{
@@ -98,11 +109,21 @@
     font-family: 'Raleway', sans-serif;
 }
 
+.container-multimedia>.editor-multimedia>.info_load>.product_1{
+    max-width: 50% !important;
+    min-width: 50% !important;
+}
+
 /* MEDIA QUERIES */
 
   /* ------------TABLETS-------------- */
 
   @media /* (min-width: 600px) and */ (max-width: 1023px){
+
+    .container-multimedia>.editor-multimedia>.info_load>.product_1 {
+        max-width: 100% !important;
+        min-width: 100% !important;
+    }
   
     .__nuevasImagenes{
         font-size: 2rem;

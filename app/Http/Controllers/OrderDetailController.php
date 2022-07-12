@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Category;
+use App\Subcategory;
 use App\OrderDetail;
 use App\Order;
+use App\Colour;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -44,14 +46,19 @@ class OrderDetailController extends Controller
     public function index()
     {
         $products = Product::all();
-        $categories = Category::all();
+        $allCategories = Category::all();
+        $subcategories = Subcategory::all();
         $orderDetails = $this->getOrderDetails();
+        $rest_of_colours = Colour::query()
+        ->get();
         return view('carrito.show')
             ->with('products', $products)
-            ->with('categories', $categories)
+            ->with('allCategories', $allCategories)
             ->with('userOrderDetails', $orderDetails['userOrderDetails'])
             ->with('orderShopping', $orderDetails['orderShopping'][0]->id)
-            ->with('total', $orderDetails['total']);
+            ->with('total', $orderDetails['total'])
+            ->with('subcategories', $subcategories)
+            ->with('rest_of_colours',$rest_of_colours);
     }
 
     /**
@@ -67,14 +74,17 @@ class OrderDetailController extends Controller
         $newAdd = new OrderDetail([
             'order_id' => $orderShopping[0]->id,
             'product_id' => $_POST['product_id'],
+            'colour_id' => $_POST['colour_id'],
             'name' => $_POST['name'],
             'code' => $_POST['code'],
             'amount' => $_POST['amount'],
             'cover' => $_POST['cover'],
             'quantity' => $_POST['quantity'],
         ]);
+        $user=Auth::user()->id;
         $newAdd->save();
-        return redirect()->back();
+        /* return redirect()->back(); */
+        return redirect('/cart');
     }
 
     /**
