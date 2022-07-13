@@ -15,7 +15,7 @@ class MailerController extends Controller
 <div>
 <h1 style='color: green;'>HEMOS RECIBIDO TU PEDIDO</h1>
 <h2> Te notificaremos vía mail cuando el mismo este listo para ser retirado</h2>
-<p>Número de orden: <a href='http://www.dev.importadorajorge.com.ar/compras/detalle/'$order->id>$order->id</a></p>
+<p>Número de orden: <a href='http://www.dev.importadorajorge.com.ar/compras/detalle/{$order->id}'>$order->id</a></p>
 <h2>TOTAL: <strong> $$order->total </strong></h2>
 <h3>Dirección de retiro: <strong> Sarmiento 2441 - CP 1044 </strong></h3>
 </div>
@@ -75,13 +75,13 @@ class MailerController extends Controller
     }
 
     static function userOrderCancelation($order){
-        $asunto = "Importadora Jorge - Orden cancelada exitosamente";
+        $asunto = "Importadora Jorge - Su orden ha sido cancelada";
         $titulo = "¡Orden cancelada correctamente!";
         $cuerpo = "
 <div>
 <div>
 <h1 style='color: red;'>SU PEDIDO HA SIDO CANCELADO</h1>
-<p>Número de orden: <a href='http://www.dev.importadorajorge.com.ar/compras/detalle/$order->id'>$order->id</a></p>
+<p>Número de orden: <a href='http://www.dev.importadorajorge.com.ar/compras/detalle/{$order->id}'>$order->id</a></p>
 <h2>TOTAL: <strong> $$order->total </strong></h2>
 </div>
 <p style='font-weight: normal; font-size:10px;'><strong>Nombre de usuario: </strong>{$order->user->name} {$order->user->last_name}</p>
