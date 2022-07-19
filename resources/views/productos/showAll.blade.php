@@ -35,7 +35,7 @@
         <input type="hidden" id="categories-count" value="{{$allCategories->count()}}">
         @foreach ($allCategories as $category)
             <section class="{{-- products-all --}}" style="margin:0">
-                @if (count($category->product) > 0)
+                @if (count($category->product) > 0){{--  Agregar lógica para borrar categorías con productos inactivos (Controlador) --}}
                     <div id="cat{{$category->id}}">
                         <a href="/categorias/busqueda?clave={{$category->name}}" class="cat-name"
                            style="text-decoration:none; color:#5FA8E5;">{{$category->name}}</a>
