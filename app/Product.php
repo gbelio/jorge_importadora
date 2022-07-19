@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string cover
  * @property int category_id
  * @property int subcategory_id
+ * @property OrderDetail order_details
  */
 class Product extends Model
 {
@@ -37,5 +38,10 @@ class Product extends Model
     public function subcategory(): BelongsTo
     {
         return $this->belongsTo('App\Subcategory');
+    }
+
+    public function order_details(): HasMany
+    {
+        return $this->HasMany('App\OrderDetail');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Colour;
+use App\OrderDetail;
 use App\ProductColour;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
@@ -158,6 +159,22 @@ class ProductController extends Controller
         $subcategories = Subcategory::all();
         $product_collections = [];
 
+        // Cart
+        $userOrderDetails = [];
+        $userId = 0;
+        if(Auth::check()){
+            $userId = Auth::user()->id;
+        }
+        $orderShopping = Order::query()
+            ->where([
+                'user_id' => $userId,
+                'status' => 'shopping',
+            ])->get();
+        if(!$orderShopping->isEmpty()){
+            $userOrderDetails = OrderDetail::query()->where(['order_id' => $orderShopping[0]->id,])->get();
+        }
+        // End cart
+
         $product_colours = ProductColour::all();
 
         foreach ($allCategories as $category) {
@@ -183,6 +200,7 @@ class ProductController extends Controller
             ->with('subcategories', $subcategories)
             ->with('sliderstate', $sliderstate)
             ->with('sliders', $sliders)
+            ->with('userOrderDetails', $userOrderDetails)
             ->with('product_colours', $product_colours);
     }
 
@@ -385,6 +403,6 @@ class ProductController extends Controller
         $producto->active = $request->input('active') !== $producto->active ? $request->input('active') : $producto->active;
         $producto->save();
 
-        return redirect()->back();/* redirect("/productos/cargar"); */
+        return redirect()->back();
     }
 }

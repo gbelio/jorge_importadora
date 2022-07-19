@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterProductsTable extends Migration
+class AlterUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,8 @@ class AlterProductsTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('active')->default(1)->after('subcategory_id');
+            $table->string('last_name')->nullable()->after('name');
+            $table->string('phone')->nullable()->after('last_name');
         });
     }
 

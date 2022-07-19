@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Subcategory;
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Auth;
 
 class ProfileController extends Controller
 {
@@ -54,6 +54,8 @@ class ProfileController extends Controller
         $this->validate($request, $reglas, $mensaje);
         $user = Auth::user();
         $user->name = $request->input('name') !== $user->name ? $request->input('name') : $user->name;
+        $user->last_name = $request->input('last_name') !== $user->last_name ? $request->input('last_name') : $user->name;
+        $user->phone = $request->input('phone') !== $user->phone ? $request->input('phone') : $user->phone;
         if ($request->input('password') == $request->input('password_confirmation') && strlen($request->input('password')) > 7){
             $user->password = Hash::make($request->input('password'));
             $length = strlen($request->input('password'));

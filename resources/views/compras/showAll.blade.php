@@ -38,7 +38,7 @@
                             <form id="" action="{{action('OrderController@updateStatus')}}" method="POST">
                                 {{ method_field('PATCH') }}
                                 @csrf
-                                @php 
+                                @php
                                     $color = "";
                                     switch($order->status){
                                         case('pending'):
@@ -76,11 +76,11 @@
                                             <option style="color:red;">Cancelado</option>
                                             @break
                                     @endswitch
-                                    <option value="1" style="color:black;">Pendiente </option>
-                                    <option value="2" style="color:orange;">Preparando</option>
-                                    <option value="3" style="color:blue;">Listo!</option>
-                                    <option value="4" style="color:green;">Finalizado</option>
-                                    <option value="5" style="color:red;">Cancelado</option>
+                                    @if($order->status !== 'pending')<option value="pending" style="color:black;">Pendiente </option> @endif
+                                    @if($order->status !== 'preparing')<option value="preparing" style="color:orange;">Preparando</option> @endif
+                                    @if($order->status !== 'ready')<option value="ready" style="color:blue;">Listo!</option> @endif
+                                    @if($order->status !== 'finish')<option value="finish" style="color:green;">Finalizado</option> @endif
+                                    @if($order->status !== 'cancelled')<option value="cancelled" style="color:red;">Cancelado</option> @endif
                                 </select>
                                 <input type="hidden" name="id" value="{{$order->id}}">
                             </form>

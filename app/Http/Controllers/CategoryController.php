@@ -99,9 +99,14 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
+        $allCategories = Category::all();
+        $subcategories = Subcategory::all();
+
         $categoria = Category::query()
             ->find($id);
-        return view('categorias.edit')->with('categoria', $categoria);
+        return view('categorias.edit')->with('categoria', $categoria)
+                                            ->with('subcategories',$subcategories)
+                                            ->with('allCategories',$allCategories);
     }
 
 

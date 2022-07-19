@@ -66,9 +66,12 @@ class OrderDetailController extends Controller
      */
     public function add(): RedirectResponse
     {
+
+        $user=Auth::user();
+
         $orderShopping = Order::query()
         ->where([
-            'user_id' => Auth::user()->id,
+            'user_id' => $user->id,
             'status' => 'shopping'
         ])->get();
         $newAdd = new OrderDetail([
@@ -81,7 +84,6 @@ class OrderDetailController extends Controller
             'cover' => $_POST['cover'],
             'quantity' => $_POST['quantity'],
         ]);
-        $user=Auth::user()->id;
         $newAdd->save();
         /* return redirect()->back(); */
         return redirect('/cart');

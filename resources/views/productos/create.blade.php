@@ -8,7 +8,7 @@
                 <button id="botonFormProd" style="font-size: 0px; background-color: white; color: black;" class="pull-right"><i class="fa fa-plus-square-o pull-right" style="font-size:30px; margin:0 !important"></i></button>
                 <button id="botonFormProd1" style="font-size: 0px; background-color: white; color: black; display:none" class="pull-right"><i class="fa fa-minus-square-o" style="font-size:30px"></i></button>
             </div>
-            <div id="target" style="display:none">
+            <div id="target" style="@if(!old("name")) display:none @endif">
                 <br>
                 <form class="form-group" action="" method="post" enctype="multipart/form-data">
                     @csrf
@@ -33,7 +33,7 @@
 
                     <div class="form-group">
                         <label for="amount"><strong>Precio</strong> </label>
-                        <input type="number" min="0" step="0.01" name="amount" value="{{ old("amount") }}" class="form-control">
+                        <input required type="number" min="0" step="0.01" name="amount" value="{{ old("amount") }}" class="form-control">
                     </div>
                     @error('amount')
                         <span class="errors">{{ $message }}</span>

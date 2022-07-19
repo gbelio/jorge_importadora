@@ -34,6 +34,16 @@
                                     </button>
                                 </form>
                             </div>
+                            <div class="deactivate_prod">
+                                <form action="{{action('ProductController@deactivate', $product->id)}}" method="post">
+                                    {{csrf_field()}}
+                                    @method('PATCH')
+                                    <input type="hidden" name="active" value="{{$product->active == 1 ? 0 : 1}}">
+                                    <button id="deactivate" class="btn btn-sm" type="submit" style="margin:0 !important; color: white; {{$product->active == 1 ? 'background-color: red' : 'background-color: green'}}">
+                                        {{$product->active == 1 ? 'Off' : 'On'}}
+                                    </button>
+                                </form>
+                            </div>
                         @endif
                         <span>{{$product->code}}</span>
                         <img class="product_1_img_imagen" src="/storage/{{$product->cover}}" alt="imagen de producto">

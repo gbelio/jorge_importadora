@@ -14,6 +14,15 @@
                 <input name="name" required maxlength="25" value="{{Auth::user()->name}}" type="text" class="form-control" placeholder="">
             </div>
             <br>
+            <div class="form-group">
+                <label for="last_name" ><strong>Apellido</strong></label>
+                <input name="last_name" maxlength="25" value="{{Auth::user()->last_name}}" type="text" class="form-control" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="phone" ><strong>Teléfono</strong></label>
+                <input name="phone" maxlength="25" value="{{Auth::user()->phone}}" type="text" class="form-control" placeholder="">
+            </div>
+            <br>
             <div class="button" style="margin-bottom:1%;">
                 <label for="Email">Email</label>
                 <label type="email" name="email" value="" class="form-control">{{ Auth::user()->email }}</label>
