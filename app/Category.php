@@ -18,4 +18,22 @@ class Category extends Model
     {
         return $this->hasMany('App\Subcategory', 'category_id');
     }
+
+    public function getActiveProductsAttribute(): int
+    {
+        /** @var Product $products */
+        $products = Product::query()->where('category_id', $this->id)
+                                    ->where('active', 1)
+                                    ->get();
+
+        return $products->count();
+    }
+
+    public function getFullAddressAttribute(): string
+    {
+        $full_address = $this->dest_street_name . ' ' . $this->dest_street_number;
+
+        return $full_address;
+    }
+
 }

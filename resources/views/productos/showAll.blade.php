@@ -33,9 +33,10 @@
     {{-- SLIDER --}}
     <div class="caja-products-categories" style="flex-direction:column !important">
         <input type="hidden" id="categories-count" value="{{$allCategories->count()}}">
+        <input type="hidden" name="categories_ids" id="categories_ids" value="{{$allCategories}}">
         @foreach ($allCategories as $category)
             <section class="{{-- products-all --}}" style="margin:0">
-                @if (count($category->product) > 0){{--  Agregar lógica para borrar categorías con productos inactivos (Controlador) --}}
+                @if (count($category->product) > 0 && $category->active_products > 0)
                     <div id="cat{{$category->id}}">
                         <a href="/categorias/busqueda?clave={{$category->name}}" class="cat-name"
                            style="text-decoration:none; color:#5FA8E5;">{{$category->name}}</a>
@@ -72,6 +73,16 @@
                                                             <button class="delete_button_showall" id="delete4"
                                                                     data-id="{{$product->id}}" type="submit">
                                                                 <i class="fa fa-trash" style="font-size:16px"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                    <div class="deactivate_prod">
+                                                        <form action="{{action('ProductController@deactivate', $product->id)}}" method="post">
+                                                            {{csrf_field()}}
+                                                            @method('PATCH')
+                                                            <input type="hidden" name="active" value="{{$product->active == 1 ? 0 : 1}}">
+                                                            <button id="deactivate" class="btn btn-sm" type="submit" style="width: fit-content ;margin:0 !important; color: white; {{$product->active == 1 ? 'background-color: red' : 'background-color: green'}}">
+                                                                Desactivar
                                                             </button>
                                                         </form>
                                                     </div>

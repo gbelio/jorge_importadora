@@ -2,6 +2,7 @@ $(document).ready(function(){
 
     //Cantidad de categorías
     let categoriesCount = parseInt($('#categories-count').val());
+    let categoriesIds = jQuery.parseJSON($('#categories_ids').val());
 
     let siguienteCarrousel = $('.siguienteCarrousel');
     let anteriorCarrousel = $('.anteriorCarrousel');
@@ -17,12 +18,12 @@ $(document).ready(function(){
         autoplayTimeout:3000,
     })
 
-    for(let i = 1; i <= categoriesCount; i++){
+    for(let i = 0; i < categoriesCount; i++){
 
         let next_button = $('.am-next'+i);
         let prev_button = $('.am-prev'+i);
 
-        $('#cat'+i+'>.owl-carousel').owlCarousel({
+        $('#cat'+categoriesIds[i].id+'>.owl-carousel').owlCarousel({
             items: 4,
             margin:15,
             nav:true,
