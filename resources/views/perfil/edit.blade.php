@@ -28,6 +28,11 @@
                 <label type="email" name="email" value="" class="form-control">{{ Auth::user()->email }}</label>
             </div>
             <br>
+            <div class="button" style="margin-bottom:1%;">
+                <label for="phone">Teléfono</label>
+                <input type="tel" name="phone" value="" class="form-control">{{ Auth::user()->phone }}</input>
+            </div>
+            <br>
             <div class="form-group">
                 <label for="Password">Password</label>
                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">

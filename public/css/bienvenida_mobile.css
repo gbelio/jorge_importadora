@@ -37,6 +37,10 @@ body {
     }
 }
 
+.caja-categorias-resultados>.productos-categoria>.productos-perfil{
+    justify-content: space-evenly !important;
+}
+
 .__formularios {
     width: 80vw;
 }
