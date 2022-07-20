@@ -16,7 +16,9 @@ $(document).ready(function(){
         ev.preventDefault();
         var id = $(this).parents('tr').find('.order_id').val();
         var order_total = $(this).parents('tr').find('.order_total').val();
-        
+
+        $("#buy").text('').prop('disabled', true).append('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="padding: 5px"></span> <!--<span>COMPRANDO</span>-->');
+
         Swal.fire({
             title: '¿Realmente quieres confirmar esta orden de compra?',
             text: "Una vez enviada la orden de compra no podrá ser modificada de manera virtual, deberá contactar al vendedor.",
@@ -27,19 +29,21 @@ $(document).ready(function(){
             confirmButtonText: 'Confirmar',
             cancelButtonText: 'Cancelar',
             }).then((result) => {
-            if (result.value) {
 
-                var data = {
+            if (result.value) {
+                let data = {
                     "_token" : $('input[name=_token]').val(),
                     "order_id" : id,
                     "order_total": order_total,
                 };
-                console.log(data);
+
                 $.ajax({
                     type: 'PATCH',
                     url: '/status',
                     data: data,
                     success: function(response){
+                        $("#buy span").remove();
+                        $("#buy").html('<b>COMPRAR</b>').prop('disabled', false);
 
                         Swal.fire(
                             'Enviado!',
@@ -49,10 +53,28 @@ $(document).ready(function(){
                         .then ((result) => {
                             location.replace('/');
                         });
+                    },
+                    error: function (request) {
+                        //Quito spinner sea cual sea la respuesta
+                        $("#buy span").remove();
+                        $("#buy").html('<b>COMPRAR</b>').prop('disabled', false);
+
+                        Swal.fire(
+                            'Error al comprar!',
+                            'Tu orden no ha sido procesada.',
+                            'error'
+                        )
+
                     }
+
                 })
+            }else{
+                //Quito spinner sea cual sea la respuesta
+                $("#buy span").remove();
+                $("#buy").html('<b>COMPRAR</b>').prop('disabled', false);
             }
         })
+
     })
 
     //CONFIRMACIÓN BORRAR
