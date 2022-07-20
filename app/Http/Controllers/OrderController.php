@@ -22,6 +22,7 @@ class OrderController extends Controller
         $orders = Order::query()
             ->whereNotIn('status', ['shopping'])
             ->where('user_id', '=', $user->id)
+            ->orderByDesc('created_at')
             ->Paginate(15);
         $user_id = Auth::user()->id;
         $orderDetails = OrderDetailController::getOrderDetails();

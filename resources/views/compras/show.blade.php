@@ -8,14 +8,16 @@
                 <tr>
                     <th scope="col">N° Orden</th>
                     <th scope="col">Total</th>
+                    <th scope="col">Creada</th>
                     <th scope="col">Estado</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($orders as $order)
                     <tr>
-                        <td scope="row"><a href="/compras/detalle/{{$order->id}}">{{$order->id}}</a></td>
+                        <td scope="row"><a href="/compras/detalle/{{$order->id}}">Orden n°{{$order->id}}</a></td>
                         <td>${{$order->total}}</td>
+                        <td>{{$order->created_at}}</td>
                         <td>
                             @switch($order->status)
                                 @case('pending')
