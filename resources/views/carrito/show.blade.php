@@ -1,6 +1,24 @@
 @extends('layouts.master')
 @section('content')
+
+<style>
+    .bd-example-modal-lg .modal-dialog{
+        display: table;
+        position: relative;
+        margin: 0 auto;
+        top: calc(50% - 24px);
+    }
+
+    .bd-example-modal-lg .modal-dialog .modal-content{
+        background-color: transparent;
+        border: none;
+    }
+</style>
+
 <div class="__contenedor-compras">
+
+
+
     @if($userOrderDetails->isEmpty())
         <div><h3>Usted <b>no</b> posee productos seleccionados para iniciar una orden de compra.
             <br>
@@ -90,6 +108,14 @@
     @endif
         <br>
         <br>
+
+        <div class="modal fade bd-example-modal-lg" data-backdrop="static" data-keyboard="false" tabindex="-1">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content" style="width: 48px">
+                    <span class="fa fa-spinner fa-spin fa-3x"></span>
+                </div>
+            </div>
+        </div>
 
     </div>
 @endsection

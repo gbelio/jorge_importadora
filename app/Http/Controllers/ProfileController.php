@@ -25,16 +25,19 @@ class ProfileController extends Controller
 
     public function show($id)
     {
+        $orderDetails = app(OrderDetailController::class)->getOrderDetails();
         $profile = User::query()->find($id);
         $allCategories = Category::all();
         $subcategories = Subcategory::all();
         return view('perfil.show')->with('profile', $profile)
                                   ->with('allCategories',$allCategories)
-                                  ->with('subcategories',$subcategories);
+                                  ->with('subcategories',$subcategories)
+                                ->with('userOrderDetails', $orderDetails['userOrderDetails']);
     }
 
     public function edit()
     {
+        $orderDetails = app(OrderDetailController::class)->getOrderDetails();
         $allCategories = Category::all();
         $subcategories = Subcategory::all();
         if(Auth::user() == null){
@@ -42,7 +45,8 @@ class ProfileController extends Controller
         }
         return view('perfil.edit')->with('user', Auth::user())
                                 ->with('allCategories',$allCategories)
-                                ->with('subcategories',$subcategories);
+                                ->with('subcategories',$subcategories)
+                                ->with('userOrderDetails', $orderDetails['userOrderDetails']);
     }
 
     public function update(Request $request)

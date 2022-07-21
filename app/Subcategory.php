@@ -5,6 +5,13 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * Class Subcategory
+ *
+ * @property int id
+ * @property string name
+ * @property int category_id
+ */
 class Subcategory extends Model
 {
     protected $fillable = ['id', 'name', 'category_id'];
