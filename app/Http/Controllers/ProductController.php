@@ -104,12 +104,9 @@ class ProductController extends Controller
      */
     public function show($id)
     {
+        $orderDetails = app(OrderDetailController::class)->getOrderDetails();
         $allCategories = Category::all();
         $multimedias = Multimedia::all();
-        /*         $product_colours = ProductColour::query()
-                    ->where('product_id', $id)
-                    ->where('available', '=', 1)
-                    ->get(); */
         $product_colours = ProductColour::query()
             ->with('product')
             ->where('product_id', $id)
@@ -131,6 +128,7 @@ class ProductController extends Controller
         $subcategories = Subcategory::all();
         return view('productos.show')->with('producto', $product)
             ->with('allCategories', $allCategories)
+            ->with('userOrderDetails', $orderDetails['userOrderDetails'])
             ->with('subcategories', $subcategories)
             ->with('product_colours', $colours)
             ->with('multimedias', $multimedias);
@@ -313,6 +311,7 @@ class ProductController extends Controller
     public function search(Request $request)
     {
         $clave = $request->clave;
+        $orderDetails = app(OrderDetailController::class)->getOrderDetails();
         $products = Product::query()
             ->where('name', 'LIKE', "%$clave%")
             ->where('active', 1)
@@ -349,7 +348,8 @@ class ProductController extends Controller
             ->with('clave', $clave)
             ->with('allCategories', $allCategories)
             ->with('mensaje', $mensaje)
-            ->with('results', $results);
+            ->with('results', $results)
+            ->with('userOrderDetails', $orderDetails['userOrderDetails']);
     }
 
     /**

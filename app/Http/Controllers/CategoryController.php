@@ -58,6 +58,7 @@ class CategoryController extends Controller
     public function search(Request $request)
     {
         $clave = $request->clave;
+        $orderDetails = app(OrderDetailController::class)->getOrderDetails();
         $allCategories = Category::all();
         $category = Category::query()
             ->where('name', 'LIKE', "%$clave%")
@@ -75,6 +76,7 @@ class CategoryController extends Controller
         return view('categorias.results')->with('category', $category)
                                         ->with('productsById', $productsById)
                                         ->with('subcategoriesById', $subcategoriesById)
+                                        ->with('userOrderDetails', $orderDetails['userOrderDetails'])
                                         ->with('categories', $categories)
                                         ->with('allCategories', $allCategories)
                                         ->with('subcategories',$subcategories);

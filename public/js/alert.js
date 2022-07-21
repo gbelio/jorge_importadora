@@ -17,7 +17,9 @@ $(document).ready(function(){
         var id = $(this).parents('tr').find('.order_id').val();
         var order_total = $(this).parents('tr').find('.order_total').val();
 
-        $("#buy").text('').prop('disabled', true).append('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="padding: 5px"></span> <!--<span>COMPRANDO</span>-->');
+        //Activo spinner
+        $("#buy").prop('disabled', true);
+        modal('on');
 
         Swal.fire({
             title: '¿Realmente quieres confirmar esta orden de compra?',
@@ -31,6 +33,7 @@ $(document).ready(function(){
             }).then((result) => {
 
             if (result.value) {
+
                 let data = {
                     "_token" : $('input[name=_token]').val(),
                     "order_id" : id,
@@ -42,8 +45,9 @@ $(document).ready(function(){
                     url: '/status',
                     data: data,
                     success: function(response){
-                        $("#buy span").remove();
-                        $("#buy").html('<b>COMPRAR</b>').prop('disabled', false);
+
+                        modal('off');
+                        $("#buy").prop('disabled', false);
 
                         Swal.fire(
                             'Enviado!',
@@ -55,27 +59,32 @@ $(document).ready(function(){
                         });
                     },
                     error: function (request) {
-                        //Quito spinner sea cual sea la respuesta
-                        $("#buy span").remove();
-                        $("#buy").html('<b>COMPRAR</b>').prop('disabled', false);
+                        modal('off');
+                        $("#buy").prop('disabled', false);
 
                         Swal.fire(
                             'Error al comprar!',
                             'Tu orden no ha sido procesada.',
                             'error'
                         )
-
                     }
-
                 })
             }else{
                 //Quito spinner sea cual sea la respuesta
-                $("#buy span").remove();
-                $("#buy").html('<b>COMPRAR</b>').prop('disabled', false);
+                modal('off');
+                $("#buy").prop('disabled', false);
             }
         })
 
     })
+
+    // Modal spinner function
+    function modal(action){
+        if(action === 'on')
+            $('.modal').modal('show');
+        else
+            $('.modal').modal('hide');
+    }
 
     //CONFIRMACIÓN BORRAR
 

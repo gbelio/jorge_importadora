@@ -78,11 +78,13 @@ class SubcategoryController extends Controller
         $mensaje = ['required' => 'el campo :attribute es obligatorio'];
 
         $this->validate($request, $reglas, $mensaje);
+        /** @var Subcategory $subcategoria */
         $subcategoria = Subcategory::query()
             ->find($id);
         $subcategoria->name = $request->input('name') !== $subcategoria->name ? $request->input('name') : $subcategoria->name;
         $subcategoria->category_id = $request->input('category_id') !== $subcategoria->category_id ? $request->input('category_id') : $subcategoria->category_id;
         $subcategoria->save();
+
         return redirect("/subcategorias/cargar");
     }
 
@@ -105,6 +107,8 @@ class SubcategoryController extends Controller
     public function search(Request $request)
     {
         $clave = $request->clave;
+
+        $orderDetails = app(OrderDetailController::class)->getOrderDetails();
         $allCategories = Category::all();
         $subcategory = Subcategory::query()
             ->where('name', 'LIKE', "%$clave%")->get();
@@ -119,6 +123,7 @@ class SubcategoryController extends Controller
                                             ->with('subcategory', $subcategory)
                                             ->with('subcategories', $subcategories)
                                             ->with('categories', $categories)
+                                            ->with('userOrderDetails', $orderDetails['userOrderDetails'])
                                             ->with('allCategories', $allCategories);
     }
 
