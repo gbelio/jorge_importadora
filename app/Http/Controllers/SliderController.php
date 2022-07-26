@@ -71,6 +71,7 @@ class SliderController extends Controller
         ];
         $mensaje = ['required' => 'el campo :attribute es obligatorio'];
         $this->validate($request, $reglas, $mensaje);
+        /** @var Slider $slider */
         $slider = Slider::query()
             ->find($id);
         $slider->s_estado = $request->input('s_estado') !== $slider->s_estado ? $request->input('s_estado') : $slider->s_estado;
