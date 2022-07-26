@@ -152,7 +152,7 @@ class ProductController extends Controller
         }
         $sliderstate = 0;
         $multimedias = Multimedia::all();
-        $sliders = Slider::all();
+        $sliders = Slider::query()->where('s_estado', '=', 1)->get();
         $allCategories = Category::all();
         $subcategories = Subcategory::all();
         $product_collections = [];
