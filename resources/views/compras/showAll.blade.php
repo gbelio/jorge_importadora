@@ -13,7 +13,11 @@
     </div>
     @isset($response)
         <span class="offset-1" style="color: red"><b>{{$response}}</b></span>
+        <br>
+        <i class="offset-1">ingrese el mail completo para mejorar la busqueda...</i>
+        <br>
     @endisset
+    <br>
     {{---------------------- ****************LISTA COMPRAS**************** ----------------------------}}
     <section class="orderTable">
         <div><h3>LISTA DE COMPRAS</h3></div>
