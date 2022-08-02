@@ -60,7 +60,7 @@
                             <h4>Código de Producto: {{$producto->code}}</h4>
                         </div>
                     @endif
-                    <h2>{{$producto->name}}</h2>
+                    <h2 class="prod_box_title">{{$producto->name}}</h2>
                     <p> {{$producto->resume}}</p>
                 </div>
                 <div class="prod_description">

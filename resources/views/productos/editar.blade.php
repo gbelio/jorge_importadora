@@ -12,7 +12,7 @@
                 <input class="serdelete_val_id_7" name="_method" type="hidden" value="{{$producto->name}}">
 
                 <button id="delete6" data-id="{{$producto->id}}" type="submit" style="margin:0 !important;">
-                    <img id="img_delete" src="/img/eliminar.svg" alt="Eliminar" srcset="">
+                    <i class="fa fa-trash" style="font-size: 30px; color:black"> </i>
                 </button>
 
             </form>

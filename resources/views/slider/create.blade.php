@@ -28,7 +28,7 @@
                 @enderror
                 <div class="form-group">
                     <label for="s_estado">Redirección <strong>(Ej: https://www.google.com.ar)</strong></label>
-                    <input type="text" name="s_link" value="" class="form-control" maxlength="190" placeholder="https://www.jorgeimportadora.com">
+                    <input type="text" name="s_link" value="https://" class="form-control" maxlength="190" placeholder="https://www.jorgeimportadora.com">
                 </div>
                 <br>
                 <div class="form-group">
