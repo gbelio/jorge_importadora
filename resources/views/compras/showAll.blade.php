@@ -21,8 +21,7 @@
             <thead>
                 <th class="text-center">Id</th>
                 <th class="text-center">Usuario</th>
-                <th class="text-center">Creado</th>
-                <th class="text-center">Actualizado</th>
+                <th class="text-center">Última modificación</th>
                 <th class="text-center">Total</th>
                 <th class="text-center">Estado</th>
             </thead>
@@ -31,8 +30,7 @@
                     <tr>
                         <td data-title="N° Compra" class="text-center"><a href="/compras/detalle/{{$order->id}}">{{$order->id}}</a></td>
                         <td data-title="Email" class="text-center"><a href="/perfil/{{$order->user->id}}">{{$order->user->email}}</a></td>
-                        <td data-title="Fecha compra" class="text-center">{{$order->created_at}}</td>
-                        <td data-title="Actualizado" class="text-center">{{$order->updated_at}}</td>
+                        <td data-title="Última modificación" class="text-center">{{$order->updated_at}}</td>
                         <td data-title="Total" class="text-center">${{$order->total}}</td>
                         <td data-title="Cambiar de estado" class="text-center">
                             <form id="" action="{{action('OrderController@updateStatus')}}" method="POST">
