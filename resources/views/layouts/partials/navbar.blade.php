@@ -84,7 +84,7 @@
                 @if (Auth::user()->role !== 9)
                 <a href="/cart" class="carrito-icono" style="text-decoration: none; color: red">
                     <img src="/img/icono_carrito.svg">
-                    <span style="position: relative; bottom: 10px; font-size: 14px; color: red; font-weight: bold;">{{isset($userOrderDetails) ? $userOrderDetails->count() : ''}}</span>
+                    <span style="position: relative; bottom: 10px; font-size: 14px; color: #001B7E; font-weight: bold;">{{isset($userOrderDetails) ? $userOrderDetails->count() : ''}}</span>
                </a>
                 <a href="#footer" class="btn btn-dark contact-us" onclick="closeNavBar()">
                     ¡CONTACTANOS!
