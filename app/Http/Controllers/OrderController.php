@@ -45,7 +45,7 @@ class OrderController extends Controller
 
     public function search(Request $request)
     {
-        /* $user = User::query()
+        $user = User::query()
             ->where('email', 'like', '%'.$request->clave.'%')
             ->take(1)
             ->get();
@@ -60,27 +60,10 @@ class OrderController extends Controller
             $orders = Order::query()
                 ->whereNotIn('status', ['shopping'])
                 ->Paginate(15);
-        } */
-        $filteredOrders = [];
-
-        $orders = Order::query()
-        ->whereNotIn('status', ['shopping'])
-        ->Paginate(15);
-        
-        foreach ($orders as $order) {
-            if (str_contains($order->user->email, $request->clave) !== false){
-                $filteredOrders[] = $order;
-            }
-        }
-        collect($filteredOrders);
-        if($filteredOrders){
-            $response = 'El resultado de la busqueda "'.$request->clave.'" es:';
-        }else{
-            $response = 'No se ha encontrado el usuario con el email "'.$request->clave.'"';
         }
         return view('compras.showAll')
             ->with('response', $response)
-            ->with('orders', $filteredOrders);
+            ->with('orders', $orders);
     }
 
     public function show($id)
