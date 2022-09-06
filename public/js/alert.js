@@ -445,6 +445,64 @@ $(document).ready(function(){
             }
         });
     });
+
+    //Usuario
+    $("tr td #delete8").click(function(ev) {
+        ev.preventDefault();
+        let name = $(this).parents('tr').find('td:nth-child(1)').text();
+        let id = $(this).parents('tr').find('.serdelete_val_id8').val();
+
+        Swal.fire({
+            title: '¿Realmente quieres eliminar el registro de ' + name + ' ?',
+            text: "El registro será eliminado permanentemente",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, borrar',
+            cancelButtonText: 'No',
+        }).then((result) => {
+            if (result.value) {
+
+                let data = {
+                    "_token": $('input[name=_token]').val(),
+                    "id": id,
+                };
+
+                $.ajax({
+                    type: 'DELETE',
+                    url: '/usuarios/' + id,
+                    data: data,
+                    success: function (data) {
+                        if(data !== ''){
+                            Swal.fire(
+                                'Eliminado!',
+                                'Tu registro ha sido eliminado correctamentee',
+                                'success'
+                            ).then ((result) => {
+                                location.reload();
+                            });
+                        }else{
+                            Swal.fire(
+                                'Ups!',
+                                'Tu registro no se pudo eliminar, esta siendo utilizado por una producto',
+                                'error'
+                            )
+                        }
+                    },
+                    error: function (request) {
+                        Swal.fire(
+                            'Error al eliminar!',
+                            'Tu usuario no fue eliminado.',
+                            'error'
+                        )
+                    }
+                })
+            }
+        });
+    });
+
+
     //FIN BORRAR
 
 

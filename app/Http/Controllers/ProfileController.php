@@ -35,30 +35,33 @@ class ProfileController extends Controller
                                 ->with('userOrderDetails', $orderDetails['userOrderDetails']);
     }
 
-    public function edit()
+    public function edit(int $id)
     {
-        $orderDetails = app(OrderDetailController::class)->getOrderDetails();
-        $allCategories = Category::all();
-        $subcategories = Subcategory::all();
+
         if(Auth::user() == null){
             return redirect('login');
         }
-        return view('perfil.edit')->with('user', Auth::user())
-                                ->with('allCategories',$allCategories)
-                                ->with('subcategories',$subcategories)
-                                ->with('userOrderDetails', $orderDetails['userOrderDetails']);
+
+        $usuario = User::query()->where('id',  $id)->first();
+
+        return view('perfil.edit')->with('usuario', $usuario);
     }
 
-    public function update(Request $request)
+    public function update(Request $request, int $id)
     {
         $reglas = [
             'name'=>'required',
+            'last_name'=>'sometimes',
+            'phone'=>'sometimes',
+            'email'=>'sometimes',
         ];
         $mensaje = ['required' => 'el campo :attribute es obligatorio'];
         $this->validate($request, $reglas, $mensaje);
-        $user = Auth::user();
+
+        $user = User::query()->where('id',  $id)->first();
+
         $user->name = $request->input('name') !== $user->name ? $request->input('name') : $user->name;
-        $user->last_name = $request->input('last_name') !== $user->last_name ? $request->input('last_name') : $user->name;
+        $user->last_name = $request->input('last_name') !== $user->last_name ? $request->input('last_name') : $user->last_name;
         $user->phone = $request->input('phone') !== $user->phone ? $request->input('phone') : $user->phone;
         if ($request->input('password') == $request->input('password_confirmation') && strlen($request->input('password')) > 7){
             $user->password = Hash::make($request->input('password'));
@@ -68,11 +71,23 @@ class ProfileController extends Controller
             return view('perfil.edit')->with('error', $error);
         }
         $user->save();
-        return redirect('/perfil');
+        return redirect("/usuarios/cargar");
+
     }
 
     public function destroy($id)
     {
-        //
+        if (Auth::user() == null) {
+            return redirect('login');
+        }
+        $usuario = User::query()
+            ->find($id);
+        if ($usuario->role != 9){
+            $usuario->delete();
+            return response()->json(['status' => 'Registro eliminado con éxito']);
+        }
+
+        return response()->json(['status' => 'No se puede eliminar la cuenta Admin.']);
+
     }
 }
