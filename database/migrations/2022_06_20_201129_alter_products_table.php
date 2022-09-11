@@ -13,7 +13,7 @@ class AlterProductsTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('products', function (Blueprint $table) {
             $table->integer('active')->default(1)->after('subcategory_id');
         });
     }
