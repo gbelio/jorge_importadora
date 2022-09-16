@@ -13,10 +13,10 @@ class AlterUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
+        /* Schema::table('users', function (Blueprint $table) {
             $table->string('last_name')->nullable()->after('name');
             $table->string('phone')->nullable()->after('last_name');
-        });
+        }); */
     }
 
     /**

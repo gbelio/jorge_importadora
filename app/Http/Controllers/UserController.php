@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\User2;
+use App\Category;
+use App\Subcategory;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -43,7 +45,9 @@ class UserController extends Controller
             'password' => Hash::make($request['password']),
         ]);
 
-        return redirect('/usuarios/cargar');
+        return redirect('/usuarios/cargar')
+        ->with('allCategories', $allCategories)
+        ->with('subcategories', $subcategories);
     }
 
 }

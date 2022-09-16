@@ -71,7 +71,9 @@ class ProfileController extends Controller
             return view('perfil.edit')->with('error', $error);
         }
         $user->save();
-        return redirect("/usuarios/cargar");
+        return redirect("/usuarios/cargar")
+        ->with('allCategories', $allCategories)
+        ->with('subcategories', $subcategories);
 
     }
 

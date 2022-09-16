@@ -153,6 +153,8 @@ class ProductController extends Controller
         $sliderstate = 0;
         $multimedias = Multimedia::all();
         $sliders = Slider::query()->where('s_estado', '=', 1)->get();
+        $desktop = Slider::query()->where('s_device', '=', 'desktop')->get();
+        $mobile = Slider::query()->where('s_device', '=', 'mobile')->get();
         $allCategories = Category::all();
         $subcategories = Subcategory::all();
         $product_collections = [];
@@ -198,6 +200,8 @@ class ProductController extends Controller
             ->with('subcategories', $subcategories)
             ->with('sliderstate', $sliderstate)
             ->with('sliders', $sliders)
+            ->with('sliders_desktop', $desktop)
+            ->with('sliders_mobile', $mobile)
             ->with('userOrderDetails', $userOrderDetails)
             ->with('product_colours', $product_colours);
     }

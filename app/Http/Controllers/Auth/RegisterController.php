@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use App\User2;
+use App\Category;
+use App\Subcategory;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\RedirectResponse;
@@ -42,9 +44,9 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        /*$this->middleware('guest');*/
+        $this->middleware('guest');/* 
         $this->middleware('admin');
-    }
+ */    }
 
     /**
      * Get a validator for an incoming registration request.
@@ -83,11 +85,17 @@ class RegisterController extends Controller
         ]);
 
 
-        return redirect('/usuarios/cargar');
+        return redirect('/usuarios/cargar')
+        ->with('allCategories', $allCategories)
+        ->with('subcategories', $subcategories);
 
     }
 
     protected function index(){
-        return view('auth.register');
+        $allCategories = Category::all();
+        $subcategories = Subcategory::all();
+        return view('auth.register')
+        ->with('allCategories', $allCategories)
+        ->with('subcategories', $subcategories);
     }
 }
