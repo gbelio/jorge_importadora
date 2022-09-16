@@ -48,7 +48,7 @@
 
                 <div>
                     <a href="/register" class="btn btn-dark action-register">
-                        NUEVO USUARIO
+                        REGISTRAR
                     </a>
                 </div>
 
