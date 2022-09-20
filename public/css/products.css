@@ -422,7 +422,7 @@
     height: 15%;
 }
 
-.prod_box_details div h2 {
+.prod_box_title {
     background-color: #001B7E;
     padding: 5px 10px;
     color: white;
@@ -803,7 +803,7 @@ align-items: center;
         margin-bottom: 5px;
     }
 
-    .prod_box_details div h2{
+    .prod_box_title{
         height: unset;
         margin-bottom: 5px;
     }
@@ -873,7 +873,7 @@ align-items: center;
         margin-bottom: 5px;
     }
 
-    .prod_box_details div h2{
+    .prod_box_title{
         height: unset;
         margin-bottom: 5px;
         font-size: 1.5rem;

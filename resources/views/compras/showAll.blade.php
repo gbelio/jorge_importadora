@@ -13,7 +13,11 @@
     </div>
     @isset($response)
         <span class="offset-1" style="color: red"><b>{{$response}}</b></span>
+        <br>
+        <i class="offset-1">ingrese el mail completo para mejorar la busqueda...</i>
+        <br>
     @endisset
+    <br>
     {{---------------------- ****************LISTA COMPRAS**************** ----------------------------}}
     <section class="orderTable">
         <div><h3>LISTA DE COMPRAS</h3></div>
@@ -21,8 +25,7 @@
             <thead>
                 <th class="text-center">Id</th>
                 <th class="text-center">Usuario</th>
-                <th class="text-center">Creado</th>
-                <th class="text-center">Actualizado</th>
+                <th class="text-center">Última modificación</th>
                 <th class="text-center">Total</th>
                 <th class="text-center">Estado</th>
             </thead>
@@ -31,8 +34,7 @@
                     <tr>
                         <td data-title="N° Compra" class="text-center"><a href="/compras/detalle/{{$order->id}}">{{$order->id}}</a></td>
                         <td data-title="Email" class="text-center"><a href="/perfil/{{$order->user->id}}">{{$order->user->email}}</a></td>
-                        <td data-title="Fecha compra" class="text-center">{{$order->created_at}}</td>
-                        <td data-title="Actualizado" class="text-center">{{$order->updated_at}}</td>
+                        <td data-title="Última modificación" class="text-center">{{$order->updated_at}}</td>
                         <td data-title="Total" class="text-center">${{$order->total}}</td>
                         <td data-title="Cambiar de estado" class="text-center">
                             <form id="" action="{{action('OrderController@updateStatus')}}" method="POST">
@@ -76,11 +78,11 @@
                                             <option style="color:red;">Cancelado</option>
                                             @break
                                     @endswitch
-                                    @if($order->status !== 'pending')<option value="pending" style="color:black;">Pendiente </option> @endif
-                                    @if($order->status !== 'preparing')<option value="preparing" style="color:orange;">Preparando</option> @endif
-                                    @if($order->status !== 'ready')<option value="ready" style="color:blue;">Listo!</option> @endif
-                                    @if($order->status !== 'finish')<option value="finish" style="color:green;">Finalizado</option> @endif
-                                    @if($order->status !== 'cancelled')<option value="cancelled" style="color:red;">Cancelado</option> @endif
+                                    @if($order->status !== 'pending')<option value="6" style="color:black;">Pendiente </option> @endif
+                                    @if($order->status !== 'preparing')<option value="2" style="color:orange;">Preparando</option> @endif
+                                    @if($order->status !== 'ready')<option value="3" style="color:blue;">Listo!</option> @endif
+                                    @if($order->status !== 'finish')<option value="4" style="color:green;">Finalizado</option> @endif
+                                    @if($order->status !== 'cancelled')<option value="5" style="color:red;">Cancelado</option> @endif
                                 </select>
                                 <input type="hidden" name="id" value="{{$order->id}}">
                             </form>

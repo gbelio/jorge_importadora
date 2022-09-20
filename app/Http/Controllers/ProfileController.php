@@ -84,7 +84,6 @@ class ProfileController extends Controller
         }
         $usuario->save();
         return redirect("/usuarios/cargar");
-
     }
 
     public function destroy($id)
