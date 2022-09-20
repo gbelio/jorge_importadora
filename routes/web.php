@@ -6,6 +6,12 @@ use App\Http\Controllers\Auth\RegisterController;
 
 Auth::routes();
 
+Route::get('register', '\App\Http\Controllers\Auth\RegisterController@index')->name('register');
+
+/*Route::group(['middleware' => 'admin'], function () {
+    Route::get('register', '\App\Http\Controllers\Auth\RegisterController@register');
+});*/
+
 Route::get('/', 'ProductController@showAll');
 
 //Categorias
@@ -72,10 +78,12 @@ Route::delete('/productos/usuario/cargar_imagen/{id}', 'MultimediaController@des
 Route::delete('/productos/editar/{id}', 'MultimediaController@destroy1');
 
 //Perfil
-Route::get('/perfil', 'ProfileController@edit'); //va a llevar al formulario de edición
-Route::patch('/perfil', 'ProfileController@update'); //va a editar en la base de datos
+/*Route::get('/perfil', 'ProfileController@edit');*/ //va a llevar al formulario de edición
+Route::get('/perfil/editar/{id}', 'ProfileController@edit'); //va a llevar al formulario de edición
+Route::patch('/perfil/{id}', 'ProfileController@update'); //va a editar en la base de datos
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout'); //va a cerrar sesión
 Route::get('/perfil/{id}', 'ProfileController@show'); //va a mostrar los datos de un usuario.
+
 
 
 //Recursos
@@ -102,3 +110,9 @@ Route::get('/compras/usuarios', 'OrderController@showAll')->middleware('admin');
 Route::get('/compras/busqueda', 'OrderController@search')->middleware('admin'); //Busca una compra.
 Route::patch('/status', 'OrderController@update')->middleware('auth'); //genera una orden de compra.
 Route::patch('/orderStatus', 'OrderController@updateStatus')->middleware('admin'); //actualiza el estado del pedido desde "Preparando" hasta "Finalizado".
+
+//Usuarios
+Route::get('/usuarios/cargar', 'UserController@index');
+Route::get('/usuarios/editar/{id}', 'ProfileController@edit');
+Route::post('/usuarios', 'UserController@store');
+Route::delete('/usuarios/{id}', 'ProfileController@destroy');

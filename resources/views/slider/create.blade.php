@@ -11,9 +11,18 @@
             <br>
             <form class="form-group" action="" method="post" enctype="multipart/form-data">
                 @csrf
+                <div>
+                    <label for="" class="s_img">Selecionar Device</label>
+                    <br>
+                    <label for="mobile" class="s_img">Mobile</label>
+                    <input id="mobile" required class="" type="radio" name="s_device" value="mobile">
+                    <br>
+                    <label for="desktop" class="s_img">Desktop</label>
+                    <input id="desktop" required class="" type="radio" name="s_device" value="desktop">
+                </div>
                 <div class="button">
                     <label for="s_img" class="s_img">Selecionar Imagen</label>
-                    <input required class="" type="file" name="s_img" multiple>
+                    <input required class="" type="file" name="s_img">
                 </div>
                 @error('s_img')
                 <span class="errors">{{ $message }}</span>
@@ -28,7 +37,7 @@
                 @enderror
                 <div class="form-group">
                     <label for="s_estado">Redirección <strong>(Ej: https://www.google.com.ar)</strong></label>
-                    <input type="text" name="s_link" value="" class="form-control" maxlength="190" placeholder="https://www.jorgeimportadora.com">
+                    <input type="text" name="s_link" value="https://" class="form-control" maxlength="190" placeholder="https://www.jorgeimportadora.com">
                 </div>
                 <br>
                 <div class="form-group">
@@ -47,9 +56,10 @@
                         <th>Id</th>
                         <th>Imagen</th>
                         <th>Estado</th>
+                        <th>Device</th>
                         <th>Redirección (Con "https://")</th>
-                        <th></th>
-                        <th></th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
                     </thead>
                     <tbody>
                         @if($sliders->count())
@@ -74,6 +84,7 @@
                                             </form>
                                         @endif
                                     </td>
+                                    <td>{{$slider->s_device}}</td>
                                     <td>{{$slider->s_link}}</td>
                                     <td style="text-align:center">
                                         <a class="btn btn-primary btn-sm" href="{{action('SliderController@edit', $slider->id)}}">

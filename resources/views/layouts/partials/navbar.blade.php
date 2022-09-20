@@ -45,6 +45,13 @@
                         </div>
                     @endisset
                 </div>
+
+                <div>
+                    <a href="/register" class="btn btn-dark action-register">
+                        REGISTRAR
+                    </a>
+                </div>
+
                 <li class="nav-item dropdown d-flex Admin_" >
                     <a class="nav-link usuario dropdown-toggle" data-toggle="dropdown" href="/profile">{{Auth::user()->name}}</a>
                     <ul class="dropdown-menu cascadaDos">
@@ -67,6 +74,9 @@
                         <li class="nav-item" style="margin: 10px 10px 0 0">
                             <a class="nav-link" href="/compras/usuarios">Compras de Usuarios</a>
                         </li>
+                        <li class="nav-item" style="margin: 10px 10px 0 0">
+                            <a class="nav-link" href="/usuarios/cargar">Listado de Usuarios</a>
+                        </li>
                         @else
                         <li class="nav-item" style="margin: 10px 10px 0 0">
                             <a class="nav-link2" href="/compras">Mis Compras</a>
@@ -84,14 +94,14 @@
                 @if (Auth::user()->role !== 9)
                 <a href="/cart" class="carrito-icono" style="text-decoration: none; color: red">
                     <img src="/img/icono_carrito.svg">
-                    <span style="position: relative; bottom: 10px; font-size: 14px; color: red; font-weight: bold;">{{isset($userOrderDetails) ? $userOrderDetails->count() : ''}}</span>
+                    <span style="position: relative; bottom: 10px; font-size: 14px; color: #001B7E; font-weight: bold;">{{isset($userOrderDetails) ? $userOrderDetails->count() : ''}}</span>
                </a>
                 <a href="#footer" class="btn btn-dark contact-us" onclick="closeNavBar()">
                     ¡CONTACTANOS!
                 </a>
                 @endif
             </ul>
-{{--            <li class="nav-item dropdown d-flex Admin_" >
+        {{--            <li class="nav-item dropdown d-flex Admin_" >
                 <a class="nav-link usuario dropdown-toggle" data-toggle="dropdown" href="/profile">{{Auth::user()->name}}</a>
                 <ul class="dropdown-menu cascadaDos">
                     @if (Auth::user()->role == 9)
@@ -190,9 +200,6 @@
             <div class="nav-actions">
                 <a href="/login" class="btn btn-dark action-login">
                     LOGIN
-                </a>
-                <a href="/register" class="btn btn-dark action-register">
-                    REGÍSTRESE
                 </a>
             </div>
             <a href="#footer" class="btn btn-dark contact-us" onclick="closeNavBar()">

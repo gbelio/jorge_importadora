@@ -6,26 +6,26 @@
             <h3 style="display:inline-block">Editar Perfil</h3>
         </div>
         <br>
-        <form method="POST" action="{{action('ProfileController@update')}}" enctype="multipart/form-data">
+        <form method="POST" action="{{action('ProfileController@update', $usuario->id)}}" enctype="multipart/form-data">
             {{ method_field('PATCH') }}
             @csrf
             <div class="form-group">
                 <label for="name" ><strong>Nombre</strong></label>
-                <input name="name" required maxlength="25" value="{{Auth::user()->name}}" type="text" class="form-control" placeholder="">
+                <input name="name" required maxlength="25" value="{{$usuario->name}}" type="text" class="form-control" placeholder="">
             </div>
             <br>
             <div class="form-group">
                 <label for="last_name" ><strong>Apellido</strong></label>
-                <input name="last_name" maxlength="25" value="{{Auth::user()->last_name}}" type="text" class="form-control" placeholder="">
+                <input name="last_name" maxlength="25" value="{{$usuario->last_name}}" type="text" class="form-control" placeholder="">
             </div>
             <div class="form-group">
                 <label for="phone" ><strong>Teléfono</strong></label>
-                <input name="phone" maxlength="25" value="{{Auth::user()->phone}}" type="text" class="form-control" placeholder="">
+                <input name="phone" maxlength="25" value="{{$usuario->phone}}" type="text" class="form-control" placeholder="">
             </div>
             <br>
             <div class="button" style="margin-bottom:1%;">
                 <label for="Email">Email</label>
-                <label type="email" name="email" value="" class="form-control">{{ Auth::user()->email }}</label>
+                <label type="email" name="email" value="" class="form-control">{{ $usuario->email }}</label>
             </div>
             <br>
             <div class="form-group">

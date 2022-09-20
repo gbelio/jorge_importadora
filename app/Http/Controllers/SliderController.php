@@ -40,6 +40,7 @@ class SliderController extends Controller
         $reglas = [
             's_img'=>'required',
             's_estado'=>'required',
+            's_device'=>'required',
         ];
 
         $mensaje=[
@@ -48,8 +49,10 @@ class SliderController extends Controller
 
         $this->validate($request, $reglas, $mensaje);
         $slider = $request->file('s_img')->storeAs('sliders', $request->file('s_img')->getClientOriginalName(),'public');
+        $device = $request->s_device;
         $sliders = new Slider($request->all());
         $sliders->s_img = $slider;
+        $sliders->s_device = $device;
         $sliders->save();
         return redirect('/slider/cargar');
     }
@@ -71,6 +74,7 @@ class SliderController extends Controller
         ];
         $mensaje = ['required' => 'el campo :attribute es obligatorio'];
         $this->validate($request, $reglas, $mensaje);
+        /** @var Slider $slider */
         $slider = Slider::query()
             ->find($id);
         $slider->s_estado = $request->input('s_estado') !== $slider->s_estado ? $request->input('s_estado') : $slider->s_estado;

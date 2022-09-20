@@ -1,14 +1,14 @@
 @extends('layouts.master')
 @section('content')
+
     {{-- SLIDER --}}
-
-
-    @if ($sliderstate > 0)
-        <div id="sliderHome" class="mt-100">
-            <div class="owl-carousel owl-theme">
-                @foreach ($sliders as $fila)
-                    @if ($fila->s_estado != 0)
-                        <div class="slider" {{-- style="max-height:360px !important" --}}>
+@if ($sliderstate > 0)
+    @if($sliders_mobile)
+            <div id="sliderHome" class="mt-100 d-md-none d-lg-none d-xl-none">
+                <div class="owl-carousel owl-theme">
+                    @foreach ($sliders_mobile as $fila)
+                        @if($fila->s_estado == 1)
+                        <div class="slider">
                             @if (empty($fila->s_link))
                                 <img src="/storage/{{$fila->s_img}}" class="img-responsive">
                             @else
@@ -20,17 +20,46 @@
                                 </div>
                             @endif
                         </div>
-                    @endif
-                @endforeach
+                        @endif
+                    @endforeach
+                </div>
+                <div class="slider_nav">
+                    <a class="siguienteCarrousel"><i class='fa fa-angle-left' style="color: black; font-size:40px"></i></a>
+                    <a class="anteriorCarrousel"><i class='fa fa-angle-right' style="color: black; font-size:40px"></i></a>
+                </div>
             </div>
-            <div class="slider_nav">
-                <a class="siguienteCarrousel"><i class='fa fa-angle-left' style="color: black; font-size:40px"></i></a>
-                <a class="anteriorCarrousel"><i class='fa fa-angle-right' style="color: black; font-size:40px"></i></a>
-            </div>
-        </div>
     @endif
-
+@endif
+@if ($sliderstate > 0)
+    @if($sliders_desktop)
+            <div id="sliderHome" class="mt-100 d-none d-md-block">
+                <div class="owl-carousel owl-theme">
+                    @foreach ($sliders_desktop as $fila)
+                        @if($fila->s_estado == 1)
+                        <div class="slider">
+                            @if (empty($fila->s_link))
+                                <img src="/storage/{{$fila->s_img}}" class="img-responsive">
+                            @else
+                                <a href="{{$fila->s_link}}" target="__blank">
+                                    <img src="/storage/{{$fila->s_img}}" class="img-responsive">
+                                </a>
+                                <div class="carousel-caption">
+                                    <h3></h3>
+                                </div>
+                            @endif
+                        </div>
+                        @endif
+                    @endforeach
+                </div>
+                <div class="slider_nav">
+                    <a class="siguienteCarrousel"><i class='fa fa-angle-left' style="color: black; font-size:40px"></i></a>
+                    <a class="anteriorCarrousel"><i class='fa fa-angle-right' style="color: black; font-size:40px"></i></a>
+                </div>
+            </div>
+    @endif
+@endif
     {{-- SLIDER --}}
+
     <div class="caja-products-categories" style="flex-direction:column !important">
         <input type="hidden" id="categories-count" value="{{$allCategories->count()}}">
         <input type="hidden" name="categories_ids" id="categories_ids" value="{{$allCategories}}">

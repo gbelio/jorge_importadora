@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterProductsTable extends Migration
+class AddDeviceToSlidersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AlterProductsTable extends Migration
      */
     public function up()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->integer('active')->default(1)->after('subcategory_id');
+        Schema::table('sliders', function (Blueprint $table) {
+            $table->string('s_device')->after('s_estado')->default('mobile');
         });
     }
 
@@ -25,6 +25,8 @@ class AlterProductsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('sliders', function (Blueprint $table) {
+            $table->string('s_device');
+        });
     }
 }
