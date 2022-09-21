@@ -257,3 +257,8 @@ body {
     height: 1px;
 }
 
+@media (max-width: 900px){
+    #listaCategorias{
+        overflow: scroll;
+    }
+}

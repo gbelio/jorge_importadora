@@ -80,10 +80,8 @@ class UserController extends Controller
         $usuario->dni = $request['dni'] ?? '';
         $usuario->iva = $request['iva'] ?? '';
         $usuario->shipment = $request['shipment'] ?? '';
-
-        return redirect('/usuarios/cargar')
-        ->with('allCategories', $allCategories)
-        ->with('subcategories', $subcategories);
+        $usuario->save();
+        return redirect('/usuarios/cargar');
     }
 
     public function update(Request $request, $id)
@@ -126,9 +124,7 @@ class UserController extends Controller
         $usuario->iva = $request->input('iva') !== $usuario->iva ? $request->input('iva') : $usuario->iva;
         $usuario->shipment = $request->input('shipment') !== $usuario->shipment ? $request->input('shipment') : $usuario->shipment;
         $usuario->save();
-
         return redirect('/usuarios/cargar');
-
     }
 
 }

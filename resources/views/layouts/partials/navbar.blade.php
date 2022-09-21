@@ -45,13 +45,13 @@
                         </div>
                     @endisset
                 </div>
-
+                @if (Auth::user()->role == 9)
                 <div>
                     <a href="/register" class="btn btn-dark action-register">
                         REGISTRAR
                     </a>
                 </div>
-
+                @endif
                 <li class="nav-item dropdown d-flex Admin_" >
                     <a class="nav-link usuario dropdown-toggle" data-toggle="dropdown" href="/profile">{{Auth::user()->name}}</a>
                     <ul class="dropdown-menu cascadaDos">
@@ -84,7 +84,7 @@
                         <br>
                         @endif
                         <li class="borderli">
-                            <a href="/perfil">Perfil</a>
+                            {{-- <a href="/perfil">Perfil</a> --}}
                         </li>
                         <li class="nav-item" style="margin: 10px 10px 0 0">
                             <a href="/logout">Cerrar Sesión</a>
