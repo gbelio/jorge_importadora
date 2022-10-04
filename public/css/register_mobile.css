@@ -79,8 +79,13 @@ html::-webkit-scrollbar-thumb {
 }
 
 .formularioWeb{
+    margin-top: 1rem;
     width: 100%;
 }
+/* 
+.formularioWeb>div>div{
+    margin: 0.5rem 0.5rem 0.5rem 0;
+} */
 
 @keyframes modal {
     0% {
@@ -127,10 +132,21 @@ html::-webkit-scrollbar-thumb {
 
 .inputForm {
     padding: 0.6em;
-    border-radius: 0.5em;
-    border: 1px solid black;
     outline: none;
-    margin: 2% 0%;
+    margin: 0.5rem 0.5rem 0.5rem 0;
+}
+
+.inputForm::placeholder{
+    font-size: 1rem;
+}
+
+.select{
+    font-size: 1rem;
+}
+
+
+#dni{
+    display: none;
 }
 
 form input::placeholder {
@@ -367,9 +383,9 @@ button:hover {
         background-color: white;
     }
 
-    .inputForm {
+/*     .inputForm {
         margin: 2% 0;
-    }
+    } */
 
     .submitRegister {
         margin-top: 10%;
@@ -422,12 +438,15 @@ button:hover {
 
     .register h1 {
         margin: 0;
+        font-size: 1.5rem;
+        font-weight: bolder;
     }
+
     .cajita2 {
-        margin-top: 15%;
+        margin-top: 11%;
         margin-bottom: 6%;
         width: 50vw;
-        padding: 3.5%;
+        padding: 2rem;
         /* border: 2px solid #041c7c; */
         border-radius: 0.2em;
         background-color: gainsboro;

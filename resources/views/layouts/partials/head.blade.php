@@ -30,5 +30,6 @@
     <link rel="stylesheet" href="{{ asset('css/userOrders.css')}}" >
     <link rel="stylesheet" href="{{ asset('css/status.css')}}" >
     <link rel="stylesheet" href="{{ asset('css/perfil.css')}}" >
+    <link rel="stylesheet" href="{{ asset('css/botones.css')}}" >
     <title>Importadora Jorge</title>
 </head>

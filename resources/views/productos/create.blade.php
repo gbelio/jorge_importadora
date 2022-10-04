@@ -101,7 +101,7 @@
 
                     <br>
                     <div class="form-group">
-                        <input required type="submit" class="btn btn-primary __agregarProd" value="Agregar Producto" id="addMovie">
+                        <input id="boton_agregar" required type="submit" class="btn btn-primary" value="Agregar Producto" id="addMovie">
                     </div>
                 </form>
             </div>

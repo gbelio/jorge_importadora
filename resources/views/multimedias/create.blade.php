@@ -31,8 +31,8 @@
                                 <input required class="__files" type="file" name="paths[]" multiple="multiple">
                             </div>
                             <div class="form-group _carga-multimedia">
-                                <input  type="submit" class="btn btn-primary btn-sm" value="Agregar Imagenes" id="addImage" style="font-family:'Raleway'; margin:0;width: 130px;">
-                                <a href="/productos/cargar" class="btn btn-secondary btn-sm" role ="button" style="font-family:'Raleway'; margin:0 0 0 5px;">Volver</a>
+                                <input id="boton_confirmar" type="submit" class="btn btn-primary btn-sm" value="Agregar Imagenes" id="addImage">
+                                <a id="boton_volver" href="/productos/cargar" class="btn btn-secondary btn-sm" role ="button" >Volver</a>
                             </div>
                         </div>
                         <hr>

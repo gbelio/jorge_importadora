@@ -62,7 +62,7 @@
                 </div>
 
                 <div style="margin:0; display: flex; justify-content: flex-end;">
-                    <button type="submit" class="btn btn-info btn-sm" style="margin:0 2%; background-color:#007BFF;border-color:#007BFF;">Agregar Colores</button>
+                    <button id="boton_agregar" type="submit" class="btn btn-info btn-sm" {{-- style="margin:0 2%; background-color:#007BFF;border-color:#007BFF;" --}}>Agregar Colores</button>
                 </div>
             </form>
             @endif

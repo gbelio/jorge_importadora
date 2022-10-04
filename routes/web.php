@@ -116,3 +116,4 @@ Route::get('/usuarios/cargar', 'UserController@index');
 Route::get('/usuarios/editar/{id}', 'ProfileController@edit');
 Route::post('/usuarios', 'UserController@store');
 Route::delete('/usuarios/{id}', 'ProfileController@destroy');
+Route::get('/user/busqueda', 'UserController@search'); //Busca una compra.

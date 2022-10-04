@@ -5,7 +5,7 @@
         <div style="display:flex; flex-direction:row; justify-content:space-between">
             <h3 style="display:inline-block">Editar Subcategoría</h3>
         </div>
-        <form action="{{action('CategoryController@update', $subcategoria->id)}}" method="post">
+        <form action="{{action('SubcategoryController@update', $subcategoria->id)}}" method="post">
             <br>
             @csrf
             {{ method_field('PATCH') }}
@@ -25,8 +25,8 @@
             </div>
             <br>
             <div>
-                <a href="/subcategorias/cargar" class="btn btn-info btn-sm boton-eliminar" role="button" style="margin:2% 0%; background-color:#007BFF;border-color:#007BFF;">Volver</a>
-                <input type="submit" class="btn btn-info btn-sm boton-eliminar" style="margin:2% 0%; background-color:#007BFF;border-color:#007BFF;" value="Confirmar Cambios">
+                <a id="boton_volver" href="/subcategorias/cargar" class="btn btn-info btn-sm" role="button">Volver</a>
+                <input id="boton_confirmar" type="submit" class="btn btn-info btn-sm" value="Confirmar Cambios">
             </div>
         </form>
     </div>

@@ -41,7 +41,7 @@
                 </div>
                 <br>
                 <div class="form-group">
-                    <input type="submit" value="Guardar" class="btn btn-primary btn-sm" >
+                    <input id="boton_agregar" type="submit" value="Guardar" class="btn btn-primary btn-sm" >
                 </div>
             </form>
         </div>
