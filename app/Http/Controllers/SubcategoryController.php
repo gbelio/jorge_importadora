@@ -60,11 +60,15 @@ class SubcategoryController extends Controller
 
     public function edit($id)
     {
+        $allCategories = Category::all();
+        $subcategories = Subcategory::all();
         $categorias = Category::all();
         $subcategoria = Subcategory::query()
             ->find($id);
         return view('subcategorias.edit')->with('subcategoria', $subcategoria)
-                                            ->with('categorias', $categorias);
+                                            ->with('categorias', $categorias)
+                                            ->with('allCategories', $allCategories)
+                                            ->with('subcategories', $subcategories);
     }
 
 

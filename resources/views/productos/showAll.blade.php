@@ -4,7 +4,7 @@
     {{-- SLIDER --}}
 @if ($sliderstate > 0)
     @if($sliders_mobile)
-            <div id="sliderHome" class="mt-100 d-md-none d-lg-none d-xl-none">
+            <div id="sliderHome" class="mt-100 d-md-none d-lg-none d-xl-none sliderHome_mobile">
                 <div class="owl-carousel owl-theme">
                     @foreach ($sliders_mobile as $fila)
                         @if($fila->s_estado == 1)

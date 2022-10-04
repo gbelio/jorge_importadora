@@ -53,7 +53,7 @@
                 </div>
                 @endif
                 <li class="nav-item dropdown d-flex Admin_" >
-                    <a class="nav-link usuario dropdown-toggle" data-toggle="dropdown" href="/profile">{{Auth::user()->name}}</a>
+                    <a class="nav-link usuario dropdown-toggle" data-toggle="dropdown" {{-- href="/profile" --}} style="cursor:pointer;">{{Auth::user()->name}}</a>
                     <ul class="dropdown-menu cascadaDos">
                         @if (Auth::user()->role == 9)
                         <li class="nav-item" style="margin-top: 10px">

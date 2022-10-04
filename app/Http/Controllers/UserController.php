@@ -27,12 +27,15 @@ class UserController extends Controller
         if (Auth::user() == null) {
             return redirect('login');
         }
+        $allCategories = Category::all();
+        $subcategories = Subcategory::all();
         /** @var User $usuarios */
-        $usuarios = User::query()
+        $usuarios = User2::query()
             ->orderBy('created_at', 'desc')
             ->paginate(20);
-
-        return view('usuarios.index')->with(['usuarios' => $usuarios]);
+        return view('usuarios.index')->with(['usuarios' => $usuarios])
+        ->with('allCategories', $allCategories)
+        ->with('subcategories', $subcategories);
     }
 
     /**
@@ -43,7 +46,18 @@ class UserController extends Controller
         if (Auth::user() == null) {
             return redirect('login');
         }
-
+       
+        $usuario = User2::query()->where('email', 'like', '%'.$request->email.'%')->get();
+        $allCategories = Category::all();
+        $subcategories = Subcategory::all();
+        
+        if(count($usuario) != 0)
+        {
+            $response = 'El usuario "'.$request->email.'" ya existe, por favor ingrese otro correo electrónico.';
+            return view('auth.register')->with('response', $response)
+            ->with('allCategories', $allCategories)
+            ->with('subcategories', $subcategories);
+        }
         $reglas = [
             'name' => 'required',
             'email' => 'required',
@@ -73,12 +87,12 @@ class UserController extends Controller
         $usuario->address = $request['address'] ?? '';
         $usuario->department = $request['department'] ?? '';
         $usuario->zip_code = $request['zip_code'] ?? '';
-        $usuario->city = $request['city'] ?? '';
+        /* $usuario->city = $request['city'] ?? ''; no hay city en el register */
         $usuario->province = $request['province'] ?? '';
         $usuario->business_name = $request['business_name'] ?? '';
         $usuario->cuit = $request['cuit'] ?? '';
         $usuario->dni = $request['dni'] ?? '';
-        $usuario->iva = $request['iva'] ?? '';
+        $usuario->iva = $request['tipo_iva'] ?? '';
         $usuario->shipment = $request['shipment'] ?? '';
         $usuario->save();
         return redirect('/usuarios/cargar');
@@ -127,4 +141,30 @@ class UserController extends Controller
         return redirect('/usuarios/cargar');
     }
 
+   
+    public function search(Request $request)
+    {
+        $user = User2::query()
+        ->where('email', 'like', '%'.$request->clave.'%')
+        ->take(5)
+        ->get();
+        if (count($user) != 0){
+            $users = $user;
+            $response = 'Estos son los resultados para "'.$request->clave.'". Si el resultado no satisface su búsqueda, por favor ingrese el correo completo.';
+            $error="";
+        }else{
+            $users=[];
+            $response = "Por favor, especifique correo electrónico completo o pruebe con otro";
+            $error= 'Usuario no encontrado para clave: "'.$request->clave.'".';
+        }
+        $allCategories = Category::all();
+        $subcategories = Subcategory::all();
+
+        return view('usuarios.index')
+            ->with('response', $response)
+            ->with('results', $users)
+            ->with('error', $error)
+            ->with('allCategories', $allCategories)
+            ->with('subcategories', $subcategories);
+    }
 }

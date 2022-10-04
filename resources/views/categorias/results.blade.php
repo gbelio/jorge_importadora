@@ -4,7 +4,7 @@
     <div class="categoriaFiltro">
         <h2 class="cat-name">{{$category[0]->name}} ></h2>
         <ul class="dropdown_subcategorias">
-            <a class="dropdown_name" data-toggle="dropdown" href="/profile"> <b style="margin-right:5px;">FILTRAR POR</b>Subcategorías</a>
+            <a class="dropdown_name" data-toggle="dropdown" href="#"> <b style="margin-right:5px;">FILTRAR POR</b>Subcategorías</a>
             <li class="dropdown_content">
                 @foreach ($subcategories as $subcategory)
                     @if ($subcategory->category_id == $category[0]->id)

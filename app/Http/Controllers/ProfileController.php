@@ -42,10 +42,12 @@ class ProfileController extends Controller
         if (Auth::user() == null) {
             return redirect('login');
         }
-
+        $allCategories = Category::all();
+        $subcategories = Subcategory::all();
         $usuario = User::query()->where('id', $id)->first();
-
-        return view('perfil.edit')->with('usuario', $usuario);
+        return view('perfil.edit')->with('usuario', $usuario)
+        ->with('allCategories', $allCategories)
+        ->with('subcategories', $subcategories);
     }
 
     public function update(Request $request, int $id)
@@ -67,13 +69,13 @@ class ProfileController extends Controller
         $usuario->phone = $request->input('phone') !== $usuario->phone ? $request->input('phone') : $usuario->phone;
         $usuario->address = $request->input('address') !== $usuario->address ? $request->input('address') : $usuario->address;
         $usuario->department = $request->input('department') !== $usuario->department ? $request->input('department') : $usuario->department;
-        $usuario->zip_code = $request->input('zip_code') !== $usuario->zip_code ? $request->input('zip_code') : $usuario->zip_code;
-        $usuario->city = $request->input('city') !== $usuario->city ? $request->input('city') : $usuario->city;
+        /* $usuario->city = $request->input('city') !== $usuario->city ? $request->input('city') : $usuario->city; */
         $usuario->province = $request->input('province') !== $usuario->province ? $request->input('province') : $usuario->province;
+        $usuario->zip_code = $request->input('zip_code') !== $usuario->zip_code ? $request->input('zip_code') : $usuario->zip_code;
         $usuario->business_name = $request->input('business_name') !== $usuario->business_name ? $request->input('business_name') : $usuario->business_name;
         $usuario->cuit = $request->input('cuit') !== $usuario->cuit ? $request->input('cuit') : $usuario->cuit;
         $usuario->dni = $request->input('dni') !== $usuario->dni ? $request->input('dni') : $usuario->dni;
-        $usuario->iva = $request->input('iva') !== $usuario->iva ? $request->input('iva') : $usuario->iva;
+        $usuario->iva = $request->input('tipo_iva') !== $usuario->iva ? $request->input('tipo_iva') : $usuario->iva;
         $usuario->shipment = $request->input('shipment') !== $usuario->shipment ? $request->input('shipment') : $usuario->shipment;
         if ($request->input('password') == $request->input('password_confirmation') && strlen($request->input('password')) > 7) {
             $usuario->password = Hash::make($request->input('password'));
