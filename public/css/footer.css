@@ -3,7 +3,6 @@
                                 /* FOOTER */
 footer{
   width: 100vw;
-/*   height: 30vh; */
   background: black;
   display: flex;
   flex-direction: column;
@@ -13,7 +12,195 @@ footer{
   font-family: 'Raleway', sans-serif;
   position: absolute;
   padding: 1%;
-  /*bottom: 0;*/
+}
+
+.main_box{
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 30px;
+  border-bottom: 1px solid white;
+}
+
+.main_box>div{
+  width: 33%;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.main_box>.marca>div:first-child{
+  margin: 0 0 10px 0;
+  height: 100px;
+}
+
+.main_box>.marca>div:last-child{
+  margin: 0;
+}
+
+.main_box>.marca>div>img{
+  width: 200px;
+}
+
+.main_box>.marca>div>div{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  margin: 0 0 5px 0;
+}
+
+.main_box>.marca>div>div>img{
+  width: 23px;
+  margin: 0;
+}
+
+.main_box>.marca>div>div>p{
+  margin: 0 0 0 5px;
+}
+
+.main_box>.atencion>div:first-child {
+  margin: 0 0 10px 0;
+  height: 100px;
+}
+
+.main_box>.atencion>div:last-child{
+  margin: 0;
+}
+
+.main_box>.atencion>div>p{
+  margin: 0 0 0 5px;
+  font-weight: bold;
+}
+
+.main_box>.atencion>div>div{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  margin: 0 0 5px 0;
+}
+
+.main_box>.atencion>div>div>img{
+  width: 25px;
+  margin: 0;
+}
+
+.main_box>.atencion>div>div>a{
+  text-decoration: none;
+  color:white;
+  margin: 0 0 0 5px;
+}
+
+.main_box>.categorias_footer{
+  font-weight: bold !important;
+  justify-content: flex-start !important;
+  margin: 0 !important;
+  max-height: 90vh;
+  flex-wrap: wrap;
+}
+
+.main_box>.categorias_footer>p{
+  margin: 0;
+}
+
+.main_box>.categorias_footer>a{
+  margin: 0;
+  text-decoration: none;
+  color: white;
+  font-weight: normal !important;
+  text-transform: capitalize;
+}
+
+.main_box>.categorias_footer>a:hover{
+  color:#5FA8E5;
+}
+
+.rights{
+  width: 80%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rights>div{
+  margin: 0;
+  font-weight: bold;
+}
+
+.rights>img{
+  width: 100px !important;
+}
+
+
+/* ------------------------------------------------ */
+
+@media screen and (max-width:600px){
+
+  #footer{
+    min-height: unset;
+    padding-top: 20px;
+  }
+
+  .main_box{
+    width: 100%;
+    flex-direction: column-reverse;
+  }
+
+  .main_box>div{
+    width: unset;
+    min-height: unset;
+    align-items: center;
+    margin: 10px auto;
+  }
+
+  .main_box>.marca{
+    flex-direction: column-reverse;
+  }
+
+  .main_box>.marca>div:first-child{
+    height: 70px;
+    margin: 15px 0 0;
+  }
+
+  .main_box>.marca>div:last-child>div{
+    justify-content: center;
+  }
+
+  .main_box>.atencion>div:first-child{
+    margin: 10px 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main_box>.atencion>div:first-child>p{
+    text-align: center;
+  }
+  
+  .main_box>.atencion>div:last-child{
+    margin: 0 0 20px;
+  }
+
+  .main_box>.categorias_footer{
+    flex-wrap: nowrap;
+    max-height: unset;
+  }
+  
+  .rights{
+    width: unset;
+  }
+
+  .rights>div{
+    font-size: 12px;
+  }
 }
 
 .ji_info{
@@ -150,16 +337,16 @@ footer{
 
 
 /* -----------------MEDIAQUERIES----------------- */
-@media screen and (max-width: 1030px) {
+/* @media screen and (max-width: 1030px) {
   footer{
     height: 40vh;
   }
-}
+} */
 
 @media (orientation: landscape) and (max-width: 800px){
-  footer{
+ /*  footer{
     height: 75vh;
-  }
+  } */
 
   .ji_contact, .ji_logo-location{
     height: 70%;
@@ -202,7 +389,7 @@ footer{
 @media (orientation: portrait) and (max-width: 800px){
 
   footer{
-    height: 90vh;
+   /*  height: 90vh; */
     justify-content: flex-end;
   }
 

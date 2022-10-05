@@ -60,7 +60,7 @@
 @endif
     {{-- SLIDER --}}
 
-    <div class="caja-products-categories" style="flex-direction:column !important">
+    <div class=@if($sliderstate > 0) "caja-products-categories-slide" @else "caja-products-categories" @endif style="flex-direction:column !important">
         <input type="hidden" id="categories-count" value="{{$allCategories->count()}}">
         <input type="hidden" name="categories_ids" id="categories_ids" value="{{$allCategories}}">
         @foreach ($allCategories as $category)
