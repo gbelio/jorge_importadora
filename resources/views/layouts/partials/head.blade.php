@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
     <link rel="stylesheet" href="{{ asset('css/index_mobile.css') }}">
     <link rel="stylesheet" href="{{ asset('css/login_mobile.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
     <link rel="stylesheet" href="{{ asset('css/register_mobile.css') }}">
     <link rel="stylesheet" href="{{ asset('css/faq_mobile.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bienvenida_mobile.css') }}">
