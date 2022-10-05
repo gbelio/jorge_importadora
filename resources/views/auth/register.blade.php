@@ -16,18 +16,18 @@
         @csrf
         <div class="row d-flex flex-row">
             <div class="__translation">
-                <input class="inputForm w-100" required type="text" name="name" placeholder=" " value="{{ old('name') }}">
-                <span>Nombre</span>
+                <input id="name" class="inputForm w-100" required type="text" name="name" placeholder=" " value="{{ old('name') }}">
+                <label for="name">Nombre</label>
                 @error('name')<span class="errors">{{ $message }}</span> @enderror
             </div>
             <div class="__translation">
-                <input class="inputForm w-100" type="text" name="last_name" placeholder=" " value="{{ old('last_name') }}">
-                <span>Apellido</span>
+                <input id="last_name" class="inputForm w-100" type="text" name="last_name" placeholder=" " value="{{ old('last_name') }}">
+                <label for="last_name">Apellido</label>
                 @error('last_name')<span class="errors">{{ $message }}</span> @enderror
             </div>
             <div class="__translation">
-                <input class="inputForm w-100" type="text" name="business_name" placeholder=" " value="{{ old('business_name') }}">
-                <span>Razón social</span>
+                <input id="business_name" class="inputForm w-100" type="text" name="business_name" placeholder=" " value="{{ old('business_name') }}">
+                <label for="business_name">Razón social</label>
                 @error('business_name')<span class="errors">{{ $message }}</span> @enderror
             </div>
            {{--  <div class="col-lg-6 p-0">
@@ -51,8 +51,8 @@
 
         <div class="row d-flex flex-row">
             <div class="__translation">
-                <input class="inputForm w-100" type="text" name="address" placeholder=" " value="{{ old('address') }}">
-                <span>Dirección</span>
+                <input id="address" class="inputForm w-100" type="text" name="address" placeholder=" " value="{{ old('address') }}">
+                <label for="address">Dirección</label>
                 @error('address')<span class="errors">{{ $message }}</span> @enderror
             </div>
                {{--  <div class="col-lg-4 p-0">
@@ -60,18 +60,18 @@
                     @error('address')<span class="errors">{{ $message }}</span> @enderror
                 </div> --}}
                 <div {{-- class="col-lg-4 p-0" --}} class="__translation">
-                    <input class="inputForm w-100" type="text" name="department" placeholder=" " value="{{ old('department') }}">
-                    <span>Localidad</span>
+                    <input id="department" class="inputForm w-100" type="text" name="department" placeholder=" " value="{{ old('department') }}">
+                    <label for="department">Localidad</label>
                     @error('department')<span class="errors">{{ $message }}</span> @enderror
                 </div>
                 <div {{-- class="col-lg-4 p-0" --}}class="__translation">
-                    <input class="inputForm w-100" type="text" name="province" placeholder=" " value="{{ old('province') }}">
-                    <span>Provincia</span>
+                    <input id="province" class="inputForm w-100" type="text" name="province" placeholder=" " value="{{ old('province') }}">
+                    <label for="province">Provincia</label>
                     @error('province')<span class="errors">{{ $message }}</span> @enderror
                 </div>
                 <div {{-- class="col-lg-4 p-0" --}}class="__translation">
-                    <input class="inputForm w-100" type="text" name="zip_code" placeholder=" " value="{{ old('zip_code') }}">
-                    <span>Código postal</span>
+                    <input id="zip_code" class="inputForm w-100" type="text" name="zip_code" placeholder=" " value="{{ old('zip_code') }}">
+                    <label for="zip_code">Código postal</label>
                     @error('zip_code')<span class="errors">{{ $message }}</span> @enderror
                 </div>
 
@@ -79,8 +79,8 @@
 
         <div class="row d-flex flex-row" >
             <div class="__translation">
-                <input class="inputForm w-100" type="text" name="shipment" placeholder=" " value="{{ old('shipment') }}">
-                <span>Nombre del transporte</span>
+                <input id="shipment" class="inputForm w-100" type="text" name="shipment" placeholder=" " value="{{ old('shipment') }}">
+                <label for="shipment">Nombre del transporte</label>
                 @error('shipment')<span class="errors">{{ $message }}</span> @enderror
             </div>
             {{-- <div class="col-lg-12 d-flex justify-content-between p-0">
@@ -105,13 +105,13 @@
                     </select>
                 </div>
                 <div id="cuit" class="p-0 m-0 __translation" style="width: 49%;position: relative">
-                    <input class="inputForm w-100" type="text"  name="cuit" placeholder=" " value="{{ old('cuit') }}">
-                    <span style="left: 12px;">Nro CUIT</span>
+                    <input id="CUIT" class="inputForm w-100" type="text"  name="cuit" placeholder=" " value="{{ old('cuit') }}">
+                    <label for="CUIT" style="left: 12px;">Nro CUIT</label>
                     @error('cuit')<span class="errors">{{ $message }}</span> @enderror
                 </div>
                 <div id="dni" class="p-0 m-0 __translation" style="width: 49%;position: relative">
-                    <input class="inputForm w-100" type="text"  name="dni" placeholder=" " value="{{ old('dni') }}">
-                    <span style="left: 12px;">Nro DNI</span>
+                    <input id="DNI" class="inputForm w-100" type="text"  name="dni" placeholder=" " value="{{ old('dni') }}">
+                    <label for="DNI" style="left: 12px;">Nro DNI</label>
                     @error('dni')<span class="errors">{{ $message }}</span> @enderror
                 </div>
             </div>
@@ -121,13 +121,13 @@
         <div class="row d-flex flex-row">
             <div class="d-flex justify-content-between p-0">
                 <div class="p-0 m-0 __translation" style="width:49%;position: relative;">
-                    <input required class="inputForm w-100" type="text" name="email" placeholder=" " value="{{ old('email') }}">
-                    <span style="left: 12px;">Correo electrónico</span>
+                    <input id="email" required class="inputForm w-100" type="text" name="email" placeholder=" " value="{{ old('email') }}">
+                    <label for="email" style="left: 12px;">Correo electrónico</label>
                     @error('email')<span class="errors"> {{ $message }}</span> @enderror
                 </div>
                 <div class="p-0 m-0 __translation" style="width:49%;position: relative;">
-                    <input class="inputForm w-100" type="text" name="phone" placeholder=" " value="{{ old('phone') }}">
-                    <span style="left: 12px;">Teléfono</span>
+                    <input id="phone" class="inputForm w-100" type="text" name="phone" placeholder=" " value="{{ old('phone') }}">
+                    <label for="phone" style="left: 12px;">Teléfono</label>
                     @error('phone')<span class="errors">{{ $message }}</span> @enderror
                 </div>
             </div>
@@ -137,13 +137,13 @@
         <div class="row d-flex flex-row">
             <div class="d-flex justify-content-between p-0">
                 <div class="p-0 m-0 __translation" style="width:49%;position: relative;">
-                    <input required id="password" type="password" class="inputForm w-100 @error('password') is-invalid @enderror" name="password" placeholder = ' ' autocomplete="new-password">
-                    <span style="left: 12px;">Password</span>
+                    <input required id="pw" type="password" class="inputForm w-100 @error('password') is-invalid @enderror" name="password" placeholder = ' ' autocomplete="new-password">
+                    <label for="pw" style="left: 12px;">Password</label>
                     @error('password')<span class="errors"> {{ $message }}</span> @enderror
                 </div>
                 <div class="p-0 m-0 __translation" style="width:49%;position: relative;">
-                    <input required id="password-confirm" type="password" class="inputForm w-100" name="pasword_confirmation" placeholder = ' ' autocomplete="new-password">
-                    <span style="left: 12px;">Confirmá la password</span>
+                    <input required id="pw-confirm" type="password" class="inputForm w-100" name="pasword_confirmation" placeholder = ' ' autocomplete="new-password">
+                    <label for="pw-confirm" style="left: 12px;">Confirmá la password</label>
                     @error('password')<span class="errors"> {{ $message }}</span> @enderror
                 </div>
             </div>

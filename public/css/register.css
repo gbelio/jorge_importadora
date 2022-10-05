@@ -4,15 +4,15 @@
 }
 
 
-.__translation>span{
+.__translation>label{
     position: absolute;
     left: 24px;
     top: 35px;
     color: gray;
     transition: 0.5s;
 }
-.__translation>input:focus ~ span,
-.__translation>input:not(:placeholder-shown) ~ span{
+.__translation>input:focus ~ label,
+.__translation>input:not(:placeholder-shown) ~ label{
     transform: translateY(-35px);
     transition: 0.5s;
     color:gray;
