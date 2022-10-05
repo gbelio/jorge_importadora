@@ -17,7 +17,7 @@
     margin: 0;
     width: 50%;
     height: 90px;
-    background-image: url("../img/logo-horizontal--03.svg");
+    background-image: url("../img/logo-horizontal-navbar.svg");
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -214,7 +214,7 @@
     .navbar-brand {
         width: 12%;
         background-position: left;
-        background-image: url("../img/logo-horizontal--03.svg");
+        background-image: url("../img/logo-horizontal-navbar.svg");
         background-size: contain;
         background-repeat: no-repeat;
     }
