@@ -9,6 +9,7 @@
         <br>
         <table id="mytable" class="table">
             <thead>
+                <th class="text-center">Código</th>
                 <th class="text-center">Artículo</th>
                 <th class="text-center">Color</th>
                 <th class="text-center">Foto</th>
@@ -18,6 +19,7 @@
             <tbody style="border:none;">
                 @foreach ($orderDetail as $detail)
                     <tr>
+                        <td class="text-center"><b>{{$detail->code}}</b></td>
                         <td class="text-center"><b>{{$detail->name}}</b></td>
                         <td class="text-center">
                         @foreach ($rest_of_colours as $colour)
@@ -38,6 +40,7 @@
             <tbody class="separator" style="border:none;"></tbody>
             <tbody class="last-row" style="border:none;">
                 <tr>
+                    <td style="border:none;"></td>
                     <td style="border:none;"></td>
                     <td style="border:none;"></td>
                     <td style="border:none;"></td>
