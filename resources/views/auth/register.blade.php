@@ -106,12 +106,12 @@
                 </div>
                 <div id="cuit" class="p-0 m-0 __translation" style="width: 49%;position: relative">
                     <input class="inputForm w-100" type="text"  name="cuit" placeholder=" " value="{{ old('cuit') }}">
-                    <span>Nro CUIT</span>
+                    <span style="left: 12px;">Nro CUIT</span>
                     @error('cuit')<span class="errors">{{ $message }}</span> @enderror
                 </div>
                 <div id="dni" class="p-0 m-0 __translation" style="width: 49%;position: relative">
                     <input class="inputForm w-100" type="text"  name="dni" placeholder=" " value="{{ old('dni') }}">
-                    <span>Nro DNI</span>
+                    <span style="left: 12px;">Nro DNI</span>
                     @error('dni')<span class="errors">{{ $message }}</span> @enderror
                 </div>
             </div>
@@ -122,12 +122,12 @@
             <div class="d-flex justify-content-between p-0">
                 <div class="p-0 m-0 __translation" style="width:49%;position: relative;">
                     <input required class="inputForm w-100" type="text" name="email" placeholder=" " value="{{ old('email') }}">
-                    <span>Correo electrónico</span>
+                    <span style="left: 12px;">Correo electrónico</span>
                     @error('email')<span class="errors"> {{ $message }}</span> @enderror
                 </div>
                 <div class="p-0 m-0 __translation" style="width:49%;position: relative;">
                     <input class="inputForm w-100" type="text" name="phone" placeholder=" " value="{{ old('phone') }}">
-                    <span>Teléfono</span>
+                    <span style="left: 12px;">Teléfono</span>
                     @error('phone')<span class="errors">{{ $message }}</span> @enderror
                 </div>
             </div>
@@ -138,12 +138,12 @@
             <div class="d-flex justify-content-between p-0">
                 <div class="p-0 m-0 __translation" style="width:49%;position: relative;">
                     <input required id="password" type="password" class="inputForm w-100 @error('password') is-invalid @enderror" name="password" placeholder = ' ' autocomplete="new-password">
-                    <span>Password</span>
+                    <span style="left: 12px;">Password</span>
                     @error('password')<span class="errors"> {{ $message }}</span> @enderror
                 </div>
                 <div class="p-0 m-0 __translation" style="width:49%;position: relative;">
                     <input required id="password-confirm" type="password" class="inputForm w-100" name="pasword_confirmation" placeholder = ' ' autocomplete="new-password">
-                    <span>Confirmá la password</span>
+                    <span style="left: 12px;">Confirmá la password</span>
                     @error('password')<span class="errors"> {{ $message }}</span> @enderror
                 </div>
             </div>
