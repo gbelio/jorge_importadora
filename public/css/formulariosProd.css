@@ -262,3 +262,11 @@ body {
         overflow: scroll;
     }
 }
+
+@media screen and (max-width:600px){
+.caja-lista{
+    max-width: 90% !important;
+    width: 90%;
+    margin: 120px auto 0;
+    }
+}
