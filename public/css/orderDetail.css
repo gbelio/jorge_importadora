@@ -44,3 +44,156 @@
   border: none;
   box-shadow: 1px 1px 5px darkgray;
 }
+
+.usuario_order{
+  font-family: 'Raleway';
+  font-size: 1rem;
+  font-weight: normal;
+  font-weight: 500;
+}
+
+.user_details_compras{
+  padding: 1%;
+  border: 1px solid gainsboro;
+  font-family: 'Raleway';
+}
+
+.user_details_compras>div{
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+
+.user_details_compras>div>p{
+  margin: 0;
+  width: 15%;
+  padding: 5px;
+  font-weight: 500;
+}
+
+.user_details_compras>div>div{
+  width: 88%;
+  padding: 5px;
+  border: 1px solid gainsboro;
+}
+
+.double>div{
+  display: flex;
+  align-items: center;
+  border: none !important;
+  padding: 0 !important;
+  width: 48% !important;
+  margin: 0;
+}
+
+.double>div>p{
+  margin: 0;
+  width: 30%;
+  padding: 5px;
+  font-weight: 500;
+}
+
+.double>div>div{
+  width: 88%;
+  padding: 5px;
+  border: 1px solid gainsboro;
+}
+
+.iva_section{
+  align-items: flex-start !important;
+}
+
+.iva_section>p{
+  margin: 0;
+  width: 15%;
+  padding: 5px;
+  font-weight: 500;
+}
+
+.iva_section>div{
+  display: flex;
+  flex-direction: column;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.iva_section>div>div{
+  margin: 0 0 10px 0;
+  display: flex;
+  width: 88%;
+  align-items: center;
+}
+
+.iva_section>div>div>label{
+  margin: 0 10px 0 0;
+  font-weight: 500;
+}
+
+.iva_section>div>div>label:last-child{
+  margin: 0 !important;
+}
+
+.iva_section>div>div>div{
+  margin: 0 0 0 20px;
+  display: flex;
+  width: 70%;
+  align-items: center;
+}
+
+.iva_section>div>div>div>p{
+  margin: 0 0 0 20px;
+  display: flex;
+  width: 10%;
+}
+
+.iva_section>div>div>div>div{
+  width: 88%;
+  height: 35px;
+  padding: 5px;
+  border: 1px solid gainsboro;
+}
+
+/* ------------------------------------------------ */
+
+@media screen and (max-width:600px){
+.user_details_compras>div{
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: unset;
+}
+
+.user_details_compras>div>p{
+  width: 100%;
+}
+
+.user_details_compras>div>div{
+  width: 100%;
+}
+
+.double>div{
+  width: 100% !important;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.double>div>div{
+  width: 100%;
+}
+.iva_section>div>div{
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.iva_section>div>div>div{
+  margin: 0;
+  width: 100%;
+}
+
+.iva_section>div>div>div>p{
+  width: 50%;
+  margin: 0;
+}
+
+}

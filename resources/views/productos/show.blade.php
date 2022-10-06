@@ -63,9 +63,7 @@
                     <h2 class="prod_box_title">{{$producto->name}}</h2>
                     <p> {{$producto->resume}}</p>
                 </div>
-                <div class="prod_description">
-                {!!$producto->description!!}
-                </div>
+                <br>
                 <div>
                     <form id="buy_action" action="{{action('OrderDetailController@add', $producto)}}" method="post">
                         {{csrf_field()}}
@@ -111,6 +109,11 @@
                             <img src="/img/icono_carrito.svg">
                         </button>
                     </form>
+                </div>
+                <br>
+
+                <div class="prod_description">
+                {!!$producto->description!!}
                 </div>
             </div>
         </div>

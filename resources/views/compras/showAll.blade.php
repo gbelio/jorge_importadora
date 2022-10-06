@@ -19,7 +19,7 @@
     @endisset
     <br>
     {{---------------------- ****************LISTA COMPRAS**************** ----------------------------}}
-    <section class="orderTable">
+    <section class="orderTable" style="overflow: scroll;">
         <div><h3>LISTA DE COMPRAS</h3></div>
         <table id="mytable" class="table table-striped">
             <thead>

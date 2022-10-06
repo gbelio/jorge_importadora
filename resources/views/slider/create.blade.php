@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<div class="offset-2 col-8 form-categorias" style="min-height: 450px">
+<div class="offset-2 col-8 form-categorias caja-lista" style="min-height: 450px">
     <div id="listaCategorias">
         <div style="display:flex; flex-direction:row; justify-content:space-between">
             <h3 style="display:inline-block">Agregar Imagen al Slider</h3>

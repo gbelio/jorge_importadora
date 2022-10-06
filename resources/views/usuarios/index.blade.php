@@ -74,7 +74,7 @@
     Volver
 </a>
 @else
-<div class="offset-2 col-8 form-categorias" style="min-height:450px; margin-top:0;">
+<div class="offset-2 col-8 form-categorias caja-lista" style="min-height:450px; margin-top:0;">
         @if($errors->any())
             <h5 style="color:red">{{$errors->first()}}</h5>
         @endif

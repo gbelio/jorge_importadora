@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Order;
 use App\User;
+use App\User2;
 use App\OrderDetail;
 use App\Category;
 use App\Subcategory;
@@ -80,7 +81,12 @@ class OrderController extends Controller
             ->where([
                 'order_id' => $id
             ])->get();
+        $users=User2::query()->where('id',[$order->user_id])->get();
+        foreach($users as $i){
+            $user=$i;
+        }
         return view('compras.detail')
+            ->with('user', $user)
             ->with('orderDetail', $orderDetail)
             ->with('order', $order)
             ->with('total', $orderDetails['total'])
