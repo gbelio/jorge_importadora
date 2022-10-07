@@ -134,7 +134,7 @@ class MailerController extends Controller
 </div>
 ";
 
-        $mail = Mail::to('gastonb.bkp@gmail.com');
+        $mail = Mail::to('ventaswebij@gmail.com');
         $mail->send(
             new \App\Mail\AlertsMailable($asunto, $titulo, $cuerpo)
         );
