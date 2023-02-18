@@ -10,6 +10,7 @@ class MailerController extends Controller
     static function userOrderConfirmation($order){
         $asunto = "Importadora Jorge - Orden generada exitosamente";
         $titulo = "";
+        $formatTotal = number_format($order->total, 2, ',', '.');
         $cuerpo = "
 <div>
 <div>
@@ -19,9 +20,9 @@ class MailerController extends Controller
 <h1 style='text-align:center; color: #25408f;'>HEMOS RECIBIDO TU PEDIDO</h1>
 <br>
 <p> Te notificaremos vía mail cuando el mismo este listo para ser retirado o despachado</p>
-<p>Número de orden: <a href='http://www.dev.importadorajorge.com.ar/compras/detalle/{$order->id}'>$order->id</a></p>
+<p>Número de orden: <a href='http://www.importadorajorge.com.ar/compras/detalle/{$order->id}'>$order->id</a></p>
 <br>
-<p style='text-transform=uppercase; color:#4171b8;'>TOTAL: <strong> $$order->total </strong></p>
+<p style='text-transform=uppercase; color:#4171b8;'>TOTAL: <strong> $$formatTotal </strong></p>
 <br>
 <br>
 <hr>
@@ -45,12 +46,13 @@ class MailerController extends Controller
     static function userOrderReady($order){
         $asunto = "Importadora Jorge - ¡Tu pedido está listo!";
         $titulo = "¡CONTÁCTANOS!";
+        $formatTotal = number_format($order->total, 2, ',', '.');
         $cuerpo = "
 <div>
 <div>
 <h1 style='color: green;'>SU PEDIDO ESTÁ LISTO PARA SER RETIRADO</h1>
-<p>Número de orden: <a href='http://www.dev.importadorajorge.com.ar/compras/detalle/{$order->id}'>{$order->id}</a></p>
-<h2>TOTAL: <strong> $$order->total </strong></h2>
+<p>Número de orden: <a href='http://www.importadorajorge.com.ar/compras/detalle/{$order->id}'>{$order->id}</a></p>
+<h2>TOTAL: <strong> $formatTotal </strong></h2>
 <h3>Dirección de retiro: <strong> Sarmiento 2441 - CP 1044 </strong></h3>
 </div>
 <p style='font-weight: normal; font-size:10px;'><strong>Nombre de usuario: </strong>{$order->user->name} {$order->user->last_name}</p>
@@ -78,12 +80,13 @@ class MailerController extends Controller
     static function userOrderCancelation($order){
         $asunto = "Importadora Jorge - Su orden ha sido cancelada";
         $titulo = "¡Orden cancelada correctamente!";
+        $formatTotal = number_format($order->total, 2, ',', '.');
         $cuerpo = "
 <div>
 <div>
 <h1 style='color: red;'>SU PEDIDO HA SIDO CANCELADO</h1>
-<p>Número de orden: <a href='http://www.dev.importadorajorge.com.ar/compras/detalle/{$order->id}'>$order->id</a></p>
-<h2>TOTAL: <strong> $$order->total </strong></h2>
+<p>Número de orden: <a href='http://www.importadorajorge.com.ar/compras/detalle/{$order->id}'>$order->id</a></p>
+<h2>TOTAL: <strong> $formatTotal </strong></h2>
 </div>
 <p style='font-weight: normal; font-size:10px;'><strong>Nombre de usuario: </strong>{$order->user->name} {$order->user->last_name}</p>
 <p style='font-weight: normal; font-size:10px;'><strong>Email asociado: </strong>{$order->user->email}</p>
@@ -112,12 +115,13 @@ class MailerController extends Controller
     static function adminOrderReception($order){
         $asunto = "Equipo Importadora Jorge - Pedido recibido";
         $titulo = "¡Has recibido un nuevo pedido!";
+        $formatTotal = number_format($order->total, 2, ',', '.');
         $cuerpo = "
 <div>
 <div>
 <h1 style='color: orange;'>PEDIDO ENTRANTE</h1>
-<p>Número de orden: <a href='http://www.dev.importadorajorge.com.ar/compras/detalle/$order->id'>$order->id</a></p>
-<h2>TOTAL: <strong> $$order->total </strong></h2>
+<p>Número de orden: <a href='http://www.importadorajorge.com.ar/compras/detalle/$order->id'>$order->id</a></p>
+<h2>TOTAL: <strong> $formatTotal </strong></h2>
 </div>
 <p style='font-weight: normal; font-size:10px;'><strong>Nombre de usuario: </strong>{$order->user->name} {$order->user->last_name}</p>
 <p style='font-weight: normal; font-size:10px;'><strong>Email asociado: </strong>{$order->user->email}</p>

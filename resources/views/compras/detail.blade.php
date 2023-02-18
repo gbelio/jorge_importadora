@@ -30,7 +30,7 @@
                             <a href="/productos/{{$detail->product_id}}"><img src="/storage/{{$detail->cover}}" style="width:50px; height:50px" alt="{{$detail->name}}"></a>
                         </td>
                         <td class="text-center"><b>{{$detail->quantity}}</b></td>
-                        <td class="text-center"><b>${{$detail->amount}}</b></td>
+                        <td class="text-center"><b>${{number_format($detail->amount, 2, ',', '.')}}</b></td>
                     </tr>
                @endforeach
             </tbody>
@@ -43,7 +43,7 @@
                     <td style="border:none;"></td>
                     <td style="font-weight: bold; align-text:center; text-transform:uppercase; font-family:'Roboto', sans-serif; border:none;">Monto final:</td>
                     <td class="final_ammount" style="border:none;">
-                        ${{$order->total}}
+                        ${{number_format($order->total, 2, ',', '.')}}
                     </td>
                 </tr>
             </tbody>

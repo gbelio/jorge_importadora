@@ -55,13 +55,13 @@
                         </td>
                         <td class="text-center" data-title="Cantidad">{{$orderDetail->quantity}}</td>
                         @if($orderDetail->product->amount != 0)
-                            <td class="text-center" data-title="Total">${{$orderDetail->product->amount}}</td>
+                            <td class="text-center" data-title="Total">${{number_format($orderDetail->product->amount, 2, ',', '.')}}</td>
                         @else
                             <td class="text-center" data-title="Total">N/A</td>
                         @endif
 
                         @if($orderDetail->product->amount*$orderDetail->quantity !== 0)
-                            <td class="text-center" data-title="Total">${{$orderDetail->product->amount*$orderDetail->quantity}}</td>
+                            <td class="text-center" data-title="Total">${{number_format($orderDetail->product->amount*$orderDetail->quantity, 2, ',', '.')}}</td>
                         @else
                             <td class="text-center" data-title="Total">N/A</td>
                          @endif
@@ -89,7 +89,7 @@
                         <td></td>
                         <td></td>
                         <td style="font-weight: bold; align-text:center; text-transform:uppercase; font-family:'Roboto', sans-serif;">Monto final:</td>
-                        <td class="final_ammount">${{ $total }}</td>
+                        <td class="final_ammount">${{ number_format($total, 2, ',', '.') }}</td>
                         <td>
                             <form id="" action="{{action('OrderController@update')}}" method="POST">
                                 {{ method_field('PATCH') }}

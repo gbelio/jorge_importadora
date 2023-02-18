@@ -16,7 +16,7 @@
                 @foreach ($orders as $order)
                     <tr>
                         <td scope="row"><a href="/compras/detalle/{{$order->id}}">Orden n°{{$order->id}}</a></td>
-                        <td>${{$order->total}}</td>
+                        <td>${{number_format($order->total, 2, ',', '.')}}</td>
                         <td>{{$order->created_at}}</td>
                         <td>
                             @switch($order->status)

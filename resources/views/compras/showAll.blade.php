@@ -35,7 +35,7 @@
                         <td data-title="N° Compra" class="text-center"><a href="/compras/detalle/{{$order->id}}">{{$order->id}}</a></td>
                         <td data-title="Email" class="text-center"><a href="/perfil/{{$order->user->id}}">{{$order->user->email}}</a></td>
                         <td data-title="Última modificación" class="text-center">{{$order->updated_at}}</td>
-                        <td data-title="Total" class="text-center">${{$order->total}}</td>
+                        <td data-title="Total" class="text-center">${{number_format($order->total, 2, ',', '.')}}</td>
                         <td data-title="Cambiar de estado" class="text-center">
                             <form id="" action="{{action('OrderController@updateStatus')}}" method="POST">
                                 {{ method_field('PATCH') }}
