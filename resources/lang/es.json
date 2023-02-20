@@ -85,7 +85,7 @@
     "validation.unique": "Ya existe el usuario con el que intenta registrarse",
     "validation.min.string": "Se necesita una contraseña con al menos 8 caracteres",
     "validation.confirmed":"Verifique que esté escribiendo la misma contraseña en ambos campos",
-    "validation.required":"Ingrese una contraseña",
+    "validation.required":"Complete los campos requeridos",
     "Oh no": "Oh no",
     "Once a team is deleted, all of its resources and data will be permanently deleted. Before deleting this team, please download any data or information regarding this team that you wish to retain.": "Una vez que se elimina un equipo, todos sus recursos y datos se eliminarán de forma permanente. Antes de eliminar este equipo, descargue cualquier dato o información sobre este equipo que desee conservar.",
     "Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.": "Una vez su cuenta sea borrada, todos sus recursos y datos se eliminarán de forma permanente. Antes de borrar su cuenta, por favor descargue cualquier dato o información que desee conservar.",
