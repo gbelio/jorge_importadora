@@ -75,11 +75,13 @@
                             <label>Unidades</label>
                             <input id="quantitySelected" class="quantity" type="number" name="quantity" value="1" min="1" max="9999">
                         </div>
-                        @if($producto->amount > 0)
-                       <div class="box">{{--  revisar como queda sin precio --}}
-                            <label>Precio unitario</label>
-                            <h5 id="change_amount"> ${{number_format($producto->amount, 2, ',', '.')}}</h5>
-                        </div>
+                        @if(Auth::user() != null && Auth::user()->role === 9)
+                            @if($producto->amount > 0)
+                            <div class="box">{{--  revisar como queda sin precio --}}
+                                <label>Precio unitario</label>
+                                <h5 id="change_amount"> ${{number_format($producto->amount, 2, ',', '.')}}</h5>
+                            </div>
+                            @endif
                         @endif
                         <input class="color_input" type="radio" name="colour_id" value="1" hidden checked>
                         @if(count($product_colours) > 1)
