@@ -5,10 +5,4 @@
 <script src="{{asset('js/alert.js')}}"></script> {{-- Todas las vistas --}}
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-{{-- <script src="{{asset('vendor/ckeditor/ckeditor.js')}}"></script> --}} {{-- Solo en Editar y crear Producto --}}
-{{-- <script src="{{asset('js/CKEditorCFG.js')}}"></script> --}} {{-- Solo en Editar y crear Producto --}}
-{{-- <script src="{{asset('js/carousel.js')}}"></script> Solo en productos/showall --}}
-{{-- <script src="{{asset('js/owl.carousel.min.js')}}"></script> Solo en productos/showall --}}
-{{-- <script src="{{asset('js/modal.js')}}"></script> --}} {{-- Solo en productos/show --}}
-{{-- <script src="{{asset('js/toggle.js')}}"></script> --}} {{-- Agregar producto, categoria, subcategoria, slider --}}
 <script src="{{asset('js/navbar.js')}}"></script>{{--  Solo en productos/showall --}}

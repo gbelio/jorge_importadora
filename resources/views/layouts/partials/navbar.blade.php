@@ -101,50 +101,6 @@
                 </a>
                 @endif
             </ul>
-        {{--            <li class="nav-item dropdown d-flex Admin_" >
-                <a class="nav-link usuario dropdown-toggle" data-toggle="dropdown" href="/profile">{{Auth::user()->name}}</a>
-                <ul class="dropdown-menu cascadaDos">
-                    @if (Auth::user()->role == 9)
-                    <li class="nav-item" style="margin-top: 10px">
-                        <a class="nav-link" href="/categorias/cargar">Categorías</a>
-                    </li>
-                    <li class="nav-item" style="margin-top: 10px">
-                        <a class="nav-link" href="/subcategorias/cargar">Subcategorías</a>
-                    </li>
-                    <li class="nav-item" style="margin: 10px 10px 0 0">
-                        <a class="nav-link" href="/productos/cargar">Productos</a>
-                    </li>
-                    <li class="nav-item" style="margin: 10px 10px 0 0">
-                        <a class="nav-link" href="/colores/cargar">Colores</a>
-                    </li>
-                    <li class="nav-item" style="margin: 10px 10px 0 0">
-                        <a class="nav-link" href="/slider/cargar">Imagenes De Slider</a>
-                    </li>
-                    <li class="nav-item" style="margin: 10px 10px 0 0">
-                        <a class="nav-link" href="/compras/usuarios">Compras de Usuarios</a>
-                    </li>
-                    @else
-                    <li class="nav-item" style="margin: 10px 10px 0 0">
-                        <a class="nav-link2" href="/compras">Mis Compras</a>
-                    </li>
-                    <br>
-                    @endif
-                    <li class="borderli">
-                        <a href="/perfil">Perfil</a>
-                    </li>
-                    <li class="nav-item" style="margin: 10px 10px 0 0">
-                        <a href="/logout">Cerrar Sesión</a>
-                    </li>
-                </ul>
-            </li>
-            @if (Auth::user()->role !== 9)
-            <a href="/cart" class="carrito-icono" style="height: 100%;">
-                <img src="/img/icono_carrito.svg" style="filter:invert(1);">
-           </a>
-            <a href="#footer" class="btn btn-dark contact-us" onclick="closeNavBar()">
-                ¡CONTACTANOS!
-            </a>
-            @endif --}}
         </div>
     </nav>
 @else

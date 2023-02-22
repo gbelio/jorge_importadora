@@ -30,35 +30,13 @@
                 <label for="business_name">Razón social</label>
                 @error('business_name')<span class="errors">{{ $message }}</span> @enderror
             </div>
-           {{--  <div class="col-lg-6 p-0">
-                <input class="inputForm w-100" type="text" name="name" placeholder="Nombre" value="{{ old('name') }}">
-                @error('name')<span class="errors">{{ $message }}</span> @enderror
-            </div>
-            <div class="col-lg-6 p-0">
-                <input class="inputForm w-100" type="text" name="last_name" placeholder="Apellido" value="{{ old('last_name') }}">
-                @error('last_name')<span class="errors">{{ $message }}</span> @enderror
-            </div> --}}
         </div>
-
-
-       {{--  <div class="row d-flex flex-row">
-            <div class="col-lg-12 p-0">
-                <input class="inputForm w-100" type="text" name="business_name" placeholder="Razón social" value="{{ old('business_name') }}">
-                @error('business_name')<span class="errors">{{ $message }}</span> @enderror
-            </div>
-        </div> --}}
-
-
         <div class="row d-flex flex-row">
             <div class="__translation">
                 <input id="address" class="inputForm w-100" type="text" name="address" placeholder=" " value="{{ old('address') }}">
                 <label for="address">Dirección</label>
                 @error('address')<span class="errors">{{ $message }}</span> @enderror
             </div>
-               {{--  <div class="col-lg-4 p-0">
-                    <input class="inputForm w-100" type="text" name="address" placeholder="Dirección" value="{{ old('address') }}">
-                    @error('address')<span class="errors">{{ $message }}</span> @enderror
-                </div> --}}
                 <div {{-- class="col-lg-4 p-0" --}} class="__translation">
                     <input id="department" class="inputForm w-100" type="text" name="department" placeholder=" " value="{{ old('department') }}">
                     <label for="department">Localidad</label>
@@ -83,16 +61,6 @@
                 <label for="shipment">Nombre del transporte</label>
                 @error('shipment')<span class="errors">{{ $message }}</span> @enderror
             </div>
-            {{-- <div class="col-lg-12 d-flex justify-content-between p-0">
-                <div class="col-lg-6 p-0">
-                    <input class="inputForm w-100" type="text" name="zip_code" placeholder="Código postal" value="{{ old('zip_code') }}">
-                    @error('zip_code')<span class="errors">{{ $message }}</span> @enderror
-                </div>
-                <div class="col-lg-6 p-0">
-                    <input class="inputForm w-100" type="text" name="shipment" placeholder="Nombre del transporte" value="{{ old('shipment') }}">
-                    @error('shipment')<span class="errors">{{ $message }}</span> @enderror
-                </div>
-            </div> --}}
         </div>
 
         <div class="row d-flex flex-row">
