@@ -28,9 +28,6 @@
                         <div class="_codigo_botones">
                             <div style="margin-bottom: 0px !important">
                                 <h4>Código de Producto: {{$producto->code}}</h4>
-                               {{--  @if($producto->amount > 0)
-                                    <h5>${{$producto->amount}}</h5>
-                                @endif --}}
                             </div>
                             <div class="_contenedorBotones">
                                 <div class="edit_prod_show">
@@ -81,7 +78,7 @@
                         @if($producto->amount > 0)
                        <div class="box">{{--  revisar como queda sin precio --}}
                             <label>Precio unitario</label>
-                            <h5 id="change_amount"> ${{$producto->amount}}</h5>
+                            <h5 id="change_amount"> ${{number_format($producto->amount, 2, ',', '.')}}</h5>
                         </div>
                         @endif
                         <input class="color_input" type="radio" name="colour_id" value="1" hidden checked>
